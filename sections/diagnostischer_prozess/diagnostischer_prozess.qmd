@@ -1,0 +1,164 @@
+# Der Diagnostische Prozess
+
+## Formulierung diagnostischer Hypothesen
+
+### Kriterien diagnostischer Hypothesen
+
+In der Vorlesung haben Sie sechs Kriterien kennengelernt, die bei der Formulierung diagnostischer Hypothesen beachtet werden sollten.
+
+::: {.callout-aufgabe}
+
+Nennen Sie die sechs Kriterien zur Formulierung diagnostischer Hypothesen. Die Lösung finden Sie auf den Vorlesungsfolien.
+
+:::
+
+Beachten Sie, dass diese Kriterien nicht vollständig analog für Forschungshypothesen gelten. Es wäre zum Beispiel ungewöhnlich, eine Forschungshypothese als Frage zu formulieren.
+
+### Fehler in diagnostischen Hypothesen erkennen
+
+Welche Aspekte der folgenden Hypothesen zu gegebenen Fragestellungen sind problematisch? Wie könnten die Hypothesen besser formuliert werden?
+
+::: {.callout-aufgabe}
+
+Fragestellung: Ist Marijke hochbegabt?
+
+Hypothese: Löst Marijke mindestens 84\% der Aufgaben eines Intelligenztests für Hochbegabtendiagnostik?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Normbezug fehlt
+
+:::
+
+::: {.callout-aufgabe}
+
+Fragestellung: Ist Mona geeignet, um eine Ausbildung als Fluglotsin zu beginnen?
+
+Hypothese: Sind Monas Konzentrationsfähigkeit und Gewissenhaftigkeit überdurchschnittlich im Vergleich zur einer gleichaltrigen Referenzstichprobe?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- Nur ein Sachverhalt pro Hypothese
+
+- Nicht trennscharf genug, da kein Cutoff genannt wird
+
+:::
+
+::: {.callout-aufgabe}
+
+Fragestellung: Sind Verenas schlechte Klausurnoten auf Prüfungsangst zurückzuführen?
+
+Hypothese: Weißt Verena im Vergleich zu Gleichaltrigen extreme Werte ($|z|>1$) in der Ängstlichkeitsfacette des NEO-PI-R auf?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- Bezug zur Fragestellung: Ängstlichkeit ist nicht gleich Prüfungsangst
+
+- Gerichtete Hypothese notwendig
+
+:::
+
+::: {.callout-aufgabe}
+
+Fragestellung: Sollte Emre auf Grund seiner depressiven Verstimmung eine Psychotherapie beginnen?
+
+Hypothese: Weißt Emre depressive Symptome im klinisch relevanten Ausmaß auf?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- Unscharfe Hypothese
+
+- Normbezug fehlt
+
+- Cutoff fehlt
+
+:::
+
+::: {.callout-aufgabe}
+
+Fragestellung: Besteht bei Hubert Verdacht auf eine beginnende Demenz?
+
+Hypothese: Ist Huberts Leistung in einem Gedächtnistest Test < 40 (T-Werte)?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- Normbezug unvollständig, da keine Referenzgruppe genannt wird
+
+:::
+
+### Diagnostische Fragestellungen und Hypothesen formulieren
+
+Häufig muss eine globale diagnostische Fragestellung zunächst in eine spezifischere Fragestellung überführt werden, bevor (eine oder mehrere) Hypothesen abgeleitet werden können. Zum Beispiel:
+
+|                          |                                                                 |
+|--------------------------|-----------------------------------------------------------------|
+| **Globale Fragestellung** | Hat Erik die nötigen kognitiven Fähigkeiten für ein Kunststudium? |
+| **Spezifische Fragestellung** | Ist Erik mindestens durchschnittlich intelligent und überdurchschnittlich kreativ? |
+| **Hypothese(n)** | H1: Ist Eriks Leistung in einem Intelligenztest im Vergleich zu Gleichaltrigen mindestens durchschnittlich (IQ ≥ 100)?<br><br>H2: Ist Eriks Leistung in einem Kreativitätstest im Vergleich zu Gleichaltrigen überdurchschnittlich (SW ≥ 110)? |
+
+Spezifizieren Sie die folgende Fragestellung und leiten Sie eine oder mehr passende Hypothesen ab.
+
+::: {.callout-aufgabe}
+
+|                          |                                                                 |
+|--------------------------|-----------------------------------------------------------------|
+| **Globale Fragestellung** | Verfügt Sonja über die notwendigen Persönlichkeitseigenschaften um an einer 3-monatigen, winterlichen Arktis-Expedition teilzunehmen? |
+| **Spezifische Fragestellung** | ... |
+| **Hypothese(n)** | ... |
+
+:::
+
+## Entscheidungsregeln
+
+Wenn mehrere Hypothesen zur selben diagnostischen Fragestellung aufgestellt wurden, müssen die Ergebnisse anhand zuvor definierter Entscheidungsregeln integriert werden. Sie haben in der Vorlesung verschiedene Typen von Entscheidungsregeln kennengelernt. 
+
+Bei Entscheidungen anhand von zwei Kriterien, lassen sich die Wertebereiche, in denen entweder eine positive oder eine negative Entscheidung getroffen wird, leicht in einem Plot darstellen:
+
+```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
+library(ggplot2)
+
+dat <- expand.grid(x = 60:140, y = 20:80)
+dat$Entscheidung <- dat$x >= 100 & dat$y >= 50
+dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
+
+ggplot(
+    dat,
+    aes(x = x, y = y, color = Entscheidung)
+) + 
+    geom_point() +
+    scale_x_continuous(breaks = seq(-1000, 1000, 5)) + 
+    scale_y_continuous(breaks = seq(-1000, 1000, 5)) + 
+    geom_hline(yintercept = 50, linetype = 1) +
+    geom_vline(xintercept = 100, linetype = 1) +
+    theme_bw() +
+    scale_color_manual(values = c("#f28e8e", "#6baed6")) +
+    xlab("Intelligenz (IQ)") +
+    ylab("Kreativität (T)") +
+    coord_fixed()
+
+```
+
+Die konkrete Entscheidungsregel im Beispiel könnte auch so beschreiben werden:
+	
+> Der Intelligenzwert muss mindestens 100 betragen und der Kreativitätswert muss mindestens 50 betragen.
+
+Formal kann man die Bedingung, die erfüllt sein muss, um gewählt zu werden, auch so beschreiben:
+
+> $IQ_{Intelligenz} \ge 100 \wedge T_{Kreativität} \ge  50$
+
+::: {.callout-aufgabe}
+
+Benennen Sie für die folgenden Beispiele um welche Art Entscheidungsregel es sich handelt. Beschreiben Sie die konkrete Entscheidungsregel entweder verbal oder mathematisch.
+
+:::
+

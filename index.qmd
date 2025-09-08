@@ -1,0 +1,20 @@
+---
+title: "Übung M.B.2 zur Vorlesung Diagnostik"
+---
+Das Vorwort enthält die wichtigsten Informationen zum Übungsheft. Alles Weitere besprechen wir in der Sitzung.
+
+## Was ist das Übungsheft?
+
+Das Übungsheft ist eine Sammlung von Aufgaben, die wir im Laufe des Semesters parallel zur Vorlesung bearbeiten. Die Aufgaben unterstützen Sie dabei, komplexere Sachverhalte aus der Vorlesung zu verstehen und Ihren Lernerfolg zu überprüfen. Die Aufgaben in diesem Heft dienen also dem Ziel, Sie möglichst direkt auf besonders herausfordernde Teilaspekte der Prüfung vorzubereiten. Wir empfehlen Ihnen entsprechend dringend, das Heft im Laufe des Semesters zu bearbeiten und aktiv in der Übung mitzuarbeiten.
+
+Die Übung ist so strukturiert, dass Sie die Aufgaben eines Abschnitts in Ruhe zuhause bearbeiten und anschließend in der Sitzung Fragen stellen können. Wenn es in den Sitzungen keine Fragen zum Übungsheft gibt (das passiert fast nie), beschäftigen wir uns mit weiteren Übungsaufgaben oder darüber hinausgehenden Inhalten.
+
+## Was ist das Übungsheft nicht?
+
+- Das Übungsheft ist nicht wichtiger als die Vorlesung. Im Übungsheft wird eine Teilmenge an Stoff abgedeckt. Wir fokussieren uns auf Aufgaben, die Studierenden erfahrungsgemäß eher schwerfallen.
+
+- Das Übungsheft ist kein Lehrbuch. An einigen Stellen enthält das Heft Erklärungen des Stoffs. Es ist aber nicht der Anspruch, dass das notwendige Wissen, um die Aufgaben zu lösen, vollständig im Heft enthalten ist. Diesen Zweck erfüllen in erster Linie die Vorlesung und in zweiter Linie die Übungssitzungen.
+
+## Muss ich das Übungsheft bearbeiten, um die Übung M.B.2 bestehen?
+
+Nein. Das Bearbeiten des Übungshefts ist keine Voraussetzung, um die Übung M.B.2 zu bestehen. Es gibt auch keine Anwesenheitspflicht. Unsere Analysen der Prüfungsnoten und Übungsbeteiligung aus früheren Semestern haben aber gezeigt, dass Personen, die die Übungsaufgaben bearbeiten deutlich besser in der Prüfung abschneiden als diejenigen, die das nicht tun.

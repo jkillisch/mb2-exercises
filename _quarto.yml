@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "Übungsheft"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Vorwort
+      - href: sections/rechenkompetenzen/rechenkompetenzen.qmd
+        text: 1. Grundlegende Rechenkompetenzen
+      - href: sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.qmd
+        text: 2. Rechenkompetenzen der Diagnostik
+      - href: sections/diagnostischer_prozess/diagnostischer_prozess.qmd
+        text: 3. Der Diagnostische Prozess
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

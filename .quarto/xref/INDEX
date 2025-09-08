@@ -1,0 +1,26 @@
+{
+  "index.qmd": {
+    "index.html": "d8cf6e9b"
+  },
+  "about.qmd": {
+    "about.html": "c7f19555"
+  },
+  "sections/normierung/normierung.qmd": {
+    "normierung.html": "e0e9103d"
+  },
+  "sections/rechenkompetenzen/rechenkompetenzen.qmd": {
+    "rechenkompetenzen.html": "d856809c"
+  },
+  "sections/diagnostik/normierung.qmd": {
+    "normierung.html": "a94332f4"
+  },
+  "sections/diagnostik/diagnostik.qmd": {
+    "diagnostik.html": "a7cd2f07"
+  },
+  "sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.qmd": {
+    "rechenkompetenzen_diagnostik.html": "8cd7ded3"
+  },
+  "sections/diagnostischer_prozess/diagnostischer_prozess.qmd": {
+    "diagnostischer_prozess.html": "cc2796f0"
+  }
+}

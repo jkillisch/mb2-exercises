@@ -1,0 +1,489 @@
+# Rechenkompetenzen der Diagnostik
+
+Belastbare psychologische Diagnostik ist an vielen Stellen auf diagnostische Rechenkompetenzen angewiesen. Im Folgenden werden einige dieser Kompetenzen geübt.
+
+## Ablesen und Berechnen von Normwerten
+
+### Aufgaben mit der BDI-II Norm
+
+Testwerte lassen sich durch den Vergleich mit einer Normstichprobe interpretieren. Im einfachsten Fall liegen dafür Normtabellen vor. Im Folgenden finden Sie den Auszug einer Normtabelle für den BDI-II:
+
+![](images/bdi_norm.png)
+
+Roelofs, J., Van Breukelen, G., De Graaf, L. E., Beck, A. T., Arntz, A., \& Huibers, M. J. H. (2013). Norms for the Beck Depression Inventory (BDI-II) in a large dutch community sample. \textit{Journal of Psychopathology and Behavioral Assessment}, 35(1), 93–98. https://doi.org/10.1007/s10862-012-9309-2
+
+#### Werte ablesen
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+In einer Studie wird der Zusammenhang zwischen Schlafgewohnheiten und depressiven Symptomen untersucht. In einer Subanalyse soll auf die Bevölkerung der $40\%$ betroffensten Frauen mit hohen Bildungsabschlüssen rückgeschlossen werden. Ob eine Person mit in die Analyse mit aufgenommen wird, soll anhand ihres BDI-II Scores entschieden werden. Ab welchem BDI-II Score sollte eine Frau mit hohem Bildungsabschluss in die Analyse aufgenommen werden?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Ab einem BDI-II Score von $7$.
+
+:::
+
+#### Rohwerte transformieren
+
+Es gibt verschiedene Normwerteverteilungen (z, IQ, T, SW, etc.), die anhand von Mittelwert und Standardabweichungen definiert sind. Wenn Mittelwert und Standardabweichung der Testwerte in einer Normstichprobe bekannt sind, können die Testwerte entsprechend normiert werden.
+
+| Normbezeichnung       | Transformation                                    |
+|-----------------------|--------------------------------------------------|
+| z-Skala               | $z_n = \frac{x_n - \overline{x}}{SD(x)}$         |
+| IQ-Abweichungsskala   | $IQ_n = 100 + 15 z_n$                            |
+| T-Werte               | $T_n = 50 + 10 z_n$                              |
+| Standardwerte         | $SW_n = 100 + 10 z_n$                            |
+| PISA-Skala            | $P_n = 500 + 100 z_n$                            |
+| Stanine-Normwert      | $S_n \approx 5 + 2 z_n$                          |
+| Prozentrang       | $PR_n = 100 \frac{freq_{\text{cum}}(X_n)}{N}$    |
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+Eine Person erzielt einen Testwert von $36$. In der Normstichprobe weisen die Testwerte einen Mittelwert von $\overline{x} = 31$ und eine Standardabweichung von $SD(x) = 5$ auf.
+
+(a) Welchen z-Wert hat die Person im Vergleich zur Normstichprobe?
+
+(b) Der z-Wert lässt sich anhand der Formeln in andere Normwerte transformieren. Welcher T-Wert ergibt sich daraus?
+
+:::
+
+::: {.callout-tip title="Lösung (a)" collapse="true"}
+
+Gegeben:
+
+$x = 36$
+
+$\overline{x} = 31$
+
+$SD(x) = 5$
+
+Gesucht:
+
+$z = \frac{x - \overline{x}}{SD(x)} = \frac{36 - 31}{5}$
+
+:::
+
+::: {.callout-tip title="Lösung (b)" collapse="true"}
+
+Gegeben:
+
+$z = 1$
+
+Gesucht:
+
+$T = 50 + 10z = 50 + 10 = 60$
+
+:::
+
+### Prozentränge in R berechnen
+
+Nutzen Sie den Code um die Daten der darunter folgenden Abbildung zu samplen.
+
+```{r}
+set.seed(101)
+		
+# Daten samplen
+N <- 100
+x <- rnorm(N, 2, 5)
+x <- round(x)
+```
+
+Histogramm:
+
+```{r, echo = FALSE, fig.height = 3}
+
+dat <- as.data.frame(table(x))
+ggplot2::ggplot(dat, ggplot2::aes(x = x, y = Freq)) +
+    ggplot2::geom_bar(stat = "identity") +
+    ggplot2::scale_y_continuous(breaks = 0:100) +
+    ggplot2::theme_bw()
+
+```
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+Berechnen Sie die Prozentränge in R und überprüfen Sie Ihr Ergebnis anhand der Abbildung.
+
+:::
+
+Prozentränge:
+
+```{r, echo = FALSE, fig.height = 3}
+
+dat <- dat |>
+  dplyr::mutate(
+    cumfreq = cumsum(Freq),
+    N = sum(Freq),
+    PR = cumfreq / N * 100
+  )
+
+ggplot2::ggplot(dat, ggplot2::aes(x, PR, group = 1)) +
+  ggplot2::geom_line(color = "black") +
+  ggplot2::geom_point(color = "black") +
+  ggplot2::geom_text(ggplot2::aes(label = round(PR)), vjust = -0.7, size = 3) +
+  ggplot2::labs(x = "X", y = "PR") +
+  ggplot2::ylim(0, 105) +
+  ggplot2::theme_bw()
+
+```
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Sie benötigen die Funktionen `{{r}} table` und `{{r}} cumsum`.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+set.seed(101)
+		
+# Daten samplen
+N <- 100
+x <- rnorm(N, 2, 5)
+x <- round(x)
+
+# Prozentränge berechnen
+cumsum(table(x) / N)*100
+```
+
+:::
+
+### Normwerttransformation in einem Fallbeispiel
+
+Die Lesefähigkeit von Emilia wurde mit Hilfe eines validierten Leistungstests für Kinder erhoben. Um Emilias Leistung mit der Leistung von 9-Klässlerinnen in Rheinland-Pfälzer Gymnasien vergleichbar zu machen, wurde ihre Punktzahl von der leitenden Diagnostikerin zu einem $T$-Wert von $T = 56$ transformiert.
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+(a) Berechnen Sie Emilias Leistung als IQ-Wert.
+
+(b) Berechnen Sie den Prozentrang von Emilia innerhalb ihrer Schulklasse. In der Abbildung finden Sie dazu Häufigkeiten der T-Normwerte der Schüler:innen in Emilias Klasse.
+
+:::
+
+```{r, fig.height = 3, echo = FALSE}
+dat <- data.frame(
+    x = c(47, 53, 54, 56, 58, 61, 64, 65, 72, 76, 77),
+    freq = c(1, 1, 2, 1, 1, 3, 2, 1, 1, 1, 1)
+)
+
+ggplot2::ggplot(dat, ggplot2::aes(x = factor(x), y = freq, label = freq)) +
+    ggplot2::geom_bar(stat = "identity") +
+    ggplot2::geom_label() +
+    ggplot2::labs(x = "T-Normwert im Leseleistungstest", y = "Freq") +
+    ggplot2::theme_bw()
+
+```
+
+::: {.callout-tip title="Lösung (a)" collapse="true"}
+
+Gegeben:
+
+$T = 56$
+
+Gesucht:
+
+$IQ = 100 + 15z$
+
+$z = \frac{T - 50}{10}$
+
+Also $IQ = 100 + 15 \cdot \Big(\frac{T - 50}{10}\Big) = 109$
+
+:::
+
+::: {.callout-tip title="Lösung (b)" collapse="true"}
+
+Gesucht:
+
+$PR = 100 \cdot \frac{freq_{cum}(x)}{N}$
+
+$x = 56$
+
+Abgelesen:
+
+$freq_{cum}(56) = 5$
+
+$N = 15$
+
+Also $PR = 100 \frac{5}{15} \approx 33.33$
+
+:::
+
+## Sensitivität, Spezifität, ROC-Kurven, Youden-Index
+
+Leider sind Diagnosen nicht immer zutreffend. Es kann durchaus passieren, dass eine Person, die eigentlich geeignet wäre, als ungeeignet klassifiert wird. Genauso kann es passieren, dass eine Person, die eigentlich ungeeignet ist, als geeignet klassifiziert wird.
+
+### Tabelle aller möglichen Zustände
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+(a) Erstellen Sie eine Tabelle aller möglichen Kombinationen aus wahren Zuständen ${\text{geeignet}, \text{ungeeignet}}$ und Diagnosen ${\text{geeignet}, \text{ungeeignet}}$.
+
+(b) Benennen Sie jede der vier Kombinationen. Verwenden Sie dazu die folgenden Begriffe:
+	
+- Falsch positiv (FP)
+- Richtig positiv (RP)
+- Falsch negativ (FN)
+- Richtig negativ (RN)
+- False negative (FN)
+- False positive (FP)
+- True negative (TN)
+- True positive (TP)
+
+(c) Nehmen Sie an, dass eine Person mit einem Testwert $>20$ als geeignet eingestuft wird. Finden Sie einen beispielhaften Testwert für jeden der vier Zustände.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp: Tabellengerüst" collapse=true}
+
+So soll die Tabelle am Ende aussehen:
+
+| Wahrer Zustand | Testwert Beispiel | Diagnose   | Prüfung [De] | Prüfung [Eng] |
+|----------------|-------------------|------------|--------------|---------------|
+|                |                   |            |              |               |
+|                |                   |            |              |               |
+|                |                   |            |              |               |
+|                |                   |            |              |               |
+
+Jetzt fehlen noch die Werte.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp: Teile von a. vorgeben" collapse=true}
+
+| Wahrer Zustand | Testwert Beispiel | Diagnose   | Prüfung [De] | Prüfung [Eng] |
+|----------------|-------------------|------------|--------------|---------------|
+| Geeignet       |                   |            |              |               |
+|                |                   | Ungeeignet |              |               |
+| Ungeeignet     |                   |            |              |               |
+|                |                   | Ungeeignet |              |               |
+
+:::
+
+::: {.callout .callout-tipp title="Tipp: Teile von b. vorgeben" collapse=true}
+
+| Wahrer Zustand | Testwert Beispiel | Diagnose   | Prüfung [De] | Prüfung [Eng] |
+|----------------|-------------------|------------|--------------|---------------|
+| Geeignet       |                   |            | RP           |               |
+|                |                   | Ungeeignet |              | FN            |
+| Ungeeignet     |                   |            |              |               |
+|                |                   | Ungeeignet |              |               |
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+: Tabelle aller Kreuzungen von wahren Zuständen und Diagnosen (dichotom)
+
+| Wahrer Zustand | Testwert Beispiel | Diagnose   | Prüfung [De] | Prüfung [Eng] |
+|----------------|------------------|------------|--------------|---------------|
+| Geeignet       | $21$             | Geeignet   | RP           | TP            |
+| Geeignet       | $20$           | Ungeeignet | FN           | FN            |
+| Ungeeignet     | $23$           | Geeignet   | FP           | FP            |
+| Ungeeignet     | $13$             | Ungeeignet | RN           | TN            |
+
+:::
+
+### Formeln für Sensivität und Spezifität
+
+Ergänzen Sie die Formeln für die Sensitivität und Spezifität. Versuchen Sie es zuerst ohne die Vorlesungsfolien und überprüfen Sie dann Ihr Ergebnis.
+
+:::{.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+$\text{Sensitivität} = \frac{RP}{? + ?}$
+
+$\text{Spezifität} = \frac{?}{? + RN}$
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\text{Sensitivität} = \frac{RP}{RP + FN}$
+
+$\text{Spezifität} = \frac{RN}{FP + RN}$
+
+:::
+
+### Sensitivität und Spezifität in einem Beispiel berechnen
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+Eine Schule möchte einen neuen Test verwenden, um hochbegabte Schüler:innen frühzeitig zu identifizieren. Ein etablierter Intelligenztest wird als Vergleichsstandard zur Überprüfung der Testvorhersagen herangezogen. Die Testergebnisse für eine Stichprobe von 500 Kindern sind:
+
+| Urteil neuer Test   | Urteil etablierter Test | $n$  |
+|---------------------|--------------------------|------|
+| Hochbegabt          | Hochbegabt              | $10$ |
+| Hochbegabt          | Nicht hochbegabt        | $3$  |
+| Nicht hochbegabt    | Nicht hochbegabt        | $482$|
+| Nicht hochbegabt    | Hochbegabt              | $5$  |
+
+Berechnen Sie die Sensitivität und Spezifität des neuen Tests.
+
+::: 
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Gegeben:
+
+$RP = ?$
+
+$FP = ?$
+
+$RN = ?$
+
+$FN = ?$
+
+Gesucht:
+
+Sensitivität $= \frac{RP}{RP + FN} = ?$
+
+Spezifität $= \frac{RN}{FP + RN} = ?$
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gegeben:
+
+$RP = 10$
+
+$FP = 3$
+
+$RN = 482$
+
+$FN = 5$
+
+Gesucht:
+
+Sensitivität $= \frac{RP}{RP + FN} = \frac{10}{10 + 5} \approx .67$
+
+Spezifität $= \frac{RN}{FP + RN} = \frac{482}{3 + 482} \approx .99$
+
+:::
+
+### Den Youden-Index berechnen
+
+Die Testwerte ungeeigneter Testpersonen sind normalverteilt mit $X_u \sim N(-1.5, 3)$. Die Testwerte geeigneter Testpersonen sind normalverteilt mit $X_g \sim N(4, 3)$. Eine Person wird als geeignet klassifiziert, wenn Sie einen Testwert $>3$ aufweist. In der Abbildung sehen Sie die Dichterverteilungen der Testwerte ungeeigneter und geeigneter Personen.
+
+```{r, echo = FALSE, fig.height = 3}
+library(ggplot2)
+
+mu1 <- -1.5; s1 <- 3      # ungeeignet
+mu2 <-  4;   s2 <- 3      # geeignet
+cut  <-  3
+
+x  <- seq(-12, 15, length.out = 1000)
+y1 <- dnorm(x, mean = mu1, sd = s1)
+y2 <- dnorm(x, mean = mu2, sd = s2)
+
+df1 <- data.frame(x, y = y1)
+df2 <- data.frame(x, y = y2)
+
+ribbon1 <- subset(df1, x <= cut)
+ribbon2 <- subset(df2, x >= cut)
+
+ggplot() +
+  # gelbe Fläche
+  geom_area(data = ribbon1, aes(x, y), 
+            fill = "gold", alpha = 0.5) +
+  # blaue Fläche
+  geom_area(data = ribbon2, aes(x, y), 
+            fill = "steelblue", alpha = 0.5) +
+  # Dichtelinien
+  geom_line(data = df1, aes(x, y), linewidth = 1.6, color = "black") +
+  geom_line(data = df2, aes(x, y), linewidth = 1.6, color = "black") +
+  # Cutoff
+  geom_vline(xintercept = cut, color = "red3", linewidth = 1.2) +
+  # Achsen & Theme
+  labs(x = "X", y = "Dichte") +
+  coord_cartesian(xlim = c(-12, 15), ylim = c(0, max(c(y1, y2)) * 1.05)) +
+  theme_minimal(base_size = 14) +
+  theme_bw()
+```
+
+Die gelb markierte Fläche umfasst $93\%$ der Fläche unter der linken Verteilung. Die blau markierte Fläche umfasst $63\%$ der Fläche unter der rechten Verteilung.
+
+::: {.callout-aufgabe}
+
+Berechnen Sie den Youden-Index.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp 1" collapse=true}
+
+Gegeben:
+
+$RN = ?$
+
+$RP = ?$
+
+:::
+
+::: {.callout .callout-tipp title="Tipp 2" collapse=true}
+
+Gesucht:
+
+Sensitivität $=?$
+
+Spezifität $=?$
+
+Youden-Index $=?$
+
+:::
+
+::: {.callout .callout-tipp title="Tipp 3" collapse=true}
+
+Gegeben:
+
+$RN = ?$
+
+$RP = ?$
+
+Gesucht:
+
+Sensitivität $= \frac{RP}{FN + RP} = ?$
+
+Spezifität $= \frac{RN}{FP + RN} = ?$
+
+$\text{Youden-Index} = \text{Sensitivität} + \text{Spezifität} - 1 = ?$
+
+:::
+
+::: {.callout .callout-tipp title="Tipp 4: RN und RP vorgeben" collapse=true}
+
+Gegeben:
+
+$RN = .93$
+
+$RP = .63$
+
+Gesucht:
+
+Sensitivität $= \frac{RP}{FN + RP} = ?$
+
+Spezifität $= \frac{RN}{FP + RN} = ?$
+
+$\text{Youden-Index} = \text{Sensitivität} + \text{Spezifität} - 1 = ?$
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gegeben:
+
+$RN = .93$
+
+$RP = .63$
+
+Gesucht:
+
+Sensitivität $= \frac{RP}{FN + RP} = \frac{.63}{(1-.63) + .63} = .63$
+
+Spezifität $= \frac{RN}{FP + RN} = \frac{.93}{(1-.93) + .93} = .93$
+
+$\text{Youden-Index} = \text{Sensitivität} + \text{Spezifität} - 1 = .63 + .93 - 1 = .56$
+
+:::
