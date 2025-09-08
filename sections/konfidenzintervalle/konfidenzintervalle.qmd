@@ -1,0 +1,72 @@
+# Konfidenzintervalle
+
+Das Konfidenzintervall ist ein Intervall, das so konstruiert ist, dass es den wahren Wert erwartungsgemäß in $((1-\alpha) \times 100)\%$ der Fälle umschließt.
+
+Beispiel:
+
+Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} = 110 + 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 114.91$ und $KI_{u} = 110 - 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 106.09$ die Grenzen des Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt.
+
+## Konfidenzintervall berechnen
+
+::: {.callout-aufgabe}
+
+Theo erzielt in einer Begutachtung zur Abklärung von Hochbegabung einen IQ-Wert von $139$. Für die interne Konsistenz in einer vergleichbaren Normstichprobe wird im Manual ein Wert von $0.92$ angegeben. Für die Test-Retest-Reliabilität liegen keine Werte vor. Berechnen Sie ein einseitiges $95\%$-Konfidenzintervall um Theos Testwert.
+
+Interpretieren Sie das Intervall im Hinblick auf den typischen Schwellenwert von $130$ IQ-Punkten in der Diagnostik von Hochbegabung.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gegeben:
+	
+$X = 139$, $Rel_x = 0.92$, $\alpha = 5\%$, $SD_x = 15$, $KI_{o}=\infty$
+	
+Gesucht:
+	
+$KI_{u} = X - z_{1-\alpha} SD_x \sqrt{1-Rel_x}$
+	
+Verwende $z_{1-\alpha} \approx 1.64$, da einseitig 5\% der Standardnormalverteilung abgeschnitten werden sollen.
+		
+$KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132$
+	
+Den Wert $139$ umgibt das einseitige $95\%$-Konfidenzintervall $[132, +\infty)$. Die untere Schwelle des Intervalls, das in $95\%$ der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von $130$ IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.
+
+:::
+
+::: {.callout-aufgabe}
+
+Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95\% geklärt werden, ob der 57-jährige Andonis M. ausreichend gewissenhaft ist. Die Hypothese lautet: <<Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe ähnlichen Alters, mindestens im durchschnittlichen Bereich ($T \ge 40$)?>> Herr M.s Rohwert beträgt 3.5. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Normtabellen und Reliabitlitätsschätzer finden Sie in den Materialien zur Übung.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+T = 45
+SD = 10
+z = 1.64
+Rel: omega = 0.84 	(Alternative: alpha = 0.86)
+KI(u) = 38.44 
+KI = [38; Unendlich]
+
+:::
+
+::: {.callout-aufgabe}
+
+Für eine Studie sollen weibliche Jugendliche ausgewählt werden, deren Prüfungsangst in einem hier als normal definierten Bereich liegt (Mittelwert $\pm$ 2 SD). Es wird ein strenger Konfidenzkoeffizient von 99\% angelegt. Die Hypothese lautet: <<Liegt der beobachtete z-Wert auf der Multidimensional Test Anxiety Scale (MTAS) im Vergleich zu gleichaltrigen Mädchen im durchschnittlichen Bereich ($-2 \le z \le +2$)?>> Der Rohwert einer 15-jährigen Kandidatin liegt bei 42. Berechnen Sie den beobachteten z-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Die Reliabilität des MTAS wurde auf \textit{r} = .80 geschätzt. Normtabellen finden Sie in den Materialien zur Übung.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+z = -0.59
+SD = 1
+z = 2.58  (wegen zweiseitiger Testung: alpha / 2)
+Rel: r = 0.80 
+KI(u) = -1,74
+KI (o) = 0.56
+KI = [-1.74; 0.56]
+
+:::
+
+Der Abschnitt zu Konfidenzintervallen ist hier vorerst abgeschlossen. Im Abschnitt zum adaptiven Testen werden Sie später zusätzlich lernen, wie man Konfidenzintervalle für Personenparameter der IRT berechnet.

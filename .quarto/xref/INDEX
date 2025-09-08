@@ -22,5 +22,8 @@
   },
   "sections/diagnostischer_prozess/diagnostischer_prozess.qmd": {
     "diagnostischer_prozess.html": "cc2796f0"
+  },
+  "sections/konfidenzintervalle/konfidenzintervalle.qmd": {
+    "konfidenzintervalle.html": "be588724"
   }
 }

@@ -304,10 +304,6 @@ Man kann Summen- und Produktzeichen auch kombinieren.
 
 :::
 
-## Matrixeinträge indizieren
-
-Dieses Thema wird ausführlich zu Beginn der IRT eingeführt. Die Aufgaben sind an keinerlei Voraussetzungen geknüpft. Wenn Sie vorarbeiten möchten, könnten Sie das bereits tun.
-
 ## Wahrscheinlichkeiten und Verteilungen
 
 In diesem Abschnitt geht es vor allem um Notation, die Ihnen im Übungsheft noch begegnen wird.
@@ -325,3 +321,7 @@ Beschreiben Sie in eigenen Worten
 (d) $Y \sim U(10, 50)$
  
 :::
+
+## Umgang mit Datenmatrizen
+
+Dieses Thema wird ausführlich im Kapitel zu psychometrischen Datenmatrizen eingeführt. Die Aufgaben sind an keinerlei Voraussetzungen geknüpft. Wenn Sie vorarbeiten möchten, könnten Sie diesen Abschnitt bereits bearbeiten.

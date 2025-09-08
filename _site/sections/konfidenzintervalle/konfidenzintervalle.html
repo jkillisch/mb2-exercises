@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>diagnostischer_prozess – Übungsheft</title>
+<title>konfidenzintervalle – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,11 +131,11 @@ window.Quarto = {
 <span class="menu-text">2. Rechenkompetenzen der Diagnostik</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../sections/diagnostischer_prozess/diagnostischer_prozess.html" aria-current="page"> 
+    <a class="nav-link" href="../../sections/diagnostischer_prozess/diagnostischer_prozess.html"> 
 <span class="menu-text">3. Der Diagnostische Prozess</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../sections/konfidenzintervalle/konfidenzintervalle.html"> 
+    <a class="nav-link active" href="../../sections/konfidenzintervalle/konfidenzintervalle.html" aria-current="page"> 
 <span class="menu-text">4. Konfidenzintervalle</span></a>
   </li>  
 </ul>
@@ -154,16 +154,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#der-diagnostische-prozess" id="toc-der-diagnostische-prozess" class="nav-link active" data-scroll-target="#der-diagnostische-prozess">Der Diagnostische Prozess</a>
+  <li><a href="#konfidenzintervalle" id="toc-konfidenzintervalle" class="nav-link active" data-scroll-target="#konfidenzintervalle">Konfidenzintervalle</a>
   <ul class="collapse">
-  <li><a href="#formulierung-diagnostischer-hypothesen" id="toc-formulierung-diagnostischer-hypothesen" class="nav-link" data-scroll-target="#formulierung-diagnostischer-hypothesen">Formulierung diagnostischer Hypothesen</a>
-  <ul class="collapse">
-  <li><a href="#kriterien-diagnostischer-hypothesen" id="toc-kriterien-diagnostischer-hypothesen" class="nav-link" data-scroll-target="#kriterien-diagnostischer-hypothesen">Kriterien diagnostischer Hypothesen</a></li>
-  <li><a href="#fehler-in-diagnostischen-hypothesen-erkennen" id="toc-fehler-in-diagnostischen-hypothesen-erkennen" class="nav-link" data-scroll-target="#fehler-in-diagnostischen-hypothesen-erkennen">Fehler in diagnostischen Hypothesen erkennen</a></li>
-  <li><a href="#diagnostische-fragestellungen-und-hypothesen-formulieren" id="toc-diagnostische-fragestellungen-und-hypothesen-formulieren" class="nav-link" data-scroll-target="#diagnostische-fragestellungen-und-hypothesen-formulieren">Diagnostische Fragestellungen und Hypothesen formulieren</a></li>
-  </ul></li>
-  <li><a href="#entscheidungsregeln" id="toc-entscheidungsregeln" class="nav-link" data-scroll-target="#entscheidungsregeln">Entscheidungsregeln</a></li>
-  <li><a href="#untersuchungspläne" id="toc-untersuchungspläne" class="nav-link" data-scroll-target="#untersuchungspläne">Untersuchungspläne</a></li>
+  <li><a href="#konfidenzintervall-berechnen" id="toc-konfidenzintervall-berechnen" class="nav-link" data-scroll-target="#konfidenzintervall-berechnen">Konfidenzintervall berechnen</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -174,24 +167,16 @@ window.Quarto = {
 
 
 
-<section id="der-diagnostische-prozess" class="level1">
-<h1>Der Diagnostische Prozess</h1>
-<section id="formulierung-diagnostischer-hypothesen" class="level2">
-<h2 class="anchored" data-anchor-id="formulierung-diagnostischer-hypothesen">Formulierung diagnostischer Hypothesen</h2>
-<section id="kriterien-diagnostischer-hypothesen" class="level3">
-<h3 class="anchored" data-anchor-id="kriterien-diagnostischer-hypothesen">Kriterien diagnostischer Hypothesen</h3>
-<p>In der Vorlesung haben Sie sechs Kriterien kennengelernt, die bei der Formulierung diagnostischer Hypothesen beachtet werden sollten.</p>
+<section id="konfidenzintervalle" class="level1">
+<h1>Konfidenzintervalle</h1>
+<p>Das Konfidenzintervall ist ein Intervall, das so konstruiert ist, dass es den wahren Wert erwartungsgemäß in <span class="math inline">\(((1-\alpha) \times 100)\%\)</span> der Fälle umschließt.</p>
+<p>Beispiel:</p>
+<p>Wenn <span class="math inline">\(X=110\)</span>, <span class="math inline">\(SD_x=5.6\)</span>, <span class="math inline">\(Rel_x=0.8\)</span> und <span class="math inline">\(\alpha = 5\%\)</span>, so sind <span class="math inline">\(KI_{o} = 110 + 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 114.91\)</span> und <span class="math inline">\(KI_{u} = 110 - 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 106.09\)</span> die Grenzen des Intervalls, das erwartungsgemäß in <span class="math inline">\(95\%\)</span> der Fälle, in denen es berechnet wird, den wahren Wert umschließt.</p>
+<section id="konfidenzintervall-berechnen" class="level2">
+<h2 class="anchored" data-anchor-id="konfidenzintervall-berechnen">Konfidenzintervall berechnen</h2>
 <div class="callout-aufgabe">
-<p>Nennen Sie die sechs Kriterien zur Formulierung diagnostischer Hypothesen. Die Lösung finden Sie auf den Vorlesungsfolien.</p>
-</div>
-<p>Beachten Sie, dass diese Kriterien nicht vollständig analog für Forschungshypothesen gelten. Es wäre zum Beispiel ungewöhnlich, eine Forschungshypothese als Frage zu formulieren.</p>
-</section>
-<section id="fehler-in-diagnostischen-hypothesen-erkennen" class="level3">
-<h3 class="anchored" data-anchor-id="fehler-in-diagnostischen-hypothesen-erkennen">Fehler in diagnostischen Hypothesen erkennen</h3>
-<p>Welche Aspekte der folgenden Hypothesen zu gegebenen Fragestellungen sind problematisch? Wie könnten die Hypothesen besser formuliert werden?</p>
-<div class="callout-aufgabe">
-<p>Fragestellung: Ist Marijke hochbegabt?</p>
-<p>Hypothese: Löst Marijke mindestens 84% der Aufgaben eines Intelligenztests für Hochbegabtendiagnostik?</p>
+<p>Theo erzielt in einer Begutachtung zur Abklärung von Hochbegabung einen IQ-Wert von <span class="math inline">\(139\)</span>. Für die interne Konsistenz in einer vergleichbaren Normstichprobe wird im Manual ein Wert von <span class="math inline">\(0.92\)</span> angegeben. Für die Test-Retest-Reliabilität liegen keine Werte vor. Berechnen Sie ein einseitiges <span class="math inline">\(95\%\)</span>-Konfidenzintervall um Theos Testwert.</p>
+<p>Interpretieren Sie das Intervall im Hinblick auf den typischen Schwellenwert von <span class="math inline">\(130\)</span> IQ-Punkten in der Diagnostik von Hochbegabung.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -205,13 +190,18 @@ Lösung
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Normbezug fehlt</p>
+<p>Gegeben:</p>
+<p><span class="math inline">\(X = 139\)</span>, <span class="math inline">\(Rel_x = 0.92\)</span>, <span class="math inline">\(\alpha = 5\%\)</span>, <span class="math inline">\(SD_x = 15\)</span>, <span class="math inline">\(KI_{o}=\infty\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(KI_{u} = X - z_{1-\alpha} SD_x \sqrt{1-Rel_x}\)</span></p>
+<p>Verwende <span class="math inline">\(z_{1-\alpha} \approx 1.64\)</span>, da einseitig 5% der Standardnormalverteilung abgeschnitten werden sollen.</p>
+<p><span class="math inline">\(KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132\)</span></p>
+<p>Den Wert <span class="math inline">\(139\)</span> umgibt das einseitige <span class="math inline">\(95\%\)</span>-Konfidenzintervall <span class="math inline">\([132, +\infty)\)</span>. Die untere Schwelle des Intervalls, das in <span class="math inline">\(95\%\)</span> der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von <span class="math inline">\(130\)</span> IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Ist Mona geeignet, um eine Ausbildung als Fluglotsin zu beginnen?</p>
-<p>Hypothese: Sind Monas Konzentrationsfähigkeit und Gewissenhaftigkeit überdurchschnittlich im Vergleich zur einer gleichaltrigen Referenzstichprobe?</p>
+<p>Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95% geklärt werden, ob der 57-jährige Andonis M. ausreichend gewissenhaft ist. Die Hypothese lautet: &lt;&lt;Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe ähnlichen Alters, mindestens im durchschnittlichen Bereich (<span class="math inline">\(T \ge 40\)</span>)?&gt;&gt; Herr M.s Rohwert beträgt 3.5. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Normtabellen und Reliabitlitätsschätzer finden Sie in den Materialien zur Übung.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -225,16 +215,12 @@ Lösung
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Nur ein Sachverhalt pro Hypothese</p></li>
-<li><p>Nicht trennscharf genug, da kein Cutoff genannt wird</p></li>
-</ul>
+<p>T = 45 SD = 10 z = 1.64 Rel: omega = 0.84 (Alternative: alpha = 0.86) KI(u) = 38.44 KI = [38; Unendlich]</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Sind Verenas schlechte Klausurnoten auf Prüfungsangst zurückzuführen?</p>
-<p>Hypothese: Weißt Verena im Vergleich zu Gleichaltrigen extreme Werte (<span class="math inline">\(|z|&gt;1\)</span>) in der Ängstlichkeitsfacette des NEO-PI-R auf?</p>
+<p>Für eine Studie sollen weibliche Jugendliche ausgewählt werden, deren Prüfungsangst in einem hier als normal definierten Bereich liegt (Mittelwert <span class="math inline">\(\pm\)</span> 2 SD). Es wird ein strenger Konfidenzkoeffizient von 99% angelegt. Die Hypothese lautet: &lt;&lt;Liegt der beobachtete z-Wert auf der Multidimensional Test Anxiety Scale (MTAS) im Vergleich zu gleichaltrigen Mädchen im durchschnittlichen Bereich (<span class="math inline">\(-2 \le z \le +2\)</span>)?&gt;&gt; Der Rohwert einer 15-jährigen Kandidatin liegt bei 42. Berechnen Sie den beobachteten z-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Die Reliabilität des MTAS wurde auf = .80 geschätzt. Normtabellen finden Sie in den Materialien zur Übung.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -248,265 +234,11 @@ Lösung
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Bezug zur Fragestellung: Ängstlichkeit ist nicht gleich Prüfungsangst</p></li>
-<li><p>Gerichtete Hypothese notwendig</p></li>
-</ul>
+<p>z = -0.59 SD = 1 z = 2.58 (wegen zweiseitiger Testung: alpha / 2) Rel: r = 0.80 KI(u) = -1,74 KI (o) = 0.56 KI = [-1.74; 0.56]</p>
 </div>
 </div>
 </div>
-<div class="callout-aufgabe">
-<p>Fragestellung: Sollte Emre auf Grund seiner depressiven Verstimmung eine Psychotherapie beginnen?</p>
-<p>Hypothese: Weißt Emre depressive Symptome im klinisch relevanten Ausmaß auf?</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Unscharfe Hypothese</p></li>
-<li><p>Normbezug fehlt</p></li>
-<li><p>Cutoff fehlt</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout-aufgabe">
-<p>Fragestellung: Besteht bei Hubert Verdacht auf eine beginnende Demenz?</p>
-<p>Hypothese: Ist Huberts Leistung in einem Gedächtnistest Test &lt; 40 (T-Werte)?</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Normbezug unvollständig, da keine Referenzgruppe genannt wird</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="diagnostische-fragestellungen-und-hypothesen-formulieren" class="level3">
-<h3 class="anchored" data-anchor-id="diagnostische-fragestellungen-und-hypothesen-formulieren">Diagnostische Fragestellungen und Hypothesen formulieren</h3>
-<p>Häufig muss eine globale diagnostische Fragestellung zunächst in eine spezifischere Fragestellung überführt werden, bevor (eine oder mehrere) Hypothesen abgeleitet werden können. Zum Beispiel:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Globale Fragestellung</strong></td>
-<td>Hat Erik die nötigen kognitiven Fähigkeiten für ein Kunststudium?</td>
-</tr>
-<tr class="even">
-<td><strong>Spezifische Fragestellung</strong></td>
-<td>Ist Erik mindestens durchschnittlich intelligent und überdurchschnittlich kreativ?</td>
-</tr>
-<tr class="odd">
-<td><strong>Hypothese(n)</strong></td>
-<td>H1: Ist Eriks Leistung in einem Intelligenztest im Vergleich zu Gleichaltrigen mindestens durchschnittlich (IQ ≥ 100)?<br><br>H2: Ist Eriks Leistung in einem Kreativitätstest im Vergleich zu Gleichaltrigen überdurchschnittlich (SW ≥ 110)?</td>
-</tr>
-</tbody>
-</table>
-<p>Spezifizieren Sie die folgende Fragestellung und leiten Sie eine oder mehr passende Hypothesen ab.</p>
-<div class="callout-aufgabe">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Globale Fragestellung</strong></td>
-<td>Verfügt Sonja über die notwendigen Persönlichkeitseigenschaften um an einer 3-monatigen, winterlichen Arktis-Expedition teilzunehmen?</td>
-</tr>
-<tr class="even">
-<td><strong>Spezifische Fragestellung</strong></td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td><strong>Hypothese(n)</strong></td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-</section>
-<section id="entscheidungsregeln" class="level2">
-<h2 class="anchored" data-anchor-id="entscheidungsregeln">Entscheidungsregeln</h2>
-<p>Wenn mehrere Hypothesen zur selben diagnostischen Fragestellung aufgestellt wurden, müssen die Ergebnisse anhand zuvor definierter Entscheidungsregeln integriert werden. Sie haben in der Vorlesung verschiedene Typen von Entscheidungsregeln kennengelernt.</p>
-<p>Bei Entscheidungen anhand von zwei Kriterien, lassen sich die Wertebereiche, in denen entweder eine positive oder eine negative Entscheidung getroffen wird, leicht in einem Plot darstellen:</p>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Die konkrete Entscheidungsregel im Beispiel könnte auch so beschrieben werden:</p>
-<blockquote class="blockquote">
-<p>Der Intelligenzwert muss mindestens 100 betragen und der Kreativitätswert muss mindestens 50 betragen.</p>
-</blockquote>
-<p>Formal kann man die Bedingung, die erfüllt sein muss, um gewählt zu werden, auch so beschreiben:</p>
-<blockquote class="blockquote">
-<p><span class="math inline">\(IQ_{Intelligenz} \ge 100 \wedge T_{Kreativität} \ge  50\)</span></p>
-</blockquote>
-<p>Da in der Regel zwei Bedingungen mit einem logischen Und verknüpft werden, handelt es sich um eine konjunktive Entscheidungsregel.</p>
-<div class="callout-aufgabe">
-<p>Benennen Sie für die folgenden Beispiele um welche Art Entscheidungsregel es sich handelt. Beschreiben Sie die konkrete Entscheidungsregel entweder verbal oder mathematisch.</p>
-</div>
-<ol type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge  50\)</span></p>
-<p>Oder-Regel</p>
-</div>
-</div>
-</div>
-<ol start="2" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Die Punkte <span class="math inline">\((131, 20)\)</span> und <span class="math inline">\((100, 51)\)</span> liegen auf der schwarz markierten Geraden.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(IQ_{Intelligenz} + T_{Kreativität} &gt; 150\)</span></p>
-<p>Kompensatorisch</p>
-</div>
-</div>
-</div>
-<ol start="3" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Der Punkt <span class="math inline">\((99, 32)\)</span> liegt auf der Geraden, die eine Steigung von <span class="math inline">\(-1\)</span> hat.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\((IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge 50) \vee (IQ_{Intelligenz} + T_{Kreativität} &gt; 130)\)</span></p>
-<p>Schwache Oder-Regel</p>
-</div>
-</div>
-</div>
-<ol start="4" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Der Punkt <span class="math inline">\((100, 51)\)</span> liegt auf der Geraden, die eine Steigung von <span class="math inline">\(-1\)</span> hat.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\((IQ_{Intelligenz} &gt; 85 \wedge T_{Kreativität} &gt; 40) \wedge (IQ_{Intelligenz} + T_{Kreativität} &gt; 150)\)</span></p>
-<p>Schwache Konjunktive-Regel</p>
-</div>
-</div>
-</div>
-</section>
-<section id="untersuchungspläne" class="level2">
-<h2 class="anchored" data-anchor-id="untersuchungspläne">Untersuchungspläne</h2>
-<div class="callout-aufgabe">
-<p>Finden je ein Beispiel für die folgenden Untersuchungspläne:</p>
-<ul>
-<li><p>Single screen</p></li>
-<li><p>Nicht-sequenzielle Untersuchungsbatterie</p></li>
-<li><p>Vorauswahl Untersuchungsplan (pre-reject)</p></li>
-<li><p>Vorentscheidungs-Untersuchungsplan (pre-select)</p></li>
-<li><p>Vollständig sequenzieller Untersuchungsplan</p></li>
-</ul>
-</div>
+<p>Der Abschnitt zu Konfidenzintervallen ist hier vorerst abgeschlossen. Im Abschnitt zum adaptiven Testen werden Sie später zusätzlich lernen, wie man Konfidenzintervalle für Personenparameter der IRT berechnet.</p>
 
 
 </section>

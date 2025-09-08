@@ -13,6 +13,8 @@ website:
         text: 2. Rechenkompetenzen der Diagnostik
       - href: sections/diagnostischer_prozess/diagnostischer_prozess.qmd
         text: 3. Der Diagnostische Prozess
+      - href: sections/konfidenzintervalle/konfidenzintervalle.qmd
+        text: 4. Konfidenzintervalle
 
 format:
   html:
