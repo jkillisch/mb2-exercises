@@ -62,7 +62,7 @@ $SD(x) = 5$
 
 Gesucht:
 
-$z = \frac{x - \overline{x}}{SD(x)} = \frac{36 - 31}{5}$
+$z = \frac{x - \overline{x}}{SD(x)} = \frac{36 - 31}{5} = 1$
 
 :::
 

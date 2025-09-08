@@ -1,0 +1,166 @@
+# Psychometrische Datenmatrizen
+
+Um die später folgenden Modellgleichungen der IRT zu verstehen, ist es wichtig, flüssig mit der allgemeinen Datenmatrix umgehen zu können. In den folgenden Aufgaben üben Sie, Einträge sowie Zeilen- und Spaltenvektoren der allgemeinen Datenmatrix formal zu beschreiben.
+
+Sie haben in der Vorlesung die allgemeine Datenmatrix kennengelernt:
+
+\begin{equation}
+    \mathbf{U} = 
+    \begin{bmatrix}
+        u_{11} & \dots & u_{1j} & \dots & u_{1m} \\
+        \vdots & \ddots & \vdots & \ddots & \vdots \\
+        u_{i1} & \dots & u_{ij} & \dots & u_{im} \\
+        \vdots & \ddots & \vdots & \ddots & \vdots \\
+        u_{n1} & \dots & u_{nj} & \dots & u_{nm}
+    \end{bmatrix}
+\end{equation}
+
+::: {.callout-aufgabe}
+
+Suchen Sie Beispiele für Datenmatrizen, denen Sie im Bachelorstudium begegnet sind. Erklären Sie, wie Ihr Beispiel Datenmatrix mit der oben abgebildeten allgemeinen Datenmatrix zusammenhängt.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Mögliches Beispiel: Fragebogendatensatz aus dem Empra. 
+
+In den Zeilen befanden sich $n = 143$ Personen und in den Spalten befanden sich die $m = 60$ Items des BFI-II. Aufgrund der Verwendung einer 5-Punkt Ratingskala, hatten die Einträge der Matrix jeweils einen der Werte $0, 1, 2, 3, 4$.
+
+:::
+
+::: {.callout-aufgabe}
+
+Wofür stehen die Zeilen und Spalten der allgemeinen Datenmatrix bei testtheoretischen Anwendungen?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Zeilen: Personen
+
+Spalten: Items
+
+:::
+
+::: {.callout-aufgabe}
+
+Wie viele Zeilen und Spalten hat die allgemeine Datenmatrix?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$n$ Zeilen
+
+$m$ Spalten
+
+Die Antwort 3 Zeilen und 3 Spalten ist nicht richtig.
+
+:::
+
+::: {.callout-aufgabe}
+
+Beschreiben Sie die folgenden Einträge der allgemeinen Datenmatrix symbolisch:
+
+- Den Matrizeintrag in Zeile $4$ und Spalte $8$
+- Die Antwort von Person $102$ auf Item $16$
+- Die Antwort der ersten Person auf das erste Item
+- Die Antwort der letzten Person auf das letzte Item
+- Die Antwort einer beliebigen Person auf das letzte Item
+- Die Antwort der letzten Person auf ein beliebiges Item
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- $u_{48}$
+
+- $u_{102 \hspace{4pt} 16}$
+
+- $u_{11}$
+
+- $u_{nm}$
+
+- $u_{im}$
+
+- $u_{nj}$
+
+:::
+
+Statt einzelner Werte kann man auch ganze Zeilen oder Spalten der allgemeinen Datenmatrix extrahieren. Man nennt ganze Zeilen und Spalten der allgemeinen Datenmatrix auch Zeilen- und Spaltenvektoren. Beide Arten von Vektoren notieren wir mit kleinen fett gedruckten Buchstaben. $\mathbf{u}_{.2}$ bezeichnet etwa die gesamte zweite Spalte der allgemeinen Datenmatrix. Mit dem Punkt vor der $2$ macht man kenntlich, dass alle Zeilenelemente extrahiert werden sollen. Umgekehrt bezeichnet $\mathbf{u}_{2.}$ die gesamte zweite Zeile der allgemeinen Datenmatrix.
+
+Notieren Sie die folgenden Zeilen und Spaltenvektoren der allgemeinen Datenmatrix symbolisch:
+
+::: {.callout-aufgabe}
+
+- Die erste Spalte der allgemeinen Datenmatrix
+- Die dritte Zeile der allgemeinen Datenmatrix
+- Eine beliebige Zeile der allgemeinen Datenmatrix
+- Die letzte Spalte der allgemeinen Datenmatrix
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- $\mathbf{u}_{.1}$
+
+- $\mathbf{u}_{3.}$
+
+- $\mathbf{u}_{i.}$
+
+- $\mathbf{u}_{.m}$
+
+:::
+
+Als abschließenden Hinweis möchten wir noch anmerken, dass die Herangehensweise, Datenvektoren und Datenmatrizen fett zu schreiben sowie Indizes bei Zeilen- und Spaltenvektoren durch Punkte zu ersetzen, nicht *die eine* richtige Notation ist. Andere Autor:innen definieren Vektoren zum Beispiel grundsätzlich als Spaltenvektoren, z.B. $x \in \mathbb{R}^n$. Nur durch Transposition würde dann aus $x$ ein Zeilenvektor: $x^T \in \mathbb{R}^{1 \times n}$.
+
+# Summenscores
+
+Aus der Vorlesung kennen Sie eine beispielhafte Datenmatrix für einen Fähigkeitstest mit $6$ Items. Die folgende Datenmatrix ist ebenfalls eine beispielhafte Datenmatrix für einen Fähigkeitstest mit $6$ Items. Sie enthält lediglich andere Werte.
+
+\begin{equation}
+		\label{eq:databin}
+		\textbf{U} = 
+		\begin{bmatrix}
+			1 & 1 & 1 & 1 & 1 & 1 \\
+			1 & 1 & 1 & 0 & 1 & 0 \\
+			0 & 1 & 1 & 1 & 1 & 1 \\
+			1 & 0 & 0 & 0 & 1 & 1 \\
+		\end{bmatrix}
+	\end{equation}
+
+Der Summenscore wurde allgemein definiert als $\sum_{j = 1}^{m} u_{ij} = r_{i}$
+
+::: {.callout-aufgabe}
+
+Berechnen Sie $r_3$
+
+:::
+
+
+::: {.callout-aufgabe}
+
+Berechnen Sie die Scoreverteilung und stellen Sie diese tabellarisch dar.
+
+:::
+
+::: {.callout-aufgabe}
+
+Beurteilen Sie anhand der Scoreverteilung die Passung des Tests zur Stichprobe. Verwenden Sie einen der Begriffe aus der Vorlesung: Gleichmäßig, Deckeneffekt, Bodeneffekt
+
+:::
+
+Summenscores werden oft als Maß für die Fähigkeit oder Traitausprägung von Personen verwendet. 
+
+::: {.callout-aufgabe}
+
+Wie wird diese Verrechnung in der Klassischen Testtheorie gerechtfertigt?
+
+:::
+
+::: {.callout-aufgabe}
+	
+Finden Sie Argumente für und gegen die Verwendung von Summenscores in der diagnostischen Praxis.
+
+:::

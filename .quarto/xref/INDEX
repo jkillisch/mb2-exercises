@@ -25,5 +25,11 @@
   },
   "sections/konfidenzintervalle/konfidenzintervalle.qmd": {
     "konfidenzintervalle.html": "be588724"
+  },
+  "sections/software/software.qmd": {
+    "software.html": "69fffc4c"
+  },
+  "sections/datenmatrizen/datenmatrizen.qmd": {
+    "datenmatrizen.html": "a764a41e"
   }
 }

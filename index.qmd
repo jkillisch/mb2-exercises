@@ -1,20 +1,27 @@
----
-title: "Übung M.B.2 zur Vorlesung Diagnostik"
----
-Das Vorwort enthält die wichtigsten Informationen zum Übungsheft. Alles Weitere besprechen wir in der Sitzung.
+# Übungsheft zur Vorlesung Diagnostik
+
+Willkommen! Im Folgenden finden Sie Antworten auf eine Reihe von FAQs zum Übungsheft der Veranstaltung M.B.2.
 
 ## Was ist das Übungsheft?
 
-Das Übungsheft ist eine Sammlung von Aufgaben, die wir im Laufe des Semesters parallel zur Vorlesung bearbeiten. Die Aufgaben unterstützen Sie dabei, komplexere Sachverhalte aus der Vorlesung zu verstehen und Ihren Lernerfolg zu überprüfen. Die Aufgaben in diesem Heft dienen also dem Ziel, Sie möglichst direkt auf besonders herausfordernde Teilaspekte der Prüfung vorzubereiten. Wir empfehlen Ihnen entsprechend dringend, das Heft im Laufe des Semesters zu bearbeiten und aktiv in der Übung mitzuarbeiten.
+Diese Webseite (aus historischen Gründen als das "Übungsheft" bezeichnet) ist eine Sammlung von Aufgaben, die wir im Laufe des Semesters parallel zur Vorlesung bearbeiten. Die Aufgaben unterstützen Sie dabei, komplexere Sachverhalte aus der Vorlesung zu verstehen und Ihren Lernerfolg zu überprüfen. Die Aufgaben in diesem Heft dienen also dem Ziel, Sie möglichst direkt auf besonders herausfordernde Teilaspekte der Prüfung vorzubereiten. Wir empfehlen Ihnen entsprechend dringend, das Heft im Laufe des Semesters zu bearbeiten und aktiv in der Übung mitzuarbeiten.
 
-Die Übung ist so strukturiert, dass Sie die Aufgaben eines Abschnitts in Ruhe zuhause bearbeiten und anschließend in der Sitzung Fragen stellen können. Wenn es in den Sitzungen keine Fragen zum Übungsheft gibt (das passiert fast nie), beschäftigen wir uns mit weiteren Übungsaufgaben oder darüber hinausgehenden Inhalten.
+Die Übung ist so strukturiert, dass Sie die Aufgaben eines Abschnitts in Ruhe zuhause bearbeiten und anschließend in der Sitzung Fragen stellen können. Wenn es in den Sitzungen keine Fragen zum Übungsheft gibt, beschäftigen wir uns mit weiteren Übungsaufgaben oder darüber hinausgehenden Inhalten.
 
 ## Was ist das Übungsheft nicht?
 
-- Das Übungsheft ist nicht wichtiger als die Vorlesung. Im Übungsheft wird eine Teilmenge an Stoff abgedeckt. Wir fokussieren uns auf Aufgaben, die Studierenden erfahrungsgemäß eher schwerfallen.
+- Das Übungsheft ist nicht wichtiger als die Vorlesung. Es behandelt nur eine Teilmenge der Vorlesungsinhalte. Wir fokussieren uns dabei auf Themen, die Studierenden erfahrungsgemäß eher schwerfallen. Themen der Vorlesung, die nicht im Übungsheft behandelt werden, werden ebenfalls Teil der Prüfung sein.
 
-- Das Übungsheft ist kein Lehrbuch. An einigen Stellen enthält das Heft Erklärungen des Stoffs. Es ist aber nicht der Anspruch, dass das notwendige Wissen, um die Aufgaben zu lösen, vollständig im Heft enthalten ist. Diesen Zweck erfüllen in erster Linie die Vorlesung und in zweiter Linie die Übungssitzungen.
+- Das Übungsheft ist kein Lehrbuch. An einigen Stellen enthält das Heft Erklärungen des Stoffs. Es ist aber nicht der Anspruch, dass das notwendige Wissen, um die Aufgaben zu lösen, im Heft enthalten ist. Diesen Zweck erfüllen die Präsenzveranstaltungen (Vorlesung und Übung).
+
+## Wo bekomme ich Hilfe zu den Aufgaben?
+
+Die erste Anlaufstelle ist die Präsenzveranstaltung der Übung. Alle anderen Fragen können Sie in das OLAT-Forum der Veranstaltung posten. So können alle Teilnehmer:innen von den Antworten profitieren. Unsere Vorstellung der Übung sieht vor, dass das Wissen zu den Aufgaben für alle Studierenden gleichermaßen verfügbar ist. Bitte stellen Sie Ihre Fragen daher auch nur über das Forum und nicht via Mail. Sie sind natürlich herzlich eingeladen, auch selbst Fragen Ihrer Kommiliton:innen im Forum zu beantworten.
+
+## Was soll ich tun, wenn ich mit den Aufgaben nicht hinterherkomme?
+
+Auch wenn das die Idealvorstellung wäre, kann es passieren, dass Sie es im Semester nicht schaffen, alle Aufgaben parallel zur Vorlesung zu bearbeiten. Davon geht die Welt nicht unter. Wir raten Ihnen in diesem Fall dazu, in dem Rahmen, der für Sie schaffbar ist, Teile der wöchentlichen Aufgaben zu erledigen. Das funktioniert erfahrungsgemäß viel besser, als sich vorzunehmen, das Heft in den Semesterferien alleine durchzuarbeiten.
 
 ## Muss ich das Übungsheft bearbeiten, um die Übung M.B.2 bestehen?
 
-Nein. Das Bearbeiten des Übungshefts ist keine Voraussetzung, um die Übung M.B.2 zu bestehen. Es gibt auch keine Anwesenheitspflicht. Unsere Analysen der Prüfungsnoten und Übungsbeteiligung aus früheren Semestern haben aber gezeigt, dass Personen, die die Übungsaufgaben bearbeiten deutlich besser in der Prüfung abschneiden als diejenigen, die das nicht tun.
+Nein, das Bearbeiten des Übungshefts ist keine Voraussetzung, um die Übung M.B.2 zu bestehen. Es gibt auch keine Anwesenheitspflicht. Analysen der Prüfungsnoten und Übungsbeteiligung aus früheren Semestern haben aber gezeigt, dass Studierende, die die Übungsaufgaben bearbeiten deutlich besser in der Prüfung abschneiden als diejenigen, die das nicht tun.

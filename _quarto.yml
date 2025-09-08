@@ -6,23 +6,25 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Vorwort
-      - href: sections/rechenkompetenzen/rechenkompetenzen.qmd
-        text: 1. Grundlegende Rechenkompetenzen
-      - href: sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.qmd
-        text: 2. Rechenkompetenzen der Diagnostik
-      - href: sections/diagnostischer_prozess/diagnostischer_prozess.qmd
-        text: 3. Der Diagnostische Prozess
-      - href: sections/konfidenzintervalle/konfidenzintervalle.qmd
-        text: 4. Konfidenzintervalle
+        text: FAQs
+      - href: sections/software/software.qmd
+        text: Software
+      - text: Themenabschnitte
+        menu: 
+        - href: sections/rechenkompetenzen/rechenkompetenzen.qmd
+          text: 1. Grundlegende Rechenkompetenzen
+        - href: sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.qmd
+          text: 2. Rechenkompetenzen der Diagnostik
+        - href: sections/diagnostischer_prozess/diagnostischer_prozess.qmd
+          text: 3. Der Diagnostische Prozess
+        - href: sections/konfidenzintervalle/konfidenzintervalle.qmd
+          text: 4. Konfidenzintervalle
+        - href: sections/datenmatrizen/datenmatrizen.qmd
+          text: 5. Datenmatrizen
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      - sandstone
     css: styles.css
     toc: true
-
-
-
