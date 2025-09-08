@@ -148,7 +148,7 @@ ggplot(
 
 ```
 
-Die konkrete Entscheidungsregel im Beispiel könnte auch so beschreiben werden:
+Die konkrete Entscheidungsregel im Beispiel könnte auch so beschrieben werden:
 	
 > Der Intelligenzwert muss mindestens 100 betragen und der Kreativitätswert muss mindestens 50 betragen.
 
@@ -156,9 +156,171 @@ Formal kann man die Bedingung, die erfüllt sein muss, um gewählt zu werden, au
 
 > $IQ_{Intelligenz} \ge 100 \wedge T_{Kreativität} \ge  50$
 
+Da in der Regel zwei Bedingungen mit einem logischen Und verknüpft werden, handelt es sich um eine konjunktive Entscheidungsregel.
+
 ::: {.callout-aufgabe}
 
 Benennen Sie für die folgenden Beispiele um welche Art Entscheidungsregel es sich handelt. Beschreiben Sie die konkrete Entscheidungsregel entweder verbal oder mathematisch.
 
 :::
 
+a.
+
+```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
+library(ggplot2)
+
+dat <- expand.grid(x = 60:140, y = 20:80)
+dat$Entscheidung <- dat$x >= 100 | dat$y >= 50
+dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
+
+ggplot(
+    dat,
+    aes(x = x, y = y, color = Entscheidung)
+) + 
+    geom_point() +
+    scale_x_continuous(breaks = seq(-1000, 1000, 5)) + 
+    scale_y_continuous(breaks = seq(-1000, 1000, 5)) + 
+    geom_hline(yintercept = 50, linetype = 1) +
+    geom_vline(xintercept = 100, linetype = 1) +
+    theme_bw() +
+    scale_color_manual(values = c("#f28e8e", "#6baed6")) +
+    xlab("Intelligenz (IQ)") +
+    ylab("Kreativität (T)") +
+    coord_fixed()
+
+```
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge  50$
+
+Oder-Regel
+
+:::
+
+b.
+
+```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
+library(ggplot2)
+
+dat <- expand.grid(x = 60:140, y = 20:80)
+dat$Entscheidung <- dat$x + dat$y > 150
+dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
+
+ggplot(
+    dat,
+    aes(x = x, y = y, color = Entscheidung)
+) + 
+    geom_point() +
+    scale_x_continuous(breaks = seq(-1000, 1000, 5)) + 
+    scale_y_continuous(breaks = seq(-1000, 1000, 5)) + 
+    theme_bw() +
+    geom_abline(intercept = 151, slope = -1) +
+    scale_color_manual(values = c("#f28e8e", "#6baed6")) +
+    xlab("Intelligenz (IQ)") +
+    ylab("Kreativität (T)") +
+    coord_fixed()
+
+```
+
+Die Punkte $(131, 20)$ und $(100, 51)$ liegen auf der schwarz markierten Geraden.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$IQ_{Intelligenz} + T_{Kreativität} > 150$
+
+Kompensatorisch
+
+:::
+
+c.
+
+```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
+library(ggplot2)
+
+dat <- expand.grid(x = 60:140, y = 20:80)
+dat$Entscheidung <- (dat$x >= 100|dat$y >= 50) | ((dat$x + dat$y) > 130)
+dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
+
+ggplot(
+    dat,
+    aes(x = x, y = y, color = Entscheidung)
+) + 
+    geom_point() +
+    scale_x_continuous(breaks = seq(-1000, 1000, 5)) + 
+    scale_y_continuous(breaks = seq(-1000, 1000, 5)) + 
+    theme_bw() +
+    geom_hline(yintercept = 50, linetype = 2) +
+    geom_vline(xintercept = 100, linetype = 2) +
+    geom_abline(intercept = 131, slope = -1) +
+    scale_color_manual(values = c("#f28e8e", "#6baed6")) +
+    xlab("Intelligenz (IQ)") +
+    ylab("Kreativität (T)") +
+    coord_fixed()
+
+```
+
+Der Punkt $(99, 32)$ liegt auf der Geraden, die eine Steigung von $-1$ hat.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$(IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge 50) \vee (IQ_{Intelligenz} + T_{Kreativität} > 130)$
+
+Schwache Oder-Regel
+
+:::
+
+d.
+
+```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
+library(ggplot2)
+
+dat <- expand.grid(x = 60:140, y = 20:80)
+dat$Entscheidung <- (dat$x > 85 & dat$y > 40) & ((dat$x + dat$y) > 150)
+dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
+
+ggplot(
+    dat,
+    aes(x = x, y = y, color = Entscheidung)
+) + 
+    geom_point() +
+    scale_x_continuous(breaks = seq(-1000, 1000, 5)) + 
+    scale_y_continuous(breaks = seq(-1000, 1000, 5)) + 
+    theme_bw() +
+    geom_hline(yintercept = 41, linetype = 2) +
+    geom_vline(xintercept = 86, linetype = 2) +
+    geom_abline(intercept = 151, slope = -1) +
+    scale_color_manual(values = c("#f28e8e", "#6baed6")) +
+    xlab("Intelligenz (IQ)") +
+    ylab("Kreativität (T)") +
+    coord_fixed()
+
+```
+
+Der Punkt $(100, 51)$ liegt auf der Geraden, die eine Steigung von $-1$ hat.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$(IQ_{Intelligenz} > 85 \wedge T_{Kreativität} > 40) \wedge (IQ_{Intelligenz} + T_{Kreativität} > 150)$
+
+Schwache Konjunktive-Regel
+
+:::
+
+## Untersuchungspläne
+
+::: {.callout-aufgabe}
+
+Finden je ein Beispiel für die folgenden Untersuchungspläne:
+
+- Single screen
+
+- Nicht-sequenzielle Untersuchungsbatterie
+
+- Vorauswahl Untersuchungsplan (pre-reject)
+
+- Vorentscheidungs-Untersuchungsplan (pre-select)
+
+- Vollständig sequenzieller Untersuchungsplan
+
+:::
