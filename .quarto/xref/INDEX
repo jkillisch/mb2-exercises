@@ -31,5 +31,8 @@
   },
   "sections/datenmatrizen/datenmatrizen.qmd": {
     "datenmatrizen.html": "a764a41e"
+  },
+  "sections/rasch_modell/rasch_modell.qmd": {
+    "rasch_modell.html": "786745e6"
   }
 }

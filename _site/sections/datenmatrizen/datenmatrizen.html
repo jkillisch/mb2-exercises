@@ -151,6 +151,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../sections/datenmatrizen/datenmatrizen.html">
  <span class="dropdown-text">5. Datenmatrizen</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/rasch_modell/rasch_modell.html">
+ <span class="dropdown-text">6. Das Rasch-Modell</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -339,19 +343,129 @@ Lösung
 <div class="callout-aufgabe">
 <p>Berechnen Sie <span class="math inline">\(r_3\)</span></p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+r_3 = \sum_{j=1}^{6} u_{3j} = u_{31} + u_{32} + u_{33} + u_{34} + u_{35} + u_{36}
+\]</span></p>
+<p><span class="math display">\[
+= 0 + 1 + 1 + 1 + 1 + 1 = 5
+\]</span></p>
+<p><span class="math display">\[
+r_3 = 5
+\]</span></p>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p>Berechnen Sie die Scoreverteilung und stellen Sie diese tabellarisch dar.</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<span class="math display">\[\begin{array}{c|c}
+\text{Person } i &amp; r_i = \sum_{j=1}^6 u_{ij} \\ \hline
+1 &amp; 1+1+1+1+1+1 = 6 \\
+2 &amp; 1+1+1+0+1+0 = 4 \\
+3 &amp; 0+1+1+1+1+1 = 5 \\
+4 &amp; 1+0+0+0+1+1 = 3 \\
+\end{array}\]</span>
+<span class="math display">\[\begin{array}{c|c|c|c}
+r_i &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ \hline
+\text{Häufigkeit} &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+\end{array}\]</span>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p>Beurteilen Sie anhand der Scoreverteilung die Passung des Tests zur Stichprobe. Verwenden Sie einen der Begriffe aus der Vorlesung: Gleichmäßig, Deckeneffekt, Bodeneffekt</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gleichmäßig</p>
+</div>
+</div>
 </div>
 <p>Summenscores werden oft als Maß für die Fähigkeit oder Traitausprägung von Personen verwendet.</p>
 <div class="callout-aufgabe">
 <p>Wie wird diese Verrechnung in der Klassischen Testtheorie gerechtfertigt?</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es wird angenommen, dass sich die Varianz von Testantworten in einen Anteil wahrer Varianz und einen Anteil Fehlervarianz zerlegen lässt (Grundgleichung der KTT). In Verbindung mit der Annahme, dass der Erwartungswert der Fehlerverteilung Null beträgt folgt, dass der relative Einfluss des Fehlers sinkt, umso mehr Items miteinander durch Summierung der Testantworten verrechnet werden.</p>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p>Finden Sie Argumente für und gegen die Verwendung von Summenscores in der diagnostischen Praxis.</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Argumente für Summenscores:</strong></p>
+<ul>
+<li><p>Leichte Berechnung und in der Praxis weit verbreitet</p></li>
+<li><p>Plausible Annahme, dass der unsystematische Fehler durch Aggregation asymptotisch gegen Null geht</p></li>
+<li><p>Leicht nachvollziehbar, auch für Nicht-Psycholog:innen (z. B. bei juristischer Relevanz von Testergebnissen)</p></li>
+</ul>
+<p><strong>Argumente gegen Summenscores:</strong></p>
+<ul>
+<li><p>Alle Items werden gleichgewichtet, auch wenn es oft plausibel erscheint, dass sich Items in ihrem Beitrag zur Merkmalsmessung unterscheiden</p></li>
+<li><p>Annahme konstanter Reliabilität entlang des Fähigkeitkontinuums</p></li>
+<li><p>Keine Berücksichtung systematischen Fehlers</p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Die Argumente gegen Summenscores motivieren die Verwendung von IRT Modellen.</p>
 
 
 </section>

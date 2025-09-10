@@ -127,7 +127,7 @@ Bei Entscheidungen anhand von zwei Kriterien, lassen sich die Wertebereiche, in 
 ```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
 library(ggplot2)
 
-dat <- expand.grid(x = 60:140, y = 20:80)
+dat <- expand.grid(x = 80:120, y = 30:60)
 dat$Entscheidung <- dat$x >= 100 & dat$y >= 50
 dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
 
@@ -169,7 +169,7 @@ a.
 ```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
 library(ggplot2)
 
-dat <- expand.grid(x = 60:140, y = 20:80)
+dat <- expand.grid(x = 80:120, y = 30:60)
 dat$Entscheidung <- dat$x >= 100 | dat$y >= 50
 dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
 
@@ -203,7 +203,7 @@ b.
 ```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
 library(ggplot2)
 
-dat <- expand.grid(x = 60:140, y = 20:80)
+dat <- expand.grid(x = 80:120, y = 30:60)
 dat$Entscheidung <- dat$x + dat$y > 150
 dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
 
@@ -223,7 +223,7 @@ ggplot(
 
 ```
 
-Die Punkte $(131, 20)$ und $(100, 51)$ liegen auf der schwarz markierten Geraden.
+Der Punkt $(100, 51)$ liegt auf der schwarz markierten Geraden. Da Kreativität und Intelligez in der Entscheidungsregel gleichgewichtet werden, ist die absolute Steigung der Geraden $1$.
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
@@ -238,7 +238,7 @@ c.
 ```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
 library(ggplot2)
 
-dat <- expand.grid(x = 60:140, y = 20:80)
+dat <- expand.grid(x = 70:120, y = 20:70)
 dat$Entscheidung <- (dat$x >= 100|dat$y >= 50) | ((dat$x + dat$y) > 130)
 dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
 
@@ -275,7 +275,7 @@ d.
 ```{r, echo = FALSE, fig.height = 5, fig.widths = 5}
 library(ggplot2)
 
-dat <- expand.grid(x = 60:140, y = 20:80)
+dat <- expand.grid(x = 80:120, y = 30:70)
 dat$Entscheidung <- (dat$x > 85 & dat$y > 40) & ((dat$x + dat$y) > 150)
 dat$Entscheidung <- c("Negativ", "Positiv")[as.numeric(dat$Entscheidung)+1]
 
@@ -311,7 +311,7 @@ Schwache Konjunktive-Regel
 
 ::: {.callout-aufgabe}
 
-Finden je ein Beispiel für die folgenden Untersuchungspläne:
+Finden Sie je ein Beispiel für die folgenden Untersuchungspläne:
 
 - Single screen
 

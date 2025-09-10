@@ -1,0 +1,149 @@
+# Das Rasch-Modell
+
+Mit Hilfe des Rasch-Modells lässt sich berechnen, wie wahrscheinlich eine Beobachtung, $u_{ij}$, gegeben einer Personenfähigkeit und einer Itemschwierigkeit ist. Die Wahrscheinlichkeit, dass eine Person $i$ auf Item $j$ den Wert $u_{ij}$ erzielt, wird mit $P(U_{ij} = u_{ij})$ bezeichnet.
+
+## Notation von Wahrscheinlichkeiten im Zusammenhang mit der Datenmatrix
+
+Mit dieser Aufgabe bringen wir die Datenmatrix aus dem vorherigen Abschnitt mit der Notation von Wahrscheinlichkeiten in IRT-Modellen zusammen.
+
+::: {.callout-aufgabe}
+
+Was bedeuten die folgenden Wahrscheinlichkeiten inhaltlich?
+
+(a) $P(U_{14} = u_{14})$
+
+(b) $P(U_{1m} = u_{1m})$
+
+(c) $P(U_{im} = 0)$
+
+(d) $P(U_{2j} = 1)$
+
+(e) $P(U_{14} = u_{15})$
+
+(f) $P(U_{ij} = 1)$
+
+(g) $P(U_{ij} = 0)$
+
+(h) $P(U_{ij} = u_{ij})$
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+(a) Wahrscheinlichkeit, dass die Antwort von Person 1 auf Item 4 der tatsächlich beobachteten Antwort $u_{14}$ entspricht.  
+
+(b) Wahrscheinlichkeit, dass die Antwort von Person 1 auf das letzte Item $m$ der tatsächlich beobachteten Antwort $u_{1m}$ entspricht.  
+
+(c) Wahrscheinlichkeit, dass Person $i$ auf dem letzten Item $m$ die Antwort $0$ gibt.  
+
+(d) Wahrscheinlichkeit, dass Person 2 auf einem bestimmten Item $j$ die Antwort $1$ gibt.  
+
+(e) Wahrscheinlichkeit, dass die Antwort von Person 1 auf Item 4 dem beobachteten Wert auf Item 5 ($u_{15}$) entspricht.  
+
+(f) Wahrscheinlichkeit, dass Person $i$ auf Item $j$ die Antwort $1$ gibt.  
+
+(g) Wahrscheinlichkeit, dass Person $i$ auf Item $j$ die Antwort $0$ gibt.  
+
+(h) Wahrscheinlichkeit, dass Person $i$ auf Item $j$ der tatsächlich beobachteten Antwort $u_{ij}$ entspricht.  
+
+:::
+
+Die Wahrscheinlichkeiten in dieser Aufgabe sind teilweise inhaltlich etwas ungewöhnlich. Einer Wahrscheinlichkeit wie $P(U_{14} = u_{15})$ werden Sie in der IRT vermutlich nie begegnen. Dennoch ist es hilfreich, die Notation Zeichen für Zeichen lesen zu können. Den Wahrscheinlichkeiten in den Aufgaben (f)-(h) werden Sie hingegen noch öfter begegnen.
+
+::: {.callout-aufgabe}
+
+Betrachten Sie die binäre Datenmatrix aus der Aufgabe zu Summenscores. Welche der folgenden Aufgaben wäre prinzipiell lösbar? Begründen Sie.
+
+- Lesen Sie $U_{12}$ aus der binären Datenmatrix ab.
+
+- Lesen Sie $u_{23}$ aus der binären Datenmatrix ab.
+
+- Lesen Sie $P(U_{14} = u_{14})$ aus der binären Datenmatrix ab.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- Nicht lösbar
+
+- Lösbar
+
+- Nicht lösbar
+
+:::
+
+## Das Rasch-Modell
+
+Das Rasch-Modell definiert explizit die Wahrscheinlichkeit einer Testantwort $u_{ij}$:
+
+\begin{equation}
+	\label{eq:rasch}
+	P(U_{ij} = u_{ij} | \theta_?, \beta_?) = 
+	\frac{
+		exp(u_{ij}(\theta_? - \beta_?))
+	}{
+		1 + exp(\theta_? - \beta_?)
+	}
+\end{equation}
+
+::: {.callout-aufgabe}
+
+Wofür stehen $\theta$ und $\beta$ im Rasch-Modell?
+
+:::
+
+::: {.callout-aufgabe}
+
+Die Indizes für $\theta$ und $\beta$ fehlen in der Formel zum Rasch-Modell. Versuchen Sie, die Indizes zu ergänzen, ohne auf den Vorlesungsfolien nachzusehen.
+
+:::
+
+::: {.callout-aufgabe}
+
+In welchem Wertebereich sind $\theta$ und $\beta$ jeweils definiert?
+
+:::
+
+::: {.callout-aufgabe}
+
+Erklären Sie für Laien verständlich, was das Rasch-Modell ist und warum Psycholog:innen das Rasch-Modell und andere IRT-Modelle nutzen. 
+
+:::
+
+::: {.callout-aufgabe}
+
+Leiten Sie aus der allgemeinen Formel der Antwortwahrscheinlichkeit im Rasch-Modell (siehe oben) je eine Formel für die Lösungs- und Nichtlösewahrscheinlichkeit im Rasch-Modell her. Überprüfen Sie Ihr Ergebnis mit der Formelsammlung, die Ihnen auch in der Prüfung zur Verfügung stehen wird.
+
+:::
+
+::: {.callout-aufgabe}
+
+Verwenden Sie die alternative Schreibweise der logistischen Funktion aus den grundlegenden Rechenkompetenzen, um eine Schreibweise der Lösungswahrscheinlichkeit zu erhalten, die man leichter im Taschenrechner eingeben kann.
+
+:::
+
+::: {.callout-aufgabe}
+
+Berechnen Sie die Wahrscheinlichkeit, dass eine Person $i$ mit $\theta_i = 2$ ein Item $1$ mit $\beta_1 = -2$ löst. Berechnen Sie die Wahrscheinlichkeit, dass die selbe Person ein Item $2$ mit $\beta_2 = 0$ nicht löst.
+
+:::
+
+Den Umgang mit Lösungswahrscheinlichkeiten im Rasch- und den noch folgenden IRT-Modellen sollten Sie im Schlaf beherrschen. Mit der Funktion `teachIRT::p_rasch(theta, beta)` können Sie sich zum Üben selbst Aufgaben zur Berechnung von Lösungswahrscheinlichkeiten stellen. Kopieren Sie dazu einfach den R-Code in Ihre IDE (z.B. RStudio):
+
+```{r}
+
+# Zufällige Parameterwerte ziehen
+theta <- rnorm(1) |> round(2)
+beta <- rnorm(1) |> round(2)
+paste("Personenparameter:", theta) |> print()
+paste("Itemparameter:", beta) |> print()
+
+loesung <- teachIRT::p_rasch(theta, beta)
+paste("Lösewahrscheinlichkeit:", loesung) |> print()
+paste("Nicht-Lösewahrscheinlichkeit:", 1-loesung) |> print()
+
+```
+
+## Item Characteristic Curves (ICC)
+
+In der Vorlesung haben Sie sogenannte Item Characteristic Curves (ICCs) kennengelernt.

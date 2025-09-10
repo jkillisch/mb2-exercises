@@ -138,6 +138,21 @@ Berechnen Sie $r_3$
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$$
+r_3 = \sum_{j=1}^{6} u_{3j} = u_{31} + u_{32} + u_{33} + u_{34} + u_{35} + u_{36}
+$$  
+
+$$
+= 0 + 1 + 1 + 1 + 1 + 1 = 5
+$$  
+
+$$
+r_3 = 5
+$$
+
+:::
 
 ::: {.callout-aufgabe}
 
@@ -145,9 +160,32 @@ Berechnen Sie die Scoreverteilung und stellen Sie diese tabellarisch dar.
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+\begin{array}{c|c}
+\text{Person } i & r_i = \sum_{j=1}^6 u_{ij} \\ \hline
+1 & 1+1+1+1+1+1 = 6 \\
+2 & 1+1+1+0+1+0 = 4 \\
+3 & 0+1+1+1+1+1 = 5 \\
+4 & 1+0+0+0+1+1 = 3 \\
+\end{array}
+
+\begin{array}{c|c|c|c}
+r_i & 3 & 4 & 5 & 6 \\ \hline
+\text{Häufigkeit} & 1 & 1 & 1 & 1 \\
+\end{array}
+
+:::
+
 ::: {.callout-aufgabe}
 
 Beurteilen Sie anhand der Scoreverteilung die Passung des Tests zur Stichprobe. Verwenden Sie einen der Begriffe aus der Vorlesung: Gleichmäßig, Deckeneffekt, Bodeneffekt
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gleichmäßig
 
 :::
 
@@ -159,8 +197,36 @@ Wie wird diese Verrechnung in der Klassischen Testtheorie gerechtfertigt?
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es wird angenommen, dass sich die Varianz von Testantworten in einen Anteil wahrer Varianz und einen Anteil Fehlervarianz zerlegen lässt (Grundgleichung der KTT). In Verbindung mit der Annahme, dass der Erwartungswert der Fehlerverteilung Null beträgt folgt, dass der relative Einfluss des Fehlers sinkt, umso mehr Items miteinander durch Summierung der Testantworten verrechnet werden.
+
+:::
+
 ::: {.callout-aufgabe}
 	
 Finden Sie Argumente für und gegen die Verwendung von Summenscores in der diagnostischen Praxis.
 
 :::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+**Argumente für Summenscores:**
+
+- Leichte Berechnung und in der Praxis weit verbreitet
+
+- Plausible Annahme, dass der unsystematische Fehler durch Aggregation asymptotisch gegen Null geht
+
+- Leicht nachvollziehbar, auch für Nicht-Psycholog:innen (z. B. bei juristischer Relevanz von Testergebnissen)
+
+**Argumente gegen Summenscores:**
+
+- Alle Items werden gleichgewichtet, auch wenn es oft plausibel erscheint, dass sich Items in ihrem Beitrag zur Merkmalsmessung unterscheiden
+
+- Annahme konstanter Reliabilität entlang des Fähigkeitkontinuums
+
+- Keine Berücksichtung systematischen Fehlers
+
+:::
+
+Die Argumente gegen Summenscores motivieren die Verwendung von IRT Modellen.

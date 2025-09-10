@@ -21,6 +21,8 @@ website:
           text: 4. Konfidenzintervalle
         - href: sections/datenmatrizen/datenmatrizen.qmd
           text: 5. Datenmatrizen
+        - href: sections/rasch_modell/rasch_modell.qmd
+          text: 6. Das Rasch-Modell
 
 format:
   html:

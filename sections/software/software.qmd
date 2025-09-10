@@ -1,5 +1,7 @@
 # Software
 
+## R-Pakete
+
 Für die Übung ist es hilfreich, eine Reihe von R-Paketen zu installieren.
 
 ## mirt, eRm
@@ -27,3 +29,7 @@ install.packages("lavaan")
 install.packages("devtools")
 devtools::install_github("jkillisch/teachIRT")
 ```
+
+## Umgang mit AI
+
+Sie können die Inhalte *des Übungshefts* gerne mit ChatGPT teilen, etwa um sich Tipps statt der gesamten Lösung geben zu lassen. Eine andere Anwendung ist es, Wissen zu erfragen, das über die behandelten Inhalte hinausgeht. Wir empfehlen Ihnen dennoch, die Aufgaben vorrangig mit den Vorlesungsmaterialien zu bearbeiten, da dieses Material die direkteste Grundlage für die Prüfung darstellt.

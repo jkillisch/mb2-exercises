@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>software – Übungsheft</title>
+<title>rasch_modell – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -129,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">FAQs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../sections/software/software.html" aria-current="page"> 
+    <a class="nav-link" href="../../sections/software/software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -157,6 +186,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../sections/datenmatrizen/datenmatrizen.html">
  <span class="dropdown-text">5. Datenmatrizen</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/rasch_modell/rasch_modell.html">
+ <span class="dropdown-text">6. Das Rasch-Modell</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -175,11 +208,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#software" id="toc-software" class="nav-link active" data-scroll-target="#software">Software</a>
+  <li><a href="#das-rasch-modell" id="toc-das-rasch-modell" class="nav-link active" data-scroll-target="#das-rasch-modell">Das Rasch-Modell</a>
   <ul class="collapse">
-  <li><a href="#mirt-erm" id="toc-mirt-erm" class="nav-link" data-scroll-target="#mirt-erm">mirt, eRm</a></li>
-  <li><a href="#lavaan" id="toc-lavaan" class="nav-link" data-scroll-target="#lavaan">lavaan</a></li>
-  <li><a href="#teachirt" id="toc-teachirt" class="nav-link" data-scroll-target="#teachirt">teachIRT</a></li>
+  <li><a href="#notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix" id="toc-notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix" class="nav-link" data-scroll-target="#notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix">Notation von Wahrscheinlichkeiten im Zusammenhang mit der Datenmatrix</a></li>
+  <li><a href="#das-rasch-modell-1" id="toc-das-rasch-modell-1" class="nav-link" data-scroll-target="#das-rasch-modell-1">Das Rasch-Modell</a></li>
+  <li><a href="#item-characteristic-curves-icc" id="toc-item-characteristic-curves-icc" class="nav-link" data-scroll-target="#item-characteristic-curves-icc">Item Characteristic Curves (ICC)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -190,31 +223,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="software" class="level1">
-<h1>Software</h1>
-<p>Für die Übung ist es hilfreich, eine Reihe von R-Paketen zu installieren.</p>
-<section id="mirt-erm" class="level2">
-<h2 class="anchored" data-anchor-id="mirt-erm">mirt, eRm</h2>
-<p><a href="https://cran.r-project.org/web/packages/mirt/mirt.pdf">mirt</a> und <a href="https://cran.r-project.org/web/packages/eRm/index.html">eRm</a> sind R-Pakete, mit denen Sie IRT-Modelle schätzen können.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"mirt"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"eRm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="das-rasch-modell" class="level1">
+<h1>Das Rasch-Modell</h1>
+<p>Mit Hilfe des Rasch-Modells lässt sich berechnen, wie wahrscheinlich eine Beobachtung, <span class="math inline">\(u_{ij}\)</span>, gegeben einer Personenfähigkeit und einer Itemschwierigkeit ist. Die Wahrscheinlichkeit, dass eine Person <span class="math inline">\(i\)</span> auf Item <span class="math inline">\(j\)</span> den Wert <span class="math inline">\(u_{ij}\)</span> erzielt, wird mit <span class="math inline">\(P(U_{ij} = u_{ij})\)</span> bezeichnet.</p>
+<section id="notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix" class="level2">
+<h2 class="anchored" data-anchor-id="notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix">Notation von Wahrscheinlichkeiten im Zusammenhang mit der Datenmatrix</h2>
+<p>Mit dieser Aufgabe bringen wir die Datenmatrix aus dem vorherigen Abschnitt mit der Notation von Wahrscheinlichkeiten in IRT-Modellen zusammen.</p>
+<div class="callout-aufgabe">
+<p>Was bedeuten die folgenden Wahrscheinlichkeiten inhaltlich?</p>
+<ol type="a">
+<li><p><span class="math inline">\(P(U_{14} = u_{14})\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{1m} = u_{1m})\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{im} = 0)\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{2j} = 1)\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{14} = u_{15})\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{ij} = 1)\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{ij} = 0)\)</span></p></li>
+<li><p><span class="math inline">\(P(U_{ij} = u_{ij})\)</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Wahrscheinlichkeit, dass die Antwort von Person 1 auf Item 4 der tatsächlich beobachteten Antwort <span class="math inline">\(u_{14}\)</span> entspricht.</p></li>
+<li><p>Wahrscheinlichkeit, dass die Antwort von Person 1 auf das letzte Item <span class="math inline">\(m\)</span> der tatsächlich beobachteten Antwort <span class="math inline">\(u_{1m}\)</span> entspricht.</p></li>
+<li><p>Wahrscheinlichkeit, dass Person <span class="math inline">\(i\)</span> auf dem letzten Item <span class="math inline">\(m\)</span> die Antwort <span class="math inline">\(0\)</span> gibt.</p></li>
+<li><p>Wahrscheinlichkeit, dass Person 2 auf einem bestimmten Item <span class="math inline">\(j\)</span> die Antwort <span class="math inline">\(1\)</span> gibt.</p></li>
+<li><p>Wahrscheinlichkeit, dass die Antwort von Person 1 auf Item 4 dem beobachteten Wert auf Item 5 (<span class="math inline">\(u_{15}\)</span>) entspricht.</p></li>
+<li><p>Wahrscheinlichkeit, dass Person <span class="math inline">\(i\)</span> auf Item <span class="math inline">\(j\)</span> die Antwort <span class="math inline">\(1\)</span> gibt.</p></li>
+<li><p>Wahrscheinlichkeit, dass Person <span class="math inline">\(i\)</span> auf Item <span class="math inline">\(j\)</span> die Antwort <span class="math inline">\(0\)</span> gibt.</p></li>
+<li><p>Wahrscheinlichkeit, dass Person <span class="math inline">\(i\)</span> auf Item <span class="math inline">\(j\)</span> der tatsächlich beobachteten Antwort <span class="math inline">\(u_{ij}\)</span> entspricht.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Die Wahrscheinlichkeiten in dieser Aufgabe sind teilweise inhaltlich etwas ungewöhnlich. Einer Wahrscheinlichkeit wie <span class="math inline">\(P(U_{14} = u_{15})\)</span> werden Sie in der IRT vermutlich nie begegnen. Dennoch ist es hilfreich, die Notation Zeichen für Zeichen lesen zu können. Den Wahrscheinlichkeiten in den Aufgaben (f)-(h) werden Sie hingegen noch öfter begegnen.</p>
+<div class="callout-aufgabe">
+<p>Betrachten Sie die binäre Datenmatrix aus der Aufgabe zu Summenscores. Welche der folgenden Aufgaben wäre prinzipiell lösbar? Begründen Sie.</p>
+<ul>
+<li><p>Lesen Sie <span class="math inline">\(U_{12}\)</span> aus der binären Datenmatrix ab.</p></li>
+<li><p>Lesen Sie <span class="math inline">\(u_{23}\)</span> aus der binären Datenmatrix ab.</p></li>
+<li><p>Lesen Sie <span class="math inline">\(P(U_{14} = u_{14})\)</span> aus der binären Datenmatrix ab.</p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Nicht lösbar</p></li>
+<li><p>Lösbar</p></li>
+<li><p>Nicht lösbar</p></li>
+</ul>
+</div>
+</div>
 </div>
 </section>
-<section id="lavaan" class="level2">
-<h2 class="anchored" data-anchor-id="lavaan">lavaan</h2>
-<p><a href="https://lavaan.ugent.be/">lavaan</a> ist ein R-Paket, mit dem Sie Strukturgleichungsmodelle in R schätzen können. Eine Spezialfall von Strukturgleichungsmodellen sind konfirmatorische Faktoranalysen (CFA), mit denen wir uns im späteren Teil der Übung beschäftigen werden.</p>
+<section id="das-rasch-modell-1" class="level2">
+<h2 class="anchored" data-anchor-id="das-rasch-modell-1">Das Rasch-Modell</h2>
+<p>Das Rasch-Modell definiert explizit die Wahrscheinlichkeit einer Testantwort <span class="math inline">\(u_{ij}\)</span>:</p>
+<p><span class="math display">\[\begin{equation}
+    \label{eq:rasch}
+    P(U_{ij} = u_{ij} | \theta_?, \beta_?) =
+    \frac{
+        exp(u_{ij}(\theta_? - \beta_?))
+    }{
+        1 + exp(\theta_? - \beta_?)
+    }
+\end{equation}\]</span></p>
+<div class="callout-aufgabe">
+<p>Wofür stehen <span class="math inline">\(\theta\)</span> und <span class="math inline">\(\beta\)</span> im Rasch-Modell?</p>
+</div>
+<div class="callout-aufgabe">
+<p>Die Indizes für <span class="math inline">\(\theta\)</span> und <span class="math inline">\(\beta\)</span> fehlen in der Formel zum Rasch-Modell. Versuchen Sie, die Indizes zu ergänzen, ohne auf den Vorlesungsfolien nachzusehen.</p>
+</div>
+<div class="callout-aufgabe">
+<p>In welchem Wertebereich sind <span class="math inline">\(\theta\)</span> und <span class="math inline">\(\beta\)</span> jeweils definiert?</p>
+</div>
+<div class="callout-aufgabe">
+<p>Erklären Sie für Laien verständlich, was das Rasch-Modell ist und warum Psycholog:innen das Rasch-Modell und andere IRT-Modelle nutzen.</p>
+</div>
+<div class="callout-aufgabe">
+<p>Leiten Sie aus der allgemeinen Formel der Antwortwahrscheinlichkeit im Rasch-Modell (siehe oben) je eine Formel für die Lösungs- und Nichtlösewahrscheinlichkeit im Rasch-Modell her. Überprüfen Sie Ihr Ergebnis mit der Formelsammlung, die Ihnen auch in der Prüfung zur Verfügung stehen wird.</p>
+</div>
+<div class="callout-aufgabe">
+<p>Verwenden Sie die alternative Schreibweise der logistischen Funktion aus den grundlegenden Rechenkompetenzen, um eine Schreibweise der Lösungswahrscheinlichkeit zu erhalten, die man leichter im Taschenrechner eingeben kann.</p>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie die Wahrscheinlichkeit, dass eine Person <span class="math inline">\(i\)</span> mit <span class="math inline">\(\theta_i = 2\)</span> ein Item <span class="math inline">\(1\)</span> mit <span class="math inline">\(\beta_1 = -2\)</span> löst. Berechnen Sie die Wahrscheinlichkeit, dass die selbe Person ein Item <span class="math inline">\(2\)</span> mit <span class="math inline">\(\beta_2 = 0\)</span> nicht löst.</p>
+</div>
+<p>Den Umgang mit Lösungswahrscheinlichkeiten im Rasch- und den noch folgenden IRT-Modellen sollten Sie im Schlaf beherrschen. Mit der Funktion <code>teachIRT::p_rasch(theta, beta)</code> können Sie sich zum Üben selbst Aufgaben zur Berechnung von Lösungswahrscheinlichkeiten stellen. Kopieren Sie dazu einfach den R-Code in Ihre IDE (z.B. RStudio):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lavaan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zufällige Parameterwerte ziehen</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Personenparameter:"</span>, theta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Personenparameter: -0.45"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Itemparameter:"</span>, beta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Itemparameter: -1.35"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>loesung <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta, beta)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Lösewahrscheinlichkeit:"</span>, loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Lösewahrscheinlichkeit: 0.710949502625004"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Nicht-Lösewahrscheinlichkeit:"</span>, <span class="dv">1</span><span class="sc">-</span>loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.289050497374996"</code></pre>
+</div>
 </div>
 </section>
-<section id="teachirt" class="level2">
-<h2 class="anchored" data-anchor-id="teachirt">teachIRT</h2>
-<p><a href="https://github.com/jkillisch/teachIRT">teachIRT</a> ist ein R-Paket, das wir speziell für die Übung M.B.2 geschrieben haben. Mit teachIRT können Sie viele Aufgaben im IRT-Abschnitt selbst überprüfen und sich selbst neue Aufgaben stellen. Da das Paket auf GitHub gehostet ist, benötigen Sie zur Installation auch das Paket devtools.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jkillisch/teachIRT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="item-characteristic-curves-icc" class="level2">
+<h2 class="anchored" data-anchor-id="item-characteristic-curves-icc">Item Characteristic Curves (ICC)</h2>
+<p>In der Vorlesung haben Sie sogenannte Item Characteristic Curves (ICCs) kennengelernt.</p>
 
 
 </section>
