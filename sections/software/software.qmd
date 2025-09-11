@@ -33,3 +33,7 @@ devtools::install_github("jkillisch/teachIRT")
 ## Umgang mit AI
 
 Sie können die Inhalte *des Übungshefts* gerne mit ChatGPT teilen, etwa um sich Tipps statt der gesamten Lösung geben zu lassen. Eine andere Anwendung ist es, Wissen zu erfragen, das über die behandelten Inhalte hinausgeht. Wir empfehlen Ihnen dennoch, die Aufgaben vorrangig mit den Vorlesungsmaterialien zu bearbeiten, da dieses Material die direkteste Grundlage für die Prüfung darstellt.
+
+## Literatur
+
+[Hier](https://hansjoerg.me/2018/04/23/rasch-in-r-tutorial/) finden Sie einen super Blogbeitrag zum Schätzen von Rasch- und 2PL-Modellen in R.

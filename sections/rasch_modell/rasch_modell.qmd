@@ -77,7 +77,6 @@ Betrachten Sie die binäre Datenmatrix aus der Aufgabe zu Summenscores. Welche d
 Das Rasch-Modell definiert explizit die Wahrscheinlichkeit einer Testantwort $u_{ij}$:
 
 \begin{equation}
-	\label{eq:rasch}
 	P(U_{ij} = u_{ij} | \theta_?, \beta_?) = 
 	\frac{
 		exp(u_{ij}(\theta_? - \beta_?))
@@ -86,15 +85,38 @@ Das Rasch-Modell definiert explizit die Wahrscheinlichkeit einer Testantwort $u_
 	}
 \end{equation}
 
+### $\theta$ und $\beta$
+
 ::: {.callout-aufgabe}
 
 Wofür stehen $\theta$ und $\beta$ im Rasch-Modell?
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\theta$: Personenparameter
+
+$\beta$: Itemparameter
+
+:::
+
 ::: {.callout-aufgabe}
 
-Die Indizes für $\theta$ und $\beta$ fehlen in der Formel zum Rasch-Modell. Versuchen Sie, die Indizes zu ergänzen, ohne auf den Vorlesungsfolien nachzusehen.
+Die Indizes für $\theta$ und $\beta$ fehlen in der Formel zum Rasch-Modell. Versuchen Sie, die Indizes zu ergänzen, ohne auf den Folien oder in der Formelsammlung nachzusehen. Überprüfen Sie Ihre Antwort mit der Formelsammlung.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+\begin{equation}
+	P(U_{ij} = u_{ij} | \theta_i, \beta_j) = 
+	\frac{
+		exp(u_{ij}(\theta_i - \beta_j))
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}
+\end{equation}
 
 :::
 
@@ -104,9 +126,23 @@ In welchem Wertebereich sind $\theta$ und $\beta$ jeweils definiert?
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\theta, \beta \in \mathbb{R}$
+
+:::
+
+### Antwortwahrscheinlichkeiten
+
 ::: {.callout-aufgabe}
 
-Erklären Sie für Laien verständlich, was das Rasch-Modell ist und warum Psycholog:innen das Rasch-Modell und andere IRT-Modelle nutzen. 
+Sie haben in der ersten Aufgabe in diesem Abschnitt geübt, die Notation von Wahrscheinlichkeiten für Ereignisse in der Datenmatrix zu lesen. Dieses Wissen können Sie hier direkt anwenden. Erklären Sie die linke Seite der Gleichung zum Rasch Modell mit Worten.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Wahrscheinlichkeit ($P$), dass die Antwort von Person $i$ auf Item $j$ (Zufallsvariable; $U_{ij}$), dem beobachteten Wert von Person $i$ auf item $j$ ($u_{ij}$) entspricht ($=$), gegeben ($|$) des Personenparameters von Person $i$ ($\theta_i$), und des Itemparameters von Item $j$ ($\beta_j$).
 
 :::
 
@@ -131,7 +167,6 @@ Berechnen Sie die Wahrscheinlichkeit, dass eine Person $i$ mit $\theta_i = 2$ ei
 Den Umgang mit Lösungswahrscheinlichkeiten im Rasch- und den noch folgenden IRT-Modellen sollten Sie im Schlaf beherrschen. Mit der Funktion `teachIRT::p_rasch(theta, beta)` können Sie sich zum Üben selbst Aufgaben zur Berechnung von Lösungswahrscheinlichkeiten stellen. Kopieren Sie dazu einfach den R-Code in Ihre IDE (z.B. RStudio):
 
 ```{r}
-
 # Zufällige Parameterwerte ziehen
 theta <- rnorm(1) |> round(2)
 beta <- rnorm(1) |> round(2)
@@ -141,9 +176,370 @@ paste("Itemparameter:", beta) |> print()
 loesung <- teachIRT::p_rasch(theta, beta)
 paste("Lösewahrscheinlichkeit:", loesung) |> print()
 paste("Nicht-Lösewahrscheinlichkeit:", 1-loesung) |> print()
-
 ```
 
 ## Item Characteristic Curves (ICC)
 
 In der Vorlesung haben Sie sogenannte Item Characteristic Curves (ICCs) kennengelernt.
+
+::: {.callout-aufgabe}
+
+Was befindet sich bei ICCs jeweils auf der x- und y-Achse?
+
+:::
+
+::: {.callout-aufgabe}
+
+Erzeugen Sie händisch die ICC für ein Item mit $\beta = 1$ im Rasch-Modell.
+
+:::
+
+::: {.callout-aufgabe}
+
+Lesen Sie die Itemschwierigkeiten der Items aus den folgenden ICCs ab:
+
+:::
+
+```{r, echo = FALSE}
+teachIRT::icc_rasch(beta = c(-1.5, 0, 1, 2.5)) +
+	ggplot2::ggtitle("")
+```
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\beta_1 = -1.5$
+
+$\beta_2 = 0$
+
+$\beta_2 = 1$
+
+$\beta_2 = 2.5$
+
+:::
+
+::: {.callout-aufgabe}
+
+Plotten Sie die ICC für ein Item mit $\beta = -1$ mit Hilfe der Funktion `teachIRT::icc_rasch()` und probieren Sie aus, was passiert, wenn Sie andere Werte einsetzen.
+
+Mit `?teachIRT::icc_rasch()` können Sie sich die Hilfe-Datei anzeigen lassen.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+teachIRT::icc_rasch(beta = -1)
+teachIRT::icc_rasch(beta = 1)
+```
+
+Die ICC wird entlang der $\theta$-Achse verschoben.
+
+:::
+
+Das Rasch Modell kann in zwei Komponenten aufgeteilt werden: (1) Der lineare Prädiktor, $\theta_i - \beta_j$ und (2) die logistische Link-Funktion, $f(x) = \frac{exp(x)}{1 + exp(x)}$. Setzt man den linearen Prädiktor für $x$ in die logistische Funktion ein, entsteht das Rasch-Modell.
+
+::: {.callout-aufgabe}
+
+Welchen Zweck erfüllt die logistische Link-Funktion im Rasch-Modell?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Funktion bildet den Wert des linearen Prädiktors (reelle Zahl) auf eine Wahrscheinlichkeit, also einen Wert im Intervall $[0, 1]$ ab. Es entsteht eine logistische Regression mit Personen- und Itemparametern als Prädiktoren.
+
+:::
+
+## Annahmen und Eigenschaften des Rasch-Modells
+
+### Suffiziente Statistiken
+
+Gegeben ist eine binäre Datenmatrix:
+
+\begin{equation}
+	\label{eq:databin}
+	\textbf{U} = 
+	\begin{bmatrix}
+		1 & 0 & 1 & 1 & 1 & 1 \\
+		1 & 1 & 0 & 1 & 1 & 0 \\
+		1 & 1 & 1 & 1 & 0 & 1 \\
+		0 & 1 & 1 & 0 & 1 & 1 \\
+	\end{bmatrix}
+\end{equation}
+
+::: {.callout-aufgabe}
+
+Welche Personen werden die gleichen geschätzten Fähigkeiten erhalten, wenn Sie ein Rasch-Modell mit Hilfe dieser Datenmatrix schätzen?
+
+:::
+
+::: {.callout-aufgabe}
+
+Welche Items werden die gleichen geschätzten Schwierigkeiten erhalten, wenn Sie ein Rasch-Modell mit Hilfe dieser Datenmatrix schätzen?
+
+:::
+
+In der Abbildung sieht man die ICCs von zwei einfachen Items (rot; Items $1$ und $2$) und zwei schwierigen Items (blau, Items $3$, und $4$) in einem Rechentest. Eine Person A, die nur Items $1$ und $2$ löst, erhält im Rasch-Modell den gleichen Fähigkeitsschätzer, wie eine Person B, die nur Items $3$ und $4$ löst.
+
+```{r, echo = FALSE}
+teachIRT::icc_rasch(
+	theta_range = c(-10, 12),
+	beta = c(-2, -1.8, 4, 5)
+)
+```
+
+Die Items sind:
+	
+Item $1$: $4 \cdot 5 =$
+	
+Item $2$: $6 \cdot 8 =$
+	
+Item $3$: $\sqrt{25} \pi =$
+	
+Item $4$: $exp(0) - log(20) =$
+
+::: {.callout-aufgabe}
+
+Wie bewerten Sie den folgenden Dialog zwischen den beiden Diagnostiker:innen Betti und Joe?
+
+Betti: *Es kann nicht sein, dass Personen A und B die gleichen Fähigkeitsschätzer erhalten. Person A hätte Items $3$ und $4$ niemals lösen können. Es wäre unfair, Personen A und B gleich zu bewerten.*
+	
+Joe: *Die Summenscores sind suffiziente Statistiken für die Personenfähigkeiten. Es ist nunmal eine mathematische Konsequenz des Rasch-Modells, dass beide Personen gleich fähig sind. Daran können wir nichts ändern, auch wenn es kontraintuitiv erscheint.*
+
+:::
+
+Zu dieser Aufgabe gibt es keine Musterlösung.
+
+### Lokale Stochastische Unabhängigkeit
+
+#### Unabhängige Münzwürfe
+
+::: {.callout-aufgabe}
+
+Die Wahrscheinlichkeit, dass ein Wurf von Münze A Kopf ergibt, ist $0.5$. Die Wahrscheinlichkeit, dass ein Wurf von Münze B Kopf ergibt, ist $0.7$. Zeichnen Sie einen Entscheidungsbaum für alle möglichen Ereignissenkombination der Münzwürfe A und B. Berechnen Sie anschließend die Wahrscheinlichkeiten aller möglichen Kombinationen von Münzwürfen A und B unter der Annahme, dass die Münzwürfe unabhängige Ereignisse sind.
+
+:::
+
+::: {.callout-aufgabe}
+
+Was hat die Formel zur gemeinsamen Wahrscheinlichkeit unabhängiger Ereignisse aus den grundlegenden Rechenkompetenzen mit der Aufgabe zum Münzwurf zu tun?
+
+\begin{equation}
+	P(A \cap B) = P(A)P(B)
+\end{equation}
+
+genutzt?
+
+$A$: Ereignis $A$
+	
+$B$: Ereignis $B$
+	
+$\cap$: Schnittmenge zweier Ereignisse
+
+:::
+
+#### Unabhängige Itemantworten
+
+Aus der Vorlesung wissen Sie, dass die lokale stochastische Unabhängigkeit gegeben ist, wenn gilt:
+
+\begin{equation}
+	P(U_1 = u_1, ..., U_m = u_m | \theta_i) = \prod_{j = 1}^{m} P(U_j = u_j | \theta_i)
+\end{equation}
+
+::: {.callout-aufgabe}
+
+Auf Basis der diagnostischen Rechenkompetenzen und der Sitzung zu Datenmatrizen haben Sie ausreichen Vorwissen, um die Formel zur lokalen stochastischen Unabhängigkeit vollständig nachzuvollziehen. Verbalisieren Sie die Formel von links nach rechts und Symbol für Symbol.
+
+Tipp: Die Kommata in der ersten Klammer können Sie als "und" lesen. Also "$U_1 = u_1$ und ... und $U_m = u_m$".
+
+:::
+
+::: {.callout-aufgabe}
+
+Erklären Sie, wie die Formel zur gemeinsamen Wahrscheinlichkeit unabhängiger Ereignisse und zur lokalen stochastischen Unabhängigkeit miteinander im Zusammenhang stehen.
+
+:::
+
+Eine Person bearbeitet einen Test mit zwei binären Items. Der Antwortvektor der Person enthält daher zwei Elemente, $[U_{1}, U_{2}]$. Mögliche Realisationen des Antwortvektors sind $[0, 0]$ (beide Items nicht gelöst), $[1, 0]$ (erstes Item gelöst), $[0, 1]$ (zweites Items gelöst), $[1, 1]$ (beide Items gelöst). 
+
+::: {.callout-aufgabe}
+
+Zeichnen Sie analog zum Münzwurf einen Entscheidungsbaum für die möglichen Realisationen des Antwortvektors. Verwenden Sie dafür die folgenden Beschriftungen:
+
+- $P(U_1 = 0 | \theta)$
+- $P(U_1 = 0 | \theta)$
+- $P(U_2 = 1 | \theta)$
+- $P(U_2 = 1 | \theta)$
+
+:::
+
+#### Likelihood von Antwortvektoren
+
+::: {.callout-aufgabe}
+
+Die beiden Items aus der vorherigen Aufgabe haben die Itemschwierigkeiten $\beta_1 = 0$ und $\beta_2 = -1$. Eine Person hat eine Fähigkeit von $\theta = 0$. Berechnen Sie die Wahrscheinlichkeit des Antwortvektors $[1, 0]$ für diese Person mit Hilfe des Rasch Modells.
+
+:::
+
+::: {.callout-aufgabe}
+
+In welchem Verhältnis stehen die Likelhood eines Antwortvektors im Rasch-Modell und die Formel zur lokalen stochastischen Unabhängigkeit?
+
+:::
+
+#### Abschlussfrage zur lokalen stochastischen Unabhängigkeit
+
+Die folgende Frage ist eher schwierig und gut geeignet, in einer Lerngruppe diskutiert zu werden.
+
+::: {.callout-aufgabe}
+
+Begründen Sie, warum die folgende Aussage falsch ist: 
+
+>Wenn man mehrere Items $j = 1, ..., m$ zur Messung eines latenten Konstrukts im Rasch-Modell verwenden möchte, sollten die Spaltenvektoren der Datenmatrix, $\textbf{u}_{.1}, ..., \textbf{u}_{.j}, ..., \textbf{u}_{.m}$, paarweise möglichst unkorreliert sein, um die Annahme der lokalen stochastischen Unabhängigkeit nicht zu verletzen.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Bereits intuitiv muss die Aussage falsch sein. Wenn man mit $m$ Items tatsächlich ein gemeinsames Konstrukt misst, werden Itemantworten (also die Spaltenvektoren) miteinander korrelieren. Stellen Sie sich zum Beispiel vor, es würde sich um $m = 2$ Offenheits-Items handeln. Sicherlich werden die Antworten auf zwei Items "Ich mag Gedichte" und "Ich glaube, dass Kunst wichtig ist." sehr hoch miteinander korrelieren. Sie messen ja ein gemeinsames Konstrukt. Die Rohdaten sind also, entgegen der Behauptung, mit hoher Wahrscheinlichkeit paarweise voneinander abhängig.
+
+Denken Sie von hier aus weiter: Wie könnte man unter Einbezug des Rasch-Modells eine Form der Unabhängigkeit einführen?
+
+:::
+
+### Interpretation des Rasch-Modells
+
+In der Vorlesung haben Sie die Anwendung des Rasch-Modells anhand eines Algebratests kennengelernt. In der folgenden Aufgabe wurden ebenfalls die Ergebnisse eines Mathetests mit einem Rasch-Modell analysiert. 
+	
+Der Mathetest mit 20 Items wurde einer Stichprobe von 500 Testand:innen vorgegeben. Um die Passung der Items zu Testand:innenpopulation zu beurteilen, wurde ein Rasch-Modell mit dem R-Paket eRm geschätzt. Der Befehl zum Schätzen des Rasch-Modells mit dem Paket eRm heißt RM(). Die default Einstellungen der Argumente des Befehls wurden nicht überschrieben. Im Folgenden finden Sie eine Übersicht der R-Outputs der Analyse.
+
+```{r, echo = FALSE}
+# Daten simulieren
+
+# Setze den Zufallsgenerator für Reproduzierbarkeit
+set.seed(123)
+
+# Anzahl der Personen und Items
+num_persons <- 500
+num_items <- 20
+
+# Simuliere die Fähigkeitsparameter (theta) der Personen
+# Wir nehmen an, dass diese normalverteilt sind (Mittelwert = 0, SD = 1)
+theta <- rnorm(num_persons, mean = 0, sd = 1)
+
+# Simuliere die Schwierigkeitsparameter (beta) der Items
+# Wir nehmen an, dass diese ebenfalls normalverteilt sind (Mittelwert = 0, SD = 1)
+beta <- rnorm(num_items, mean = -1.5, sd = 1)
+
+# Erzeuge eine Matrix, um die Antworten zu speichern
+responses <- matrix(NA, nrow = num_persons, ncol = num_items)
+
+# Simuliere die Antworten für jede Person und jedes Item
+for (i in 1:num_persons) {
+  for (j in 1:num_items) {
+    # Berechne die Wahrscheinlichkeit, dass Person i Item j richtig beantwortet
+    p <- 1 / (1 + exp(-(theta[i] - beta[j])))
+
+    # Ziehe eine Antwort basierend auf der Wahrscheinlichkeit
+    responses[i, j] <- rbinom(1, 1, p)
+  }
+}
+```
+
+Die ersten Zeilen der Datenmatrix anzeigen:
+
+```{r}
+head(responses)
+```
+
+Das Rasch-Modell schätzen:
+
+```{r}
+library(eRm)
+rasch <- RM(responses)
+```
+
+Itemparameter anzeigen:
+
+```{r}
+-coef(rasch) |> round(2)
+```
+
+Personenparameter anzeigen:
+
+```{r}
+person.parameter(rasch)
+```
+
+Person-Item Map plotten:
+
+```{r}
+plotPImap(rasch)
+```
+
+::: {.callout-aufgabe}
+
+Installieren Sie das Paket eRm in R und entnehmen Sie der help-File des Befehls RM(), wie die latente Skala im Paket identifiziert wird.
+
+```{r, eval = FALSE}
+install.packages("eRm")
+?eRm::RM()
+```
+
+:::
+
+::: {.callout-aufgabe}
+
+Welches Item des Tests ist am leichtesten? Welches Item des Tests ist am schwierigsten?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+I8 ist am leichtesten.
+
+I13 ist am schwierigsten.
+
+:::
+
+::: {.callout-aufgabe}
+
+Was ist der Mittelwert der Itemparameter?
+
+:::
+
+::: {.callout-aufgabe}
+
+Beurteilen Sie die Passung der Items zu den Testand:innen.
+
+:::
+
+::: {.callout-aufgabe}
+
+Es wurden 500 Testand:innen vermessen. Warum hat die Tabelle der Personenparameter nur 16 Zeilen?
+
+:::
+
+::: {.callout-aufgabe}
+
+Lesen Sie den geschätzten Personenparameter einer Person mit 10 richtig gelösen Items ab.
+
+:::
+
+::: {.callout-aufgabe}
+
+Welche besondere Bedeutung hat der Personenparameter von 0 in diesem Fall?
+
+:::
+
+::: {.callout-aufgabe}
+
+Warum fehlt der Wert Std.Error in der letzten Zeile?
+
+:::
+
+::: {.callout-aufgabe}
+
+Die Daten der Aufgabe sind keine empirischen Daten. Sie wurden simuliert mit $\beta \sim N(-1.5, 1)$ und $\theta \sim N(0, 1)$. Warum sind die geschätzten Personenparameter linksschief verteilt, obwohl sie in der Population einer Standardnormalverteilung folgen?
+
+:::

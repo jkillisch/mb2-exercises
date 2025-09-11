@@ -8,7 +8,7 @@ website:
       - href: index.qmd
         text: FAQs
       - href: sections/software/software.qmd
-        text: Software
+        text: Software und Literatur
       - text: Themenabschnitte
         menu: 
         - href: sections/rechenkompetenzen/rechenkompetenzen.qmd
