@@ -543,7 +543,40 @@ Joe: *Die Summenscores sind suffiziente Statistiken für die Personenfähigkeite
 
 ::: {.callout-aufgabe}
 
-Die Wahrscheinlichkeit, dass ein Wurf von Münze A Kopf ergibt, ist $0.5$. Die Wahrscheinlichkeit, dass ein Wurf von Münze B Kopf ergibt, ist $0.7$. Zeichnen Sie einen Entscheidungsbaum für alle möglichen Ereignissenkombination der Münzwürfe A und B. Berechnen Sie anschließend die Wahrscheinlichkeiten aller möglichen Kombinationen von Münzwürfen A und B unter der Annahme, dass die Münzwürfe unabhängige Ereignisse sind.
+Die Wahrscheinlichkeit, dass ein Wurf von Münze A Kopf ergibt, ist $0.5$. Die Wahrscheinlichkeit, dass ein Wurf von Münze B Kopf ergibt, ist $0.7$. Zeichnen Sie einen Entscheidungsbaum für alle möglichen Ereignissenkombination der Münzwürfe A und B. Berechnen Sie anschließend die Wahrscheinlichkeiten aller möglichen Kombinationen von Münzwürfen A und B unter der Annahme, dass die Münzwürfe unabhängige Ereignisse sind. Sie können den Münzwurf A als Zufallsvariable $X_1$ und den Münzwurf B als Zufallsvariable $X_2$ auffassen.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r, echo = FALSE}
+library(DiagrammeR)
+
+grViz("
+digraph decision_tree {
+  node [shape=box, style=filled, color=lightblue]
+
+Start -> 'Münze A Kopf' [label='P(X₁ = Kopf) = .5']
+Start -> 'Münze A Zahl' [label='P(X₁ = Zahl) = .5']
+
+'Münze A Kopf' -> 'Münze B Kopf' [label='P(X₂ = Kopf) = .7']
+'Münze A Kopf' -> 'Münze B Zahl' [label='P(X₂ = Zahl) = .3']
+
+'Münze A Zahl' -> 'Münze B Kopf ' [label='P(X₂ = Kopf) = .7']
+'Münze A Zahl' -> 'Münze B Zahl ' [label='P(X₂ = Zahl) = .3']
+
+'Münze B Kopf' -> end1 [color=transparent]
+'Münze B Zahl' -> end2 [color=transparent]
+'Münze B Kopf ' -> end3 [color=transparent]
+'Münze B Zahl ' -> end4 [color=transparent]
+
+end1 [color=transparent, label='P(X₁ = Kopf ∩ X₂ = Kopf) = .35']
+end2 [color=transparent, label='P(X₁ = Kopf ∩ X₂ = Zahl) = .15']
+end3 [color=transparent, label='P(X₁ = Zahl ∩ X₂ = Kopf) = .35']
+end4 [color=transparent, label='P(X₁ = Zahl ∩ X₂ = Zahl) = .15']
+}
+")
+```
 
 :::
 
@@ -570,12 +603,12 @@ $\cap$: Schnittmenge zweier Ereignisse
 Aus der Vorlesung wissen Sie, dass die lokale stochastische Unabhängigkeit gegeben ist, wenn gilt:
 
 \begin{equation}
-	P(U_1 = u_1, ..., U_m = u_m | \theta_i) = \prod_{j = 1}^{m} P(U_j = u_j | \theta_i)
+	P(U_1 = u_1, ..., U_m = u_m | \theta) = \prod_{j = 1}^{m} P(U_j = u_j | \theta)
 \end{equation}
 
 ::: {.callout-aufgabe}
 
-Auf Basis der diagnostischen Rechenkompetenzen und der Sitzung zu Datenmatrizen haben Sie ausreichen Vorwissen, um die Formel zur lokalen stochastischen Unabhängigkeit vollständig nachzuvollziehen. Verbalisieren Sie die Formel von links nach rechts und Symbol für Symbol.
+Auf Basis der diagnostischen Rechenkompetenzen und der Sitzung zu Datenmatrizen haben Sie ausreichend Vorwissen, um die Formel zur lokalen stochastischen Unabhängigkeit vollständig nachzuvollziehen. Verbalisieren Sie die Formel von links nach rechts und Symbol für Symbol.
 
 Tipp: Die Kommata in der ersten Klammer können Sie als "und" lesen. Also "$U_1 = u_1$ und ... und $U_m = u_m$".
 
@@ -600,6 +633,39 @@ Zeichnen Sie analog zum Münzwurf einen Entscheidungsbaum für die möglichen Re
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r, echo = FALSE}
+library(DiagrammeR)
+
+grViz("
+digraph decision_tree {
+  node [shape=box, style=filled, color=lightblue]
+
+Start -> 'Item 1 gelöst' [label='P(U₁ = 1 | θ)']
+Start -> 'Item 1 nicht gelöst' [label='P(U₁ = 0 | θ)']
+
+'Item 1 gelöst' -> 'Item 2 gelöst' [label='P(U₂ = 1 | θ)']
+'Item 1 gelöst' -> 'Item 2 nicht gelöst' [label='P(U₂ = 0 | θ)']
+
+'Item 1 nicht gelöst' -> 'Item 2 gelöst ' [label='P(U₂ = 1 | θ)']
+'Item 1 nicht gelöst' -> 'Item 2 nicht gelöst ' [label='P(U₂ = 0 | θ)']
+
+'Item 2 gelöst' -> end1 [color=transparent]
+'Item 2 nicht gelöst' -> end2 [color=transparent]
+'Item 2 gelöst ' -> end3 [color=transparent]
+'Item 2 nicht gelöst ' -> end4 [color=transparent]
+
+end1 [color=transparent, label='P(U₁ = 1 ∩ U₂ = 1 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 1 | θ)']
+end2 [color=transparent, label='P(U₁ = 1 ∩ U₂ = 0 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 0 | θ)']
+end3 [color=transparent, label='P(U₁ = 0 ∩ U₂ = 1 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 1 | θ)']
+end4 [color=transparent, label='P(U₁ = 0 ∩ U₂ = 0 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 0 | θ)']
+}
+")
+```
+
+:::
+
 #### Likelihood von Antwortvektoren
 
 ::: {.callout-aufgabe}
@@ -608,9 +674,55 @@ Die beiden Items aus der vorherigen Aufgabe haben die Itemschwierigkeiten $\beta
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gegeben:
+
+$\beta_1 = 0$, $\beta_2 = -1$, $\theta = 0$
+
+Gesucht:
+
+$P(U_1 = 1 \cap U_2 = 0 | \theta)$
+
+$= P(U_1 = 1 | \theta) \cdot P(U_2 = 0 | \theta)$ (Unter Annahme lokaler stochastischer Unabhängigkeit)
+
+$\approx .13$ (Durch Einsetzen in das Rasch-Modell)
+
+Mit `teachIRT`:
+
+```{r}
+p1 <- teachIRT::p_rasch(theta = 0, beta = 0)
+p2 <- 1 - teachIRT::p_rasch(theta = 0, beta = -1)
+p1*p2
+```
+
+Tipp: Die (Nicht-)Lösewahrscheinlichkeit eines Items ist im Rasch-Modell genau dann $0.5$, wenn $\theta = \beta$ ist. Diesen Fall müssen Sie also nicht separat im Taschenrechner eingeben.
+
+:::
+
 ::: {.callout-aufgabe}
 
 In welchem Verhältnis stehen die Likelhood eines Antwortvektors im Rasch-Modell und die Formel zur lokalen stochastischen Unabhängigkeit?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Likelihood ist die Wahrscheinlichkeit der Daten gegeben der Parameter. Die Formel zur stochastischen Unabhängigkeit ist also eigentlich die Likelihood eines Antwortvektors im Rasch-Modell.
+
+:::
+
+::: {.callout-aufgabe}
+
+Erweitern Sie die rechte Seite der Formel der Likelihood eines Antwortvektors im Rasch-Modell zu einer Formel für die Likelihood der gesamten Datenmatrix im Rasch-Modell.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+\begin{equation}
+	\prod_{i = 1}^{n} \prod_{j = 1}^{m} P(U_{ij} = u_{ij} | \theta_i)
+\end{equation}
 
 :::
 
@@ -730,7 +842,13 @@ I13 ist am schwierigsten.
 
 ::: {.callout-aufgabe}
 
-Was ist der Mittelwert der Itemparameter?
+Was ist der Mittelwert der Itemparameter? Warum?
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Der Mittelwert der Itemparameter mit der Modellidentifikation auf einen arbiträren Wert der $\theta$-Achse festgelegt. Überprüfen Sie noch einmal `?eRm::RM()`.
 
 :::
 
@@ -740,15 +858,35 @@ Beurteilen Sie die Passung der Items zu den Testand:innen.
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Items liegen auf der latenten Skala links der Verteilung der Personenparameter. Wie schwierig Items für Proband:innen sein sollten hängt auch vom Testzweck ab. Wenn das Ziel wäre, die maximale Information über die Personen zu gewinnen, wären die Items eher zu leicht.
+
+Später in der Veranstaltung lernen Sie das Konzept der statistischen Information genauer kennen. Für's Erste reicht die Intuition, dass ein Item dann am informativsten ist, wenn Sie vorab nicht wissen, ob die Person das Item lösen oder nicht lösen wird. Im Idealfall geben Sie einer Person mit einem gegebenen $\theta$ ein Rasch-skaliertes Item mit $\beta = \theta$ vor.
+
+:::
+
 ::: {.callout-aufgabe}
 
-Es wurden 500 Testand:innen vermessen. Warum hat die Tabelle der Personenparameter nur 16 Zeilen?
+Es wurden 500 Testand:innen gemessen. Warum hat die Tabelle der Personenparameter nur 16 Zeilen?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Weil die Summenscores suffiziente Statistiken für die Personenfähigkeiten sind. Es reicht aus für jeden einzigartigen Summenscore eine Personenfähigkeit anzugeben.
 
 :::
 
 ::: {.callout-aufgabe}
 
 Lesen Sie den geschätzten Personenparameter einer Person mit 10 richtig gelösen Items ab.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$0.02$
 
 :::
 
@@ -764,8 +902,20 @@ Warum fehlt der Wert Std.Error in der letzten Zeile?
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Für Personen, die alle Items gelöst haben, kann kein Standardfehler berechnet werden, da die Person theoretisch unendlich fähig sein könnte.
+
+:::
+
 ::: {.callout-aufgabe}
 
 Die Daten der Aufgabe sind keine empirischen Daten. Sie wurden simuliert mit $\beta \sim N(-1.5, 1)$ und $\theta \sim N(0, 1)$. Warum sind die geschätzten Personenparameter linksschief verteilt, obwohl sie in der Population einer Standardnormalverteilung folgen?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es handelt sich um einen Deckeneffekt. Da die Verteilung der Personenparameter auf der latenten Dimension über der Verteilung der Itemparameter liegt, gibt es einen oberen Fähigkeitsbereich, in dem der Test nicht mehr zwischen Personen diskriminieren kann. Diese Personen erhalten gemeinsam einen hohen Personenparameter.
 
 :::
