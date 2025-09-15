@@ -608,20 +608,20 @@ Lösung
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Personenparameter:"</span>, theta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Personenparameter: -1.08"</code></pre>
+<pre><code>[1] "Personenparameter: -0.48"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Itemparameter:"</span>, beta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Itemparameter: 0.31"</code></pre>
+<pre><code>[1] "Itemparameter: 0.53"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loesung <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta, beta)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Lösewahrscheinlichkeit:"</span>, loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Lösewahrscheinlichkeit: 0.199407756848668"</code></pre>
+<pre><code>[1] "Lösewahrscheinlichkeit: 0.266979850761142"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Nicht-Lösewahrscheinlichkeit:"</span>, <span class="dv">1</span><span class="sc">-</span>loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.800592243151331"</code></pre>
+<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.733020149238857"</code></pre>
 </div>
 </div>
 </section>
@@ -941,8 +941,8 @@ Lösung
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-40b485b78adde6cbf2b0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-40b485b78adde6cbf2b0">{"x":{"diagram":"\ndigraph decision_tree {\n  node [shape=box, style=filled, color=lightblue]\n\nStart -> \"Münze A Kopf\" [label=\"P(X₁ = Kopf) = .5\"]\nStart -> \"Münze A Zahl\" [label=\"P(X₁ = Zahl) = .5\"]\n\n\"Münze A Kopf\" -> \"Münze B Kopf\" [label=\"P(X₂ = Kopf) = .7\"]\n\"Münze A Kopf\" -> \"Münze B Zahl\" [label=\"P(X₂ = Zahl) = .3\"]\n\n\"Münze A Zahl\" -> \"Münze B Kopf \" [label=\"P(X₂ = Kopf) = .7\"]\n\"Münze A Zahl\" -> \"Münze B Zahl \" [label=\"P(X₂ = Zahl) = .3\"]\n\n\"Münze B Kopf\" -> end1 [color=transparent]\n\"Münze B Zahl\" -> end2 [color=transparent]\n\"Münze B Kopf \" -> end3 [color=transparent]\n\"Münze B Zahl \" -> end4 [color=transparent]\n\nend1 [color=transparent, label=\"P(X₁ = Kopf ∩ X₂ = Kopf) = .35\"]\nend2 [color=transparent, label=\"P(X₁ = Kopf ∩ X₂ = Zahl) = .15\"]\nend3 [color=transparent, label=\"P(X₁ = Zahl ∩ X₂ = Kopf) = .35\"]\nend4 [color=transparent, label=\"P(X₁ = Zahl ∩ X₂ = Zahl) = .15\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-7d0e9feba7033f61e50a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7d0e9feba7033f61e50a">{"x":{"diagram":"\ndigraph decision_tree {\n  node [shape=box, style=filled, color=lightblue]\n\nStart -> \"Münze A Kopf\" [label=\"P(X₁ = Kopf) = .5\"]\nStart -> \"Münze A Zahl\" [label=\"P(X₁ = Zahl) = .5\"]\n\n\"Münze A Kopf\" -> \"Münze B Kopf\" [label=\"P(X₂ = Kopf) = .7\"]\n\"Münze A Kopf\" -> \"Münze B Zahl\" [label=\"P(X₂ = Zahl) = .3\"]\n\n\"Münze A Zahl\" -> \"Münze B Kopf \" [label=\"P(X₂ = Kopf) = .7\"]\n\"Münze A Zahl\" -> \"Münze B Zahl \" [label=\"P(X₂ = Zahl) = .3\"]\n\n\"Münze B Kopf\" -> end1 [color=transparent]\n\"Münze B Zahl\" -> end2 [color=transparent]\n\"Münze B Kopf \" -> end3 [color=transparent]\n\"Münze B Zahl \" -> end4 [color=transparent]\n\nend1 [color=transparent, label=\"P(X₁ = Kopf ∩ X₂ = Kopf) = .35\"]\nend2 [color=transparent, label=\"P(X₁ = Kopf ∩ X₂ = Zahl) = .15\"]\nend3 [color=transparent, label=\"P(X₁ = Zahl ∩ X₂ = Kopf) = .35\"]\nend4 [color=transparent, label=\"P(X₁ = Zahl ∩ X₂ = Zahl) = .15\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -996,8 +996,8 @@ Lösung
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8e5388a4dd228d33fd57" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8e5388a4dd228d33fd57">{"x":{"diagram":"\ndigraph decision_tree {\n  node [shape=box, style=filled, color=lightblue]\n\nStart -> \"Item 1 gelöst\" [label=\"P(U₁ = 1 | θ)\"]\nStart -> \"Item 1 nicht gelöst\" [label=\"P(U₁ = 0 | θ)\"]\n\n\"Item 1 gelöst\" -> \"Item 2 gelöst\" [label=\"P(U₂ = 1 | θ)\"]\n\"Item 1 gelöst\" -> \"Item 2 nicht gelöst\" [label=\"P(U₂ = 0 | θ)\"]\n\n\"Item 1 nicht gelöst\" -> \"Item 2 gelöst \" [label=\"P(U₂ = 1 | θ)\"]\n\"Item 1 nicht gelöst\" -> \"Item 2 nicht gelöst \" [label=\"P(U₂ = 0 | θ)\"]\n\n\"Item 2 gelöst\" -> end1 [color=transparent]\n\"Item 2 nicht gelöst\" -> end2 [color=transparent]\n\"Item 2 gelöst \" -> end3 [color=transparent]\n\"Item 2 nicht gelöst \" -> end4 [color=transparent]\n\nend1 [color=transparent, label=\"P(U₁ = 1 ∩ U₂ = 1 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 1 | θ)\"]\nend2 [color=transparent, label=\"P(U₁ = 1 ∩ U₂ = 0 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 0 | θ)\"]\nend3 [color=transparent, label=\"P(U₁ = 0 ∩ U₂ = 1 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 1 | θ)\"]\nend4 [color=transparent, label=\"P(U₁ = 0 ∩ U₂ = 0 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 0 | θ)\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3b0584b0f3cfdfb49375" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3b0584b0f3cfdfb49375">{"x":{"diagram":"\ndigraph decision_tree {\n  node [shape=box, style=filled, color=lightblue]\n\nStart -> \"Item 1 gelöst\" [label=\"P(U₁ = 1 | θ)\"]\nStart -> \"Item 1 nicht gelöst\" [label=\"P(U₁ = 0 | θ)\"]\n\n\"Item 1 gelöst\" -> \"Item 2 gelöst\" [label=\"P(U₂ = 1 | θ)\"]\n\"Item 1 gelöst\" -> \"Item 2 nicht gelöst\" [label=\"P(U₂ = 0 | θ)\"]\n\n\"Item 1 nicht gelöst\" -> \"Item 2 gelöst \" [label=\"P(U₂ = 1 | θ)\"]\n\"Item 1 nicht gelöst\" -> \"Item 2 nicht gelöst \" [label=\"P(U₂ = 0 | θ)\"]\n\n\"Item 2 gelöst\" -> end1 [color=transparent]\n\"Item 2 nicht gelöst\" -> end2 [color=transparent]\n\"Item 2 gelöst \" -> end3 [color=transparent]\n\"Item 2 nicht gelöst \" -> end4 [color=transparent]\n\nend1 [color=transparent, label=\"P(U₁ = 1 ∩ U₂ = 1 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 1 | θ)\"]\nend2 [color=transparent, label=\"P(U₁ = 1 ∩ U₂ = 0 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 0 | θ)\"]\nend3 [color=transparent, label=\"P(U₁ = 0 ∩ U₂ = 1 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 1 | θ)\"]\nend4 [color=transparent, label=\"P(U₁ = 0 ∩ U₂ = 0 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 0 | θ)\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
