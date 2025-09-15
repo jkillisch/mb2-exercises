@@ -1,10 +1,6 @@
 # Das Rasch-Modell
 
-Mit Hilfe des Rasch-Modells lässt sich berechnen, wie wahrscheinlich eine Beobachtung, $u_{ij}$, gegeben einer Personenfähigkeit und einer Itemschwierigkeit ist. Die Wahrscheinlichkeit, dass eine Person $i$ auf Item $j$ den Wert $u_{ij}$ erzielt, wird mit $P(U_{ij} = u_{ij})$ bezeichnet.
-
 ## Notation von Wahrscheinlichkeiten im Zusammenhang mit der Datenmatrix
-
-Mit dieser Aufgabe bringen wir die Datenmatrix aus dem vorherigen Abschnitt mit der Notation von Wahrscheinlichkeiten in IRT-Modellen zusammen.
 
 ::: {.callout-aufgabe}
 
@@ -152,15 +148,155 @@ Leiten Sie aus der allgemeinen Formel der Antwortwahrscheinlichkeit im Rasch-Mod
 
 :::
 
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Um die Aufgaben zu Lösen, müssen Sie jeweils für die Lösungs- und Nicht-Lösewahrscheinlichkeit den Wert von $u_{ij}$ ersetzen und vereinfachen. Sie schaffen das! : -\)
+
+:::
+
+::: {.callout .callout-tipp title="Tipp: Vollständige Herangehensweise" collapse=true}
+
+**Fall 1: Lösewahrscheinlichkeit**
+
+Nehmen Sie die Formel für die Antwortwahrscheinlichkeit im Rasch-Modell und setzen Sie den beobachteten Wert, $u_{ij}$ auf $1$. Wenn Sie nun noch einmal vereinfachen, sind Sie schon am Ziel.
+
+**Fall 2: Nicht-Lösewahrscheinlichkeit**
+
+Nehmen Sie die Formel für die Antwortwahrscheinlichkeit im Rasch-Modell und setzen Sie den beobachteten Wert, $u_{ij}$ auf $0$. Nun folgenden noch zwei Vereinfachungen: (1) Wenn Sie eine Zahl mit $0$ multiplizieren, erhalten Sie den Wert $0$. (2) Das Ergebnis von $exp(0)$ haben Sie in den grundlegenden Rechenkompetenzen schon kennengelernt.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gegeben ist die allgemeine Formel für die Antwortwahrscheinlichkeit im Rasch-Modell:
+
+\begin{equation}
+P(U_{ij} = u_{ij} | \theta_i, \beta_j) = 
+	\frac{
+		exp(u_{ij}(\theta_i - \beta_j))
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}
+\end{equation}
+
+**Fall 1: Lösewahrscheinlichkeit**
+
+Die Lösewahrscheinlichkeit erhalten Sie, wenn Sie $u_{ij} = 1$ setzen:
+
+$P(U_{ij} = 1 | \theta_i, \beta_j) = 
+	\frac{
+		exp(1 \cdot (\theta_i - \beta_j))
+	}{
+		1 + exp(\theta_i - \beta_j)
+	} = 
+	\frac{
+		exp((\theta_i - \beta_j))
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}$
+
+**Fall 2: Nicht-Lösewahrscheinlichkeit**
+
+Die Nicht-Lösewahrscheinlichkeit erhalten Sie, wenn Sie $u_{ij} = 0$ setzen:
+
+$P(U_{ij} = 0 | \theta_i, \beta_j) = 
+	\frac{
+		exp(0 \cdot (\theta_i - \beta_j))
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}= 
+	\frac{
+		exp(0)
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}
+	=\frac{
+		1
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}$
+
+:::
+
 ::: {.callout-aufgabe}
 
 Verwenden Sie die alternative Schreibweise der logistischen Funktion aus den grundlegenden Rechenkompetenzen, um eine Schreibweise der Lösungswahrscheinlichkeit zu erhalten, die man leichter im Taschenrechner eingeben kann.
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$P(U_{ij} = 0 | \theta_i, \beta_j) = 
+	\frac{
+		exp(\theta_i - \beta_j)
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}=
+	\frac{
+		1
+	}{
+		1 + exp(-(\theta_i - \beta_j))
+	}=
+	\frac{
+		1
+	}{
+		1 + exp(-\theta_i + \beta_j))
+	}=
+	\frac{
+		1
+	}{
+		1 + exp(\beta_j-\theta_i)
+	}$
+
+:::
+
 ::: {.callout-aufgabe}
 
 Berechnen Sie die Wahrscheinlichkeit, dass eine Person $i$ mit $\theta_i = 2$ ein Item $1$ mit $\beta_1 = -2$ löst. Berechnen Sie die Wahrscheinlichkeit, dass die selbe Person ein Item $2$ mit $\beta_2 = 0$ nicht löst.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+**Lösewahrscheinlichkeit**
+
+$P(U_{ij} = 0 | \theta_i, \beta_j) = 
+	\frac{
+		1
+	}{
+		1 + exp(\beta_j-\theta_i)
+	}=
+	\frac{
+		1
+	}{
+		1 + exp(-2-2)
+	}\approx.98$
+
+**Nicht-Lösewahrscheinlichkeit**
+
+$P(U_{ij} = 0 | \theta_i = 2, \beta_1 = -2) = 
+\frac{
+		1
+	}{
+		1 + exp(\theta_i - \beta_j)
+	}=
+	\frac{
+		1
+	}{
+		1 + exp(2 + 2)
+	}=
+	\frac{
+		1
+	}{
+		1 + exp(4)
+	}\approx 0.02$
+
+Sie können Ihr Ergebnis auch ungefähr anhand der ICC (siehe nächster Aufgabenblock) überprüfen:
+
+```{r}
+teachIRT::icc_rasch(beta = -2) +
+	ggplot2::geom_vline(xintercept = 2, linetype = 2)
+```
 
 :::
 
@@ -188,9 +324,40 @@ Was befindet sich bei ICCs jeweils auf der x- und y-Achse?
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+y-Achse: Die Wahrscheinlichkeit ein Item zu lösen
+
+x-Achse: Fähigkeitskontinuum
+
+:::
+
 ::: {.callout-aufgabe}
 
 Erzeugen Sie händisch die ICC für ein Item mit $\beta = 1$ im Rasch-Modell.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Sie könnten Näherungsweise die folgenden Wahrscheinlichkeiten berechnen und in einem Graph eintragen:
+
+```{r}
+theta <- seq(-5, 5, 1)
+for (i in 1:length(theta)) {
+	paste(
+		"Lösungswahrscheinlichkeit bei einer Fähigkeit von", 
+		theta[i], ":",
+		round(teachIRT::p_rasch(theta[i], beta = 1), 2)
+		) |> print()
+	}
+```
+
+Zur Kontrolle:
+
+```{r}
+teachIRT::icc_rasch(beta = 1)
+```
 
 :::
 
@@ -246,7 +413,7 @@ Welchen Zweck erfüllt die logistische Link-Funktion im Rasch-Modell?
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-Die Funktion bildet den Wert des linearen Prädiktors (reelle Zahl) auf eine Wahrscheinlichkeit, also einen Wert im Intervall $[0, 1]$ ab. Es entsteht eine logistische Regression mit Personen- und Itemparametern als Prädiktoren.
+Die Funktion bildet den Wert des linearen Prädiktors (reelle Zahl) auf eine Wahrscheinlichkeit, also einen Wert im Intervall $[0, 1]$ ab. Aus der Statistik wissen Sie vielleicht schon, dass man binäre Variablen nicht mit einer linearen Regression vorhersagen sollte. Das gleiche Prinzip gilt in der IRT. Mit Hilfe der Link-Funktion wird aus dem linearen Prädiktor $\theta_i - \beta_j$ eine logistische Regression, dessen Prädiktoren ein Personen- und ein Itemparameter sind.
 
 :::
 
@@ -273,9 +440,71 @@ Welche Personen werden die gleichen geschätzten Fähigkeiten erhalten, wenn Sie
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Probieren wir es aus!
+
+Die Datenmatrix in R hinterlegen:
+
+```{r}
+# Matrix in R hinterlegen
+U <- matrix(
+  c(
+    1, 0, 1, 1, 1, 1,
+    1, 1, 0, 1, 1, 0,
+    1, 1, 1, 1, 0, 1,
+    0, 1, 1, 0, 1, 1
+  ),
+  nrow = 4,
+  byrow = TRUE
+)
+```
+
+Summenscores berechnen:
+
+```{r}
+rowSums(U)
+```
+
+Aufgrund der Eigenschaft suffizienter Statistiken, sollten Personen $1$ und $3$ sowie Personen $2$ und $4$ den gleichen Personenparameter erhalten. Diese Personen haben nämlich die gleichen Summenscores.
+
+Rasch-Modell schätzen:
+
+```{r}
+rasch <- eRm::RM(U)
+```
+
+Personenparameter anzeigen:
+
+```{r}
+eRm::person.parameter(rasch)
+```
+
+Von eRm erhalten wir nicht für jede Person einen Personenparameter, sondern einen Wert pro Summenscore. Das passt zu unserer zuvor formulierten Erwartung.
+
+:::
+
 ::: {.callout-aufgabe}
 
 Welche Items werden die gleichen geschätzten Schwierigkeiten erhalten, wenn Sie ein Rasch-Modell mit Hilfe dieser Datenmatrix schätzen?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Da die Eigenschaft suffizienter Statistiken im Rasch-Modell für Personen- und Itemparameter gilt, sollten alle Items, die gleich häufig gelöst wurden, auch den gleichen Schwierigkeitsparameter erhalten. Die Lösungshäufigkeiten können wir wie die Summenscores berechnen. Das Summenzeichen läuft nun aber über den Personen- statt den Item-Index.
+
+```{r}
+colSums(U)
+```
+
+Alle Items wurden genau 3 Mal gelöst. Es sollten also alle Items den gleichen Schwierigkeitsparameter erhalten. In Fortsetzung der Lösung der vorherigen Aufgabe, können wir nun noch die Itemparameter extrahieren.
+
+```{r}
+-coef(rasch) |> round(2)
+```
+
+Auch das ist der Fall. $\beta_j = 0$ für alle $1 \le j \le 6$.
 
 :::
 
@@ -307,8 +536,6 @@ Betti: *Es kann nicht sein, dass Personen A und B die gleichen Fähigkeitsschät
 Joe: *Die Summenscores sind suffiziente Statistiken für die Personenfähigkeiten. Es ist nunmal eine mathematische Konsequenz des Rasch-Modells, dass beide Personen gleich fähig sind. Daran können wir nichts ändern, auch wenn es kontraintuitiv erscheint.*
 
 :::
-
-Zu dieser Aufgabe gibt es keine Musterlösung.
 
 ### Lokale Stochastische Unabhängigkeit
 
@@ -401,7 +628,7 @@ Begründen Sie, warum die folgende Aussage falsch ist:
 
 ::: {.callout .callout-tipp title="Tipp" collapse=true}
 
-Bereits intuitiv muss die Aussage falsch sein. Wenn man mit $m$ Items tatsächlich ein gemeinsames Konstrukt misst, werden Itemantworten (also die Spaltenvektoren) miteinander korrelieren. Stellen Sie sich zum Beispiel vor, es würde sich um $m = 2$ Offenheits-Items handeln. Sicherlich werden die Antworten auf zwei Items "Ich mag Gedichte" und "Ich glaube, dass Kunst wichtig ist." sehr hoch miteinander korrelieren. Sie messen ja ein gemeinsames Konstrukt. Die Rohdaten sind also, entgegen der Behauptung, mit hoher Wahrscheinlichkeit paarweise voneinander abhängig.
+Intuitiv muss die Aussage falsch sein: Wenn man mit $m$ Items tatsächlich ein gemeinsames Konstrukt misst, werden Itemantworten (also die Spaltenvektoren) miteinander korrelieren. Stellen Sie sich zum Beispiel vor, es würde sich um $m = 2$ Offenheits-Items handeln. Sicherlich werden die Antworten auf zwei Items "Ich mag Gedichte" und "Ich glaube, dass Kunst wichtig ist." sehr hoch miteinander korrelieren, denn sie messen das gleiche Konstrukt. Die Rohdaten sind also, entgegen der Behauptung, mit hoher Wahrscheinlichkeit paarweise korreliert.
 
 Denken Sie von hier aus weiter: Wie könnte man unter Einbezug des Rasch-Modells eine Form der Unabhängigkeit einführen?
 
@@ -479,10 +706,9 @@ plotPImap(rasch)
 
 ::: {.callout-aufgabe}
 
-Installieren Sie das Paket eRm in R und entnehmen Sie der help-File des Befehls RM(), wie die latente Skala im Paket identifiziert wird.
+Installieren Sie ggf. das Paket eRm in R (siehe Software und Literatur) und entnehmen Sie der help-File des Befehls RM(), wie die latente Skala im Paket identifiziert wird.
 
 ```{r, eval = FALSE}
-install.packages("eRm")
 ?eRm::RM()
 ```
 

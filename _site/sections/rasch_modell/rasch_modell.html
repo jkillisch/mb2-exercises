@@ -235,10 +235,8 @@ window.Quarto = {
 
 <section id="das-rasch-modell" class="level1">
 <h1>Das Rasch-Modell</h1>
-<p>Mit Hilfe des Rasch-Modells lässt sich berechnen, wie wahrscheinlich eine Beobachtung, <span class="math inline">\(u_{ij}\)</span>, gegeben einer Personenfähigkeit und einer Itemschwierigkeit ist. Die Wahrscheinlichkeit, dass eine Person <span class="math inline">\(i\)</span> auf Item <span class="math inline">\(j\)</span> den Wert <span class="math inline">\(u_{ij}\)</span> erzielt, wird mit <span class="math inline">\(P(U_{ij} = u_{ij})\)</span> bezeichnet.</p>
 <section id="notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix" class="level2">
 <h2 class="anchored" data-anchor-id="notation-von-wahrscheinlichkeiten-im-zusammenhang-mit-der-datenmatrix">Notation von Wahrscheinlichkeiten im Zusammenhang mit der Datenmatrix</h2>
-<p>Mit dieser Aufgabe bringen wir die Datenmatrix aus dem vorherigen Abschnitt mit der Notation von Wahrscheinlichkeiten in IRT-Modellen zusammen.</p>
 <div class="callout-aufgabe">
 <p>Was bedeuten die folgenden Wahrscheinlichkeiten inhaltlich?</p>
 <ol type="a">
@@ -410,118 +408,40 @@ Lösung
 <div class="callout-aufgabe">
 <p>Leiten Sie aus der allgemeinen Formel der Antwortwahrscheinlichkeit im Rasch-Modell (siehe oben) je eine Formel für die Lösungs- und Nichtlösewahrscheinlichkeit im Rasch-Modell her. Überprüfen Sie Ihr Ergebnis mit der Formelsammlung, die Ihnen auch in der Prüfung zur Verfügung stehen wird.</p>
 </div>
-<div class="callout-aufgabe">
-<p>Verwenden Sie die alternative Schreibweise der logistischen Funktion aus den grundlegenden Rechenkompetenzen, um eine Schreibweise der Lösungswahrscheinlichkeit zu erhalten, die man leichter im Taschenrechner eingeben kann.</p>
-</div>
-<div class="callout-aufgabe">
-<p>Berechnen Sie die Wahrscheinlichkeit, dass eine Person <span class="math inline">\(i\)</span> mit <span class="math inline">\(\theta_i = 2\)</span> ein Item <span class="math inline">\(1\)</span> mit <span class="math inline">\(\beta_1 = -2\)</span> löst. Berechnen Sie die Wahrscheinlichkeit, dass die selbe Person ein Item <span class="math inline">\(2\)</span> mit <span class="math inline">\(\beta_2 = 0\)</span> nicht löst.</p>
-</div>
-<p>Den Umgang mit Lösungswahrscheinlichkeiten im Rasch- und den noch folgenden IRT-Modellen sollten Sie im Schlaf beherrschen. Mit der Funktion <code>teachIRT::p_rasch(theta, beta)</code> können Sie sich zum Üben selbst Aufgaben zur Berechnung von Lösungswahrscheinlichkeiten stellen. Kopieren Sie dazu einfach den R-Code in Ihre IDE (z.B. RStudio):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zufällige Parameterwerte ziehen</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Personenparameter:"</span>, theta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Personenparameter: -0.83"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Itemparameter:"</span>, beta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Itemparameter: 2.41"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>loesung <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta, beta)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Lösewahrscheinlichkeit:"</span>, loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Lösewahrscheinlichkeit: 0.0376878905086059"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Nicht-Lösewahrscheinlichkeit:"</span>, <span class="dv">1</span><span class="sc">-</span>loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.962312109491394"</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="item-characteristic-curves-icc" class="level2">
-<h2 class="anchored" data-anchor-id="item-characteristic-curves-icc">Item Characteristic Curves (ICC)</h2>
-<p>In der Vorlesung haben Sie sogenannte Item Characteristic Curves (ICCs) kennengelernt.</p>
-<div class="callout-aufgabe">
-<p>Was befindet sich bei ICCs jeweils auf der x- und y-Achse?</p>
-</div>
-<div class="callout-aufgabe">
-<p>Erzeugen Sie händisch die ICC für ein Item mit <span class="math inline">\(\beta = 1\)</span> im Rasch-Modell.</p>
-</div>
-<div class="callout-aufgabe">
-<p>Lesen Sie die Itemschwierigkeiten der Items aus den folgenden ICCs ab:</p>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rasch_modell_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lösung
+Tipp
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(\beta_1 = -1.5\)</span></p>
-<p><span class="math inline">\(\beta_2 = 0\)</span></p>
-<p><span class="math inline">\(\beta_2 = 1\)</span></p>
-<p><span class="math inline">\(\beta_2 = 2.5\)</span></p>
+<p>Um die Aufgaben zu Lösen, müssen Sie jeweils für die Lösungs- und Nicht-Lösewahrscheinlichkeit den Wert von <span class="math inline">\(u_{ij}\)</span> ersetzen und vereinfachen. Sie schaffen das! : -)</p>
 </div>
 </div>
 </div>
-<div class="callout-aufgabe">
-<p>Plotten Sie die ICC für ein Item mit <span class="math inline">\(\beta = -1\)</span> mit Hilfe der Funktion <code>teachIRT::icc_rasch()</code> und probieren Sie aus, was passiert, wenn Sie andere Werte einsetzen.</p>
-<p>Mit <code>?teachIRT::icc_rasch()</code> können Sie sich die Hilfe-Datei anzeigen lassen.</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Vollständige Herangehensweise">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lösung
+Tipp: Vollständige Herangehensweise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_rasch</span>(<span class="at">beta =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rasch_modell_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><strong>Fall 1: Lösewahrscheinlichkeit</strong></p>
+<p>Nehmen Sie die Formel für die Antwortwahrscheinlichkeit im Rasch-Modell und setzen Sie den beobachteten Wert, <span class="math inline">\(u_{ij}\)</span> auf <span class="math inline">\(1\)</span>. Wenn Sie nun noch einmal vereinfachen, sind Sie schon am Ziel.</p>
+<p><strong>Fall 2: Nicht-Lösewahrscheinlichkeit</strong></p>
+<p>Nehmen Sie die Formel für die Antwortwahrscheinlichkeit im Rasch-Modell und setzen Sie den beobachteten Wert, <span class="math inline">\(u_{ij}\)</span> auf <span class="math inline">\(0\)</span>. Nun folgenden noch zwei Vereinfachungen: (1) Wenn Sie eine Zahl mit <span class="math inline">\(0\)</span> multiplizieren, erhalten Sie den Wert <span class="math inline">\(0\)</span>. (2) Das Ergebnis von <span class="math inline">\(exp(0)\)</span> haben Sie in den grundlegenden Rechenkompetenzen schon kennengelernt.</p>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_rasch</span>(<span class="at">beta =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rasch_modell_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Die ICC wird entlang der <span class="math inline">\(\theta\)</span>-Achse verschoben.</p>
-</div>
-</div>
-</div>
-<p>Das Rasch Modell kann in zwei Komponenten aufgeteilt werden: (1) Der lineare Prädiktor, <span class="math inline">\(\theta_i - \beta_j\)</span> und (2) die logistische Link-Funktion, <span class="math inline">\(f(x) = \frac{exp(x)}{1 + exp(x)}\)</span>. Setzt man den linearen Prädiktor für <span class="math inline">\(x\)</span> in die logistische Funktion ein, entsteht das Rasch-Modell.</p>
-<div class="callout-aufgabe">
-<p>Welchen Zweck erfüllt die logistische Link-Funktion im Rasch-Modell?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -535,7 +455,334 @@ Lösung
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Die Funktion bildet den Wert des linearen Prädiktors (reelle Zahl) auf eine Wahrscheinlichkeit, also einen Wert im Intervall <span class="math inline">\([0, 1]\)</span> ab. Es entsteht eine logistische Regression mit Personen- und Itemparametern als Prädiktoren.</p>
+<p>Gegeben ist die allgemeine Formel für die Antwortwahrscheinlichkeit im Rasch-Modell:</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{ij} = u_{ij} | \theta_i, \beta_j) =
+    \frac{
+        exp(u_{ij}(\theta_i - \beta_j))
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }
+\end{equation}\]</span></p>
+<p><strong>Fall 1: Lösewahrscheinlichkeit</strong></p>
+<p>Die Lösewahrscheinlichkeit erhalten Sie, wenn Sie <span class="math inline">\(u_{ij} = 1\)</span> setzen:</p>
+<p><span class="math inline">\(P(U_{ij} = 1 | \theta_i, \beta_j) =
+    \frac{
+        exp(1 \cdot (\theta_i - \beta_j))
+    }{
+        1 + exp(\theta_i - \beta_j)
+    } =
+    \frac{
+        exp((\theta_i - \beta_j))
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }\)</span></p>
+<p><strong>Fall 2: Nicht-Lösewahrscheinlichkeit</strong></p>
+<p>Die Nicht-Lösewahrscheinlichkeit erhalten Sie, wenn Sie <span class="math inline">\(u_{ij} = 0\)</span> setzen:</p>
+<p><span class="math inline">\(P(U_{ij} = 0 | \theta_i, \beta_j) =
+    \frac{
+        exp(0 \cdot (\theta_i - \beta_j))
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }=
+    \frac{
+        exp(0)
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }
+    =\frac{
+        1
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Verwenden Sie die alternative Schreibweise der logistischen Funktion aus den grundlegenden Rechenkompetenzen, um eine Schreibweise der Lösungswahrscheinlichkeit zu erhalten, die man leichter im Taschenrechner eingeben kann.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(P(U_{ij} = 0 | \theta_i, \beta_j) =
+    \frac{
+        exp(\theta_i - \beta_j)
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }=
+    \frac{
+        1
+    }{
+        1 + exp(-(\theta_i - \beta_j))
+    }=
+    \frac{
+        1
+    }{
+        1 + exp(-\theta_i + \beta_j))
+    }=
+    \frac{
+        1
+    }{
+        1 + exp(\beta_j-\theta_i)
+    }\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie die Wahrscheinlichkeit, dass eine Person <span class="math inline">\(i\)</span> mit <span class="math inline">\(\theta_i = 2\)</span> ein Item <span class="math inline">\(1\)</span> mit <span class="math inline">\(\beta_1 = -2\)</span> löst. Berechnen Sie die Wahrscheinlichkeit, dass die selbe Person ein Item <span class="math inline">\(2\)</span> mit <span class="math inline">\(\beta_2 = 0\)</span> nicht löst.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Lösewahrscheinlichkeit</strong></p>
+<p><span class="math inline">\(P(U_{ij} = 0 | \theta_i, \beta_j) =
+    \frac{
+        1
+    }{
+        1 + exp(\beta_j-\theta_i)
+    }=
+    \frac{
+        1
+    }{
+        1 + exp(-2-2)
+    }\approx.98\)</span></p>
+<p><strong>Nicht-Lösewahrscheinlichkeit</strong></p>
+<p><span class="math inline">\(P(U_{ij} = 0 | \theta_i = 2, \beta_1 = -2) =
+\frac{
+        1
+    }{
+        1 + exp(\theta_i - \beta_j)
+    }=
+    \frac{
+        1
+    }{
+        1 + exp(2 + 2)
+    }=
+    \frac{
+        1
+    }{
+        1 + exp(4)
+    }\approx 0.02\)</span></p>
+<p>Sie können Ihr Ergebnis auch ungefähr anhand der ICC (siehe nächster Aufgabenblock) überprüfen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_rasch</span>(<span class="at">beta =</span> <span class="sc">-</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Den Umgang mit Lösungswahrscheinlichkeiten im Rasch- und den noch folgenden IRT-Modellen sollten Sie im Schlaf beherrschen. Mit der Funktion <code>teachIRT::p_rasch(theta, beta)</code> können Sie sich zum Üben selbst Aufgaben zur Berechnung von Lösungswahrscheinlichkeiten stellen. Kopieren Sie dazu einfach den R-Code in Ihre IDE (z.B. RStudio):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zufällige Parameterwerte ziehen</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Personenparameter:"</span>, theta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Personenparameter: 0.11"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Itemparameter:"</span>, beta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Itemparameter: -1.55"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loesung <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta, beta)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Lösewahrscheinlichkeit:"</span>, loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Lösewahrscheinlichkeit: 0.840238003056331"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Nicht-Lösewahrscheinlichkeit:"</span>, <span class="dv">1</span><span class="sc">-</span>loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.159761996943669"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="item-characteristic-curves-icc" class="level2">
+<h2 class="anchored" data-anchor-id="item-characteristic-curves-icc">Item Characteristic Curves (ICC)</h2>
+<p>In der Vorlesung haben Sie sogenannte Item Characteristic Curves (ICCs) kennengelernt.</p>
+<div class="callout-aufgabe">
+<p>Was befindet sich bei ICCs jeweils auf der x- und y-Achse?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>y-Achse: Die Wahrscheinlichkeit ein Item zu lösen</p>
+<p>x-Achse: Fähigkeitskontinuum</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Erzeugen Sie händisch die ICC für ein Item mit <span class="math inline">\(\beta = 1\)</span> im Rasch-Modell.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sie könnten Näherungsweise die folgenden Wahrscheinlichkeiten berechnen und in einem Graph eintragen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(theta)) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lösungswahrscheinlichkeit bei einer Fähigkeit von"</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        theta[i], <span class="st">":"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta[i], <span class="at">beta =</span> <span class="dv">1</span>), <span class="dv">2</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von -5 : 0"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von -4 : 0.01"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von -3 : 0.02"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von -2 : 0.05"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von -1 : 0.12"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von 0 : 0.27"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von 1 : 0.5"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von 2 : 0.73"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von 3 : 0.88"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von 4 : 0.95"
+[1] "Lösungswahrscheinlichkeit bei einer Fähigkeit von 5 : 0.98"</code></pre>
+</div>
+</div>
+<p>Zur Kontrolle:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_rasch</span>(<span class="at">beta =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Lesen Sie die Itemschwierigkeiten der Items aus den folgenden ICCs ab:</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\beta_1 = -1.5\)</span></p>
+<p><span class="math inline">\(\beta_2 = 0\)</span></p>
+<p><span class="math inline">\(\beta_2 = 1\)</span></p>
+<p><span class="math inline">\(\beta_2 = 2.5\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Plotten Sie die ICC für ein Item mit <span class="math inline">\(\beta = -1\)</span> mit Hilfe der Funktion <code>teachIRT::icc_rasch()</code> und probieren Sie aus, was passiert, wenn Sie andere Werte einsetzen.</p>
+<p>Mit <code>?teachIRT::icc_rasch()</code> können Sie sich die Hilfe-Datei anzeigen lassen.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_rasch</span>(<span class="at">beta =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_rasch</span>(<span class="at">beta =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Die ICC wird entlang der <span class="math inline">\(\theta\)</span>-Achse verschoben.</p>
+</div>
+</div>
+</div>
+<p>Das Rasch Modell kann in zwei Komponenten aufgeteilt werden: (1) Der lineare Prädiktor, <span class="math inline">\(\theta_i - \beta_j\)</span> und (2) die logistische Link-Funktion, <span class="math inline">\(f(x) = \frac{exp(x)}{1 + exp(x)}\)</span>. Setzt man den linearen Prädiktor für <span class="math inline">\(x\)</span> in die logistische Funktion ein, entsteht das Rasch-Modell.</p>
+<div class="callout-aufgabe">
+<p>Welchen Zweck erfüllt die logistische Link-Funktion im Rasch-Modell?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Die Funktion bildet den Wert des linearen Prädiktors (reelle Zahl) auf eine Wahrscheinlichkeit, also einen Wert im Intervall <span class="math inline">\([0, 1]\)</span> ab. Aus der Statistik wissen Sie vielleicht schon, dass man binäre Variablen nicht mit einer linearen Regression vorhersagen sollte. Das gleiche Prinzip gilt in der IRT. Mit Hilfe der Link-Funktion wird aus dem linearen Prädiktor <span class="math inline">\(\theta_i - \beta_j\)</span> eine logistische Regression, dessen Prädiktoren ein Personen- und ein Itemparameter sind.</p>
 </div>
 </div>
 </div>
@@ -558,15 +805,101 @@ Lösung
 <div class="callout-aufgabe">
 <p>Welche Personen werden die gleichen geschätzten Fähigkeiten erhalten, wenn Sie ein Rasch-Modell mit Hilfe dieser Datenmatrix schätzen?</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Probieren wir es aus!</p>
+<p>Die Datenmatrix in R hinterlegen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix in R hinterlegen</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Summenscores berechnen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(U)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 4 5 4</code></pre>
+</div>
+</div>
+<p>Aufgrund der Eigenschaft suffizienter Statistiken, sollten Personen <span class="math inline">\(1\)</span> und <span class="math inline">\(3\)</span> sowie Personen <span class="math inline">\(2\)</span> und <span class="math inline">\(4\)</span> den gleichen Personenparameter erhalten. Diese Personen haben nämlich die gleichen Summenscores.</p>
+<p>Rasch-Modell schätzen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rasch <span class="ot">&lt;-</span> eRm<span class="sc">::</span><span class="fu">RM</span>(U)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Personenparameter anzeigen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>eRm<span class="sc">::</span><span class="fu">person.parameter</span>(rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Person Parameters:
+
+ Raw Score  Estimate Std.Error
+         4 0.6931467  0.866040
+         5 1.6094364  1.095503</code></pre>
+</div>
+</div>
+<p>Von eRm erhalten wir nicht für jede Person einen Personenparameter, sondern einen Wert pro Summenscore. Das passt zu unserer zuvor formulierten Erwartung.</p>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p>Welche Items werden die gleichen geschätzten Schwierigkeiten erhalten, wenn Sie ein Rasch-Modell mit Hilfe dieser Datenmatrix schätzen?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Da die Eigenschaft suffizienter Statistiken im Rasch-Modell für Personen- und Itemparameter gilt, sollten alle Items, die gleich häufig gelöst wurden, auch den gleichen Schwierigkeitsparameter erhalten. Die Lösungshäufigkeiten können wir wie die Summenscores berechnen. Das Summenzeichen läuft nun aber über den Personen- statt den Item-Index.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(U)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 3 3 3 3 3</code></pre>
+</div>
+</div>
+<p>Alle Items wurden genau 3 Mal gelöst. Es sollten also alle Items den gleichen Schwierigkeitsparameter erhalten. In Fortsetzung der Lösung der vorherigen Aufgabe, können wir nun noch die Itemparameter extrahieren.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">coef</span>(rasch) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>beta I1 beta I2 beta I3 beta I4 beta I5 beta I6 
+      0       0       0       0       0       0 </code></pre>
+</div>
+</div>
+<p>Auch das ist der Fall. <span class="math inline">\(\beta_j = 0\)</span> für alle <span class="math inline">\(1 \le j \le 6\)</span>.</p>
+</div>
+</div>
 </div>
 <p>In der Abbildung sieht man die ICCs von zwei einfachen Items (rot; Items <span class="math inline">\(1\)</span> und <span class="math inline">\(2\)</span>) und zwei schwierigen Items (blau, Items <span class="math inline">\(3\)</span>, und <span class="math inline">\(4\)</span>) in einem Rechentest. Eine Person A, die nur Items <span class="math inline">\(1\)</span> und <span class="math inline">\(2\)</span> löst, erhält im Rasch-Modell den gleichen Fähigkeitsschätzer, wie eine Person B, die nur Items <span class="math inline">\(3\)</span> und <span class="math inline">\(4\)</span> löst.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rasch_modell_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -581,7 +914,6 @@ Lösung
 <p>Betti: <em>Es kann nicht sein, dass Personen A und B die gleichen Fähigkeitsschätzer erhalten. Person A hätte Items <span class="math inline">\(3\)</span> und <span class="math inline">\(4\)</span> niemals lösen können. Es wäre unfair, Personen A und B gleich zu bewerten.</em></p>
 <p>Joe: <em>Die Summenscores sind suffiziente Statistiken für die Personenfähigkeiten. Es ist nunmal eine mathematische Konsequenz des Rasch-Modells, dass beide Personen gleich fähig sind. Daran können wir nichts ändern, auch wenn es kontraintuitiv erscheint.</em></p>
 </div>
-<p>Zu dieser Aufgabe gibt es keine Musterlösung.</p>
 </section>
 <section id="lokale-stochastische-unabhängigkeit" class="level3">
 <h3 class="anchored" data-anchor-id="lokale-stochastische-unabhängigkeit">Lokale Stochastische Unabhängigkeit</h3>
@@ -644,7 +976,7 @@ Lösung
 </blockquote>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -653,9 +985,9 @@ Tipp
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Bereits intuitiv muss die Aussage falsch sein. Wenn man mit <span class="math inline">\(m\)</span> Items tatsächlich ein gemeinsames Konstrukt misst, werden Itemantworten (also die Spaltenvektoren) miteinander korrelieren. Stellen Sie sich zum Beispiel vor, es würde sich um <span class="math inline">\(m = 2\)</span> Offenheits-Items handeln. Sicherlich werden die Antworten auf zwei Items “Ich mag Gedichte” und “Ich glaube, dass Kunst wichtig ist.” sehr hoch miteinander korrelieren. Sie messen ja ein gemeinsames Konstrukt. Die Rohdaten sind also, entgegen der Behauptung, mit hoher Wahrscheinlichkeit paarweise voneinander abhängig.</p>
+<p>Intuitiv muss die Aussage falsch sein: Wenn man mit <span class="math inline">\(m\)</span> Items tatsächlich ein gemeinsames Konstrukt misst, werden Itemantworten (also die Spaltenvektoren) miteinander korrelieren. Stellen Sie sich zum Beispiel vor, es würde sich um <span class="math inline">\(m = 2\)</span> Offenheits-Items handeln. Sicherlich werden die Antworten auf zwei Items “Ich mag Gedichte” und “Ich glaube, dass Kunst wichtig ist.” sehr hoch miteinander korrelieren, denn sie messen das gleiche Konstrukt. Die Rohdaten sind also, entgegen der Behauptung, mit hoher Wahrscheinlichkeit paarweise korreliert.</p>
 <p>Denken Sie von hier aus weiter: Wie könnte man unter Einbezug des Rasch-Modells eine Form der Unabhängigkeit einführen?</p>
 </div>
 </div>
@@ -668,7 +1000,7 @@ Tipp
 <p>Der Mathetest mit 20 Items wurde einer Stichprobe von 500 Testand:innen vorgegeben. Um die Passung der Items zu Testand:innenpopulation zu beurteilen, wurde ein Rasch-Modell mit dem R-Paket eRm geschätzt. Der Befehl zum Schätzen des Rasch-Modells mit dem Paket eRm heißt RM(). Die default Einstellungen der Argumente des Befehls wurden nicht überschrieben. Im Folgenden finden Sie eine Übersicht der R-Outputs der Analyse.</p>
 <p>Die ersten Zeilen der Datenmatrix anzeigen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
 [1,]    0    1    0    1    1    1    1    1    0     0     1     0     0     1
@@ -688,12 +1020,12 @@ Tipp
 </div>
 <p>Das Rasch-Modell schätzen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eRm)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>rasch <span class="ot">&lt;-</span> <span class="fu">RM</span>(responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eRm)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rasch <span class="ot">&lt;-</span> <span class="fu">RM</span>(responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Itemparameter anzeigen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">coef</span>(rasch) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">coef</span>(rasch) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> beta I1  beta I2  beta I3  beta I4  beta I5  beta I6  beta I7  beta I8 
    -0.27    -0.71     1.15     1.12    -1.46     0.28    -0.34    -1.87 
@@ -705,7 +1037,7 @@ beta I17 beta I18 beta I19 beta I20
 </div>
 <p>Personenparameter anzeigen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">person.parameter</span>(rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">person.parameter</span>(rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Person Parameters:
@@ -731,27 +1063,26 @@ Person Parameters:
 </div>
 <p>Person-Item Map plotten:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPImap</span>(rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPImap</span>(rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rasch_modell_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rasch_modell_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Installieren Sie das Paket eRm in R und entnehmen Sie der help-File des Befehls RM(), wie die latente Skala im Paket identifiziert wird.</p>
+<p>Installieren Sie ggf. das Paket eRm in R (siehe Software und Literatur) und entnehmen Sie der help-File des Befehls RM(), wie die latente Skala im Paket identifiziert wird.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"eRm"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>?eRm<span class="sc">::</span><span class="fu">RM</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>?eRm<span class="sc">::</span><span class="fu">RM</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="callout-aufgabe">
 <p>Welches Item des Tests ist am leichtesten? Welches Item des Tests ist am schwierigsten?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -760,7 +1091,7 @@ Lösung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>I8 ist am leichtesten.</p>
 <p>I13 ist am schwierigsten.</p>

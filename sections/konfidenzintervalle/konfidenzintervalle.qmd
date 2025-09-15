@@ -2,11 +2,93 @@
 
 Das Konfidenzintervall ist ein Intervall, das so konstruiert ist, dass es den wahren Wert erwartungsgemäß in $((1-\alpha) \times 100)\%$ der Fälle umschließt.
 
-Beispiel:
+Das Konfidenzintervall ist von der Form:
 
-Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} = 110 + 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 114.91$ und $KI_{u} = 110 - 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 106.09$ die Grenzen des Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt.
+$$
+KI = \textcolor{blue}{X} \;\pm\; 
+\textcolor{red}{z_{\alpha/2}} \cdot 
+\textcolor{green}{s_e}
+$$
 
-## Konfidenzintervall berechnen
+- $\textcolor{blue}{X}$: Testwert  
+- $\textcolor{red}{z_{\alpha/2}}$: z-Wert  
+- $\textcolor{green}{s_e}$: Standardfehler  
+
+In der KTT, nicht aber in der IRT, ist $s_e = SD_X \cdot \sqrt{1 - Rel_X}$. Durch Einsetzen folgt daher:
+
+$$
+KI = \textcolor{blue}{X} \;\pm\; 
+\textcolor{red}{z_{\alpha/2}} \cdot 
+\textcolor{green}{SD_x \cdot 
+\sqrt{1 - Rel_x}}
+$$
+
+- $SD_x$: Standardabweichung  
+- $Rel_x$: Reliabilität
+
+## Tipps
+
+1) $X$ und $SD_x$ müssen der gleichen Metrik folgen. Ist der Testwert etwa ein T-Wert, so muss $SD_x$ automatisch gleich $10$ sein. Ist der Testwert IQ-skaliert, so ist $SD_x$ automatisch $15$.
+
+2) Sie können die Funktion `teachIRT::get_z()` verwenden, um schnell z-Werte nachzuschauen:
+
+$\alpha = .05$, beidseitig
+
+```{r}
+teachIRT::get_z(ci_alpha = 0.05, ci_direction = "both")
+```
+
+$\alpha = .05$, untere Grenze
+
+```{r}
+teachIRT::get_z(ci_alpha = 0.05, ci_direction = "lower")
+```
+
+$\alpha = .05$, obere Grenze
+
+```{r}
+teachIRT::get_z(ci_alpha = 0.05, ci_direction = "upper")
+```
+
+3) Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.
+
+## Beispiel zweiseitig
+
+Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} = 110 + 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 114.91$ und $KI_{u} = 110 - 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.09$ die Grenzen des zweiseitigen Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist $KI = [105.09, 114.91]$.
+
+Überprüfung mit `teachIRT`:
+
+```{r}
+X <- 110
+SD_x <- 5.6
+Rel_x <- 0.8
+alpha <- 0.05
+
+z <- teachIRT::get_z(ci_alpha = alpha, ci_direction = "both")
+print(z)
+
+KI <- X + z * SD_x * sqrt(1 - Rel_x)
+print(KI)
+```
+
+## Beispiel einseitig mit unterer Grenze
+
+Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} = 110 + \infty \cdot 5.6 \cdot \sqrt{1-0.8} = \infty$ und $KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88$ die Grenzen des einseitigen Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist $KI = [105.88, \infty)$.
+
+```{r}
+X <- 110
+SD_x <- 5.6
+Rel_x <- 0.8
+alpha <- 0.05
+
+z <- teachIRT::get_z(ci_alpha = alpha, ci_direction = "lower")
+print(z)
+
+KI <- X + z * SD_x * sqrt(1 - Rel_x)
+print(KI)
+```
+
+## Aufgaben zum Konfidenzintervall in der KTT
 
 ::: {.callout-aufgabe}
 

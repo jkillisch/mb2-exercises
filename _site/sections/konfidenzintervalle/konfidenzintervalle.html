@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -124,7 +159,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../sections/software/software.html"> 
-<span class="menu-text">Software</span></a>
+<span class="menu-text">Software und Literatur</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-themenabschnitte" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -175,7 +210,10 @@ window.Quarto = {
   <ul>
   <li><a href="#konfidenzintervalle" id="toc-konfidenzintervalle" class="nav-link active" data-scroll-target="#konfidenzintervalle">Konfidenzintervalle</a>
   <ul class="collapse">
-  <li><a href="#konfidenzintervall-berechnen" id="toc-konfidenzintervall-berechnen" class="nav-link" data-scroll-target="#konfidenzintervall-berechnen">Konfidenzintervall berechnen</a></li>
+  <li><a href="#tipps" id="toc-tipps" class="nav-link" data-scroll-target="#tipps">Tipps</a></li>
+  <li><a href="#beispiel-zweiseitig" id="toc-beispiel-zweiseitig" class="nav-link" data-scroll-target="#beispiel-zweiseitig">Beispiel zweiseitig</a></li>
+  <li><a href="#beispiel-einseitig-mit-unterer-grenze" id="toc-beispiel-einseitig-mit-unterer-grenze" class="nav-link" data-scroll-target="#beispiel-einseitig-mit-unterer-grenze">Beispiel einseitig mit unterer Grenze</a></li>
+  <li><a href="#aufgaben-zum-konfidenzintervall-in-der-ktt" id="toc-aufgaben-zum-konfidenzintervall-in-der-ktt" class="nav-link" data-scroll-target="#aufgaben-zum-konfidenzintervall-in-der-ktt">Aufgaben zum Konfidenzintervall in der KTT</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -189,10 +227,114 @@ window.Quarto = {
 <section id="konfidenzintervalle" class="level1">
 <h1>Konfidenzintervalle</h1>
 <p>Das Konfidenzintervall ist ein Intervall, das so konstruiert ist, dass es den wahren Wert erwartungsgemäß in <span class="math inline">\(((1-\alpha) \times 100)\%\)</span> der Fälle umschließt.</p>
-<p>Beispiel:</p>
-<p>Wenn <span class="math inline">\(X=110\)</span>, <span class="math inline">\(SD_x=5.6\)</span>, <span class="math inline">\(Rel_x=0.8\)</span> und <span class="math inline">\(\alpha = 5\%\)</span>, so sind <span class="math inline">\(KI_{o} = 110 + 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 114.91\)</span> und <span class="math inline">\(KI_{u} = 110 - 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 106.09\)</span> die Grenzen des Intervalls, das erwartungsgemäß in <span class="math inline">\(95\%\)</span> der Fälle, in denen es berechnet wird, den wahren Wert umschließt.</p>
-<section id="konfidenzintervall-berechnen" class="level2">
-<h2 class="anchored" data-anchor-id="konfidenzintervall-berechnen">Konfidenzintervall berechnen</h2>
+<p>Das Konfidenzintervall ist von der Form:</p>
+<p><span class="math display">\[
+KI = \textcolor{blue}{X} \;\pm\;
+\textcolor{red}{z_{\alpha/2}} \cdot
+\textcolor{green}{s_e}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\textcolor{blue}{X}\)</span>: Testwert<br>
+</li>
+<li><span class="math inline">\(\textcolor{red}{z_{\alpha/2}}\)</span>: z-Wert<br>
+</li>
+<li><span class="math inline">\(\textcolor{green}{s_e}\)</span>: Standardfehler</li>
+</ul>
+<p>In der KTT, nicht aber in der IRT, ist <span class="math inline">\(s_e = SD_X \cdot \sqrt{1 - Rel_X}\)</span>. Durch Einsetzen folgt daher:</p>
+<p><span class="math display">\[
+KI = \textcolor{blue}{X} \;\pm\;
+\textcolor{red}{z_{\alpha/2}} \cdot
+\textcolor{green}{SD_x \cdot
+\sqrt{1 - Rel_x}}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(SD_x\)</span>: Standardabweichung<br>
+</li>
+<li><span class="math inline">\(Rel_x\)</span>: Reliabilität</li>
+</ul>
+<section id="tipps" class="level2">
+<h2 class="anchored" data-anchor-id="tipps">Tipps</h2>
+<ol type="1">
+<li><p><span class="math inline">\(X\)</span> und <span class="math inline">\(SD_x\)</span> müssen der gleichen Metrik folgen. Ist der Testwert etwa ein T-Wert, so muss <span class="math inline">\(SD_x\)</span> automatisch gleich <span class="math inline">\(10\)</span> sein. Ist der Testwert IQ-skaliert, so ist <span class="math inline">\(SD_x\)</span> automatisch <span class="math inline">\(15\)</span>.</p></li>
+<li><p>Sie können die Funktion <code>teachIRT::get_z()</code> verwenden, um schnell z-Werte nachzuschauen:</p></li>
+</ol>
+<p><span class="math inline">\(\alpha = .05\)</span>, beidseitig</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> <span class="fl">0.05</span>, <span class="at">ci_direction =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    lower     upper 
+-1.959964  1.959964 </code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\alpha = .05\)</span>, untere Grenze</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> <span class="fl">0.05</span>, <span class="at">ci_direction =</span> <span class="st">"lower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    lower     upper 
+-1.644854       Inf </code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\alpha = .05\)</span>, obere Grenze</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> <span class="fl">0.05</span>, <span class="at">ci_direction =</span> <span class="st">"upper"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   lower    upper 
+    -Inf 1.644854 </code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.</li>
+</ol>
+</section>
+<section id="beispiel-zweiseitig" class="level2">
+<h2 class="anchored" data-anchor-id="beispiel-zweiseitig">Beispiel zweiseitig</h2>
+<p>Wenn <span class="math inline">\(X=110\)</span>, <span class="math inline">\(SD_x=5.6\)</span>, <span class="math inline">\(Rel_x=0.8\)</span> und <span class="math inline">\(\alpha = 5\%\)</span>, so sind <span class="math inline">\(KI_{o} = 110 + 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 114.91\)</span> und <span class="math inline">\(KI_{u} = 110 - 1.96 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.09\)</span> die Grenzen des zweiseitigen Intervalls, das erwartungsgemäß in <span class="math inline">\(95\%\)</span> der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist <span class="math inline">\(KI = [105.09, 114.91]\)</span>.</p>
+<p>Überprüfung mit <code>teachIRT</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">110</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>SD_x <span class="ot">&lt;-</span> <span class="fl">5.6</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Rel_x <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> alpha, <span class="at">ci_direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    lower     upper 
+-1.959964  1.959964 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> X <span class="sc">+</span> z <span class="sc">*</span> SD_x <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> Rel_x)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   lower    upper 
+105.0915 114.9085 </code></pre>
+</div>
+</div>
+</section>
+<section id="beispiel-einseitig-mit-unterer-grenze" class="level2">
+<h2 class="anchored" data-anchor-id="beispiel-einseitig-mit-unterer-grenze">Beispiel einseitig mit unterer Grenze</h2>
+<p>Wenn <span class="math inline">\(X=110\)</span>, <span class="math inline">\(SD_x=5.6\)</span>, <span class="math inline">\(Rel_x=0.8\)</span> und <span class="math inline">\(\alpha = 5\%\)</span>, so sind <span class="math inline">\(KI_{o} = 110 + \infty \cdot 5.6 \cdot \sqrt{1-0.8} = \infty\)</span> und <span class="math inline">\(KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88\)</span> die Grenzen des einseitigen Intervalls, das erwartungsgemäß in <span class="math inline">\(95\%\)</span> der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist <span class="math inline">\(KI = [105.88, \infty)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">110</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>SD_x <span class="ot">&lt;-</span> <span class="fl">5.6</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Rel_x <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> alpha, <span class="at">ci_direction =</span> <span class="st">"lower"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    lower     upper 
+-1.644854       Inf </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> X <span class="sc">+</span> z <span class="sc">*</span> SD_x <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> Rel_x)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   lower    upper 
+105.8806      Inf </code></pre>
+</div>
+</div>
+</section>
+<section id="aufgaben-zum-konfidenzintervall-in-der-ktt" class="level2">
+<h2 class="anchored" data-anchor-id="aufgaben-zum-konfidenzintervall-in-der-ktt">Aufgaben zum Konfidenzintervall in der KTT</h2>
 <div class="callout-aufgabe">
 <p>Theo erzielt in einer Begutachtung zur Abklärung von Hochbegabung einen IQ-Wert von <span class="math inline">\(139\)</span>. Für die interne Konsistenz in einer vergleichbaren Normstichprobe wird im Manual ein Wert von <span class="math inline">\(0.92\)</span> angegeben. Für die Test-Retest-Reliabilität liegen keine Werte vor. Berechnen Sie ein einseitiges <span class="math inline">\(95\%\)</span>-Konfidenzintervall um Theos Testwert.</p>
 <p>Interpretieren Sie das Intervall im Hinblick auf den typischen Schwellenwert von <span class="math inline">\(130\)</span> IQ-Punkten in der Diagnostik von Hochbegabung.</p>
