@@ -34,5 +34,8 @@
   },
   "sections/rasch_modell/rasch_modell.qmd": {
     "rasch_modell.html": "786745e6"
+  },
+  "sections/pl2_pl3/pl2_pl3.qmd": {
+    "pl2_pl3.html": "51cbf7b3"
   }
 }
