@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Übungsheft</title>
+<title>software – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5bf7ca59d8cc7f7a8155307016a58e21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5bf7ca59d8cc7f7a8155307016a58e21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -79,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Übungsheft</span>
     </a>
   </div>
@@ -90,11 +125,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">FAQs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sections/software/software.html"> 
+    <a class="nav-link active" href="../../sections/software/software.html" aria-current="page"> 
 <span class="menu-text">Software und Literatur</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -103,27 +138,27 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-themenabschnitte">    
         <li>
-    <a class="dropdown-item" href="./sections/rechenkompetenzen/rechenkompetenzen.html">
+    <a class="dropdown-item" href="../../sections/rechenkompetenzen/rechenkompetenzen.html">
  <span class="dropdown-text">1. Grundlegende Rechenkompetenzen</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.html">
+    <a class="dropdown-item" href="../../sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.html">
  <span class="dropdown-text">2. Rechenkompetenzen der Diagnostik</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/diagnostischer_prozess/diagnostischer_prozess.html">
+    <a class="dropdown-item" href="../../sections/diagnostischer_prozess/diagnostischer_prozess.html">
  <span class="dropdown-text">3. Der Diagnostische Prozess</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/konfidenzintervalle/konfidenzintervalle.html">
+    <a class="dropdown-item" href="../../sections/konfidenzintervalle/konfidenzintervalle.html">
  <span class="dropdown-text">4. Konfidenzintervalle</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/datenmatrizen/datenmatrizen.html">
+    <a class="dropdown-item" href="../../sections/datenmatrizen/datenmatrizen.html">
  <span class="dropdown-text">5. Datenmatrizen</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/rasch_modell/rasch_modell.html">
+    <a class="dropdown-item" href="../../sections/rasch_modell/rasch_modell.html">
  <span class="dropdown-text">6. Das Rasch-Modell</span></a>
   </li>  
     </ul>
@@ -144,14 +179,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#übungsheft-zur-vorlesung-diagnostik" id="toc-übungsheft-zur-vorlesung-diagnostik" class="nav-link active" data-scroll-target="#übungsheft-zur-vorlesung-diagnostik">Übungsheft zur Vorlesung Diagnostik</a>
+  <li><a href="#software" id="toc-software" class="nav-link active" data-scroll-target="#software">Software</a>
   <ul class="collapse">
-  <li><a href="#was-ist-das-übungsheft" id="toc-was-ist-das-übungsheft" class="nav-link" data-scroll-target="#was-ist-das-übungsheft">Was ist das Übungsheft?</a></li>
-  <li><a href="#was-ist-das-übungsheft-nicht" id="toc-was-ist-das-übungsheft-nicht" class="nav-link" data-scroll-target="#was-ist-das-übungsheft-nicht">Was ist das Übungsheft nicht?</a></li>
-  <li><a href="#wo-bekomme-ich-hilfe-zu-den-aufgaben" id="toc-wo-bekomme-ich-hilfe-zu-den-aufgaben" class="nav-link" data-scroll-target="#wo-bekomme-ich-hilfe-zu-den-aufgaben">Wo bekomme ich Hilfe zu den Aufgaben?</a></li>
-  <li><a href="#was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme" id="toc-was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme" class="nav-link" data-scroll-target="#was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme">Was soll ich tun, wenn ich mit den Aufgaben nicht hinterherkomme?</a></li>
-  <li><a href="#muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen" id="toc-muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen" class="nav-link" data-scroll-target="#muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen">Muss ich das Übungsheft bearbeiten, um die Übung M.B.2 bestehen?</a></li>
-  <li><a href="#wie-sollte-man-mit-den-lösungen-umgehen" id="toc-wie-sollte-man-mit-den-lösungen-umgehen" class="nav-link" data-scroll-target="#wie-sollte-man-mit-den-lösungen-umgehen">Wie sollte man mit den Lösungen umgehen?</a></li>
+  <li><a href="#r-pakete" id="toc-r-pakete" class="nav-link" data-scroll-target="#r-pakete">R-Pakete</a></li>
+  <li><a href="#mirt-erm" id="toc-mirt-erm" class="nav-link" data-scroll-target="#mirt-erm">mirt, eRm</a></li>
+  <li><a href="#lavaan" id="toc-lavaan" class="nav-link" data-scroll-target="#lavaan">lavaan</a></li>
+  <li><a href="#teachirt" id="toc-teachirt" class="nav-link" data-scroll-target="#teachirt">teachIRT</a></li>
+  <li><a href="#umgang-mit-ai" id="toc-umgang-mit-ai" class="nav-link" data-scroll-target="#umgang-mit-ai">Umgang mit AI</a></li>
+  <li><a href="#literatur" id="toc-literatur" class="nav-link" data-scroll-target="#literatur">Literatur</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -162,36 +197,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="übungsheft-zur-vorlesung-diagnostik" class="level1">
-<h1>Übungsheft zur Vorlesung Diagnostik</h1>
-<p>Herzlich Willkommen! Im Folgenden finden Sie Antworten auf eine Reihe von FAQs zum Übungsheft der Veranstaltung M.B.2.</p>
-<section id="was-ist-das-übungsheft" class="level2">
-<h2 class="anchored" data-anchor-id="was-ist-das-übungsheft">Was ist das Übungsheft?</h2>
-<p>Diese Webseite (“Das Übungsheft”) ist eine Sammlung von Aufgaben, die wir im Laufe des Semesters parallel zur Vorlesung bearbeiten. Die Aufgaben unterstützen Sie dabei, komplexere Sachverhalte aus der Vorlesung zu verstehen und Ihren Lernerfolg zu überprüfen. Die Aufgaben in diesem Heft dienen also dem Ziel, Sie möglichst direkt auf besonders herausfordernde Teilaspekte der Prüfung vorzubereiten. Wir empfehlen Ihnen entsprechend dringend, das Heft im Laufe des Semesters zu bearbeiten und aktiv in der Übung mitzuarbeiten.</p>
-<p>Die Übung ist so strukturiert, dass Sie die Aufgaben eines Abschnitts in Ruhe zuhause bearbeiten und anschließend in der Sitzung Fragen stellen können. Wenn es in den Sitzungen keine Fragen zum Übungsheft gibt, beschäftigen wir uns mit weiteren Übungsaufgaben oder darüber hinausgehenden Inhalten.</p>
+<section id="software" class="level1">
+<h1>Software</h1>
+<section id="r-pakete" class="level2">
+<h2 class="anchored" data-anchor-id="r-pakete">R-Pakete</h2>
+<p>Für die Übung ist es hilfreich, eine Reihe von R-Paketen zu installieren.</p>
 </section>
-<section id="was-ist-das-übungsheft-nicht" class="level2">
-<h2 class="anchored" data-anchor-id="was-ist-das-übungsheft-nicht">Was ist das Übungsheft nicht?</h2>
-<ul>
-<li><p>Das Übungsheft ist nicht wichtiger als die Vorlesung. Es behandelt nur eine Teilmenge der Vorlesungsinhalte. Wir fokussieren uns dabei auf Themen, die Studierenden erfahrungsgemäß eher schwerfallen. Themen der Vorlesung, die nicht im Übungsheft behandelt werden, werden ebenfalls Teil der Prüfung sein.</p></li>
-<li><p>Das Übungsheft ist kein Lehrbuch. An einigen Stellen enthält das Heft Erklärungen des Stoffs. Es ist aber nicht der Anspruch, dass das notwendige Wissen, um die Aufgaben zu lösen, im Heft enthalten ist. Diesen Zweck erfüllen die Präsenzveranstaltungen (Vorlesung und Übung).</p></li>
-</ul>
+<section id="mirt-erm" class="level2">
+<h2 class="anchored" data-anchor-id="mirt-erm">mirt, eRm</h2>
+<p><a href="https://cran.r-project.org/web/packages/mirt/mirt.pdf">mirt</a> und <a href="https://cran.r-project.org/web/packages/eRm/index.html">eRm</a> sind R-Pakete, mit denen Sie IRT-Modelle schätzen können.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"mirt"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"eRm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="wo-bekomme-ich-hilfe-zu-den-aufgaben" class="level2">
-<h2 class="anchored" data-anchor-id="wo-bekomme-ich-hilfe-zu-den-aufgaben">Wo bekomme ich Hilfe zu den Aufgaben?</h2>
-<p>Die erste Anlaufstelle ist die Präsenzveranstaltung der Übung. Alle anderen Fragen können Sie in das OLAT-Forum der Veranstaltung posten. So können alle Teilnehmer:innen von den Antworten profitieren. Unsere Vorstellung der Übung sieht vor, dass das Wissen zu den Aufgaben für alle Studierenden gleichermaßen verfügbar ist. Bitte stellen Sie Ihre Fragen daher auch nur über das Forum und nicht via Mail. Sie sind natürlich herzlich eingeladen, auch selbst Fragen Ihrer Kommiliton:innen im Forum zu beantworten.</p>
+<section id="lavaan" class="level2">
+<h2 class="anchored" data-anchor-id="lavaan">lavaan</h2>
+<p><a href="https://lavaan.ugent.be/">lavaan</a> ist ein R-Paket, mit dem Sie Strukturgleichungsmodelle in R schätzen können. Eine Spezialfall von Strukturgleichungsmodellen sind konfirmatorische Faktoranalysen (CFA), mit denen wir uns im späteren Teil der Übung beschäftigen werden.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lavaan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme" class="level2">
-<h2 class="anchored" data-anchor-id="was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme">Was soll ich tun, wenn ich mit den Aufgaben nicht hinterherkomme?</h2>
-<p>Auch wenn das die Idealvorstellung wäre, kann es passieren, dass Sie es im Semester nicht schaffen, alle Aufgaben parallel zur Vorlesung zu bearbeiten. Davon geht die Welt nicht unter. Wir raten Ihnen in diesem Fall dazu, in dem Rahmen, der für Sie schaffbar ist, Teile der wöchentlichen Aufgaben zu erledigen. Das funktioniert erfahrungsgemäß viel besser, als sich vorzunehmen, das Heft in den Semesterferien alleine durchzuarbeiten.</p>
+<section id="teachirt" class="level2">
+<h2 class="anchored" data-anchor-id="teachirt">teachIRT</h2>
+<p><a href="https://github.com/jkillisch/teachIRT">teachIRT</a> ist ein R-Paket, das wir speziell für die Übung M.B.2 geschrieben haben. Mit teachIRT können Sie viele Aufgaben im IRT-Abschnitt selbst überprüfen und sich selbst neue Aufgaben stellen. Da das Paket auf GitHub gehostet ist, benötigen Sie zur Installation auch das Paket devtools.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jkillisch/teachIRT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen" class="level2">
-<h2 class="anchored" data-anchor-id="muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen">Muss ich das Übungsheft bearbeiten, um die Übung M.B.2 bestehen?</h2>
-<p>Nein, das Bearbeiten des Übungshefts ist keine Voraussetzung, um die Übung M.B.2 zu bestehen. Es gibt auch keine Anwesenheitspflicht. Analysen der Prüfungsnoten und Übungsbeteiligung aus früheren Semestern haben aber gezeigt, dass Studierende, die die Übungsaufgaben bearbeiten deutlich besser in der Prüfung abschneiden als diejenigen, die das nicht tun.</p>
+<section id="umgang-mit-ai" class="level2">
+<h2 class="anchored" data-anchor-id="umgang-mit-ai">Umgang mit AI</h2>
+<p>Sie können die Inhalte <em>des Übungshefts</em> gerne mit ChatGPT teilen, etwa um sich Tipps statt der gesamten Lösung geben zu lassen. Eine andere Anwendung ist es, Wissen zu erfragen, das über die behandelten Inhalte hinausgeht. Wir empfehlen Ihnen dennoch, die Aufgaben vorrangig mit den Vorlesungsmaterialien zu bearbeiten, da dieses Material die direkteste Grundlage für die Prüfung darstellt.</p>
 </section>
-<section id="wie-sollte-man-mit-den-lösungen-umgehen" class="level2">
-<h2 class="anchored" data-anchor-id="wie-sollte-man-mit-den-lösungen-umgehen">Wie sollte man mit den Lösungen umgehen?</h2>
-<p>Bitte schauen Sie nicht vorschnell in die Lösungen. Der Lerneffekt durch das Lösen von Aufgaben entsteht nicht vorrangig dadurch, dass Sie eine spezifische Aufgabe lösen können, sondern darin, Lösungsansätze auszuprobieren und auf diesem Weg den Stoff durch den Blickwinkel der Aufgabe neu zu betrachten.</p>
+<section id="literatur" class="level2">
+<h2 class="anchored" data-anchor-id="literatur">Literatur</h2>
+<p><a href="https://hansjoerg.me/2018/04/23/rasch-in-r-tutorial/">Hier</a> finden Sie einen super Blogbeitrag zum Schätzen von Rasch- und 2PL-Modellen in R.</p>
 
 
 </section>

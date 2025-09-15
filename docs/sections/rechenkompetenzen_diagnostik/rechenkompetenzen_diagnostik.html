@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>rechenkompetenzen_diagnostik – Übungsheft</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5bf7ca59d8cc7f7a8155307016a58e21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Übungsheft</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">FAQs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../sections/software/software.html"> 
+<span class="menu-text">Software und Literatur</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-themenabschnitte" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Themenabschnitte</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-themenabschnitte">    
+        <li>
+    <a class="dropdown-item" href="../../sections/rechenkompetenzen/rechenkompetenzen.html">
+ <span class="dropdown-text">1. Grundlegende Rechenkompetenzen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.html">
+ <span class="dropdown-text">2. Rechenkompetenzen der Diagnostik</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/diagnostischer_prozess/diagnostischer_prozess.html">
+ <span class="dropdown-text">3. Der Diagnostische Prozess</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/konfidenzintervalle/konfidenzintervalle.html">
+ <span class="dropdown-text">4. Konfidenzintervalle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/datenmatrizen/datenmatrizen.html">
+ <span class="dropdown-text">5. Datenmatrizen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/rasch_modell/rasch_modell.html">
+ <span class="dropdown-text">6. Das Rasch-Modell</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#rechenkompetenzen-der-diagnostik" id="toc-rechenkompetenzen-der-diagnostik" class="nav-link active" data-scroll-target="#rechenkompetenzen-der-diagnostik">Rechenkompetenzen der Diagnostik</a>
+  <ul class="collapse">
+  <li><a href="#ablesen-und-berechnen-von-normwerten" id="toc-ablesen-und-berechnen-von-normwerten" class="nav-link" data-scroll-target="#ablesen-und-berechnen-von-normwerten">Ablesen und Berechnen von Normwerten</a>
+  <ul class="collapse">
+  <li><a href="#aufgaben-mit-der-bdi-ii-norm" id="toc-aufgaben-mit-der-bdi-ii-norm" class="nav-link" data-scroll-target="#aufgaben-mit-der-bdi-ii-norm">Aufgaben mit der BDI-II Norm</a></li>
+  <li><a href="#prozentränge-in-r-berechnen" id="toc-prozentränge-in-r-berechnen" class="nav-link" data-scroll-target="#prozentränge-in-r-berechnen">Prozentränge in R berechnen</a></li>
+  <li><a href="#normwerttransformation-in-einem-fallbeispiel" id="toc-normwerttransformation-in-einem-fallbeispiel" class="nav-link" data-scroll-target="#normwerttransformation-in-einem-fallbeispiel">Normwerttransformation in einem Fallbeispiel</a></li>
+  </ul></li>
+  <li><a href="#sensitivität-spezifität-roc-kurven-youden-index" id="toc-sensitivität-spezifität-roc-kurven-youden-index" class="nav-link" data-scroll-target="#sensitivität-spezifität-roc-kurven-youden-index">Sensitivität, Spezifität, ROC-Kurven, Youden-Index</a>
+  <ul class="collapse">
+  <li><a href="#tabelle-aller-möglichen-zustände" id="toc-tabelle-aller-möglichen-zustände" class="nav-link" data-scroll-target="#tabelle-aller-möglichen-zustände">Tabelle aller möglichen Zustände</a></li>
+  <li><a href="#formeln-für-sensivität-und-spezifität" id="toc-formeln-für-sensivität-und-spezifität" class="nav-link" data-scroll-target="#formeln-für-sensivität-und-spezifität">Formeln für Sensivität und Spezifität</a></li>
+  <li><a href="#sensitivität-und-spezifität-in-einem-beispiel-berechnen" id="toc-sensitivität-und-spezifität-in-einem-beispiel-berechnen" class="nav-link" data-scroll-target="#sensitivität-und-spezifität-in-einem-beispiel-berechnen">Sensitivität und Spezifität in einem Beispiel berechnen</a></li>
+  <li><a href="#den-youden-index-berechnen" id="toc-den-youden-index-berechnen" class="nav-link" data-scroll-target="#den-youden-index-berechnen">Den Youden-Index berechnen</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="rechenkompetenzen-der-diagnostik" class="level1">
+<h1>Rechenkompetenzen der Diagnostik</h1>
+<p>Belastbare psychologische Diagnostik ist an vielen Stellen auf diagnostische Rechenkompetenzen angewiesen. Im Folgenden werden einige dieser Kompetenzen geübt.</p>
+<section id="ablesen-und-berechnen-von-normwerten" class="level2">
+<h2 class="anchored" data-anchor-id="ablesen-und-berechnen-von-normwerten">Ablesen und Berechnen von Normwerten</h2>
+<section id="aufgaben-mit-der-bdi-ii-norm" class="level3">
+<h3 class="anchored" data-anchor-id="aufgaben-mit-der-bdi-ii-norm">Aufgaben mit der BDI-II Norm</h3>
+<p>Testwerte lassen sich durch den Vergleich mit einer Normstichprobe interpretieren. Im einfachsten Fall liegen dafür Normtabellen vor. Im Folgenden finden Sie den Auszug einer Normtabelle für den BDI-II:</p>
+<p><img src="images/bdi_norm.png" class="img-fluid"></p>
+<p>Roelofs, J., Van Breukelen, G., De Graaf, L. E., Beck, A. T., Arntz, A., &amp; Huibers, M. J. H. (2013). Norms for the Beck Depression Inventory (BDI-II) in a large dutch community sample. , 35(1), 93–98. https://doi.org/10.1007/s10862-012-9309-2</p>
+<section id="werte-ablesen" class="level4">
+<h4 class="anchored" data-anchor-id="werte-ablesen">Werte ablesen</h4>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<p>In einer Studie wird der Zusammenhang zwischen Schlafgewohnheiten und depressiven Symptomen untersucht. In einer Subanalyse soll auf die Bevölkerung der <span class="math inline">\(40\%\)</span> betroffensten Frauen mit hohen Bildungsabschlüssen rückgeschlossen werden. Ob eine Person mit in die Analyse mit aufgenommen wird, soll anhand ihres BDI-II Scores entschieden werden. Ab welchem BDI-II Score sollte eine Frau mit hohem Bildungsabschluss in die Analyse aufgenommen werden?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ab einem BDI-II Score von <span class="math inline">\(7\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="rohwerte-transformieren" class="level4">
+<h4 class="anchored" data-anchor-id="rohwerte-transformieren">Rohwerte transformieren</h4>
+<p>Es gibt verschiedene Normwerteverteilungen (z, IQ, T, SW, etc.), die anhand von Mittelwert und Standardabweichungen definiert sind. Wenn Mittelwert und Standardabweichung der Testwerte in einer Normstichprobe bekannt sind, können die Testwerte entsprechend normiert werden.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Normbezeichnung</th>
+<th>Transformation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>z-Skala</td>
+<td><span class="math inline">\(z_n = \frac{x_n - \overline{x}}{SD(x)}\)</span></td>
+</tr>
+<tr class="even">
+<td>IQ-Abweichungsskala</td>
+<td><span class="math inline">\(IQ_n = 100 + 15 z_n\)</span></td>
+</tr>
+<tr class="odd">
+<td>T-Werte</td>
+<td><span class="math inline">\(T_n = 50 + 10 z_n\)</span></td>
+</tr>
+<tr class="even">
+<td>Standardwerte</td>
+<td><span class="math inline">\(SW_n = 100 + 10 z_n\)</span></td>
+</tr>
+<tr class="odd">
+<td>PISA-Skala</td>
+<td><span class="math inline">\(P_n = 500 + 100 z_n\)</span></td>
+</tr>
+<tr class="even">
+<td>Stanine-Normwert</td>
+<td><span class="math inline">\(S_n \approx 5 + 2 z_n\)</span></td>
+</tr>
+<tr class="odd">
+<td>Prozentrang</td>
+<td><span class="math inline">\(PR_n = 100 \frac{freq_{\text{cum}}(X_n)}{N}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<p>Eine Person erzielt einen Testwert von <span class="math inline">\(36\)</span>. In der Normstichprobe weisen die Testwerte einen Mittelwert von <span class="math inline">\(\overline{x} = 31\)</span> und eine Standardabweichung von <span class="math inline">\(SD(x) = 5\)</span> auf.</p>
+<ol type="a">
+<li><p>Welchen z-Wert hat die Person im Vergleich zur Normstichprobe?</p></li>
+<li><p>Der z-Wert lässt sich anhand der Formeln in andere Normwerte transformieren. Welcher T-Wert ergibt sich daraus?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung (a)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung (a)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(x = 36\)</span></p>
+<p><span class="math inline">\(\overline{x} = 31\)</span></p>
+<p><span class="math inline">\(SD(x) = 5\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(z = \frac{x - \overline{x}}{SD(x)} = \frac{36 - 31}{5} = 1\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung (b)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung (b)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(z = 1\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(T = 50 + 10z = 50 + 10 = 60\)</span></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="prozentränge-in-r-berechnen" class="level3">
+<h3 class="anchored" data-anchor-id="prozentränge-in-r-berechnen">Prozentränge in R berechnen</h3>
+<p>Nutzen Sie den Code um die Daten der darunter folgenden Abbildung zu samplen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">101</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten samplen</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Histogramm:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rechenkompetenzen_diagnostik_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<p>Berechnen Sie die Prozentränge in R und überprüfen Sie Ihr Ergebnis anhand der Abbildung.</p>
+</div>
+<p>Prozentränge:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rechenkompetenzen_diagnostik_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sie benötigen die Funktionen <code>{r} table</code> und <code>{r} cumsum</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">101</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten samplen</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(x)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Prozentränge berechnen</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="fu">table</span>(x) <span class="sc">/</span> N)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-10  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6   7   8   9  10 
+  1   3   5   6  12  15  17  25  30  35  45  52  60  72  77  83  86  92  96  99 
+ 11 
+100 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="normwerttransformation-in-einem-fallbeispiel" class="level3">
+<h3 class="anchored" data-anchor-id="normwerttransformation-in-einem-fallbeispiel">Normwerttransformation in einem Fallbeispiel</h3>
+<p>Die Lesefähigkeit von Emilia wurde mit Hilfe eines validierten Leistungstests für Kinder erhoben. Um Emilias Leistung mit der Leistung von 9-Klässlerinnen in Rheinland-Pfälzer Gymnasien vergleichbar zu machen, wurde ihre Punktzahl von der leitenden Diagnostikerin zu einem <span class="math inline">\(T\)</span>-Wert von <span class="math inline">\(T = 56\)</span> transformiert.</p>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<ol type="a">
+<li><p>Berechnen Sie Emilias Leistung als IQ-Wert.</p></li>
+<li><p>Berechnen Sie den Prozentrang von Emilia innerhalb ihrer Schulklasse. In der Abbildung finden Sie dazu Häufigkeiten der T-Normwerte der Schüler:innen in Emilias Klasse.</p></li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rechenkompetenzen_diagnostik_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung (a)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung (a)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(T = 56\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(IQ = 100 + 15z\)</span></p>
+<p><span class="math inline">\(z = \frac{T - 50}{10}\)</span></p>
+<p>Also <span class="math inline">\(IQ = 100 + 15 \cdot \Big(\frac{T - 50}{10}\Big) = 109\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung (b)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung (b)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gesucht:</p>
+<p><span class="math inline">\(PR = 100 \cdot \frac{freq_{cum}(x)}{N}\)</span></p>
+<p><span class="math inline">\(x = 56\)</span></p>
+<p>Abgelesen:</p>
+<p><span class="math inline">\(freq_{cum}(56) = 5\)</span></p>
+<p><span class="math inline">\(N = 15\)</span></p>
+<p>Also <span class="math inline">\(PR = 100 \frac{5}{15} \approx 33.33\)</span></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sensitivität-spezifität-roc-kurven-youden-index" class="level2">
+<h2 class="anchored" data-anchor-id="sensitivität-spezifität-roc-kurven-youden-index">Sensitivität, Spezifität, ROC-Kurven, Youden-Index</h2>
+<p>Leider sind Diagnosen nicht immer zutreffend. Es kann durchaus passieren, dass eine Person, die eigentlich geeignet wäre, als ungeeignet klassifiert wird. Genauso kann es passieren, dass eine Person, die eigentlich ungeeignet ist, als geeignet klassifiziert wird.</p>
+<section id="tabelle-aller-möglichen-zustände" class="level3">
+<h3 class="anchored" data-anchor-id="tabelle-aller-möglichen-zustände">Tabelle aller möglichen Zustände</h3>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<ol type="a">
+<li><p>Erstellen Sie eine Tabelle aller möglichen Kombinationen aus wahren Zuständen <span class="math inline">\({\text{geeignet}, \text{ungeeignet}}\)</span> und Diagnosen <span class="math inline">\({\text{geeignet}, \text{ungeeignet}}\)</span>.</p></li>
+<li><p>Benennen Sie jede der vier Kombinationen. Verwenden Sie dazu die folgenden Begriffe:</p></li>
+</ol>
+<ul>
+<li>Falsch positiv (FP)</li>
+<li>Richtig positiv (RP)</li>
+<li>Falsch negativ (FN)</li>
+<li>Richtig negativ (RN)</li>
+<li>False negative (FN)</li>
+<li>False positive (FP)</li>
+<li>True negative (TN)</li>
+<li>True positive (TP)</li>
+</ul>
+<ol start="3" type="a">
+<li>Nehmen Sie an, dass eine Person mit einem Testwert <span class="math inline">\(&gt;20\)</span> als geeignet eingestuft wird. Finden Sie einen beispielhaften Testwert für jeden der vier Zustände.</li>
+</ol>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Tabellengerüst">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp: Tabellengerüst
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>So soll die Tabelle am Ende aussehen:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wahrer Zustand</th>
+<th>Testwert Beispiel</th>
+<th>Diagnose</th>
+<th>Prüfung [De]</th>
+<th>Prüfung [Eng]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Jetzt fehlen noch die Werte.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Teile von a. vorgeben">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp: Teile von a. vorgeben
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wahrer Zustand</th>
+<th>Testwert Beispiel</th>
+<th>Diagnose</th>
+<th>Prüfung [De]</th>
+<th>Prüfung [Eng]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Geeignet</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Ungeeignet</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Ungeeignet</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Ungeeignet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Teile von b. vorgeben">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp: Teile von b. vorgeben
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wahrer Zustand</th>
+<th>Testwert Beispiel</th>
+<th>Diagnose</th>
+<th>Prüfung [De]</th>
+<th>Prüfung [Eng]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Geeignet</td>
+<td></td>
+<td></td>
+<td>RP</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Ungeeignet</td>
+<td></td>
+<td>FN</td>
+</tr>
+<tr class="odd">
+<td>Ungeeignet</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Ungeeignet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<caption>Tabelle aller Kreuzungen von wahren Zuständen und Diagnosen (dichotom)</caption>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 24%">
+<col style="width: 16%">
+<col style="width: 18%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wahrer Zustand</th>
+<th>Testwert Beispiel</th>
+<th>Diagnose</th>
+<th>Prüfung [De]</th>
+<th>Prüfung [Eng]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Geeignet</td>
+<td><span class="math inline">\(21\)</span></td>
+<td>Geeignet</td>
+<td>RP</td>
+<td>TP</td>
+</tr>
+<tr class="even">
+<td>Geeignet</td>
+<td><span class="math inline">\(20\)</span></td>
+<td>Ungeeignet</td>
+<td>FN</td>
+<td>FN</td>
+</tr>
+<tr class="odd">
+<td>Ungeeignet</td>
+<td><span class="math inline">\(23\)</span></td>
+<td>Geeignet</td>
+<td>FP</td>
+<td>FP</td>
+</tr>
+<tr class="even">
+<td>Ungeeignet</td>
+<td><span class="math inline">\(13\)</span></td>
+<td>Ungeeignet</td>
+<td>RN</td>
+<td>TN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="formeln-für-sensivität-und-spezifität" class="level3">
+<h3 class="anchored" data-anchor-id="formeln-für-sensivität-und-spezifität">Formeln für Sensivität und Spezifität</h3>
+<p>Ergänzen Sie die Formeln für die Sensitivität und Spezifität. Versuchen Sie es zuerst ohne die Vorlesungsfolien und überprüfen Sie dann Ihr Ergebnis.</p>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<p><span class="math inline">\(\text{Sensitivität} = \frac{RP}{? + ?}\)</span></p>
+<p><span class="math inline">\(\text{Spezifität} = \frac{?}{? + RN}\)</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\text{Sensitivität} = \frac{RP}{RP + FN}\)</span></p>
+<p><span class="math inline">\(\text{Spezifität} = \frac{RN}{FP + RN}\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sensitivität-und-spezifität-in-einem-beispiel-berechnen" class="level3">
+<h3 class="anchored" data-anchor-id="sensitivität-und-spezifität-in-einem-beispiel-berechnen">Sensitivität und Spezifität in einem Beispiel berechnen</h3>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<p>Eine Schule möchte einen neuen Test verwenden, um hochbegabte Schüler:innen frühzeitig zu identifizieren. Ein etablierter Intelligenztest wird als Vergleichsstandard zur Überprüfung der Testvorhersagen herangezogen. Die Testergebnisse für eine Stichprobe von 500 Kindern sind:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Urteil neuer Test</th>
+<th>Urteil etablierter Test</th>
+<th><span class="math inline">\(n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hochbegabt</td>
+<td>Hochbegabt</td>
+<td><span class="math inline">\(10\)</span></td>
+</tr>
+<tr class="even">
+<td>Hochbegabt</td>
+<td>Nicht hochbegabt</td>
+<td><span class="math inline">\(3\)</span></td>
+</tr>
+<tr class="odd">
+<td>Nicht hochbegabt</td>
+<td>Nicht hochbegabt</td>
+<td><span class="math inline">\(482\)</span></td>
+</tr>
+<tr class="even">
+<td>Nicht hochbegabt</td>
+<td>Hochbegabt</td>
+<td><span class="math inline">\(5\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Berechnen Sie die Sensitivität und Spezifität des neuen Tests.</p>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(RP = ?\)</span></p>
+<p><span class="math inline">\(FP = ?\)</span></p>
+<p><span class="math inline">\(RN = ?\)</span></p>
+<p><span class="math inline">\(FN = ?\)</span></p>
+<p>Gesucht:</p>
+<p>Sensitivität <span class="math inline">\(= \frac{RP}{RP + FN} = ?\)</span></p>
+<p>Spezifität <span class="math inline">\(= \frac{RN}{FP + RN} = ?\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(RP = 10\)</span></p>
+<p><span class="math inline">\(FP = 3\)</span></p>
+<p><span class="math inline">\(RN = 482\)</span></p>
+<p><span class="math inline">\(FN = 5\)</span></p>
+<p>Gesucht:</p>
+<p>Sensitivität <span class="math inline">\(= \frac{RP}{RP + FN} = \frac{10}{10 + 5} \approx .67\)</span></p>
+<p>Spezifität <span class="math inline">\(= \frac{RN}{FP + RN} = \frac{482}{3 + 482} \approx .99\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="den-youden-index-berechnen" class="level3">
+<h3 class="anchored" data-anchor-id="den-youden-index-berechnen">Den Youden-Index berechnen</h3>
+<p>Die Testwerte ungeeigneter Testpersonen sind normalverteilt mit <span class="math inline">\(X_u \sim N(-1.5, 3)\)</span>. Die Testwerte geeigneter Testpersonen sind normalverteilt mit <span class="math inline">\(X_g \sim N(4, 3)\)</span>. Eine Person wird als geeignet klassifiziert, wenn Sie einen Testwert <span class="math inline">\(&gt;3\)</span> aufweist. In der Abbildung sehen Sie die Dichterverteilungen der Testwerte ungeeigneter und geeigneter Personen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rechenkompetenzen_diagnostik_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Die gelb markierte Fläche umfasst <span class="math inline">\(93\%\)</span> der Fläche unter der linken Verteilung. Die blau markierte Fläche umfasst <span class="math inline">\(63\%\)</span> der Fläche unter der rechten Verteilung.</p>
+<div class="callout-aufgabe">
+<p>Berechnen Sie den Youden-Index.</p>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 1">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(RN = ?\)</span></p>
+<p><span class="math inline">\(RP = ?\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 2">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gesucht:</p>
+<p>Sensitivität <span class="math inline">\(=?\)</span></p>
+<p>Spezifität <span class="math inline">\(=?\)</span></p>
+<p>Youden-Index <span class="math inline">\(=?\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 3">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp 3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(RN = ?\)</span></p>
+<p><span class="math inline">\(RP = ?\)</span></p>
+<p>Gesucht:</p>
+<p>Sensitivität <span class="math inline">\(= \frac{RP}{FN + RP} = ?\)</span></p>
+<p>Spezifität <span class="math inline">\(= \frac{RN}{FP + RN} = ?\)</span></p>
+<p><span class="math inline">\(\text{Youden-Index} = \text{Sensitivität} + \text{Spezifität} - 1 = ?\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 4: RN und RP vorgeben">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp 4: RN und RP vorgeben
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(RN = .93\)</span></p>
+<p><span class="math inline">\(RP = .63\)</span></p>
+<p>Gesucht:</p>
+<p>Sensitivität <span class="math inline">\(= \frac{RP}{FN + RP} = ?\)</span></p>
+<p>Spezifität <span class="math inline">\(= \frac{RN}{FP + RN} = ?\)</span></p>
+<p><span class="math inline">\(\text{Youden-Index} = \text{Sensitivität} + \text{Spezifität} - 1 = ?\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(RN = .93\)</span></p>
+<p><span class="math inline">\(RP = .63\)</span></p>
+<p>Gesucht:</p>
+<p>Sensitivität <span class="math inline">\(= \frac{RP}{FN + RP} = \frac{.63}{(1-.63) + .63} = .63\)</span></p>
+<p>Spezifität <span class="math inline">\(= \frac{RN}{FP + RN} = \frac{.93}{(1-.93) + .93} = .93\)</span></p>
+<p><span class="math inline">\(\text{Youden-Index} = \text{Sensitivität} + \text{Spezifität} - 1 = .63 + .93 - 1 = .56\)</span></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

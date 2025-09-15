@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Übungsheft</title>
+<title>datenmatrizen – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5bf7ca59d8cc7f7a8155307016a58e21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5bf7ca59d8cc7f7a8155307016a58e21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,8 +68,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -79,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Übungsheft</span>
     </a>
   </div>
@@ -90,11 +119,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">FAQs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sections/software/software.html"> 
+    <a class="nav-link" href="../../sections/software/software.html"> 
 <span class="menu-text">Software und Literatur</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -103,27 +132,27 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-themenabschnitte">    
         <li>
-    <a class="dropdown-item" href="./sections/rechenkompetenzen/rechenkompetenzen.html">
+    <a class="dropdown-item" href="../../sections/rechenkompetenzen/rechenkompetenzen.html">
  <span class="dropdown-text">1. Grundlegende Rechenkompetenzen</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.html">
+    <a class="dropdown-item" href="../../sections/rechenkompetenzen_diagnostik/rechenkompetenzen_diagnostik.html">
  <span class="dropdown-text">2. Rechenkompetenzen der Diagnostik</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/diagnostischer_prozess/diagnostischer_prozess.html">
+    <a class="dropdown-item" href="../../sections/diagnostischer_prozess/diagnostischer_prozess.html">
  <span class="dropdown-text">3. Der Diagnostische Prozess</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/konfidenzintervalle/konfidenzintervalle.html">
+    <a class="dropdown-item" href="../../sections/konfidenzintervalle/konfidenzintervalle.html">
  <span class="dropdown-text">4. Konfidenzintervalle</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/datenmatrizen/datenmatrizen.html">
+    <a class="dropdown-item" href="../../sections/datenmatrizen/datenmatrizen.html">
  <span class="dropdown-text">5. Datenmatrizen</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sections/rasch_modell/rasch_modell.html">
+    <a class="dropdown-item" href="../../sections/rasch_modell/rasch_modell.html">
  <span class="dropdown-text">6. Das Rasch-Modell</span></a>
   </li>  
     </ul>
@@ -144,15 +173,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#übungsheft-zur-vorlesung-diagnostik" id="toc-übungsheft-zur-vorlesung-diagnostik" class="nav-link active" data-scroll-target="#übungsheft-zur-vorlesung-diagnostik">Übungsheft zur Vorlesung Diagnostik</a>
-  <ul class="collapse">
-  <li><a href="#was-ist-das-übungsheft" id="toc-was-ist-das-übungsheft" class="nav-link" data-scroll-target="#was-ist-das-übungsheft">Was ist das Übungsheft?</a></li>
-  <li><a href="#was-ist-das-übungsheft-nicht" id="toc-was-ist-das-übungsheft-nicht" class="nav-link" data-scroll-target="#was-ist-das-übungsheft-nicht">Was ist das Übungsheft nicht?</a></li>
-  <li><a href="#wo-bekomme-ich-hilfe-zu-den-aufgaben" id="toc-wo-bekomme-ich-hilfe-zu-den-aufgaben" class="nav-link" data-scroll-target="#wo-bekomme-ich-hilfe-zu-den-aufgaben">Wo bekomme ich Hilfe zu den Aufgaben?</a></li>
-  <li><a href="#was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme" id="toc-was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme" class="nav-link" data-scroll-target="#was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme">Was soll ich tun, wenn ich mit den Aufgaben nicht hinterherkomme?</a></li>
-  <li><a href="#muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen" id="toc-muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen" class="nav-link" data-scroll-target="#muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen">Muss ich das Übungsheft bearbeiten, um die Übung M.B.2 bestehen?</a></li>
-  <li><a href="#wie-sollte-man-mit-den-lösungen-umgehen" id="toc-wie-sollte-man-mit-den-lösungen-umgehen" class="nav-link" data-scroll-target="#wie-sollte-man-mit-den-lösungen-umgehen">Wie sollte man mit den Lösungen umgehen?</a></li>
-  </ul></li>
+  <li><a href="#psychometrische-datenmatrizen" id="toc-psychometrische-datenmatrizen" class="nav-link active" data-scroll-target="#psychometrische-datenmatrizen">Psychometrische Datenmatrizen</a></li>
+  <li><a href="#summenscores" id="toc-summenscores" class="nav-link" data-scroll-target="#summenscores">Summenscores</a></li>
   </ul>
 </nav>
     </div>
@@ -162,39 +184,290 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="übungsheft-zur-vorlesung-diagnostik" class="level1">
-<h1>Übungsheft zur Vorlesung Diagnostik</h1>
-<p>Herzlich Willkommen! Im Folgenden finden Sie Antworten auf eine Reihe von FAQs zum Übungsheft der Veranstaltung M.B.2.</p>
-<section id="was-ist-das-übungsheft" class="level2">
-<h2 class="anchored" data-anchor-id="was-ist-das-übungsheft">Was ist das Übungsheft?</h2>
-<p>Diese Webseite (“Das Übungsheft”) ist eine Sammlung von Aufgaben, die wir im Laufe des Semesters parallel zur Vorlesung bearbeiten. Die Aufgaben unterstützen Sie dabei, komplexere Sachverhalte aus der Vorlesung zu verstehen und Ihren Lernerfolg zu überprüfen. Die Aufgaben in diesem Heft dienen also dem Ziel, Sie möglichst direkt auf besonders herausfordernde Teilaspekte der Prüfung vorzubereiten. Wir empfehlen Ihnen entsprechend dringend, das Heft im Laufe des Semesters zu bearbeiten und aktiv in der Übung mitzuarbeiten.</p>
-<p>Die Übung ist so strukturiert, dass Sie die Aufgaben eines Abschnitts in Ruhe zuhause bearbeiten und anschließend in der Sitzung Fragen stellen können. Wenn es in den Sitzungen keine Fragen zum Übungsheft gibt, beschäftigen wir uns mit weiteren Übungsaufgaben oder darüber hinausgehenden Inhalten.</p>
-</section>
-<section id="was-ist-das-übungsheft-nicht" class="level2">
-<h2 class="anchored" data-anchor-id="was-ist-das-übungsheft-nicht">Was ist das Übungsheft nicht?</h2>
+<section id="psychometrische-datenmatrizen" class="level1">
+<h1>Psychometrische Datenmatrizen</h1>
+<p>Um die später folgenden Modellgleichungen der IRT zu verstehen, ist es wichtig, flüssig mit der allgemeinen Datenmatrix umgehen zu können. In den folgenden Aufgaben üben Sie, Einträge sowie Zeilen- und Spaltenvektoren der allgemeinen Datenmatrix formal zu beschreiben.</p>
+<p>Sie haben in der Vorlesung die allgemeine Datenmatrix kennengelernt:</p>
+<p><span class="math display">\[\begin{equation}
+    \mathbf{U} =
+    \begin{bmatrix}
+        u_{11} &amp; \dots &amp; u_{1j} &amp; \dots &amp; u_{1m} \\
+        \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        u_{i1} &amp; \dots &amp; u_{ij} &amp; \dots &amp; u_{im} \\
+        \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        u_{n1} &amp; \dots &amp; u_{nj} &amp; \dots &amp; u_{nm}
+    \end{bmatrix}
+\end{equation}\]</span></p>
+<div class="callout-aufgabe">
+<p>Suchen Sie Beispiele für Datenmatrizen, denen Sie im Bachelorstudium begegnet sind. Erklären Sie, wie Ihr Beispiel Datenmatrix mit der oben abgebildeten allgemeinen Datenmatrix zusammenhängt.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Mögliches Beispiel: Fragebogendatensatz aus dem Empra.</p>
+<p>In den Zeilen befanden sich <span class="math inline">\(n = 143\)</span> Personen und in den Spalten befanden sich die <span class="math inline">\(m = 60\)</span> Items des BFI-II. Aufgrund der Verwendung einer 5-Punkt Ratingskala, hatten die Einträge der Matrix jeweils einen der Werte <span class="math inline">\(0, 1, 2, 3, 4\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wofür stehen die Zeilen und Spalten der allgemeinen Datenmatrix bei testtheoretischen Anwendungen?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Zeilen: Personen</p>
+<p>Spalten: Items</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wie viele Zeilen und Spalten hat die allgemeine Datenmatrix?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(n\)</span> Zeilen</p>
+<p><span class="math inline">\(m\)</span> Spalten</p>
+<p>Die Antwort 3 Zeilen und 3 Spalten ist nicht richtig.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Beschreiben Sie die folgenden Einträge der allgemeinen Datenmatrix symbolisch:</p>
 <ul>
-<li><p>Das Übungsheft ist nicht wichtiger als die Vorlesung. Es behandelt nur eine Teilmenge der Vorlesungsinhalte. Wir fokussieren uns dabei auf Themen, die Studierenden erfahrungsgemäß eher schwerfallen. Themen der Vorlesung, die nicht im Übungsheft behandelt werden, werden ebenfalls Teil der Prüfung sein.</p></li>
-<li><p>Das Übungsheft ist kein Lehrbuch. An einigen Stellen enthält das Heft Erklärungen des Stoffs. Es ist aber nicht der Anspruch, dass das notwendige Wissen, um die Aufgaben zu lösen, im Heft enthalten ist. Diesen Zweck erfüllen die Präsenzveranstaltungen (Vorlesung und Übung).</p></li>
+<li>Den Matrizeintrag in Zeile <span class="math inline">\(4\)</span> und Spalte <span class="math inline">\(8\)</span></li>
+<li>Die Antwort von Person <span class="math inline">\(102\)</span> auf Item <span class="math inline">\(16\)</span></li>
+<li>Die Antwort der ersten Person auf das erste Item</li>
+<li>Die Antwort der letzten Person auf das letzte Item</li>
+<li>Die Antwort einer beliebigen Person auf das letzte Item</li>
+<li>Die Antwort der letzten Person auf ein beliebiges Item</li>
 </ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><span class="math inline">\(u_{48}\)</span></p></li>
+<li><p><span class="math inline">\(u_{102 \hspace{4pt} 16}\)</span></p></li>
+<li><p><span class="math inline">\(u_{11}\)</span></p></li>
+<li><p><span class="math inline">\(u_{nm}\)</span></p></li>
+<li><p><span class="math inline">\(u_{im}\)</span></p></li>
+<li><p><span class="math inline">\(u_{nj}\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Statt einzelner Werte kann man auch ganze Zeilen oder Spalten der allgemeinen Datenmatrix extrahieren. Man nennt ganze Zeilen und Spalten der allgemeinen Datenmatrix auch Zeilen- und Spaltenvektoren. Beide Arten von Vektoren notieren wir mit kleinen fett gedruckten Buchstaben. <span class="math inline">\(\mathbf{u}_{.2}\)</span> bezeichnet etwa die gesamte zweite Spalte der allgemeinen Datenmatrix. Mit dem Punkt vor der <span class="math inline">\(2\)</span> macht man kenntlich, dass alle Zeilenelemente extrahiert werden sollen. Umgekehrt bezeichnet <span class="math inline">\(\mathbf{u}_{2.}\)</span> die gesamte zweite Zeile der allgemeinen Datenmatrix.</p>
+<p>Notieren Sie die folgenden Zeilen und Spaltenvektoren der allgemeinen Datenmatrix symbolisch:</p>
+<div class="callout-aufgabe">
+<ul>
+<li>Die erste Spalte der allgemeinen Datenmatrix</li>
+<li>Die dritte Zeile der allgemeinen Datenmatrix</li>
+<li>Eine beliebige Zeile der allgemeinen Datenmatrix</li>
+<li>Die letzte Spalte der allgemeinen Datenmatrix</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><span class="math inline">\(\mathbf{u}_{.1}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{u}_{3.}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{u}_{i.}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{u}_{.m}\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Als abschließenden Hinweis möchten wir noch anmerken, dass die Herangehensweise, Datenvektoren und Datenmatrizen fett zu schreiben sowie Indizes bei Zeilen- und Spaltenvektoren durch Punkte zu ersetzen, nicht <em>die eine</em> richtige Notation ist. Andere Autor:innen definieren Vektoren zum Beispiel grundsätzlich als Spaltenvektoren, z.B. <span class="math inline">\(x \in \mathbb{R}^n\)</span>. Nur durch Transposition würde dann aus <span class="math inline">\(x\)</span> ein Zeilenvektor: <span class="math inline">\(x^T \in \mathbb{R}^{1 \times n}\)</span>.</p>
 </section>
-<section id="wo-bekomme-ich-hilfe-zu-den-aufgaben" class="level2">
-<h2 class="anchored" data-anchor-id="wo-bekomme-ich-hilfe-zu-den-aufgaben">Wo bekomme ich Hilfe zu den Aufgaben?</h2>
-<p>Die erste Anlaufstelle ist die Präsenzveranstaltung der Übung. Alle anderen Fragen können Sie in das OLAT-Forum der Veranstaltung posten. So können alle Teilnehmer:innen von den Antworten profitieren. Unsere Vorstellung der Übung sieht vor, dass das Wissen zu den Aufgaben für alle Studierenden gleichermaßen verfügbar ist. Bitte stellen Sie Ihre Fragen daher auch nur über das Forum und nicht via Mail. Sie sind natürlich herzlich eingeladen, auch selbst Fragen Ihrer Kommiliton:innen im Forum zu beantworten.</p>
-</section>
-<section id="was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme" class="level2">
-<h2 class="anchored" data-anchor-id="was-soll-ich-tun-wenn-ich-mit-den-aufgaben-nicht-hinterherkomme">Was soll ich tun, wenn ich mit den Aufgaben nicht hinterherkomme?</h2>
-<p>Auch wenn das die Idealvorstellung wäre, kann es passieren, dass Sie es im Semester nicht schaffen, alle Aufgaben parallel zur Vorlesung zu bearbeiten. Davon geht die Welt nicht unter. Wir raten Ihnen in diesem Fall dazu, in dem Rahmen, der für Sie schaffbar ist, Teile der wöchentlichen Aufgaben zu erledigen. Das funktioniert erfahrungsgemäß viel besser, als sich vorzunehmen, das Heft in den Semesterferien alleine durchzuarbeiten.</p>
-</section>
-<section id="muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen" class="level2">
-<h2 class="anchored" data-anchor-id="muss-ich-das-übungsheft-bearbeiten-um-die-übung-m.b.2-bestehen">Muss ich das Übungsheft bearbeiten, um die Übung M.B.2 bestehen?</h2>
-<p>Nein, das Bearbeiten des Übungshefts ist keine Voraussetzung, um die Übung M.B.2 zu bestehen. Es gibt auch keine Anwesenheitspflicht. Analysen der Prüfungsnoten und Übungsbeteiligung aus früheren Semestern haben aber gezeigt, dass Studierende, die die Übungsaufgaben bearbeiten deutlich besser in der Prüfung abschneiden als diejenigen, die das nicht tun.</p>
-</section>
-<section id="wie-sollte-man-mit-den-lösungen-umgehen" class="level2">
-<h2 class="anchored" data-anchor-id="wie-sollte-man-mit-den-lösungen-umgehen">Wie sollte man mit den Lösungen umgehen?</h2>
-<p>Bitte schauen Sie nicht vorschnell in die Lösungen. Der Lerneffekt durch das Lösen von Aufgaben entsteht nicht vorrangig dadurch, dass Sie eine spezifische Aufgabe lösen können, sondern darin, Lösungsansätze auszuprobieren und auf diesem Weg den Stoff durch den Blickwinkel der Aufgabe neu zu betrachten.</p>
+<section id="summenscores" class="level1">
+<h1>Summenscores</h1>
+<p>Aus der Vorlesung kennen Sie eine beispielhafte Datenmatrix für einen Fähigkeitstest mit <span class="math inline">\(6\)</span> Items. Die folgende Datenmatrix ist ebenfalls eine beispielhafte Datenmatrix für einen Fähigkeitstest mit <span class="math inline">\(6\)</span> Items. Sie enthält lediglich andere Werte.</p>
+<p><span class="math display">\[\begin{equation}
+        \label{eq:databin}
+        \textbf{U} =
+        \begin{bmatrix}
+            1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+            1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
+            0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+            1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+        \end{bmatrix}
+    \end{equation}\]</span></p>
+<p>Der Summenscore wurde allgemein definiert als <span class="math inline">\(\sum_{j = 1}^{m} u_{ij} = r_{i}\)</span></p>
+<div class="callout-aufgabe">
+<p>Berechnen Sie <span class="math inline">\(r_3\)</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+r_3 = \sum_{j=1}^{6} u_{3j} = u_{31} + u_{32} + u_{33} + u_{34} + u_{35} + u_{36}
+\]</span></p>
+<p><span class="math display">\[
+= 0 + 1 + 1 + 1 + 1 + 1 = 5
+\]</span></p>
+<p><span class="math display">\[
+r_3 = 5
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie die Scoreverteilung und stellen Sie diese tabellarisch dar.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<span class="math display">\[\begin{array}{c|c}
+\text{Person } i &amp; r_i = \sum_{j=1}^6 u_{ij} \\ \hline
+1 &amp; 1+1+1+1+1+1 = 6 \\
+2 &amp; 1+1+1+0+1+0 = 4 \\
+3 &amp; 0+1+1+1+1+1 = 5 \\
+4 &amp; 1+0+0+0+1+1 = 3 \\
+\end{array}\]</span>
+<span class="math display">\[\begin{array}{c|c|c|c}
+r_i &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ \hline
+\text{Häufigkeit} &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+\end{array}\]</span>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Beurteilen Sie anhand der Scoreverteilung die Passung des Tests zur Stichprobe. Verwenden Sie einen der Begriffe aus der Vorlesung: Gleichmäßig, Deckeneffekt, Bodeneffekt</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gleichmäßig</p>
+</div>
+</div>
+</div>
+<p>Summenscores werden oft als Maß für die Fähigkeit oder Traitausprägung von Personen verwendet.</p>
+<div class="callout-aufgabe">
+<p>Wie wird diese Verrechnung in der Klassischen Testtheorie gerechtfertigt?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es wird angenommen, dass sich die Varianz von Testantworten in einen Anteil wahrer Varianz und einen Anteil Fehlervarianz zerlegen lässt (Grundgleichung der KTT). In Verbindung mit der Annahme, dass der Erwartungswert der Fehlerverteilung Null beträgt folgt, dass der relative Einfluss des Fehlers sinkt, umso mehr Items miteinander durch Summierung der Testantworten verrechnet werden.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Finden Sie Argumente für und gegen die Verwendung von Summenscores in der diagnostischen Praxis.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Argumente für Summenscores:</strong></p>
+<ul>
+<li><p>Leichte Berechnung und in der Praxis weit verbreitet</p></li>
+<li><p>Plausible Annahme, dass der unsystematische Fehler durch Aggregation asymptotisch gegen Null geht</p></li>
+<li><p>Leicht nachvollziehbar, auch für Nicht-Psycholog:innen (z. B. bei juristischer Relevanz von Testergebnissen)</p></li>
+</ul>
+<p><strong>Argumente gegen Summenscores:</strong></p>
+<ul>
+<li><p>Alle Items werden gleichgewichtet, auch wenn es oft plausibel erscheint, dass sich Items in ihrem Beitrag zur Merkmalsmessung unterscheiden</p></li>
+<li><p>Annahme konstanter Reliabilität entlang des Fähigkeitkontinuums</p></li>
+<li><p>Keine Berücksichtung systematischen Fehlers</p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Die Argumente gegen Summenscores motivieren die Verwendung von IRT Modellen.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
