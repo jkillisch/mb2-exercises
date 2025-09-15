@@ -547,9 +547,9 @@ Die Wahrscheinlichkeit, dass ein Wurf von Münze A Kopf ergibt, ist $0.5$. Die W
 
 :::
 
-::: {.callout-tip title="Lösung" collapse="true"}
-
 ```{r, echo = FALSE}
+# This causes a lot of trouble on GitHub pages. Render and import image.
+
 # library(DiagrammeR)
 
 # grViz("
@@ -577,8 +577,6 @@ Die Wahrscheinlichkeit, dass ein Wurf von Münze A Kopf ergibt, ist $0.5$. Die W
 # }
 # ")
 ```
-
-:::
 
 ::: {.callout-aufgabe}
 
@@ -633,38 +631,36 @@ Zeichnen Sie analog zum Münzwurf einen Entscheidungsbaum für die möglichen Re
 
 :::
 
-::: {.callout-tip title="Lösung" collapse="true"}
-
 ```{r, echo = FALSE}
-library(DiagrammeR)
+# This causes a lot of trouble on GitHub pages. Render and import image.
 
-grViz("
-digraph decision_tree {
-  node [shape=box, style=filled, color=lightblue]
+# library(DiagrammeR)
 
-Start -> 'Item 1 gelöst' [label='P(U₁ = 1 | θ)']
-Start -> 'Item 1 nicht gelöst' [label='P(U₁ = 0 | θ)']
+# grViz("
+# digraph decision_tree {
+#   node [shape=box, style=filled, color=lightblue]
 
-'Item 1 gelöst' -> 'Item 2 gelöst' [label='P(U₂ = 1 | θ)']
-'Item 1 gelöst' -> 'Item 2 nicht gelöst' [label='P(U₂ = 0 | θ)']
+# Start -> 'Item 1 gelöst' [label='P(U₁ = 1 | θ)']
+# Start -> 'Item 1 nicht gelöst' [label='P(U₁ = 0 | θ)']
 
-'Item 1 nicht gelöst' -> 'Item 2 gelöst ' [label='P(U₂ = 1 | θ)']
-'Item 1 nicht gelöst' -> 'Item 2 nicht gelöst ' [label='P(U₂ = 0 | θ)']
+# 'Item 1 gelöst' -> 'Item 2 gelöst' [label='P(U₂ = 1 | θ)']
+# 'Item 1 gelöst' -> 'Item 2 nicht gelöst' [label='P(U₂ = 0 | θ)']
 
-'Item 2 gelöst' -> end1 [color=transparent]
-'Item 2 nicht gelöst' -> end2 [color=transparent]
-'Item 2 gelöst ' -> end3 [color=transparent]
-'Item 2 nicht gelöst ' -> end4 [color=transparent]
+# 'Item 1 nicht gelöst' -> 'Item 2 gelöst ' [label='P(U₂ = 1 | θ)']
+# 'Item 1 nicht gelöst' -> 'Item 2 nicht gelöst ' [label='P(U₂ = 0 | θ)']
 
-end1 [color=transparent, label='P(U₁ = 1 ∩ U₂ = 1 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 1 | θ)']
-end2 [color=transparent, label='P(U₁ = 1 ∩ U₂ = 0 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 0 | θ)']
-end3 [color=transparent, label='P(U₁ = 0 ∩ U₂ = 1 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 1 | θ)']
-end4 [color=transparent, label='P(U₁ = 0 ∩ U₂ = 0 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 0 | θ)']
-}
-")
+# 'Item 2 gelöst' -> end1 [color=transparent]
+# 'Item 2 nicht gelöst' -> end2 [color=transparent]
+# 'Item 2 gelöst ' -> end3 [color=transparent]
+# 'Item 2 nicht gelöst ' -> end4 [color=transparent]
+
+# end1 [color=transparent, label='P(U₁ = 1 ∩ U₂ = 1 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 1 | θ)']
+# end2 [color=transparent, label='P(U₁ = 1 ∩ U₂ = 0 | θ)\n=P(U₁ = 1 | θ)P(U₂ = 0 | θ)']
+# end3 [color=transparent, label='P(U₁ = 0 ∩ U₂ = 1 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 1 | θ)']
+# end4 [color=transparent, label='P(U₁ = 0 ∩ U₂ = 0 | θ)\n=P(U₁ = 0 | θ)P(U₂ = 0 | θ)']
+# }
+# ")
 ```
-
-:::
 
 #### Likelihood von Antwortvektoren
 
