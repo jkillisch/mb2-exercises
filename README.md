@@ -1,6 +1,6 @@
 # M.B.2 Exercise Book
 
-This repo contains the code to render the "Übungsheft" of the course M.B.2 I teach at the University of Kaiserslautern-Landau. Feel free to open an issue or create a pull request if something is off. Thanks!
+This repo contains the code to render the "Übungsheft" of the course M.B.2 I teach at the University of Kaiserslautern-Landau (in German language). Feel free to open an issue or create a pull request if something is off. Thanks!
 
 ## Technical Notes for Contributors
 
