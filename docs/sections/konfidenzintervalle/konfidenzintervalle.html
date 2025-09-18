@@ -244,7 +244,7 @@ KI = \textcolor{blue}{X} \;\pm\;
 </li>
 <li><span class="math inline">\(\textcolor{green}{s_e}\)</span>: Standardfehler</li>
 </ul>
-<p>In der KTT, nicht aber in der IRT, ist <span class="math inline">\(s_e = SD_X \cdot \sqrt{1 - Rel_X}\)</span>. Durch Einsetzen folgt daher:</p>
+<p>In der KTT, nicht aber in der IRT, ist der Standardfehler <span class="math inline">\(s_e = SD_X \cdot \sqrt{1 - Rel_X}\)</span>. Durch Einsetzen folgt daher:</p>
 <p><span class="math display">\[
 KI = \textcolor{blue}{X} \;\pm\;
 \textcolor{red}{z_{\alpha/2}} \cdot
@@ -259,7 +259,7 @@ KI = \textcolor{blue}{X} \;\pm\;
 <section id="tipps" class="level2">
 <h2 class="anchored" data-anchor-id="tipps">Tipps</h2>
 <ol type="1">
-<li><p><span class="math inline">\(X\)</span> und <span class="math inline">\(SD_x\)</span> müssen der gleichen Metrik folgen. Ist der Testwert etwa ein T-Wert, so muss <span class="math inline">\(SD_x\)</span> automatisch gleich <span class="math inline">\(10\)</span> sein. Ist der Testwert IQ-skaliert, so ist <span class="math inline">\(SD_x\)</span> automatisch <span class="math inline">\(15\)</span>.</p></li>
+<li><p><span class="math inline">\(X\)</span> und <span class="math inline">\(SD_x\)</span> müssen der gleichen Metrik folgen. Ist der Testwert etwa ein T-Wert, so muss die Standardabweichung gleich <span class="math inline">\(10\)</span> sein. Ist der Testwert IQ-skaliert, so ist die Standardabweichung der Testwerte <span class="math inline">\(15\)</span>.</p></li>
 <li><p>Sie können die Funktion <code>teachIRT::get_z()</code> verwenden, um schnell z-Werte nachzuschauen:</p></li>
 </ol>
 <p><span class="math inline">\(\alpha = .05\)</span>, beidseitig</p>
@@ -287,7 +287,8 @@ KI = \textcolor{blue}{X} \;\pm\;
 </div>
 </div>
 <ol start="3" type="1">
-<li>Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.</li>
+<li><p>Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.</p></li>
+<li><p>Man kann die Grenzen des Konfidenzintervalls “konservativ” runden. Damit ist gemeint, dass man die Grenzen des Intervalls immer so rundet, dass durch das Runden immer ein größeres Intervall entsteht. Erhalten Sie etwa die Werte <span class="math inline">\(KI_{u} = -4.5734\)</span> und <span class="math inline">\(KI_{o} = -1.4354\)</span> für die jeweils untere und obere Grenze eines Konfidenzintervalls, könnten Sie auf das Intervall <span class="math inline">\([-4.58, -1.43]\)</span> runden. Beachten Sie dass Sie in diesem Beispiel zweimal genau gegenteilig zum kaufmännischen Runden vorgehen. Das Rational hinter dieser Überlegung ist es, keine Sicherheit durch das Runden zu suggerieren, die in den ungerundeten Werten garnicht vorhanden wäre. Wenn Sie auf zwei Nachkommastellen runden, wird der Unterschied zwischen den Rundungsverfahren in den meisten Metriken allerdings vernachlässigbar sein.</p></li>
 </ol>
 </section>
 <section id="beispiel-zweiseitig" class="level2">
@@ -355,18 +356,58 @@ Lösung
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Gegeben:</p>
-<p><span class="math inline">\(X = 139\)</span>, <span class="math inline">\(Rel_x = 0.92\)</span>, <span class="math inline">\(\alpha = 5\%\)</span>, <span class="math inline">\(SD_x = 15\)</span>, <span class="math inline">\(KI_{o}=\infty\)</span></p>
-<p>Gesucht:</p>
-<p><span class="math inline">\(KI_{u} = X - z_{1-\alpha} SD_x \sqrt{1-Rel_x}\)</span></p>
+<p><strong>Gegeben</strong>:</p>
+<ul>
+<li><p><span class="math inline">\(X = 139\)</span></p></li>
+<li><p><span class="math inline">\(Rel_x = 0.92\)</span></p></li>
+<li><p><span class="math inline">\(\alpha = .05\)</span></p></li>
+<li><p><span class="math inline">\(SD_x = 15\)</span></p></li>
+<li><p><span class="math inline">\(KI_{o}=\infty\)</span></p></li>
+</ul>
+<p><strong>Gesucht</strong>:</p>
+<p><span class="math inline">\(KI_{u} = X - z_{1-\alpha} \cdot SD_x \cdot \sqrt{1-Rel_x}\)</span></p>
 <p>Verwende <span class="math inline">\(z_{1-\alpha} \approx 1.64\)</span>, da einseitig 5% der Standardnormalverteilung abgeschnitten werden sollen.</p>
-<p><span class="math inline">\(KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132\)</span></p>
-<p>Den Wert <span class="math inline">\(139\)</span> umgibt das einseitige <span class="math inline">\(95\%\)</span>-Konfidenzintervall <span class="math inline">\([132, +\infty)\)</span>. Die untere Schwelle des Intervalls, das in <span class="math inline">\(95\%\)</span> der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von <span class="math inline">\(130\)</span> IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.</p>
+<p><span class="math inline">\(KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132.04\)</span></p>
+<p>Den Wert <span class="math inline">\(139\)</span> umgibt das einseitige <span class="math inline">\(95\%\)</span>-Konfidenzintervall <span class="math inline">\([132.04, +\infty)\)</span>. Die untere Schwelle des Intervalls, das in <span class="math inline">\(95\%\)</span> der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von <span class="math inline">\(130\)</span> IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.</p>
+<p><strong>Überprüfung in R</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gegeben:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">139</span> <span class="co"># (IQ-Wert)</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Rel_x <span class="ot">&lt;-</span> <span class="fl">0.92</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>SD_x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Konfidenzintervall berechnen</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> alpha, <span class="at">ci_direction =</span> <span class="st">"lower"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> X <span class="sc">+</span> z <span class="sc">*</span> SD_x <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>Rel_x)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   lower    upper 
+132.0215      Inf </code></pre>
+</div>
+</div>
+<p>Die Abweichung resultiert daraus, dass der z-Wert im R-Script nicht gerundet wurde:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.64</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> X <span class="sc">+</span> z <span class="sc">*</span> SD_x <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>Rel_x)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   lower    upper 
+132.0421      Inf </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95% geklärt werden, ob der 57-jährige Andonis M. ausreichend gewissenhaft ist. Die Hypothese lautet: &lt;&lt;Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe ähnlichen Alters, mindestens im durchschnittlichen Bereich (<span class="math inline">\(T \ge 40\)</span>)?&gt;&gt; Herr M.s Rohwert beträgt 3.5. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Normtabellen und Reliabitlitätsschätzer finden Sie in den Materialien zur Übung.</p>
+<p>Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95% geklärt werden, ob der 57-jährige Andonis M. ausreichend gewissenhaft ist. Die Hypothese lautet:</p>
+<blockquote class="blockquote">
+<p>Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe von Personen, die einen gültigen Führerschein besitzen, mindestens im durchschnittlichen Bereich (<span class="math inline">\(T \ge 40\)</span>)?</p>
+</blockquote>
+<p>Herr M.s Rohwert beträgt <span class="math inline">\(3.5\)</span>. Personen in der Vergleichsgruppe erzielten im Mittel einen Testwert von <span class="math inline">\(3.75\)</span> mit einer Standardabweichung von <span class="math inline">\(0.5\)</span>. Für den BFI-II liegt eine Schätzung von <span class="math inline">\(.84\)</span> für McDonald’s Omega vor. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen.</p>
+<p>Hinweis: Natürlich ist diese Aufgabe nur ein sog. <em>Toy Example</em> und kein Beispiel für eine sinvolle verkehrspsychologische Untersuchung.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -380,12 +421,70 @@ Lösung
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>T = 45 SD = 10 z = 1.64 Rel: omega = 0.84 (Alternative: alpha = 0.86) KI(u) = 38.44 KI = [38; Unendlich]</p>
+<p><strong>Gegeben</strong>:</p>
+<ul>
+<li><p>Rohwert <span class="math inline">\(X = 3.5\)</span></p></li>
+<li><p>Reliabilität <span class="math inline">\(Rel_x = .84\)</span></p></li>
+<li><p>Alpha-Fehler <span class="math inline">\(\alpha = .05\)</span></p></li>
+<li><p>Obere Konfidenzgrenze <span class="math inline">\(KI_{o} = \infty\)</span></p></li>
+<li><p>Mittelwert in der Normstichprobe <span class="math inline">\(\mu = 3.75\)</span></p></li>
+<li><p>Standardabweichung in der Normstichprobe <span class="math inline">\(\sigma = 0.5\)</span></p></li>
+</ul>
+<p><strong>Gesucht</strong>:</p>
+<p><span class="math inline">\(KI_{u} = T - z_{1-\alpha} \cdot SD_T \cdot \sqrt{1-Rel_x}\)</span></p>
+<ol type="1">
+<li>Transformation von <span class="math inline">\(X\)</span> in die <span class="math inline">\(T\)</span>-Metrik:</li>
+</ol>
+<p><span class="math inline">\(T = 50 + 10 \cdot z_x = 50 + 10 \cdot \frac{X - \mu}{\sigma} = \frac{3.5 - 3.75}{0.5} = 45\)</span></p>
+<ol start="2" type="1">
+<li>Berechnung der unteren Konfidenzgrenze:</li>
+</ol>
+<p><span class="math inline">\(z_{1-\alpha} \approx 1.64\)</span>, <span class="math inline">\(SD_T = 10\)</span></p>
+<p><span class="math inline">\(KI_{u} = T - z_{1-\alpha} \cdot SD_T \cdot \sqrt{1-Rel_x} \approx 45 - 1.64 \cdot 10 \cdot \sqrt{1-.84} \approx 38.44\)</span></p>
+<p>Den T-Wert <span class="math inline">\(45\)</span> umgibt das einseitige <span class="math inline">\(95\%\)</span>-Konfidenzintervall <span class="math inline">\([38.44, +\infty)\)</span>. Die untere Schwelle des Intervalls, das in <span class="math inline">\(95\%\)</span> der Fälle den wahren Wert umschließt, liegt nicht über dem Cutoff von <span class="math inline">\(40\)</span>. Es lässt sich nicht mit ausreichender Sicherheit sagen, dass Herr M. ausreichend gewissenhaft ist.</p>
+<p><strong>Überprüfung in R</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gegeben</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fl">3.5</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Rel_x <span class="ot">&lt;-</span> .<span class="dv">84</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">3.75</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Transformation in die T-Metrik</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>zx <span class="ot">&lt;-</span> (X <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>Tx <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>zx</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Berechnung des Konfidenzintervalls</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> alpha, <span class="at">ci_direction =</span> <span class="st">"lower"</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> Tx <span class="sc">+</span> z <span class="sc">*</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>Rel_x)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   lower    upper 
+38.42059      Inf </code></pre>
+</div>
+</div>
+<p>Die Abweichung in der zweiten Nachkommastelle entsteht durch das Runden des z-Werts:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.64</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> Tx <span class="sc">+</span> z <span class="sc">*</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>Rel_x)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>lower upper 
+38.44   Inf </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Für eine Studie sollen weibliche Jugendliche ausgewählt werden, deren Prüfungsangst in einem hier als normal definierten Bereich liegt (Mittelwert <span class="math inline">\(\pm\)</span> 2 SD). Es wird ein strenger Konfidenzkoeffizient von 99% angelegt. Die Hypothese lautet: &lt;&lt;Liegt der beobachtete z-Wert auf der Multidimensional Test Anxiety Scale (MTAS) im Vergleich zu gleichaltrigen Mädchen im durchschnittlichen Bereich (<span class="math inline">\(-2 \le z \le +2\)</span>)?&gt;&gt; Der Rohwert einer 15-jährigen Kandidatin liegt bei 42. Berechnen Sie den beobachteten z-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Die Reliabilität des MTAS wurde auf = .80 geschätzt. Normtabellen finden Sie in den Materialien zur Übung.</p>
+<p>Für eine Studie sollen weibliche Jugendliche ausgewählt werden, deren Prüfungsangst in einem hier als normal definierten Bereich liegt (Mittelwert <span class="math inline">\(\pm\)</span> 2 SD). Es wird ein Konfidenzkoeffizient von 99% angelegt. Die Hypothese lautet:</p>
+<blockquote class="blockquote">
+<p>Liegt der beobachtete z-Wert auf der Multidimensional Test Anxiety Scale (MTAS) im Vergleich zu gleichaltrigen Mädchen im durchschnittlichen Bereich (<span class="math inline">\(-2 \le z \le +2\)</span>)?</p>
+</blockquote>
+<p>Der Rohwert einer 15-jährigen Kandidatin beträgt 42. Transformieren Sie den Rohwert in einen z-Wert. Berechnen Sie anschließend das passende Konfidenzintervall um den z-Wert um die diagnostiche Hypothese zu überprüfen. Die Reliabilität des MTAS wurde auf .80 geschätzt. Mittelwert und Standardabweichung in der Referenzstichprobe betragen jeweils <span class="math inline">\(47.9\)</span> und <span class="math inline">\(10\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -399,7 +498,51 @@ Lösung
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>z = -0.59 SD = 1 z = 2.58 (wegen zweiseitiger Testung: alpha / 2) Rel: r = 0.80 KI(u) = -1,74 KI (o) = 0.56 KI = [-1.74; 0.56]</p>
+<p><strong>Gegeben</strong>:</p>
+<p>Rohwert <span class="math inline">\(X = 42\)</span></p>
+<p>Alpha-Fehler <span class="math inline">\(\alpha = .01\)</span></p>
+<p>Reliabilität <span class="math inline">\(Rel_x = .80\)</span></p>
+<p>Mittelwert in der Referenzstichprobe <span class="math inline">\(\mu = 47.9\)</span></p>
+<p>Standardabweichung in der Referenzstichprobe <span class="math inline">\(\sigma = 10\)</span></p>
+<p><strong>Gesucht</strong>:</p>
+<p><span class="math inline">\(KI = z_x \pm z_{\alpha/2} \cdot \sqrt{1 - Rel_x}\)</span></p>
+<p>Die Standardabweichung wurde hier ausgelassen, da z-Werte qua Definition eine Standardabweichung von <span class="math inline">\(1\)</span> haben. Die Multiplikation mit <span class="math inline">\(1\)</span> würde das Intervall nicht verändern.</p>
+<ol type="1">
+<li>Transformation des Rohwerts in einem z-Wert</li>
+</ol>
+<p><span class="math inline">\(z_x = \frac{X - \mu}{\sigma} = \frac{42 - 47.9}{10} = -0.59\)</span></p>
+<ol start="2" type="1">
+<li>Berechnung des zweiseitigen Konfidenzintevalls</li>
+</ol>
+<p><span class="math inline">\(KI_{o} = -0.59 + 2.58 \cdot \sqrt{1-0.8} \approx 0.57\)</span></p>
+<p><span class="math inline">\(KI_{u} = -0.59 - 2.58 \cdot \sqrt{1-0.8} \approx -1.75\)</span></p>
+<p>Die Konfidenzgrenzen wurde konservativ gerundet, sodass ein größeres Intervall resultiert.</p>
+<p>Den z-transformierten Testwert von <span class="math inline">\(-0.59\)</span> umgibt das <span class="math inline">\(99\%\)</span> Konfidenzintervall <span class="math inline">\([-1.75, 0.57]\)</span>. Die untere Schwelle des Intervalls überschreitet den unteren Cutoff von <span class="math inline">\(-2\)</span> und die obere Grenze des Intervalls unterschreitet den oberen Cutoff von <span class="math inline">\(+2\)</span>. Es kann mit ausreichender Sicherheit davon ausgegangen werden, dass der Testwert der Kandidatin im als durchschnittlich definierten Bereich liegt.</p>
+<p><strong>Überprüfung in R</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gegeben</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>Rel_x <span class="ot">&lt;-</span> <span class="fl">0.80</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">47.9</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformation des Rohwerts in einen z-Wert</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>zx <span class="ot">&lt;-</span> (X <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(zx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.59</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnung des zweiseitigen Konfidenzintervalls</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> alpha, <span class="at">ci_direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>KI <span class="ot">&lt;-</span> zx <span class="sc">+</span> z<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>Rel_x)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(KI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     lower      upper 
+-1.7419459  0.5619459 </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>

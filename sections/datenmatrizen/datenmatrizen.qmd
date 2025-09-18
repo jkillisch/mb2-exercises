@@ -17,7 +17,7 @@ Sie haben in der Vorlesung die allgemeine Datenmatrix kennengelernt:
 
 ::: {.callout-aufgabe}
 
-Suchen Sie Beispiele für Datenmatrizen, denen Sie im Bachelorstudium begegnet sind. Erklären Sie, wie Ihr Beispiel Datenmatrix mit der oben abgebildeten allgemeinen Datenmatrix zusammenhängt.
+Suchen Sie Beispiele für Datenmatrizen, denen Sie im Bachelorstudium begegnet sind. Erklären Sie, wie Ihre Beispiel-Datenmatrix mit der oben abgebildeten allgemeinen Datenmatrix zusammenhängt.
 
 :::
 

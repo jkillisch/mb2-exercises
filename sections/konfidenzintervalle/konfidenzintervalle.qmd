@@ -14,7 +14,7 @@ $$
 - $\textcolor{red}{z_{\alpha/2}}$: z-Wert  
 - $\textcolor{green}{s_e}$: Standardfehler  
 
-In der KTT, nicht aber in der IRT, ist $s_e = SD_X \cdot \sqrt{1 - Rel_X}$. Durch Einsetzen folgt daher:
+In der KTT, nicht aber in der IRT, ist der Standardfehler $s_e = SD_X \cdot \sqrt{1 - Rel_X}$. Durch Einsetzen folgt daher:
 
 $$
 KI = \textcolor{blue}{X} \;\pm\; 
@@ -28,7 +28,7 @@ $$
 
 ## Tipps
 
-1) $X$ und $SD_x$ müssen der gleichen Metrik folgen. Ist der Testwert etwa ein T-Wert, so muss $SD_x$ automatisch gleich $10$ sein. Ist der Testwert IQ-skaliert, so ist $SD_x$ automatisch $15$.
+1) $X$ und $SD_x$ müssen der gleichen Metrik folgen. Ist der Testwert etwa ein T-Wert, so muss die Standardabweichung gleich $10$ sein. Ist der Testwert IQ-skaliert, so ist die Standardabweichung der Testwerte $15$.
 
 2) Sie können die Funktion `teachIRT::get_z()` verwenden, um schnell z-Werte nachzuschauen:
 
@@ -51,6 +51,9 @@ teachIRT::get_z(ci_alpha = 0.05, ci_direction = "upper")
 ```
 
 3) Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.
+
+4) Man kann die Grenzen des Konfidenzintervalls "konservativ" runden. Damit ist gemeint, dass man die Grenzen des Intervalls immer so rundet, dass durch das Runden immer ein größeres Intervall entsteht. Erhalten Sie etwa die Werte $KI_{u} = -4.5734$ und $KI_{o} = -1.4354$ für die jeweils untere und obere Grenze eines Konfidenzintervalls, könnten Sie auf das Intervall $[-4.58, -1.43]$ runden. Beachten Sie dass Sie in diesem Beispiel zweimal genau gegenteilig zum kaufmännischen Runden vorgehen. 
+Das Rational hinter dieser Überlegung ist es, keine Sicherheit durch das Runden zu suggerieren, die in den ungerundeten Werten garnicht vorhanden wäre. Wenn Sie auf zwei Nachkommastellen runden, wird der Unterschied zwischen den Rundungsverfahren in den meisten Metriken allerdings vernachlässigbar sein.
 
 ## Beispiel zweiseitig
 
@@ -100,54 +103,195 @@ Interpretieren Sie das Intervall im Hinblick auf den typischen Schwellenwert von
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-Gegeben:
+**Gegeben**:
 	
-$X = 139$, $Rel_x = 0.92$, $\alpha = 5\%$, $SD_x = 15$, $KI_{o}=\infty$
+- $X = 139$
+
+- $Rel_x = 0.92$
+
+- $\alpha = .05$
+
+- $SD_x = 15$
+
+- $KI_{o}=\infty$
 	
-Gesucht:
+**Gesucht**:
 	
-$KI_{u} = X - z_{1-\alpha} SD_x \sqrt{1-Rel_x}$
+$KI_{u} = X - z_{1-\alpha} \cdot SD_x \cdot \sqrt{1-Rel_x}$
 	
 Verwende $z_{1-\alpha} \approx 1.64$, da einseitig 5\% der Standardnormalverteilung abgeschnitten werden sollen.
 		
-$KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132$
+$KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132.04$
 	
-Den Wert $139$ umgibt das einseitige $95\%$-Konfidenzintervall $[132, +\infty)$. Die untere Schwelle des Intervalls, das in $95\%$ der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von $130$ IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.
+Den Wert $139$ umgibt das einseitige $95\%$-Konfidenzintervall $[132.04, +\infty)$. Die untere Schwelle des Intervalls, das in $95\%$ der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von $130$ IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.
+
+**Überprüfung in R**:
+
+```{r}
+# Gegeben:
+X <- 139 # (IQ-Wert)
+Rel_x <- 0.92
+alpha <- 0.05
+SD_x <- 15
+
+# Konfidenzintervall berechnen
+z <- teachIRT::get_z(ci_alpha = alpha, ci_direction = "lower")
+KI <- X + z * SD_x * sqrt(1-Rel_x)
+
+print(KI)
+```
+
+Die Abweichung resultiert daraus, dass der z-Wert im R-Script nicht gerundet wurde:
+
+```{r}
+z[1] <- -1.64
+KI <- X + z * SD_x * sqrt(1-Rel_x)
+
+print(KI)
+```
 
 :::
 
 ::: {.callout-aufgabe}
 
-Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95\% geklärt werden, ob der 57-jährige Andonis M. ausreichend gewissenhaft ist. Die Hypothese lautet: <<Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe ähnlichen Alters, mindestens im durchschnittlichen Bereich ($T \ge 40$)?>> Herr M.s Rohwert beträgt 3.5. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Normtabellen und Reliabitlitätsschätzer finden Sie in den Materialien zur Übung.
+Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95\% geklärt werden, ob der 57-jährige Andonis M. ausreichend gewissenhaft ist. Die Hypothese lautet:
+
+>Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe von Personen, die einen gültigen Führerschein besitzen, mindestens im durchschnittlichen Bereich ($T \ge 40$)?
+
+Herr M.s Rohwert beträgt $3.5$. Personen in der Vergleichsgruppe erzielten im Mittel einen Testwert von $3.75$ mit einer Standardabweichung von $0.5$. Für den BFI-II liegt eine Schätzung von $.84$ für McDonald's Omega vor. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen.
+
+Hinweis: Natürlich ist diese Aufgabe nur ein sog. *Toy Example* und kein Beispiel für eine sinvolle verkehrspsychologische Untersuchung.
 
 :::
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-T = 45
-SD = 10
-z = 1.64
-Rel: omega = 0.84 	(Alternative: alpha = 0.86)
-KI(u) = 38.44 
-KI = [38; Unendlich]
+**Gegeben**:
+
+- Rohwert $X = 3.5$
+
+- Reliabilität $Rel_x = .84$
+
+- Alpha-Fehler $\alpha = .05$
+
+- Obere Konfidenzgrenze $KI_{o} = \infty$
+
+- Mittelwert in der Normstichprobe $\mu = 3.75$
+
+- Standardabweichung in der Normstichprobe $\sigma = 0.5$
+
+**Gesucht**:
+
+$KI_{u} = T - z_{1-\alpha} \cdot SD_T \cdot \sqrt{1-Rel_x}$
+
+1. Transformation von $X$ in die $T$-Metrik:
+
+$T = 50 + 10 \cdot z_x = 50 + 10 \cdot \frac{X - \mu}{\sigma} = \frac{3.5 - 3.75}{0.5} = 45$
+
+2. Berechnung der unteren Konfidenzgrenze:
+
+$z_{1-\alpha} \approx 1.64$, $SD_T = 10$
+
+$KI_{u} = T - z_{1-\alpha} \cdot SD_T \cdot \sqrt{1-Rel_x} \approx 45 - 1.64 \cdot 10 \cdot \sqrt{1-.84} \approx 38.44$
+
+Den T-Wert $45$ umgibt das einseitige $95\%$-Konfidenzintervall $[38.44, +\infty)$. Die untere Schwelle des Intervalls, das in $95\%$ der Fälle den wahren Wert umschließt, liegt nicht über dem Cutoff von $40$. Es lässt sich nicht mit ausreichender Sicherheit sagen, dass Herr M. ausreichend gewissenhaft ist.
+
+**Überprüfung in R**
+
+```{r}
+# Gegeben
+X <- 3.5
+Rel_x <- .84
+alpha <- .05
+mu <- 3.75
+sigma <- 0.5
+
+# 1. Transformation in die T-Metrik
+zx <- (X - mu) / sigma
+Tx <- 50 + 10*zx
+
+# 2. Berechnung des Konfidenzintervalls
+z <- teachIRT::get_z(ci_alpha = alpha, ci_direction = "lower")
+KI <- Tx + z * 10 * sqrt(1-Rel_x)
+
+print(KI)
+```
+
+Die Abweichung in der zweiten Nachkommastelle entsteht durch das Runden des z-Werts:
+
+```{r}
+z[1] <- -1.64
+KI <- Tx + z * 10 * sqrt(1-Rel_x)
+
+print(KI)
+```
 
 :::
 
 ::: {.callout-aufgabe}
 
-Für eine Studie sollen weibliche Jugendliche ausgewählt werden, deren Prüfungsangst in einem hier als normal definierten Bereich liegt (Mittelwert $\pm$ 2 SD). Es wird ein strenger Konfidenzkoeffizient von 99\% angelegt. Die Hypothese lautet: <<Liegt der beobachtete z-Wert auf der Multidimensional Test Anxiety Scale (MTAS) im Vergleich zu gleichaltrigen Mädchen im durchschnittlichen Bereich ($-2 \le z \le +2$)?>> Der Rohwert einer 15-jährigen Kandidatin liegt bei 42. Berechnen Sie den beobachteten z-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen. Die Reliabilität des MTAS wurde auf \textit{r} = .80 geschätzt. Normtabellen finden Sie in den Materialien zur Übung.
+Für eine Studie sollen weibliche Jugendliche ausgewählt werden, deren Prüfungsangst in einem hier als normal definierten Bereich liegt (Mittelwert $\pm$ 2 SD). Es wird ein Konfidenzkoeffizient von 99\% angelegt. Die Hypothese lautet:
+
+>Liegt der beobachtete z-Wert auf der Multidimensional Test Anxiety Scale (MTAS) im Vergleich zu gleichaltrigen Mädchen im durchschnittlichen Bereich ($-2 \le z \le +2$)?
+
+Der Rohwert einer 15-jährigen Kandidatin beträgt 42. Transformieren Sie den Rohwert in einen z-Wert. Berechnen Sie anschließend das passende Konfidenzintervall um den z-Wert um die diagnostiche Hypothese zu überprüfen. Die Reliabilität des MTAS wurde auf .80 geschätzt. Mittelwert und Standardabweichung in der Referenzstichprobe betragen jeweils $47.9$ und $10$.
 
 :::
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-z = -0.59
-SD = 1
-z = 2.58  (wegen zweiseitiger Testung: alpha / 2)
-Rel: r = 0.80 
-KI(u) = -1,74
-KI (o) = 0.56
-KI = [-1.74; 0.56]
+**Gegeben**:
+
+Rohwert $X = 42$
+
+Alpha-Fehler $\alpha = .01$
+
+Reliabilität $Rel_x = .80$
+
+Mittelwert in der Referenzstichprobe $\mu = 47.9$
+
+Standardabweichung in der Referenzstichprobe $\sigma = 10$
+
+**Gesucht**:
+
+$KI = z_x \pm z_{\alpha/2} \cdot \sqrt{1 - Rel_x}$
+
+Die Standardabweichung wurde hier ausgelassen, da z-Werte qua Definition eine Standardabweichung von $1$ haben. Die Multiplikation mit $1$ würde das Intervall nicht verändern.
+
+1. Transformation des Rohwerts in einem z-Wert
+
+$z_x = \frac{X - \mu}{\sigma} = \frac{42 - 47.9}{10} = -0.59$
+
+2. Berechnung des zweiseitigen Konfidenzintevalls
+
+$KI_{o} = -0.59 + 2.58 \cdot \sqrt{1-0.8} \approx 0.57$ 
+
+$KI_{u} = -0.59 - 2.58 \cdot \sqrt{1-0.8} \approx -1.75$
+
+Die Konfidenzgrenzen wurde konservativ gerundet, sodass ein größeres Intervall resultiert.
+
+Den z-transformierten Testwert von $-0.59$ umgibt das $99\%$ Konfidenzintervall $[-1.75, 0.57]$. Die untere Schwelle des Intervalls überschreitet den unteren Cutoff von $-2$ und die obere Grenze des Intervalls unterschreitet den oberen Cutoff von $+2$. Es kann mit ausreichender Sicherheit davon ausgegangen werden, dass der Testwert der Kandidatin im als durchschnittlich definierten Bereich liegt.
+
+**Überprüfung in R**
+
+```{r}
+# Gegeben
+X <- 42
+alpha <- 0.01
+Rel_x <- 0.80
+mu <- 47.9
+sigma <- 10
+
+# Transformation des Rohwerts in einen z-Wert
+zx <- (X - mu) / sigma
+print(zx)
+
+# Berechnung des zweiseitigen Konfidenzintervalls
+z <- teachIRT::get_z(ci_alpha = alpha, ci_direction = "both")
+KI <- zx + z*sqrt(1-Rel_x)
+
+print(KI)
+```
 
 :::
 
