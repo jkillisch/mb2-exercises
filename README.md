@@ -4,7 +4,7 @@ This repo contains the code to render the "Übungsheft" of the course M.B.2 I te
 
 ## Technical Notes for Contributors
 
-The website is rendered locally in the docs folder and hosted via GitHub pages. I chose not to render via GitHub actions because the project is heavily dependent on the R-package [teachIRT](github.com/jkillisch/teachIRT/), which is only hosted on my GitHub, but not on CRAN.
+The website is rendered locally in the docs folder and hosted via GitHub pages. I chose not to render via GitHub actions because the project is heavily dependent on the R-package [teachIRT](https://github.com/jkillisch/teachIRT/), which is only hosted on my GitHub, but not on CRAN.
 
 The exercise sections are contained in individual .qmd files in the folder sections. If you'd like to make corrections or add content, the best starting point would be to have a look at the respective .qmd file.
 
