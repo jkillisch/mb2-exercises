@@ -219,6 +219,7 @@ window.Quarto = {
   <li><a href="#likelihood-funktion-des-2pl-modells" id="toc-likelihood-funktion-des-2pl-modells" class="nav-link" data-scroll-target="#likelihood-funktion-des-2pl-modells">Likelihood-Funktion des 2PL-Modells</a></li>
   </ul></li>
   <li><a href="#anwendung-des-2pl-modells" id="toc-anwendung-des-2pl-modells" class="nav-link" data-scroll-target="#anwendung-des-2pl-modells">Anwendung des 2PL-Modells</a></li>
+  <li><a href="#antwortwahrscheinlichkeiten-im-3pl-modell" id="toc-antwortwahrscheinlichkeiten-im-3pl-modell" class="nav-link" data-scroll-target="#antwortwahrscheinlichkeiten-im-3pl-modell">Antwortwahrscheinlichkeiten im 3PL-Modell</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -551,7 +552,7 @@ Lösung
 <p><span class="math display">\[\begin{equation}
     P(U_1 = u_1, ..., U_m = u_m | \theta) = \prod_{j = 1}^{m} \frac{exp(u_{ij} \alpha_j (\theta_i - \beta_j))}{1 + exp(\alpha_j (\theta_i - \beta_j))}
 \end{equation}\]</span></p>
-<p>Denn der Ausdruck <span class="math inline">\(\frac{exp(u_{ij} \alpha_j (\theta_i - \beta_j))}{1 + exp(\alpha_j (\theta_i - \beta_j))\)</span> wird, je nachdem, ob man für <span class="math inline">\(u_{ij}\)</span> den Wert <span class="math inline">\(1\)</span> oder <span class="math inline">\(0\)</span> einsetzt, jeweils zur Lösungs- oder Nichtlösewahrscheinlichkeit.</p>
+<p>Denn der Ausdruck <span class="math inline">\(\frac{\exp(u_{ij} \alpha_j (\theta_i - \beta_j))}{1 + \exp(\alpha_j (\theta_i - \beta_j))}\)</span> wird, je nachdem, ob man für <span class="math inline">\(u_{ij}\)</span> den Wert <span class="math inline">\(1\)</span> oder <span class="math inline">\(0\)</span> einsetzt, jeweils zur Lösungs- oder Nichtlösewahrscheinlichkeit. Probieren Sie das gerne einmal selbst aus!</p>
 </div>
 </div>
 </div>
@@ -560,6 +561,460 @@ Lösung
 <section id="anwendung-des-2pl-modells" class="level2">
 <h2 class="anchored" data-anchor-id="anwendung-des-2pl-modells">Anwendung des 2PL-Modells</h2>
 <p>Ein 2PL-Modell wurde auf die Daten des Mathetests im Abschnitt zum Rasch-Modell gefittet. Dazu wurde der Befehl mirt des Pakets <code>mirt</code> verwendet.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mirt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: stats4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pl2 <span class="ot">&lt;-</span> <span class="fu">mirt</span>(responses, <span class="at">itemtype =</span> <span class="st">"2PL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pl2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+mirt(data = responses, itemtype = "2PL")
+
+Full-information item factor analysis with 1 factor(s).
+Converged within 1e-04 tolerance after 13 EM iterations.
+mirt version: 1.45.1 
+M-step optimizer: BFGS 
+EM acceleration: Ramsay 
+Number of rectangular quadrature: 61
+Latent density type: Gaussian 
+
+Log-likelihood = -4339.257
+Estimated parameters: 40 
+AIC = 8758.513
+BIC = 8927.097; SABIC = 8800.135
+G2 (1048535) = 3160.83, p = 1
+RMSEA = 0, CFI = NaN, TLI = NaN</code></pre>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Ist das 2PL-Modell konvergiert?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ja, das erkennen Sie an der Zeile “Converged within 1e-04 tolerance after 13 EM iterations.”</p>
+</div>
+</div>
+</div>
+<p>Mit dem Befehl coef() wurden die Parameterschätzer des 2PL-Modells extrahiert.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(pl2, <span class="at">IRTpars =</span> <span class="cn">TRUE</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$items
+        a      b g u
+X1  0.918 -2.261 0 1
+X2  0.964 -2.637 0 1
+X3  0.966 -0.701 0 1
+X4  1.106 -0.668 0 1
+X5  1.109 -3.085 0 1
+X6  1.082 -1.483 0 1
+X7  0.795 -2.619 0 1
+X8  1.172 -3.319 0 1
+X9  1.036 -1.596 0 1
+X10 0.797 -1.841 0 1
+X11 0.777 -2.072 0 1
+X12 0.821 -1.704 0 1
+X13 0.745 -0.777 0 1
+X14 0.855 -1.339 0 1
+X15 0.853 -2.568 0 1
+X16 1.310 -1.967 0 1
+X17 0.859 -2.069 0 1
+X18 1.085 -1.061 0 1
+X19 0.853 -2.843 0 1
+X20 1.367 -1.468 0 1
+
+$means
+F1 
+ 0 
+
+$cov
+   F1
+F1  1</code></pre>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wofür stehen die Spalten a und b?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>a ist der Diskriminationsparameter</p>
+<p>b ist die Itemschwierigkeit</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Lesen Sie den Diskriminationsparameter des leichtesten Items ab.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">coef</span>(pl2, <span class="at">IRTpars =</span> <span class="cn">TRUE</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> coefs<span class="sc">$</span>items</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>coefs[<span class="fu">which.min</span>(coefs[, <span class="st">"b"</span>]), <span class="st">"a"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.172313</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Vergleichen Sie die geschätzten Schwierigkeitsparameter des 2PL-Modells mit denen des Rasch-Modells in der person-item map. Was könnte der Grund dafür sein, dass alle Itemschwierigkeiten im 2PL-Modell negativ sind, während sie im Rasch-Modell um <span class="math inline">\(0\)</span> herum verteilt sind?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In <code>mirt</code> wird zur Identifikation der latenten Skala nicht der Mittelwert der Itemparameter, sondern der Mittelwert der erwarteten Verteilung der Personenparameter auf <span class="math inline">\(0\)</span> gesetzt.</p>
+<p>Im folgenden Code extrahieren wir die Personenparameter und überprüfen, ob ihr Mittelwert tatsächlich <span class="math inline">\(0\)</span> ist:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">fscores</span>(pl2)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           F1 
+-0.0002373066 </code></pre>
+</div>
+</div>
+<p>Fast! Der Identifikationsconstraint wird nicht auf die geschätzten Personenparameter angewendet, sondern nur auf die latente Verteilung im Modell, sodass die individuellen Schätzungen davon abweichen können. Daher kann der Mittelwert etwas von <span class="math inline">\(0\)</span> abweichen.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="antwortwahrscheinlichkeiten-im-3pl-modell" class="level2">
+<h2 class="anchored" data-anchor-id="antwortwahrscheinlichkeiten-im-3pl-modell">Antwortwahrscheinlichkeiten im 3PL-Modell</h2>
+<p>Sie haben in der Vorlesung das 3PL-Modell kennengelernt.</p>
+<div class="callout-aufgabe">
+<p>Wie unterscheidet sich die Formel der Lösungswahrscheinlichkeit im 3PL-Modell von der Formel der Lösungswahrscheinlichkeit im 2PL-Modell?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Zusätzlich zum Diskriminationsparameter gibt es einen Rateparameter.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Suchen Sie die Formel der Lösungswahrscheinlichkeit im 3PL-Modell in der Formelsammlung.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{equation}
+    P(U_{ij} = 1 |&nbsp;\theta_i, \beta_j, \alpha_j, \gamma_j) =
+    \gamma_j + (1 - \gamma_j) \cdot \frac{e^{(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+\end{equation}\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie die Wahrscheinlichkeit des Antwortvektors <span class="math inline">\(\mathbf{u}_{i.} = [1, 1, 0]\)</span> für den folgenden Itempool bei <span class="math inline">\(\theta = -0.5\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">j</th>
+<th style="text-align: right;"><span class="math inline">\(\alpha\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\beta\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\gamma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">-0.5</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Bei Item <span class="math inline">\(1\)</span> müssen Sie nicht rechnen, da <span class="math inline">\(\gamma = 0\)</span> und <span class="math inline">\(\theta = \beta_1\)</span>.</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{i1} = 1 | \theta_i = -0.5) = \tfrac{1}{2}
+\end{equation}\]</span></p>
+<p>Items <span class="math inline">\(2\)</span> und <span class="math inline">\(3\)</span> erfordern die vollständige Formel des 3PL-Modells.</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{i2} = 1 | \theta_i = -0.5)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+= 0.2 + 0.8 \cdot \frac{exp(0.8 (-0.5 - 1))}{1 + exp(0.8 (-0.5 - 1))}
+\end{equation}\]</span></p>
+<p>Bei Item <span class="math inline">\(3\)</span> müssen Sie darauf achten, dass das Item nicht gelöst wurde.</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{i3} = 1 | \theta_i = -0.5)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+= 0.1 + 0.9 \cdot \frac{exp(1.2 (-0.5))}{1 + exp(1.2 (-0.5))}
+\end{equation}\]</span></p>
+<p>Und es ist <span class="math inline">\(P(U_{i3} = 0 | \theta_i = -0.5) = 1 - P(U_{i3} = 1 | \theta_i = -0.5)\)</span>.</p>
+<p>Zur Berechnung der Wahrscheinlichkeit des ganzen Antwortvektors verwenden wir die Annahme lokaler stochastischer Unabhängigkeit:</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{i1} = 1, U_{i2} = 1, U_{i3} = 0 | \theta=-0.5)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+= \prod_{j = 1}^{3} P(U_{ij} = u_{ij} |&nbsp;\theta_i = -0.5)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+= \frac{1}{2} \cdot \Big( 0.2 + 0.8 \cdot \frac{exp(0.8 (-0.5 - 1))}{1 + exp(0.8 (-0.5 - 1))} \Big) \cdot \Big(1 - (0.1 + 0.9 \cdot \frac{exp(1.2 (-0.5))}{1 + exp(1.2 (-0.5))}) \Big)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\approx .11
+\end{equation}\]</span></p>
+<p>Wir überprüfen in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fähigkeitsparameter im Objekt theta speichern</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.5</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Die erste Lösungswahrschienlichkeit folgt aus dem Rasch-Modell bei theta = beta</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösungswahrscheinlichkeit von Item 2 berechnen</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_3pl</span>(</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> theta,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="dv">1</span>,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösungswahrscheinlichkeit von Item 3 berechnen</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_3pl</span>(</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> theta,</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">1.2</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="dv">0</span>,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.1</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Gemeinsame Wahrscheinlichkeit des Antwortvektors berechnen</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">&lt;-</span> p1<span class="sc">*</span>p2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p3)</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1119123</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Im Plot sehen Sie die ICC eines Items im 3PL-Modell mit <span class="math inline">\(\beta = 0\)</span>, <span class="math inline">\(\alpha = 1\)</span>, und <span class="math inline">\(\gamma = 0.2\)</span>. Zeichnen Sie die Nichtlösewahrscheinlichkeit ein.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_3pl</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="dv">0</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pl2_pl3_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Wenn Sie wissen, dass sich Wahrscheinlichkeiten <span class="math inline">\(P(U_{ij} = 1 | \theta_i)\)</span> und <span class="math inline">\(P(U_{ij} = 0 | \theta_i)\)</span> für jeden Wert von <span class="math inline">\(\theta_i\)</span> zu <span class="math inline">\(1\)</span> summieren, können Sie die Nicht-Lösewahrscheinlichkeit am Graphen rekonstruieren.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pl2_pl3_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Welchen Wert erhalten Sie für <span class="math inline">\(\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)\)</span>? Interpretieren Sie das Ergebnis.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>todo</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Erklären Sie mit eigenen Worten, was die untere Asymptote der ICC im 3PL-Modell inhaltlich bedeutet.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>todo</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Recherchieren Sie: Gibt es ein 4PL-Modell? Was könnte der vierte Parameter bedeuten?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>todo</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Kreuzen Sie in der folgenden Tabelle an, wenn ein Parameter im Modell frei geschätzt wird.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>todo</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Welche Werte können der <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span>, und <span class="math inline">\(\theta\)</span> Parameter im 3PL-Modell minimal und maximal annehmen?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>todo</p>
+</div>
+</div>
+</div>
 
 
 </section>
