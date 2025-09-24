@@ -1,0 +1,119 @@
+# IRT-Modelle für Polytome Daten #
+
+## [Generalized] Partial Credit Model ([G]PCM)
+
+::: {.callout-aufgabe}
+$n = 4$ Personen bearbeiten $m = 3$ Items im 4-Punkt Ratingskalenformat. Notieren Sie eine mögliche Datenmatrix, $\mathbf{U}$, für diesen Fall.
+:::
+
+Sie haben in der Vorlesung das PCM kennengelernt. Im PCM wird angenommen, dass die Wahrscheinlichkeiten für aufeinanderfolgende Schritte der Ratingskala Rasch-Modellen folgen:
+
+\begin{equation}
+    P(U_{ij} = c | u_{ij} \in \{c-1, c\}, \theta_i, \delta_{jc}) = 
+    \frac{
+        exp( \theta_i - \delta_{jc} )
+    }{
+        1 + exp( \theta_i - \delta_{jc} )
+    }
+\end{equation}
+
+::: {.callout-aufgabe}
+
+Was bedeuten die folgenden Wahrscheinlichkeiten inhaltlich?
+
+- $P(U_{ij} = 3 | u_{ij} \in \{3-1, 3\}, \theta_i, \delta_{j3})$
+- $P(U_{ij} = c | u_{ij} \in \{c-1, c\}, \theta_i, \delta_{jc})$, mit $c = 1$
+
+:::
+
+Gegeben ist ein Item mit $\boldsymbol{\delta} = [-0.3, 1.2, 0.8]$. Berechnen Sie die Wahrscheinlichkeit für den Sprung zwischen den Kategorien (1) $0$ und $1$, (2) $1$ und $2$, (3) $2$ und $3$ bei $\theta = 0$.
+
+Aus der Gleichung bedingter Wahrscheinlichkeiten im PCM lassen sich unbedingte Kategorienwahrscheinlichkeiten herleiten.
+
+\begin{equation}
+    P(U_{ij} = c | \theta_i, \boldsymbol{\delta}_j) = 
+    \frac{
+        exp( \sum_{k = 0}^{c} (\theta_i - \delta_{jk}) )
+    }{
+        \sum_{l = 0}^{m^{\star}_j}[exp(\sum_{k = 0}^{l} (\theta_i - \delta_{jk}))]
+    }
+\end{equation}
+
+mit $\sum_{k = 0}^{0} (\theta_i - \delta_{jk}) \equiv 0$.
+
+::: {.callout-aufgabe}
+
+Suchen die Formel für unbedingte Kategorienwahrscheinlichkeiten im PCM in der Formelsammlung.
+
+:::
+
+::: {.callout-aufgabe}
+
+Berechnen Sie $P(U_{ij} = 2 | \theta_i, \boldsymbol{\delta})$ für die Parameterwerte aus Aufgabe (c) bei $\theta = 1$.
+
+:::
+
+::: {.callout-aufgabe}
+
+Die Schwellenparameter des Items in Aufgabe (c) sind nicht geordnet. Welche Besonderheit ergibt sich daraus für die abgebildeten CCCs?
+
+:::
+
+::: {.callout-aufgabe}
+
+Lesen Sie die Wahrscheinlichkeit ab, dass eine Person mit $\theta = -1.5$ die niedrigste Antwortkategorie wählt.
+
+:::
+
+::: {.callout-aufgabe}
+
+Sie können die Abbildung mit dem Befehl `teachIRT::icc_pcm(delta = c(-0.3, 1.2, 0.8))` nachstellen. Probieren Sie aus, was passiert, wenn Sie die Werte verändern.
+
+:::
+
+::: {.callout-aufgabe}
+
+Der `mirt` Befehl, um ein PCM zu schätzen ist `mirt::mirt(data , 1, itemtype = \enquote{Rasch})`. Das ist der gleiche Befehl, den man verwendet, um ein Rasch-Modell mit mirt zu schätzen. Wie erkennt mirt, dass es sich um ein PCM handeln muss?
+
+:::
+
+::: {.callout-aufgabe}
+
+Plotten Sie ICCs für ein GPCM mit Hilfe des Befehls `teachIRT::icc_gpcm(alpha = 0, delta = c(-2.5, 0, 2.5))`.
+
+Erhöhen Sie sukzessive den $\alpha$ Parameter. Wie verändern sich die dargestellten Funktionen und was bedeutet die Veränderung des Parameters inhaltlich?
+
+:::
+
+## Graded Response Model
+
+Ein GRM wurde genutzt, um ein Ratingskalenitem zu skalieren. Es ergeben sich die folgenden OCCs und CCCs:
+
+::: {.callout-aufgabe}
+
+$\alpha = 1.2$. Lesen Sie die übrigen Itemparameter ab.
+
+:::
+
+::: {.callout-aufgabe}
+
+$n = 200$ Testand:innen beantworten das Item. Die Testand:innen haben latente Fähigkeitswerte zwischen $-1.5$ und $1.5$. Welche Kategorie werden die Testand:innen erwartungsgemäß am häufigsten und welche am seltensten wählen?
+
+:::
+
+::: {.callout-aufgabe}
+
+Eine Person hat eine latente Fähigkeit von $\theta = 1$. Lesen Sie die folgenden Werte ab:
+
+- Die Wahrscheinlichkeit, dass die Person in der niedrigsten Kategorie antwortet
+- Die Wahrscheinlichkeit, dass die Person mindestens in der niedrigsten Kategorie antwortet
+- $P(U = 3 | \theta = 1, \boldsymbol{\delta})$
+- $P(U \geq 1 | \theta = 1, \boldsymbol{\delta})$
+
+:::
+
+::: {.callout-aufgabe}
+
+Suchen Sie die Formel zur Berechnung von Kategorienwahrscheinlichkeiten im GRM in der Formelsammlung. Berechnen Sie mit Hilfe der Formel $P(U = 4 | \theta = 0, \alpha = 1.5, \boldsymbol{\delta} = [-2, -0.5, 1, 1.2])$.
+
+:::

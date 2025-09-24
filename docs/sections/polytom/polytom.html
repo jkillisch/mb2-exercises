@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>datenmatrizen – Übungsheft</title>
+<title>polytom – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -181,8 +181,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#psychometrische-datenmatrizen" id="toc-psychometrische-datenmatrizen" class="nav-link active" data-scroll-target="#psychometrische-datenmatrizen">Psychometrische Datenmatrizen</a></li>
-  <li><a href="#summenscores" id="toc-summenscores" class="nav-link" data-scroll-target="#summenscores">Summenscores</a></li>
+  <li><a href="#irt-modelle-für-polytome-daten" id="toc-irt-modelle-für-polytome-daten" class="nav-link active" data-scroll-target="#irt-modelle-für-polytome-daten">IRT-Modelle für Polytome Daten</a>
+  <ul class="collapse">
+  <li><a href="#generalized-partial-credit-model-gpcm" id="toc-generalized-partial-credit-model-gpcm" class="nav-link" data-scroll-target="#generalized-partial-credit-model-gpcm">[Generalized] Partial Credit Model ([G]PCM)</a></li>
+  <li><a href="#graded-response-model" id="toc-graded-response-model" class="nav-link" data-scroll-target="#graded-response-model">Graded Response Model</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -192,290 +195,87 @@ window.Quarto = {
 
 
 
-<section id="psychometrische-datenmatrizen" class="level1">
-<h1>Psychometrische Datenmatrizen</h1>
-<p>Um die später folgenden Modellgleichungen der IRT zu verstehen, ist es wichtig, flüssig mit der allgemeinen Datenmatrix umgehen zu können. In den folgenden Aufgaben üben Sie, Einträge sowie Zeilen- und Spaltenvektoren der allgemeinen Datenmatrix formal zu beschreiben.</p>
-<p>Sie haben in der Vorlesung die allgemeine Datenmatrix kennengelernt:</p>
+<section id="irt-modelle-für-polytome-daten" class="level1">
+<h1>IRT-Modelle für Polytome Daten</h1>
+<section id="generalized-partial-credit-model-gpcm" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-partial-credit-model-gpcm">[Generalized] Partial Credit Model ([G]PCM)</h2>
+<div class="callout-aufgabe">
+<p><span class="math inline">\(n = 4\)</span> Personen bearbeiten <span class="math inline">\(m = 3\)</span> Items im 4-Punkt Ratingskalenformat. Notieren Sie eine mögliche Datenmatrix, <span class="math inline">\(\mathbf{U}\)</span>, für diesen Fall.</p>
+</div>
+<p>Sie haben in der Vorlesung das PCM kennengelernt. Im PCM wird angenommen, dass die Wahrscheinlichkeiten für aufeinanderfolgende Schritte der Ratingskala Rasch-Modellen folgen:</p>
 <p><span class="math display">\[\begin{equation}
-    \mathbf{U} =
-    \begin{bmatrix}
-        u_{11} &amp; \dots &amp; u_{1j} &amp; \dots &amp; u_{1m} \\
-        \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        u_{i1} &amp; \dots &amp; u_{ij} &amp; \dots &amp; u_{im} \\
-        \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        u_{n1} &amp; \dots &amp; u_{nj} &amp; \dots &amp; u_{nm}
-    \end{bmatrix}
+    P(U_{ij} = c | u_{ij} \in \{c-1, c\}, \theta_i, \delta_{jc}) =
+    \frac{
+        exp( \theta_i - \delta_{jc} )
+    }{
+        1 + exp( \theta_i - \delta_{jc} )
+    }
 \end{equation}\]</span></p>
 <div class="callout-aufgabe">
-<p>Suchen Sie Beispiele für Datenmatrizen, denen Sie im Bachelorstudium begegnet sind. Erklären Sie, wie Ihre Beispiel-Datenmatrix mit der oben abgebildeten allgemeinen Datenmatrix zusammenhängt.</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Mögliches Beispiel: Fragebogendatensatz aus dem Empra.</p>
-<p>In den Zeilen befanden sich <span class="math inline">\(n = 143\)</span> Personen und in den Spalten befanden sich die <span class="math inline">\(m = 60\)</span> Items des BFI-II. Aufgrund der Verwendung einer 5-Punkt Ratingskala, hatten die Einträge der Matrix jeweils einen der Werte <span class="math inline">\(0, 1, 2, 3, 4\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="callout-aufgabe">
-<p>Wofür stehen die Zeilen und Spalten der allgemeinen Datenmatrix bei testtheoretischen Anwendungen?</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Zeilen: Personen</p>
-<p>Spalten: Items</p>
-</div>
-</div>
-</div>
-<div class="callout-aufgabe">
-<p>Wie viele Zeilen und Spalten hat die allgemeine Datenmatrix?</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(n\)</span> Zeilen</p>
-<p><span class="math inline">\(m\)</span> Spalten</p>
-<p>Die Antwort 3 Zeilen und 3 Spalten ist nicht richtig.</p>
-</div>
-</div>
-</div>
-<div class="callout-aufgabe">
-<p>Beschreiben Sie die folgenden Einträge der allgemeinen Datenmatrix symbolisch:</p>
+<p>Was bedeuten die folgenden Wahrscheinlichkeiten inhaltlich?</p>
 <ul>
-<li>Den Matrizeintrag in Zeile <span class="math inline">\(4\)</span> und Spalte <span class="math inline">\(8\)</span></li>
-<li>Die Antwort von Person <span class="math inline">\(102\)</span> auf Item <span class="math inline">\(16\)</span></li>
-<li>Die Antwort der ersten Person auf das erste Item</li>
-<li>Die Antwort der letzten Person auf das letzte Item</li>
-<li>Die Antwort einer beliebigen Person auf das letzte Item</li>
-<li>Die Antwort der letzten Person auf ein beliebiges Item</li>
+<li><span class="math inline">\(P(U_{ij} = 3 | u_{ij} \in \{3-1, 3\}, \theta_i, \delta_{j3})\)</span></li>
+<li><span class="math inline">\(P(U_{ij} = c | u_{ij} \in \{c-1, c\}, \theta_i, \delta_{jc})\)</span>, mit <span class="math inline">\(c = 1\)</span></li>
 </ul>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p><span class="math inline">\(u_{48}\)</span></p></li>
-<li><p><span class="math inline">\(u_{102 \hspace{4pt} 16}\)</span></p></li>
-<li><p><span class="math inline">\(u_{11}\)</span></p></li>
-<li><p><span class="math inline">\(u_{nm}\)</span></p></li>
-<li><p><span class="math inline">\(u_{im}\)</span></p></li>
-<li><p><span class="math inline">\(u_{nj}\)</span></p></li>
-</ul>
-</div>
-</div>
-</div>
-<p>Statt einzelner Werte kann man auch ganze Zeilen oder Spalten der allgemeinen Datenmatrix extrahieren. Man nennt ganze Zeilen und Spalten der allgemeinen Datenmatrix auch Zeilen- und Spaltenvektoren. Beide Arten von Vektoren notieren wir mit kleinen fett gedruckten Buchstaben. <span class="math inline">\(\mathbf{u}_{.2}\)</span> bezeichnet etwa die gesamte zweite Spalte der allgemeinen Datenmatrix. Mit dem Punkt vor der <span class="math inline">\(2\)</span> macht man kenntlich, dass alle Zeilenelemente extrahiert werden sollen. Umgekehrt bezeichnet <span class="math inline">\(\mathbf{u}_{2.}\)</span> die gesamte zweite Zeile der allgemeinen Datenmatrix.</p>
-<p>Notieren Sie die folgenden Zeilen und Spaltenvektoren der allgemeinen Datenmatrix symbolisch:</p>
-<div class="callout-aufgabe">
-<ul>
-<li>Die erste Spalte der allgemeinen Datenmatrix</li>
-<li>Die dritte Zeile der allgemeinen Datenmatrix</li>
-<li>Eine beliebige Zeile der allgemeinen Datenmatrix</li>
-<li>Die letzte Spalte der allgemeinen Datenmatrix</li>
-</ul>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p><span class="math inline">\(\mathbf{u}_{.1}\)</span></p></li>
-<li><p><span class="math inline">\(\mathbf{u}_{3.}\)</span></p></li>
-<li><p><span class="math inline">\(\mathbf{u}_{i.}\)</span></p></li>
-<li><p><span class="math inline">\(\mathbf{u}_{.m}\)</span></p></li>
-</ul>
-</div>
-</div>
-</div>
-<p>Als abschließenden Hinweis möchten wir noch anmerken, dass die Herangehensweise, Datenvektoren und Datenmatrizen fett zu schreiben sowie Indizes bei Zeilen- und Spaltenvektoren durch Punkte zu ersetzen, nicht <em>die eine</em> richtige Notation ist. Andere Autor:innen definieren Vektoren zum Beispiel grundsätzlich als Spaltenvektoren, z.B. <span class="math inline">\(x \in \mathbb{R}^n\)</span>. Nur durch Transposition würde dann aus <span class="math inline">\(x\)</span> ein Zeilenvektor: <span class="math inline">\(x^T \in \mathbb{R}^{1 \times n}\)</span>.</p>
-</section>
-<section id="summenscores" class="level1">
-<h1>Summenscores</h1>
-<p>Aus der Vorlesung kennen Sie eine beispielhafte Datenmatrix für einen Fähigkeitstest mit <span class="math inline">\(6\)</span> Items. Die folgende Datenmatrix ist ebenfalls eine beispielhafte Datenmatrix für einen Fähigkeitstest mit <span class="math inline">\(6\)</span> Items. Sie enthält lediglich andere Werte.</p>
+<p>Gegeben ist ein Item mit <span class="math inline">\(\boldsymbol{\delta} = [-0.3, 1.2, 0.8]\)</span>. Berechnen Sie die Wahrscheinlichkeit für den Sprung zwischen den Kategorien (1) <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span>, (2) <span class="math inline">\(1\)</span> und <span class="math inline">\(2\)</span>, (3) <span class="math inline">\(2\)</span> und <span class="math inline">\(3\)</span> bei <span class="math inline">\(\theta = 0\)</span>.</p>
+<p>Aus der Gleichung bedingter Wahrscheinlichkeiten im PCM lassen sich unbedingte Kategorienwahrscheinlichkeiten herleiten.</p>
 <p><span class="math display">\[\begin{equation}
-        \label{eq:databin}
-        \textbf{U} =
-        \begin{bmatrix}
-            1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
-            1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
-            0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
-            1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
-        \end{bmatrix}
-    \end{equation}\]</span></p>
-<p>Der Summenscore wurde allgemein definiert als <span class="math inline">\(\sum_{j = 1}^{m} u_{ij} = r_{i}\)</span></p>
+    P(U_{ij} = c | \theta_i, \boldsymbol{\delta}_j) =
+    \frac{
+        exp( \sum_{k = 0}^{c} (\theta_i - \delta_{jk}) )
+    }{
+        \sum_{l = 0}^{m^{\star}_j}[exp(\sum_{k = 0}^{l} (\theta_i - \delta_{jk}))]
+    }
+\end{equation}\]</span></p>
+<p>mit <span class="math inline">\(\sum_{k = 0}^{0} (\theta_i - \delta_{jk}) \equiv 0\)</span>.</p>
 <div class="callout-aufgabe">
-<p>Berechnen Sie <span class="math inline">\(r_3\)</span></p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-r_3 = \sum_{j=1}^{6} u_{3j} = u_{31} + u_{32} + u_{33} + u_{34} + u_{35} + u_{36}
-\]</span></p>
-<p><span class="math display">\[
-= 0 + 1 + 1 + 1 + 1 + 1 = 5
-\]</span></p>
-<p><span class="math display">\[
-r_3 = 5
-\]</span></p>
-</div>
-</div>
+<p>Suchen die Formel für unbedingte Kategorienwahrscheinlichkeiten im PCM in der Formelsammlung.</p>
 </div>
 <div class="callout-aufgabe">
-<p>Berechnen Sie die Scoreverteilung und stellen Sie diese tabellarisch dar.</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<span class="math display">\[\begin{array}{c|c}
-\text{Person } i &amp; r_i = \sum_{j=1}^6 u_{ij} \\ \hline
-1 &amp; 1+1+1+1+1+1 = 6 \\
-2 &amp; 1+1+1+0+1+0 = 4 \\
-3 &amp; 0+1+1+1+1+1 = 5 \\
-4 &amp; 1+0+0+0+1+1 = 3 \\
-\end{array}\]</span>
-<span class="math display">\[\begin{array}{c|c|c|c}
-r_i &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ \hline
-\text{Häufigkeit} &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
-\end{array}\]</span>
-</div>
-</div>
+<p>Berechnen Sie <span class="math inline">\(P(U_{ij} = 2 | \theta_i, \boldsymbol{\delta})\)</span> für die Parameterwerte aus Aufgabe (c) bei <span class="math inline">\(\theta = 1\)</span>.</p>
 </div>
 <div class="callout-aufgabe">
-<p>Beurteilen Sie anhand der Scoreverteilung die Passung des Tests zur Stichprobe. Verwenden Sie einen der Begriffe aus der Vorlesung: Gleichmäßig, Deckeneffekt, Bodeneffekt</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Gleichmäßig</p>
-</div>
-</div>
-</div>
-<p>Summenscores werden oft als Maß für die Fähigkeit oder Traitausprägung von Personen verwendet.</p>
-<div class="callout-aufgabe">
-<p>Wie wird diese Verrechnung in der Klassischen Testtheorie gerechtfertigt?</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Lösung
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Es wird angenommen, dass sich die Varianz von Testantworten in einen Anteil wahrer Varianz und einen Anteil Fehlervarianz zerlegen lässt (Grundgleichung der KTT). In Verbindung mit der Annahme, dass der Erwartungswert der Fehlerverteilung Null beträgt folgt, dass der relative Einfluss des Fehlers sinkt, umso mehr Items miteinander durch Summierung der Testantworten verrechnet werden.</p>
-</div>
-</div>
+<p>Die Schwellenparameter des Items in Aufgabe (c) sind nicht geordnet. Welche Besonderheit ergibt sich daraus für die abgebildeten CCCs?</p>
 </div>
 <div class="callout-aufgabe">
-<p>Finden Sie Argumente für und gegen die Verwendung von Summenscores in der diagnostischen Praxis.</p>
+<p>Lesen Sie die Wahrscheinlichkeit ab, dass eine Person mit <span class="math inline">\(\theta = -1.5\)</span> die niedrigste Antwortkategorie wählt.</p>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="callout-aufgabe">
+<p>Sie können die Abbildung mit dem Befehl <code>teachIRT::icc_pcm(delta = c(-0.3, 1.2, 0.8))</code> nachstellen. Probieren Sie aus, was passiert, wenn Sie die Werte verändern.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Lösung
+<div class="callout-aufgabe">
+<p>Der <code>mirt</code> Befehl, um ein PCM zu schätzen ist <code>mirt::mirt(data , 1, itemtype = \enquote{Rasch})</code>. Das ist der gleiche Befehl, den man verwendet, um ein Rasch-Modell mit mirt zu schätzen. Wie erkennt mirt, dass es sich um ein PCM handeln muss?</p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<div class="callout-aufgabe">
+<p>Plotten Sie ICCs für ein GPCM mit Hilfe des Befehls <code>teachIRT::icc_gpcm(alpha = 0, delta = c(-2.5, 0, 2.5))</code>.</p>
+<p>Erhöhen Sie sukzessive den <span class="math inline">\(\alpha\)</span> Parameter. Wie verändern sich die dargestellten Funktionen und was bedeutet die Veränderung des Parameters inhaltlich?</p>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Argumente für Summenscores:</strong></p>
+</section>
+<section id="graded-response-model" class="level2">
+<h2 class="anchored" data-anchor-id="graded-response-model">Graded Response Model</h2>
+<p>Ein GRM wurde genutzt, um ein Ratingskalenitem zu skalieren. Es ergeben sich die folgenden OCCs und CCCs:</p>
+<div class="callout-aufgabe">
+<p><span class="math inline">\(\alpha = 1.2\)</span>. Lesen Sie die übrigen Itemparameter ab.</p>
+</div>
+<div class="callout-aufgabe">
+<p><span class="math inline">\(n = 200\)</span> Testand:innen beantworten das Item. Die Testand:innen haben latente Fähigkeitswerte zwischen <span class="math inline">\(-1.5\)</span> und <span class="math inline">\(1.5\)</span>. Welche Kategorie werden die Testand:innen erwartungsgemäß am häufigsten und welche am seltensten wählen?</p>
+</div>
+<div class="callout-aufgabe">
+<p>Eine Person hat eine latente Fähigkeit von <span class="math inline">\(\theta = 1\)</span>. Lesen Sie die folgenden Werte ab:</p>
 <ul>
-<li><p>Leichte Berechnung und in der Praxis weit verbreitet</p></li>
-<li><p>Plausible Annahme, dass der unsystematische Fehler durch Aggregation asymptotisch gegen Null geht</p></li>
-<li><p>Leicht nachvollziehbar, auch für Nicht-Psycholog:innen (z. B. bei juristischer Relevanz von Testergebnissen)</p></li>
-</ul>
-<p><strong>Argumente gegen Summenscores:</strong></p>
-<ul>
-<li><p>Alle Items werden gleichgewichtet, auch wenn es oft plausibel erscheint, dass sich Items in ihrem Beitrag zur Merkmalsmessung unterscheiden</p></li>
-<li><p>Annahme konstanter Reliabilität entlang des Fähigkeitkontinuums</p></li>
-<li><p>Keine Berücksichtung systematischen Fehlers</p></li>
+<li>Die Wahrscheinlichkeit, dass die Person in der niedrigsten Kategorie antwortet</li>
+<li>Die Wahrscheinlichkeit, dass die Person mindestens in der niedrigsten Kategorie antwortet</li>
+<li><span class="math inline">\(P(U = 3 | \theta = 1, \boldsymbol{\delta})\)</span></li>
+<li><span class="math inline">\(P(U \geq 1 | \theta = 1, \boldsymbol{\delta})\)</span></li>
 </ul>
 </div>
+<div class="callout-aufgabe">
+<p>Suchen Sie die Formel zur Berechnung von Kategorienwahrscheinlichkeiten im GRM in der Formelsammlung. Berechnen Sie mit Hilfe der Formel <span class="math inline">\(P(U = 4 | \theta = 0, \alpha = 1.5, \boldsymbol{\delta} = [-2, -0.5, 1, 1.2])\)</span>.</p>
 </div>
-</div>
-<p>Die Argumente gegen Summenscores motivieren die Verwendung von IRT Modellen.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

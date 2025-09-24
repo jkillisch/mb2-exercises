@@ -26,6 +26,8 @@ website:
           text: 6. Das Rasch-Modell
         - href: sections/pl2_pl3/pl2_pl3.qmd
           text: 7. 2PL- und 3PL-Modelle
+        - href: sections/polytom/polytom.qmd
+          text: 8. IRT-Modelle für Polytome Daten
 
 format:
   html:
