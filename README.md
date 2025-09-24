@@ -11,3 +11,5 @@ The exercise sections are contained in individual .qmd files in the folder secti
 The FAQ section of the webpage is located in the upper layer file index.qmd.
 
 Last, if you'd like to add a complete section, create a new subdirectory containing a .qmd file in the sections folder and link to it in the YAML \_quarto.yml. Note that the YAML is sensitive to indents.
+
+To make the changes visible on the website, you must render the page using `quarto render` in the Terminal or `quarto::quarto_render()` in R. It will then take a moment until the changes will be visible.
