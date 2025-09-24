@@ -2,7 +2,7 @@
 
 ## Antwortwahrscheinlichkeiten im 2PL-Modell
 
-Sie haben in der Vorlesung das 2PL-Modell kennengelernt.
+In der Vorlesung haben Sie das 2PL-Modell kennengelernt. Wie beim Rasch-Modell definiert auch das 2PL-Modell eine Lösungswahrscheinlichkeit, aus der sich die Likelihood-Funktion des Modells ableitet.
 
 ::: {.callout-aufgabe}
 
@@ -10,12 +10,24 @@ Wie unterscheidet sich die Formel der Lösungswahrscheinlichkeit im 2PL-Modell v
 
 :::
 
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es gibt einen Itemdiskriminationsparameter $\alpha_i$.
+
+Implizit gibt es den auch schon im Rasch-Modell. Er wird nur nicht frei geschätzt, sondern ist für alle Items gleich $1$.
+
+:::
+
+Da Sie in der Prüfung mit der Formelsammlung arbeiten müssen, ist es sinnvoll, sich schon beim Bearbeiten der Übungsaufgaben in der Formelsammlung zu orientieren.
+
 ::: {.callout-aufgabe}
 
 Suchen Sie die Formel der Lösungswahrscheinlichkeit im 2PL-Modell in der Formelsammlung.
 
 :::
 	
+In der nächsten Aufgabe üben Sie, die Formel für die Lösungswahrscheinlichkeit anzuwenden. Die dritte Aufgabe setzt voraus, dass Sie, wie im Kapitel zu psychometrischen Datenmatrizen gelernt, Werte aus Datenvektoren indizieren können.
+
 ::: {.callout-aufgabe}
 
 Berechnen Sie
@@ -25,25 +37,89 @@ Berechnen Sie
 - $P(U_{i3} = u_{i3} | \theta_i = 0, \beta_j = -0.5, \alpha_j = 1.2)$, mit $\mathbf{u}_{i.} = [0, 1, 1]$
 
 :::
-	
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+teachIRT::p_2pl(theta = 0.7, alpha = 1, beta = 0.5)
+```
+
+Bei der zweiten Aufgabe ist es wichtig, dass es sich um eine Nicht-Lösewahrscheinlichkeit handelt: $P(\textcolor{red}{U_{ij} = 0} | \theta_i = -2, \beta_j = -1.5, \alpha_j = 1.3)$
+
+```{r}
+1 - teachIRT::p_2pl(theta = -2, alpha = 1.3, beta = -1.5)
+```
+
+Für die dritten Aufgabe müssen Sie sich an das Kapitel zu psychometrischen Datenmatrizen erinnern. Hier ist die Wahrscheinlichkeit gefragt, dass eine Person $i$ diejenige Antwort gibt, die wir im Antwortvektor finden. An der dritten Stelle des Antwortvektors steht eine $1$. Sie müssen also die Lösungswahrscheinlichkeit berechnen.
+
+```{r}
+teachIRT::p_2pl(theta = 0, alpha = 1.2, beta = -0.5)
+```
+:::
+
+Die Abbildung zeigt ICCs von vier Items, die mit dem 2PL-Modell skaliert wurden.
+
+```{r, echo = FALSE, fig.height = 3}
+library(ggplot2)
+p <- teachIRT::icc_2pl(
+    alpha = c(1.4, 0.4, 1, 1),
+    beta = c(2, 1.5, -1, 0.5)
+)
+p <- p + ggplot2::ggtitle("")
+p
+```
+
 ::: {.callout-aufgabe}
 
-Die Abbildung zeigt ICCs von vier Items, die mit dem 2PL-Modell skaliert wurden. Ordnen Sie jeder Kombination von Parametern eine ICC zu.
+Ordnen Sie jeder Kombination von Parametern eine ICC zu.
 	
 <!-- \item $\beta = 2$, $\alpha = 1.4$
 \item $\beta = 1.5$, $\alpha = 0.4$
 \item $\beta = -1$, $\alpha = 1$
 \item $\beta = 0.5$, $\alpha = 1$ -->
-- $\beta = ?$, $\alpha = 0.4$
-- $\beta = 0.5$, $\alpha = 1$
-- $\beta = ?$, $\alpha = 1.4$
-- $\beta = -1$, $\alpha = 1$
+a. $\beta = ?$, $\alpha = 0.4$
+b. $\beta = 0.5$, $\alpha = 1$
+c. $\beta = ?$, $\alpha = 1.4$
+d. $\beta = -1$, $\alpha = 1$
 	
 <!-- \begin{center}
     \includegraphics{pl2_icc/pl2_icc.png}
 \end{center} -->
 
 :::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Item 1 gehört zu c., wobei $\beta_1 = 2$
+
+Item 2 gehört zu a., wobei $\beta_2 = 1.5$
+
+Item 3 gehört zu d.
+
+Item 4 gehört zu b.
+
+:::
+
+::: {.callout-aufgabe}
+
+Die ICCs aus der vorherigen Aufgabe wurden mit dem Befehl `teachIRT::icc_2pl()` erzeugt. Kopieren Sie den folgenden Code Chunk in Ihre eigene R Umgebung und ersetzen Sie die Parameterwerte. Geben Sie Ihrer Lerngruppe nur einen Teil der Parameter vor und lassen Sie Ihre Kommiliton:innen Items zu Parametern zuordnen. 
+
+`alpha` enthält jeweils die Diskriminationsparameter und $\beta$ enthält jeweils die Schwierigkeitsparameter. Da jedes Item jeweils einen Diskriminations- und Schwierigkeitsparameter haben muss, müssen für die beiden Argumente jeweils gleich viele Werte eingetragen werden.
+
+```{r}
+library(ggplot2)
+p <- teachIRT::icc_2pl(
+    alpha = c(1, 1.2, 1.4, -1),
+    beta = c(3, 2, -2, 1)
+)
+p <- p + ggplot2::ggtitle("")
+p
+```
+
+Siehe auch `?teachIRT::icc_2pl`.
+
+:::
+
+Wenn Sie die vorherigen Aufgabe erledigt haben, ist die nächste für Sie ein alter Hut. Es vor Allem darum, dass Sie sehen, was passiert, wenn man für $\alpha$ Werte einsetzt, die kleiner als $0$ sind.
 
 ::: {.callout-aufgabe}
 
@@ -52,10 +128,22 @@ Plotten Sie ICCs eines 2PL-Modells für drei Items mit $\beta_1 = \beta_2 = \bet
 - $\alpha_1 = -1$
 - $\alpha_2 = 0$
 - $\alpha_3 = 1$
-	
+
+Sie können diesen Befehl verwenden:
+
 `teachIRT::icc_2pl(alpha = -1, beta = 0)`
 
 :::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+teachIRT::icc_2pl(alpha = c(-1, 0, 1), beta = c(0, 0, 0))
+```
+
+:::
+
+Nun wissen Sie, wie eine ICC mit negativer Diskrimination aussieht. Aber was bedeuten negative Diskriminationsparameter? Darum geht es in der nächsten Aufgabe.
 
 ::: {.callout-aufgabe}
 
@@ -63,10 +151,110 @@ Nehmen Sie an, dass die drei Items das latente Konstrukt Extraversion messen. Fi
 
 :::
 
+Hier noch eine Aufgabe, um ein Gefühl für den Diskriminationsparameter zu bekommen.
+
 ::: {.callout-aufgabe}
 	
 Starten Sie mit `teachIRT::icc_2pl(alpha = 0, beta = 0)` und setzen Sie immer größere (/immer kleinere) Werte für $\alpha$ ein. Erklären Sie inhaltlich, welchen Effekt die Veränderung des $\alpha$-Parameters hat.
 
+:::
+
+Sie haben sicherlich festgestellt, dass die ICC mit höheren Werten für $\alpha$ steiler wird. $\alpha$ ist allerdings nicht direkt die Steigung der ICC, sondern proportional zu ihr. Da die ICC sigmoid ist, hängt die Steigung vom Wert auf der x-Achse, also $\theta$, ab. Diese Abhängigkeit der Steigung von $\theta$ werden wir im Kapitel zum adaptiven Testen bzw. zur Item- und Testinformation noch einmal nutzen.
+
+### Likelihood-Funktion des 2PL-Modells
+
+Vom Rasch-Modell kennen Sie die Konzepte suffizienter Statistiken, spezifischer Objektivität und der lokalen stochastische Unabhängigkeit. 
+
+::: {.callout-aufgabe}
+	
+- Sind die Summenscores im 2PL-Modell suffiziente Statistiken für die Personenparameter?
+- Gilt im 2PL-Modell die spezifische Objektivität?
+- Machen wir im 2PL-Modell die Annahme lokaler stochastischer Unabhängigkeit?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- Nein
+- Nein
+- Ja
+
+:::
+
+Aufgrund der Annahme lokaler stochastischer Unabhängigkeit kann man im 2PL-Modell, wie im Rasch-Modell auch, Lösungs- und Nichtlösewahrscheinlichkeiten miteinander multiplizieren. Das haben Sie in den Übungen zum Rasch-Modell schon einmal gemacht. Zur Sicherheit üben Sie das in der nächsten Übung noch einmal mit dem 2PL-Modell:
+
+::: {.callout-aufgabe}
+
+Berechnen Sie die Wahrscheinlichkeit, bei einer Person mit $\theta = 0.3$ den Antwortvektor $\mathbf{u}_{i.} = [1, 0, 0]$ zu beobachten. Die Items $1$, $2$ und $3$ haben die Itemparameter $\alpha_1 = 0.4$, $\alpha_2 = 1$, $\alpha_3 = 1.2$, $\beta_1 = -1$, $\beta_2 = 1.2$, $\beta_3 = 0.3$.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Bei Item 2 können Sie Zeit sparen, indem Sie die Formel für das Rasch-Modell verwenden. Bei Item 3 können Sie Zeit sparen, wenn Sie bemerken, dass $\theta = \beta_3$ ist.
+
+$P(U_{i1} = 1, U_{i2} = 0, U_{i3} = 0 | \alpha_1 = 0.4, \alpha_2 = 1, \alpha_3 = 1.2, \beta_1 = -1, \beta_2 = 1.2, \beta_3 = 0.3)$
+
+$= P(U_{i1} = 1 | \alpha_1 = 0.4, \beta_1 = -1) \cdot P(U_{i2} = 0 | \alpha_2 = 1, \beta_2 = 1.2) \cdot P(U_{i3} = 0 | \alpha_3 = 1.2, \beta_3 = 0.3)$
+
+$= \frac{1}{1 + e^{-\alpha_1 (\theta - \beta_1)}} \cdot \frac{1}{1 + e^{\theta - \beta_2}} \cdot \frac{1}{1 + e^{-\alpha_3 (\theta - \beta_3)}}$
+
+$= \frac{1}{1 + e^{-0.4 (0.3 + 1)}} \cdot \frac{1}{1 + e^{0.3 - 1.2}} \cdot 0.5$
+
+$\approx .22$
+
+```{r}
+theta <- 0.3
+p1 <- teachIRT::p_2pl(theta = theta, alpha = 0.4, beta = -1)
+p2 <- teachIRT::p_rasch(theta = theta, beta = 1.2)
+p3 <- 0.5
+
+print(p1 * (1-p2) * p3)
+```
+
+:::
+
+Da Sie nun wissen, dass im 2PL-Modell die lokale stochastische Unabhängigkeit wie im Rasch-Modell gilt, können Sie das Wissen direkt übertragen.
+
+::: {.callout-aufgabe}
+
+Schreiben Sie formal die Likelihood des Antwortvektors einer Person $i$ für das 2PL-Modell auf.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Den ersten Teil der Lösung finden Sie 1 zu 1 beim Rasch-Modell.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Wenn Sie noch weiter gehen wollen und einen Wert für die Wahrscheinlichkeit im 2PL-Modell einsetzen möchten, müssen Sie eine Formel für $P(U_{ij} = u_{ij} | \theta)$ im 2PL-Modell finden. Das müssen Sie ad-hoc nicht selbst hinkriegen. Für den Fall, dass Sie es doch probieren möchten, haben wir diese Formel erst im nächsten Tipp hinterlegt.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+$P(U_j = u_j \mid \theta) = \frac{\exp(u_{ij}\,\alpha_j\,(\theta_i - \beta_j))}{1 + \exp(\alpha_j\,(\theta_i - \beta_j))}$ 
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Logik ist die gleiche, wie im Rasch-Modell. Um die Likelihood eines Antwortvektors zu erhalten, müssen Sie die Wahrscheinlichkeiten der beoabchteten Testantworten miteinander multiplizieren:
+
+\begin{equation}
+	P(U_1 = u_1, ..., U_m = u_m | \theta) = \prod_{j = 1}^{m} P(U_j = u_j | \theta)
+\end{equation}
+
+Beim 2PL-Modell müssen Sie lediglich eine andere Warscheinlichkeit für $P(U_j = u_j | \theta)$ verwenden. Man könnte also auch schreiben:
+
+\begin{equation}
+	P(U_1 = u_1, ..., U_m = u_m | \theta) = \prod_{j = 1}^{m} \frac{exp(u_{ij} \alpha_j (\theta_i - \beta_j))}{1 + exp(\alpha_j (\theta_i - \beta_j))}
+\end{equation}
+
+Denn der Ausdruck $\frac{exp(u_{ij} \alpha_j (\theta_i - \beta_j))}{1 + exp(\alpha_j (\theta_i - \beta_j))$ wird, je nachdem, ob man für $u_{ij}$ den Wert $1$ oder $0$ einsetzt, jeweils zur Lösungs- oder Nichtlösewahrscheinlichkeit.
 :::
 
 ## Anwendung des 2PL-Modells
