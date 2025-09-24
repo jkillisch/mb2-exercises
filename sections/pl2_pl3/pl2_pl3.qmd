@@ -397,7 +397,7 @@ Suchen Sie die Formel der Lösungswahrscheinlichkeit im 3PL-Modell in der Formel
 
 \begin{equation}
     P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j) = 
-    \gamma_j + (1 - \gamma_j) \cdot \frac{e^{(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+    \gamma_j + (1 - \gamma_j) \cdot \frac{e^{(\alpha_j (\theta_i - \beta_j))}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
 \end{equation}
 
 :::
@@ -540,13 +540,50 @@ color = "red"
 
 ::: {.callout-aufgabe}
 
-Welchen Wert erhalten Sie für $\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)$? Interpretieren Sie das Ergebnis.
+Welchen Wert erhalten Sie für $\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)$?
 
 :::
 
-::: {.callout-tip title="Lösung" collapse="true"}
+Falls Sie keinen Ansatz finden, können Sie sich den schwierigeren Teil der Lösung vorgeben lassen. Im zweiten Teil der Lösung müssen Sie keine Formeln mehr umstellen, sondern können immer kleiner werdende Werte für $\theta_i$ einsetzen.
 
-todo
+::: {.callout-tip title="Lösung Teil 1" collapse="true"}
+
+Gesucht ist 
+
+\begin{equation}
+\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)
+\end{equation}
+
+\begin{equation}
+ = \lim_{\theta_i \to -\infty} \gamma_j + (1 - \gamma_j) \cdot \frac{e^{\alpha_j(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+\end{equation}
+
+Der erste Term enthält nur den Parameter $\gamma_j$. Die Berechnung des Limits beschränkt sich also auf den Bruch im zweiten Term.
+
+\begin{equation}
+ = \gamma_j + (1 - \gamma_j) \cdot \lim_{\theta_i \to -\infty} \frac{e^{\alpha_j(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+\end{equation}
+
+Ab hier können Sie sprachlich argumentieren bzw. immer kleinere Werte im Taschenrechner einsetzen.
+
+:::
+
+::: {.callout-tip title="Lösung Teil 2" collapse="true"}
+
+Wenn $\theta_i$ extrem klein wird, geht $\theta - \beta_j$ gegen $-\infty$. Somit geht der Zähler gegen $0$ und der Nenner gegen $1$. Daher gehen der Bruch und folglich auch das Produkt mit $(1-\gamma_j)$ asymptotisch gegen $0$. Es bleibt der Grenzwert $\gamma_j$.
+
+Das sieht man auch an den ICCs. Testweise kann man eine sehr weite $\theta$-Achse plotten.
+
+```{r}
+teachIRT::icc_3pl(
+    theta_range = c(-50, 5),
+    alpha = 1,
+    beta = 0,
+    gamma = 0.2
+)
+```
+
+Man sieht, dass die untere Asymptote den Wert $\gamma = 0.2$ im geplotteten Bereich nicht unterschreitet. Zuvor haben wir gezeigt, dass das auch im Unendlichen nicht passiert.
 
 :::
 
@@ -558,7 +595,7 @@ Erklären Sie mit eigenen Worten, was die untere Asymptote der ICC im 3PL-Modell
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-todo
+Egal wie gering die Personenfähigkeit einer Person ist, es bleibt immer eine Wahrscheinlichkeit von $\gamma_j$, das Item zu lösen.
 
 :::
 
@@ -568,34 +605,25 @@ Recherchieren Sie: Gibt es ein 4PL-Modell? Was könnte der vierte Parameter bede
 
 :::
 
-::: {.callout-tip title="Lösung" collapse="true"}
-
-todo
-
-:::
-
 ::: {.callout-aufgabe}
 
 Kreuzen Sie in der folgenden Tabelle an, wenn ein Parameter im Modell frei geschätzt wird.
 
-\begin{tabular}{|c|c|c|c|}
-    \hline
-    Modell & $\alpha$ & $\beta$ & $\gamma$ \\
-    \hline
-    Rasch & & & \\
-    \hline
-    2PL & & & \\
-    \hline
-    3PL & & & \\
-    \hline
-    \hline
-\end{tabular}
+| Modell | $\alpha$ | $\beta$ | $\gamma$ |
+|--------|----------|---------|----------|
+| Rasch  |          |         |          |
+| 2PL    |          |         |          |
+| 3PL    |          |         |          |
 
 :::
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-todo
+| Modell | $\alpha$ | $\beta$ | $\gamma$ |
+|--------|----------|---------|----------|
+| Rasch  |          | $\checkmark$ |          |
+| 2PL    | $\checkmark$ | $\checkmark$ |          |
+| 3PL    | $\checkmark$ | $\checkmark$ | $\checkmark$ |
 
 :::
 
@@ -607,6 +635,8 @@ Welche Werte können der $\alpha$, $\beta$, $\gamma$, und $\theta$ Parameter im 
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-todo
+$\alpha, \beta \in \mathbb{R}$
+
+$\gamma \in [0, 1]$
 
 :::

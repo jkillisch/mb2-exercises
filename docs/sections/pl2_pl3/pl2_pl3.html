@@ -762,7 +762,7 @@ Lösung
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[\begin{equation}
     P(U_{ij} = 1 |&nbsp;\theta_i, \beta_j, \alpha_j, \gamma_j) =
-    \gamma_j + (1 - \gamma_j) \cdot \frac{e^{(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+    \gamma_j + (1 - \gamma_j) \cdot \frac{e^{(\alpha_j (\theta_i - \beta_j))}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
 \end{equation}\]</span></p>
 </div>
 </div>
@@ -921,45 +921,71 @@ Lösung
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Welchen Wert erhalten Sie für <span class="math inline">\(\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)\)</span>? Interpretieren Sie das Ergebnis.</p>
+<p>Welchen Wert erhalten Sie für <span class="math inline">\(\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)\)</span>?</p>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<p>Falls Sie keinen Ansatz finden, können Sie sich den schwierigeren Teil der Lösung vorgeben lassen. Im zweiten Teil der Lösung müssen Sie keine Formeln mehr umstellen, sondern können immer kleiner werdende Werte für <span class="math inline">\(\theta_i\)</span> einsetzen.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung Teil 1">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lösung
+Lösung Teil 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>todo</p>
+<p>Gesucht ist</p>
+<p><span class="math display">\[\begin{equation}
+\lim_{\theta_i \to -\infty} P(U_{ij} = 1 | \theta_i, \beta_j, \alpha_j, \gamma_j)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+= \lim_{\theta_i \to -\infty} \gamma_j + (1 - \gamma_j) \cdot \frac{e^{\alpha_j(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+\end{equation}\]</span></p>
+<p>Der erste Term enthält nur den Parameter <span class="math inline">\(\gamma_j\)</span>. Die Berechnung des Limits beschränkt sich also auf den Bruch im zweiten Term.</p>
+<p><span class="math display">\[\begin{equation}
+= \gamma_j + (1 - \gamma_j) \cdot \lim_{\theta_i \to -\infty} \frac{e^{\alpha_j(\theta_i - \beta_j)}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}
+\end{equation}\]</span></p>
+<p>Ab hier können Sie sprachlich argumentieren bzw. immer kleinere Werte im Taschenrechner einsetzen.</p>
 </div>
 </div>
 </div>
-<div class="callout-aufgabe">
-<p>Erklären Sie mit eigenen Worten, was die untere Asymptote der ICC im 3PL-Modell inhaltlich bedeutet.</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung Teil 2">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lösung
+Lösung Teil 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>todo</p>
+<p>Wenn <span class="math inline">\(\theta_i\)</span> extrem klein wird, geht <span class="math inline">\(\theta - \beta_j\)</span> gegen <span class="math inline">\(-\infty\)</span>. Somit geht der Zähler gegen <span class="math inline">\(0\)</span> und der Nenner gegen <span class="math inline">\(1\)</span>. Daher gehen der Bruch und folglich auch das Produkt mit <span class="math inline">\((1-\gamma_j)\)</span> asymptotisch gegen <span class="math inline">\(0\)</span>. Es bleibt der Grenzwert <span class="math inline">\(\gamma_j\)</span>.</p>
+<p>Das sieht man auch an den ICCs. Testweise kann man eine sehr weite <span class="math inline">\(\theta\)</span>-Achse plotten.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_3pl</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta_range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">50</span>, <span class="dv">5</span>),</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="dv">0</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pl2_pl3_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Man sieht, dass die untere Asymptote den Wert <span class="math inline">\(\gamma = 0.2\)</span> im geplotteten Bereich nicht unterschreitet. Zuvor haben wir gezeigt, dass das auch im Unendlichen nicht passiert.</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Recherchieren Sie: Gibt es ein 4PL-Modell? Was könnte der vierte Parameter bedeuten?</p>
+<p>Erklären Sie mit eigenen Worten, was die untere Asymptote der ICC im 3PL-Modell inhaltlich bedeutet.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
@@ -973,12 +999,45 @@ Lösung
 </div>
 <div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>todo</p>
+<p>Egal wie gering die Personenfähigkeit einer Person ist, es bleibt immer eine Wahrscheinlichkeit von <span class="math inline">\(\gamma_j\)</span>, das Item zu lösen.</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
+<p>Recherchieren Sie: Gibt es ein 4PL-Modell? Was könnte der vierte Parameter bedeuten?</p>
+</div>
+<div class="callout-aufgabe">
 <p>Kreuzen Sie in der folgenden Tabelle an, wenn ein Parameter im Modell frei geschätzt wird.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Modell</th>
+<th><span class="math inline">\(\alpha\)</span></th>
+<th><span class="math inline">\(\beta\)</span></th>
+<th><span class="math inline">\(\gamma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rasch</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2PL</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3PL</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
@@ -992,7 +1051,36 @@ Lösung
 </div>
 <div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>todo</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Modell</th>
+<th><span class="math inline">\(\alpha\)</span></th>
+<th><span class="math inline">\(\beta\)</span></th>
+<th><span class="math inline">\(\gamma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rasch</td>
+<td></td>
+<td><span class="math inline">\(\checkmark\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2PL</td>
+<td><span class="math inline">\(\checkmark\)</span></td>
+<td><span class="math inline">\(\checkmark\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3PL</td>
+<td><span class="math inline">\(\checkmark\)</span></td>
+<td><span class="math inline">\(\checkmark\)</span></td>
+<td><span class="math inline">\(\checkmark\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1011,7 +1099,8 @@ Lösung
 </div>
 <div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>todo</p>
+<p><span class="math inline">\(\alpha, \beta \in \mathbb{R}\)</span></p>
+<p><span class="math inline">\(\gamma \in [0, 1]\)</span></p>
 </div>
 </div>
 </div>
