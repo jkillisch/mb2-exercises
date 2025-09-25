@@ -1,6 +1,6 @@
 # Übungsheft zur Vorlesung Diagnostik
 
-Herzlich Willkommen! Im Folgenden finden Sie Antworten auf eine Reihe von FAQs zum Übungsheft der Veranstaltung M.B.2.
+Herzlich Willkommen! Im Folgenden finden Sie Antworten auf eine Reihe von FAQs zum Übungsheft der Veranstaltung M.B.2. Wenn Sie sich gleich in die Aufgaben stürzen wollen, finden Sie diese unter dem Reiter Themenabschnitte.
 
 ## Was ist das Übungsheft?
 
@@ -28,4 +28,8 @@ Nein, das Bearbeiten des Übungshefts ist keine Voraussetzung, um die Übung M.B
 
 ## Wie sollte man mit den Lösungen umgehen?
 
-Bitte schauen Sie nicht vorschnell in die Lösungen. Der Lerneffekt durch das Lösen von Aufgaben entsteht nicht vorrangig dadurch, dass Sie eine spezifische Aufgabe lösen können, sondern darin, Lösungsansätze auszuprobieren und auf diesem Weg den Stoff durch den Blickwinkel der Aufgabe neu zu betrachten.
+Bitte schauen Sie erst in die Lösungen, wenn Sie die Aufgabe fertig bearbeitet haben oder überhaupt keinen Ansatz finden. Der Lerneffekt durch das Lösen von Aufgaben entsteht nicht vorrangig dadurch, dass Sie eine spezifische Aufgabe lösen können, sondern darin, Lösungsansätze auszuprobieren und auf diesem Weg den Stoff durch den Blickwinkel der Aufgabe neu zu betrachten.
+
+## Geht es jetzt endlich los?
+
+Klar! Zu allerletzt wünschen wir Ihnen viel Erfolg bei der Bearbeitung der Aufgaben und hoffen, im Laufe des Semesters auch etwas Interesse an den Themen der Testtheorie und Diagnostik wecken zu können. : -\)
