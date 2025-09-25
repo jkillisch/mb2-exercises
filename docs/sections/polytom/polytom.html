@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -197,10 +232,35 @@ window.Quarto = {
 
 <section id="irt-modelle-für-polytome-daten" class="level1">
 <h1>IRT-Modelle für Polytome Daten</h1>
+<p>Bisher haben wir IRT-Modelle für dichotome Daten behandelt. Das heißt die Datenmatrix enthielt nur Nullen und Einsen. Im Folgenden beschäftigen wir uns mit Modellen, die polytome Antwortformate modellieren können. Vorab möchten wir aber noch einem häufigen Missverständnis vorbeugen. Da IRT-Modelle für dichotome Daten oft so eingeführt werden, dass eine <span class="math inline">\(0\)</span> in der Datenmatrix eine nicht gelöste Aufgabe repräsentiert und eine <span class="math inline">\(1\)</span> eine gelöste Aufgabe, und da IRT-Modelle für polytome Daten oft so eingeführt werden, dass sie das Modellieren einer Likert-Skala ermöglichen, kann schnell das Missverständnis entstehen, dichotome IRT-Modelle seien nur für Leistungstests und polytome IRT-Modelle seien nur für Persönlichkeitstests geeignet. Dem ist nicht so. Sie können mit den behandelten IRT-Modellen für dichotome Daten, aber auch mit den im Folgenden behandelten IRT-Modellen für polytome Daten sowohl Persönlichkeitstests, wie auch Leistungstests modellieren. Wenn der Personenparameter <span class="math inline">\(\theta\)</span> auch im Personlichkeitskontext als “Fähigkeitsparameter” bezeichnet wird, ist das eher der historischen Entwicklung als einer Limitation der Modelle geschuldet.</p>
 <section id="generalized-partial-credit-model-gpcm" class="level2">
 <h2 class="anchored" data-anchor-id="generalized-partial-credit-model-gpcm">[Generalized] Partial Credit Model ([G]PCM)</h2>
 <div class="callout-aufgabe">
 <p><span class="math inline">\(n = 4\)</span> Personen bearbeiten <span class="math inline">\(m = 3\)</span> Items im 4-Punkt Ratingskalenformat. Notieren Sie eine mögliche Datenmatrix, <span class="math inline">\(\mathbf{U}\)</span>, für diesen Fall.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{equation}
+    \mathbf{U} =
+    \begin{bmatrix}
+    0 &amp; 1 &amp; 2 \\
+    3 &amp; 0 &amp; 1 \\
+    2 &amp; 3 &amp; 0 \\
+    1 &amp; 2 &amp; 3
+    \end{bmatrix}
+\end{equation}\]</span></p>
+</div>
+</div>
 </div>
 <p>Sie haben in der Vorlesung das PCM kennengelernt. Im PCM wird angenommen, dass die Wahrscheinlichkeiten für aufeinanderfolgende Schritte der Ratingskala Rasch-Modellen folgen:</p>
 <p><span class="math display">\[\begin{equation}
@@ -218,7 +278,98 @@ window.Quarto = {
 <li><span class="math inline">\(P(U_{ij} = c | u_{ij} \in \{c-1, c\}, \theta_i, \delta_{jc})\)</span>, mit <span class="math inline">\(c = 1\)</span></li>
 </ul>
 </div>
-<p>Gegeben ist ein Item mit <span class="math inline">\(\boldsymbol{\delta} = [-0.3, 1.2, 0.8]\)</span>. Berechnen Sie die Wahrscheinlichkeit für den Sprung zwischen den Kategorien (1) <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span>, (2) <span class="math inline">\(1\)</span> und <span class="math inline">\(2\)</span>, (3) <span class="math inline">\(2\)</span> und <span class="math inline">\(3\)</span> bei <span class="math inline">\(\theta = 0\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Die Wahrscheinlichkeit Kategorie <span class="math inline">\(3\)</span> statt Kategorie <span class="math inline">\(2\)</span> zu wählen.</p></li>
+<li><p>Die Wahrscheinlichkeit, Kategorie <span class="math inline">\(c = 1\)</span> statt der Kategorie <span class="math inline">\(c-1 = 0\)</span> zu wählen.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Gegeben ist ein Item mit <span class="math inline">\(\boldsymbol{\delta} = [-0.3, 1.2, 0.8]\)</span>. Die folgende Abbildung zeigt die schrittweisen Wahrscheinlichkeiten, die nächstmögliche Antwortkategorie zu bevorzugen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="polytom_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie die Wahrscheinlichkeit für den Sprung zwischen den Kategorien (1) <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span>, (2) <span class="math inline">\(1\)</span> und <span class="math inline">\(2\)</span>, (3) <span class="math inline">\(2\)</span> und <span class="math inline">\(3\)</span> bei <span class="math inline">\(\theta = 0\)</span>. Überprüfen Sie Ihr Ergebnis zunächst anhand der Abbildung der schrittweisen Antwortwahrscheinlichkeiten.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Kategorie 1 über Kategorie 0 bevorzugen:</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{ij} = 1 | u_{ij} \in \{0, 1\}, \theta_i, \delta_{jc}) =
+    \frac{
+        exp( 0.3 )
+    }{
+        1 + exp( 0.3 )
+    } \approx .57
+\end{equation}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(<span class="at">theta =</span> <span class="dv">0</span>, <span class="at">beta =</span> <span class="sc">-</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5744425</code></pre>
+</div>
+</div>
+<p>Kategorie 2 über Kategorie 1 bevorzugen:</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{ij} = 2 | u_{ij} \in \{1, 2\}, \theta_i, \delta_{jc}) =
+    \frac{
+        exp( -1.2 )
+    }{
+        1 + exp( -1.2 )
+    } \approx .23
+\end{equation}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(<span class="at">theta =</span> <span class="dv">0</span>, <span class="at">beta =</span> <span class="fl">1.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2314752</code></pre>
+</div>
+</div>
+<p>Kategorie 3 über Kategorie 2 bevorzugen:</p>
+<p><span class="math display">\[\begin{equation}
+P(U_{ij} = 2 | u_{ij} \in \{1, 2\}, \theta_i, \delta_{jc}) =
+    \frac{
+        exp( -0.8 )
+    }{
+        1 + exp( -0.8 )
+    } \approx .31
+\end{equation}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(<span class="at">theta =</span> <span class="dv">0</span>, <span class="at">beta =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3100255</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>Aus der Gleichung bedingter Wahrscheinlichkeiten im PCM lassen sich unbedingte Kategorienwahrscheinlichkeiten herleiten.</p>
 <p><span class="math display">\[\begin{equation}
     P(U_{ij} = c | \theta_i, \boldsymbol{\delta}_j) =
@@ -235,43 +386,440 @@ window.Quarto = {
 <div class="callout-aufgabe">
 <p>Berechnen Sie <span class="math inline">\(P(U_{ij} = 2 | \theta_i, \boldsymbol{\delta})\)</span> für die Parameterwerte aus Aufgabe (c) bei <span class="math inline">\(\theta = 1\)</span>.</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben sind der Vektor der Schwellenparameter <span class="math inline">\(\boldsymbol{\delta} = [-0.3, 1.2, 0.8]\)</span> und der Fähigkeitsparameter <span class="math inline">\(\theta = 1\)</span>.</p>
+<p>Die Skala ist eine <span class="math inline">\(4\)</span>-Punkt Skala mit möglichen Werten <span class="math inline">\(U_{ij} \in \{0, 1, 2, 3\}\)</span>.</p>
+<p>In den Beispielen hat eine Person in Kategorie <span class="math inline">\(2\)</span> geantwortet.</p>
+<p><span class="math display">\[\begin{equation}
+    \begin{split}
+        P(U_{ij} = 2 | \theta, \boldsymbol{\delta})
+        \\\\
+        = \frac{
+            exp(\sum_{k = 0}^{c} (\theta - \delta_j))
+        }{
+        \sum_{l = 0}^{m_j^*} [exp(\sum_{k = 0}^{l} (\theta - \delta_j))]
+        }\\\\
+        = \frac{
+            exp(0 + (1 + 0.3) + (1 - 1.2))
+        }{
+        \begin{split}
+        exp(0)\\
+        + exp(0 + (1 + 0.3))\\
+        + exp(0 + (1 + 0.3) + (1 - 1.2))\\
+        + exp(0 + (1 + 0.3) + (1 - 1.2) + (1 - 0.8))
+        \end{split}
+        }\\\\
+        = \frac{exp(1.1)}{exp(0) + exp(1.3) + exp(1.1) + exp(1.3)}\\
+        \\\\
+        \approx 0.265
+    \end{split}
+\end{equation}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> <span class="dv">1</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">1.2</span>, <span class="fl">0.8</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2648532</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Falls Sie bei der vorherigen Aufgabe in die Lösung schauen mussten, haben wir hier noch einige Parameterwerte mit Lösungen gesammelt. Diese können Sie zum Üben bearbeiten. Falls Sie sich mit der Formel für Kategorienwahrscheinlichkeiten im PCM bereits sicher fühlen, können Sie diese Aufgabe aber auch problemlos überspringen.</p>
+<div class="callout-aufgabe">
+<p>Berechnen Sie mit Hilfe des PCM:</p>
+<p><span class="math inline">\(P(U_{ij} = 1 | \theta_i = -1, \boldsymbol{\delta} = [-0.3, 1.2, 0.8])\)</span></p>
+<p><span class="math inline">\(P(U_{ij} = 4 | \theta_i = 3, \boldsymbol{\delta} = [1, 0.8, 1.5, 2.1])\)</span></p>
+<p><span class="math inline">\(P(U_{ij} = 2 \mid \theta_i = 0, \boldsymbol{\delta} = [-0.5, 0.7, 1.3])\)</span></p>
+<p><span class="math inline">\(P(U_{ij} = 3 \mid \theta_i = 1.5, \boldsymbol{\delta} = [-1, 0.5, 1.2, 2])\)</span></p>
+<p><span class="math inline">\(P(U_{ij} = 0 \mid \theta_i = -2, \boldsymbol{\delta} = [0.2, 1, 1.7])\)</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(P(U_{ij} = 1 | \theta_i = -1, \boldsymbol{\delta} = [-0.3, 1.2, 0.8]) \approx .32\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(<span class="at">theta =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">1.2</span>, <span class="fl">0.8</span>))[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3181804</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(U_{ij} = 4 | \theta_i = 3, \boldsymbol{\delta} = [1, 0.8, 1.5, 2.1]) \approx .66\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(<span class="at">theta =</span> <span class="dv">3</span>, <span class="at">delta =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.8</span>, <span class="fl">1.5</span>, <span class="fl">2.1</span>))[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6628224</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(U_{ij} = 2 \mid \theta_i = 0, \boldsymbol{\delta} = [-0.5, 0.7, 1.3]) \approx .22\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(<span class="at">theta =</span> <span class="dv">0</span>, <span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">1.3</span>))[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2218433</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(U_{ij} = 3 \mid \theta_i = 1.5, \boldsymbol{\delta} = [-1, 0.5, 1.2, 2]) \approx .38\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(<span class="at">theta =</span> <span class="fl">1.5</span>, <span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">1.2</span>, <span class="dv">2</span>))[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3784651</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(U_{ij} = 0 \mid \theta_i = -2, \boldsymbol{\delta} = [0.2, 1, 1.7]) \approx .90\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(<span class="at">theta =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">delta =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">1</span>, <span class="fl">1.7</span>))[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8956913</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In der letzten Aufgabe haben Sie durch das PCM implizierte Wahrscheinlichkeiten berechnet, dass eine Person mit einem exakten Fähigkeitsparameter in einer exakten Kategorie antwortet. Die folgende Abbildung plottet die Kategorienwahrscheinlichkeiten für alle Kategorien und für ein festgelegtes Intervall von Fähigkeiten.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_pcm</span>(<span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">1.2</span>, <span class="fl">0.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="polytom_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Versuchen Sie die zuvor berechnete Wahrscheinlichkeit <span class="math inline">\(P(U_{ij} = 2 | \theta, \boldsymbol{\delta})\)</span> in der Abbildung wiederzufinden.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Blaue Kurve bei <span class="math inline">\(1\)</span> auf der x-Achse ablesen</p>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p>Die Schwellenparameter des Items in Aufgabe (c) sind nicht geordnet. Welche Besonderheit ergibt sich daraus für die abgebildeten CCCs?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Kategorie 2 ist an keiner Stelle der Fähigkeitsachse die modale Kategorie.</p>
+</div>
+</div>
 </div>
 <div class="callout-aufgabe">
 <p>Lesen Sie die Wahrscheinlichkeit ab, dass eine Person mit <span class="math inline">\(\theta = -1.5\)</span> die niedrigste Antwortkategorie wählt.</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Man kann in etwa .75 ablesen.</p>
+<p>Den genauen Wert können Sie händisch oder mit <code>teachIRT</code> ausrechnen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_pcm</span>(<span class="at">theta =</span> <span class="sc">-</span><span class="fl">1.5</span>, <span class="at">delta =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">1.2</span>, <span class="fl">0.8</span>))[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.755592</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p>Sie können die Abbildung mit dem Befehl <code>teachIRT::icc_pcm(delta = c(-0.3, 1.2, 0.8))</code> nachstellen. Probieren Sie aus, was passiert, wenn Sie die Werte verändern.</p>
 </div>
+<p>Der <code>mirt</code> Befehl, um ein PCM zu schätzen ist <code>mirt::mirt(data , 1, itemtype = "Rasch")</code>. Das ist der gleiche Befehl, den man verwendet, um ein Rasch-Modell mit mirt zu schätzen.</p>
 <div class="callout-aufgabe">
-<p>Der <code>mirt</code> Befehl, um ein PCM zu schätzen ist <code>mirt::mirt(data , 1, itemtype = \enquote{Rasch})</code>. Das ist der gleiche Befehl, den man verwendet, um ein Rasch-Modell mit mirt zu schätzen. Wie erkennt mirt, dass es sich um ein PCM handeln muss?</p>
+<ol type="1">
+<li><p>Warum ist die Benennung “Rasch” auch beim PCM sinnvoll?</p></li>
+<li><p>Wie erkennt mirt, dass es sich um ein PCM handeln muss?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Das Rasch-Modell ist im PCM genestet. Wenn man das PCM mit zwei Kategorien spezifiziert wird es zum klassischen Rasch-Modell für dichotome Daten. Die zentralen Eigenschaften des Rasch-Modells bleiben im PCM erhalten.</p></li>
+<li><p>Die Anzahl an Kategorien erkennt <code>mirt</code> an der Datenmatrix. Da das Rasch-Modell ein Spezialfall des PCM ist, muss <code>mirt</code> allerdings nicht das eine oder andere Modell wählen.</p></li>
+</ol>
+</div>
+</div>
 </div>
 <div class="callout-aufgabe">
 <p>Plotten Sie ICCs für ein GPCM mit Hilfe des Befehls <code>teachIRT::icc_gpcm(alpha = 0, delta = c(-2.5, 0, 2.5))</code>.</p>
-<p>Erhöhen Sie sukzessive den <span class="math inline">\(\alpha\)</span> Parameter. Wie verändern sich die dargestellten Funktionen und was bedeutet die Veränderung des Parameters inhaltlich?</p>
+<p>Erhöhen Sie sukzessive den <span class="math inline">\(\alpha\)</span>-Parameter. Wie verändern sich die dargestellten Funktionen und was bedeutet die Veränderung des Parameters inhaltlich?</p>
 </div>
 </section>
 <section id="graded-response-model" class="level2">
 <h2 class="anchored" data-anchor-id="graded-response-model">Graded Response Model</h2>
 <p>Ein GRM wurde genutzt, um ein Ratingskalenitem zu skalieren. Es ergeben sich die folgenden OCCs und CCCs:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="polytom_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="polytom_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
 <p><span class="math inline">\(\alpha = 1.2\)</span>. Lesen Sie die übrigen Itemparameter ab.</p>
 </div>
-<div class="callout-aufgabe">
-<p><span class="math inline">\(n = 200\)</span> Testand:innen beantworten das Item. Die Testand:innen haben latente Fähigkeitswerte zwischen <span class="math inline">\(-1.5\)</span> und <span class="math inline">\(1.5\)</span>. Welche Kategorie werden die Testand:innen erwartungsgemäß am häufigsten und welche am seltensten wählen?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\alpha = 1.2\)</span></p>
+<p><span class="math inline">\(\mathbf{\delta} = [-1.5, -0.5, 0, 0.5]\)</span></p>
+</div>
+</div>
 </div>
 <div class="callout-aufgabe">
-<p>Eine Person hat eine latente Fähigkeit von <span class="math inline">\(\theta = 1\)</span>. Lesen Sie die folgenden Werte ab:</p>
+<p><span class="math inline">\(n = 200\)</span> Testand:innen beantworten das Item. Die Testand:innen haben Fähigkeiten, die der Verteilung <span class="math inline">\(N(1, 0.5)\)</span> folgen. Welche Kategorie werden die Testand:innen erwartungsgemäß am häufigsten wählen?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Kategorie 4, da sie im Bereich der Verteilung der Personenparameter die höchste Kategorienwahrscheinlichkeit hat.</p>
+<p>Man kann das auch in einer kleinen Simulation überprüfen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Einen seed wählen, damit Sampling replizierbar ist</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">434</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fähigkeiten simulieren</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Itemparameter festlegen (siehe Lösung der vorherigen Aufgabe)</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Einen leeren Antwortvektor initialisieren</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Für jede Person eine Antwort anhand der Antwortwahrscheinlichkeiten simulieren</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Kategorienwahrscheinlichkeiten der Person i berechnen</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    prob <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_grm</span>(</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">theta =</span> theta[i],</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> alpha,</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">delta =</span> delta</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Eine Kategorie ziehen</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    X[i] <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="fu">length</span>(delta), <span class="dv">1</span>, <span class="at">prob =</span> prob)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Die beobachteten Antwortwahrscheinlichkeiten anzeigen</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(X) <span class="sc">/</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>X
+    0     1     2     3     4 
+0.055 0.065 0.085 0.130 0.665 </code></pre>
+</div>
+</div>
+<p>Wie erwartet wurde Kategorie <span class="math inline">\(4\)</span> am häufigsten gewählt.</p>
+</div>
+</div>
+</div>
+<p><em>Zum Weiterdenken</em>:</p>
+<p>Sie wissen, wie man die Wahrscheinlichkeit einer Kategorie an einem Punkt der <span class="math inline">\(\theta\)</span>-Achse berechnet. In der letzten Aufgabe sollten Sie aber herausfinden, welche Kategorie am häufigsten gewählt wird, wenn Sie Fähigkeiten interessieren, die aus einer Verteilung stammen. Im vorgegebenen Fall konnte man das graphisch anhand der CCCs abschätzen. Wie könnten Sie vorgehen, wenn die visuelle Inspektion keine eindeutige Antwort liefert oder Sie exakte Wahrscheinlichkeiten gegeben einer Verteilung von Personenparametern berechnen möchten? Welche Kategorie würde zum Beispiel erwartungsgemäß am häufigsten gewählt, wenn die <span class="math inline">\(\theta\)</span>-Werte aus der Verteilung <span class="math inline">\(N(0.25, 0.75)\)</span> stammen?</p>
+<div class="callout-aufgabe">
+<p>Eine Person hat eine latente Fähigkeit von <span class="math inline">\(\theta = 1\)</span>. Lesen Sie so genau Sie können die folgenden Werte ab:</p>
 <ul>
 <li>Die Wahrscheinlichkeit, dass die Person in der niedrigsten Kategorie antwortet</li>
 <li>Die Wahrscheinlichkeit, dass die Person mindestens in der niedrigsten Kategorie antwortet</li>
 <li><span class="math inline">\(P(U = 3 | \theta = 1, \boldsymbol{\delta})\)</span></li>
 <li><span class="math inline">\(P(U \geq 1 | \theta = 1, \boldsymbol{\delta})\)</span></li>
 </ul>
+<p>Die OCCs und CCCs sind gegeben:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="polytom_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="polytom_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Wir berechnen die Werte zur Kontrolle exakt.</p>
+<ul>
+<li>Die Wahrscheinlichkeit, dass die Person in der niedrigsten Kategorie antwortet</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.95</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.75</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_grm</span>(theta, alpha, delta)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1938789</code></pre>
+</div>
+</div>
+<ul>
+<li>Die Wahrscheinlichkeit, dass die Person mindestens in der niedrigsten Kategorie antwortet</li>
+</ul>
+<p>Das müssten wir eigentlich nicht berechnen. Gegeben, dass die Person überhaupt eine Antwort gibt, wird sie immer mindestens in der niedrigsten Kategorie antworten.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_step_grm</span>(theta, alpha, delta)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(P(U = 3 | \theta = 1, \boldsymbol{\delta})\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_grm</span>(theta, alpha, delta)[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1709533</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(P(U \geq 1 | \theta = 1, \boldsymbol{\delta})\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_step_grm</span>(theta, alpha, delta)[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8061211</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="callout-aufgabe">
 <p>Suchen Sie die Formel zur Berechnung von Kategorienwahrscheinlichkeiten im GRM in der Formelsammlung. Berechnen Sie mit Hilfe der Formel <span class="math inline">\(P(U = 4 | \theta = 0, \alpha = 1.5, \boldsymbol{\delta} = [-2, -0.5, 1, 1.2])\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(P(U = 4 | \theta = 0, \alpha = 1.5, \boldsymbol{\delta} = [-2, -0.5, 1, 1.2])\)</span></p>
+<p><span class="math inline">\(=P^*(U \ge 4) - 0\)</span></p>
+<p><span class="math inline">\(=\frac{1}{1 + e^{-\alpha(\theta - \delta_4)}}\)</span> (verkürzte Form mit <span class="math inline">\(\frac{e^{x}}{1 + e^{x}} = \frac{1}{1 + e^{-x}}\)</span> für alle <span class="math inline">\(x \in \mathbb{R}\)</span>)</p>
+<p><span class="math inline">\(=\frac{1}{1 + e^{-1.5(0 - 1.2)}}\)</span></p>
+<p><span class="math inline">\(\approx .14\)</span></p>
+<p>Berechnung in <code>teachIRT</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">1.5</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.2</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_grm</span>(theta, alpha, delta)[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1418511</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
