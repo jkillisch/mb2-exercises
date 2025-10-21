@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>diagnostischer_prozess – Übungsheft</title>
+<title>thurstonian_irt – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -185,17 +220,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#der-diagnostische-prozess" id="toc-der-diagnostische-prozess" class="nav-link active" data-scroll-target="#der-diagnostische-prozess">Der Diagnostische Prozess</a>
-  <ul class="collapse">
-  <li><a href="#formulierung-diagnostischer-hypothesen" id="toc-formulierung-diagnostischer-hypothesen" class="nav-link" data-scroll-target="#formulierung-diagnostischer-hypothesen">Formulierung diagnostischer Hypothesen</a>
-  <ul class="collapse">
-  <li><a href="#kriterien-diagnostischer-hypothesen" id="toc-kriterien-diagnostischer-hypothesen" class="nav-link" data-scroll-target="#kriterien-diagnostischer-hypothesen">Kriterien diagnostischer Hypothesen</a></li>
-  <li><a href="#fehler-in-diagnostischen-hypothesen-erkennen" id="toc-fehler-in-diagnostischen-hypothesen-erkennen" class="nav-link" data-scroll-target="#fehler-in-diagnostischen-hypothesen-erkennen">Fehler in diagnostischen Hypothesen erkennen</a></li>
-  <li><a href="#diagnostische-fragestellungen-und-hypothesen-formulieren" id="toc-diagnostische-fragestellungen-und-hypothesen-formulieren" class="nav-link" data-scroll-target="#diagnostische-fragestellungen-und-hypothesen-formulieren">Diagnostische Fragestellungen und Hypothesen formulieren</a></li>
-  </ul></li>
-  <li><a href="#entscheidungsregeln" id="toc-entscheidungsregeln" class="nav-link" data-scroll-target="#entscheidungsregeln">Entscheidungsregeln</a></li>
-  <li><a href="#untersuchungspläne" id="toc-untersuchungspläne" class="nav-link" data-scroll-target="#untersuchungspläne">Untersuchungspläne</a></li>
-  </ul></li>
+  <li><a href="#thurstonian-item-response-modell" id="toc-thurstonian-item-response-modell" class="nav-link active" data-scroll-target="#thurstonian-item-response-modell">Thurstonian Item Response Modell</a></li>
   </ul>
 </nav>
     </div>
@@ -205,24 +230,20 @@ window.Quarto = {
 
 
 
-<section id="der-diagnostische-prozess" class="level1">
-<h1>Der Diagnostische Prozess</h1>
-<section id="formulierung-diagnostischer-hypothesen" class="level2">
-<h2 class="anchored" data-anchor-id="formulierung-diagnostischer-hypothesen">Formulierung diagnostischer Hypothesen</h2>
-<section id="kriterien-diagnostischer-hypothesen" class="level3">
-<h3 class="anchored" data-anchor-id="kriterien-diagnostischer-hypothesen">Kriterien diagnostischer Hypothesen</h3>
-<p>In der Vorlesung haben Sie sechs Kriterien kennengelernt, die bei der Formulierung diagnostischer Hypothesen beachtet werden sollten.</p>
+<section id="thurstonian-item-response-modell" class="level1">
+<h1>Thurstonian Item Response Modell</h1>
+<p>Sie haben in der Vorlesung das multidimensionale forced-choice (MFC) Format und das Thurstonian IRT Modell kennengelernt.</p>
+<p>Im Folgenden sehen Sie die Datenmatrix eines forced-choice Tests mit zwei multidimensionalen Triplets.</p>
+<p><span class="math display">\[\begin{equation}
+    \mathbf{U} =
+    \begin{bmatrix}
+        1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+        1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+    \end{bmatrix}
+\end{equation}\]</span></p>
 <div class="callout-aufgabe">
-<p>Nennen Sie die sechs Kriterien zur Formulierung diagnostischer Hypothesen. Die Lösung finden Sie auf den Vorlesungsfolien.</p>
-</div>
-<p>Beachten Sie, dass diese Kriterien nicht vollständig analog für Forschungshypothesen gelten. Es wäre zum Beispiel ungewöhnlich, eine Forschungshypothese als Frage zu formulieren.</p>
-</section>
-<section id="fehler-in-diagnostischen-hypothesen-erkennen" class="level3">
-<h3 class="anchored" data-anchor-id="fehler-in-diagnostischen-hypothesen-erkennen">Fehler in diagnostischen Hypothesen erkennen</h3>
-<p>Welche Aspekte der folgenden Hypothesen zu gegebenen Fragestellungen sind problematisch? Wie könnten die Hypothesen besser formuliert werden?</p>
-<div class="callout-aufgabe">
-<p>Fragestellung: Ist Marijke hochbegabt?</p>
-<p>Hypothese: Löst Marijke mindestens 84% der Aufgaben eines Intelligenztests für Hochbegabtendiagnostik?</p>
+<p>Was bedeuten jeweils die Zeilen und Spalten der Datenmatrix?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -236,13 +257,13 @@ Lösung
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Normbezug fehlt</p>
+<p>Jede Zeile enthält die Antworten einer Person.</p>
+<p>Jede Spalte entspricht einem binären Paarvergleich.</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Ist Mona geeignet, um eine Ausbildung als Fluglotsin zu beginnen?</p>
-<p>Hypothese: Sind Monas Konzentrationsfähigkeit und Gewissenhaftigkeit überdurchschnittlich im Vergleich zur einer gleichaltrigen Referenzstichprobe?</p>
+<p>In welche Reihenfolge hat Person <span class="math inline">\(3\)</span> die Items von Triplet <span class="math inline">\(2\)</span> sortiert?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -256,16 +277,26 @@ Lösung
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Die Spalten entsprechen von links nach rechts den folgenden Paarvergleichen:</p>
+<p><em>Triplet 1</em></p>
 <ul>
-<li><p>Nur ein Sachverhalt pro Hypothese</p></li>
-<li><p>Nicht trennscharf genug, da kein Cutoff genannt wird</p></li>
+<li>Item 1 aus Triplet 1 vs.&nbsp;Item 2 aus Triplet 1</li>
+<li>Item 1 aus Triplet 1 vs.&nbsp;Item 3 aus Triplet 1</li>
+<li>Item 2 aus Triplet 1 vs.&nbsp;Item 3 aus Triplet 1</li>
 </ul>
+<p><em>Triplet 2</em></p>
+<ul>
+<li>Item 1 aus Triplet 2 vs.&nbsp;Item 2 aus Triplet 2</li>
+<li>Item 1 aus Triplet 2 vs.&nbsp;Item 3 aus Triplet 2</li>
+<li>Item 2 aus Triplet 2 vs.&nbsp;Item 3 aus Triplet 2</li>
+</ul>
+<p>Um herauszufinden, in welche Reihenfolge Person <span class="math inline">\(3\)</span> die Items von Triplet <span class="math inline">\(2\)</span> sortiert hat, muss man also die Matrixeinträge in Zeile <span class="math inline">\(3\)</span> und Spalten <span class="math inline">\(4\)</span>-<span class="math inline">\(6\)</span> betrachten.</p>
+<p>Es sind <span class="math inline">\(u_{34} = 1\)</span>, <span class="math inline">\(u_{35} = 0\)</span>, und <span class="math inline">\(u_{36} = 0\)</span> die beobachteten Wert von Person <span class="math inline">\(3\)</span> auf Triplet <span class="math inline">\(2\)</span>. Die Person muss die Items des Blocks also in die Reihenfolge <span class="math inline">\(312\)</span> gebracht haben.</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Sind Verenas schlechte Klausurnoten auf Prüfungsangst zurückzuführen?</p>
-<p>Hypothese: Weißt Verena im Vergleich zu Gleichaltrigen extreme Werte (<span class="math inline">\(|z|&gt;1\)</span>) in der Ängstlichkeitsfacette des NEO-PI-R auf?</p>
+<p>Eine vierte Person hat die beiden Triplets jeweils in die Reihenfolgen <span class="math inline">\(132\)</span> und <span class="math inline">\(312\)</span> sortiert. Ergänzen Sie die vierte Zeile der Datenmatrix.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -279,16 +310,31 @@ Lösung
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Bezug zur Fragestellung: Ängstlichkeit ist nicht gleich Prüfungsangst</p></li>
-<li><p>Gerichtete Hypothese notwendig</p></li>
-</ul>
+<p>Triplet 1:</p>
+<p>Die Rangfolge ist <span class="math inline">\(132\)</span>.</p>
+<p>Es wurde Item 1 über Item 2 bevorzugt (1).</p>
+<p>Es wurde Item 1 über Item 3 bevorzugt (1).</p>
+<p>Es wurde nicht Item 3 über Item 2 bevorzugt (0).</p>
+<p>Triplet 2:</p>
+<p>Die Rangfolge ist <span class="math inline">\(312\)</span>.</p>
+<p>Es wurde Item 1 über Item 2 bevorzugt (1).</p>
+<p>Es wurde nicht Item 1 über Item 3 bevorzugt (0).</p>
+<p>Es wurde nicht Item 2 über Item 3 bevorzugt (0).</p>
+<p>Die ergänzte Matrix ist also</p>
+<p><span class="math display">\[\begin{equation}
+    \mathbf{U} =
+    \begin{bmatrix}
+        1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+        1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+        1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0
+    \end{bmatrix}
+\end{equation}\]</span></p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Sollte Emre auf Grund seiner depressiven Verstimmung eine Psychotherapie beginnen?</p>
-<p>Hypothese: Weißt Emre depressive Symptome im klinisch relevanten Ausmaß auf?</p>
+<p>Warum ist die Auswertung von forced-choice Daten mit Hilfe der Klassischen Testtheorie suboptimal?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -302,17 +348,13 @@ Lösung
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Unscharfe Hypothese</p></li>
-<li><p>Normbezug fehlt</p></li>
-<li><p>Cutoff fehlt</p></li>
-</ul>
+<p>Die resultierenden Summenscores sind ipsativ.</p>
 </div>
 </div>
 </div>
+<p>Eine der Klassichen Testtheorie überlegene Auswertungsmethode für MFC Testantworten ist die Auswertung mit Hilfe spezialisierter Item Response Modelle. In der Vorlesung haben Sie das Thurstonian IRT Modell kennengelernt.</p>
 <div class="callout-aufgabe">
-<p>Fragestellung: Besteht bei Hubert Verdacht auf eine beginnende Demenz?</p>
-<p>Hypothese: Ist Huberts Leistung in einem Gedächtnistest Test &lt; 40 (T-Werte)?</p>
+<p>Aus dem Thurstonian IRT Modell lassen sich blockweise abhängige Item Characteristic Surface Functions (ICSs) herleiten. Suchen Sie die Formel für die ICS des Thurstonian IRT Modells in der Formelsammlung.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -326,97 +368,23 @@ Lösung
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Normbezug unvollständig, da keine Referenzgruppe genannt wird</li>
-</ul>
+<p>Bedingte Wahrscheinlichkeit, Item <span class="math inline">\(i\)</span> gegenüber Item <span class="math inline">\(k\)</span> zu bevorzugen:</p>
+<p><span class="math display">\[\begin{equation}
+
+P_l(y_l = 1 | \theta_a, \theta_b) = \Phi \Big( \frac{\mu_i - \mu_k + \lambda_i \theta_a - \lambda_k \theta_b}{\sqrt{\psi^2_i + \psi^2_k}} \Big)
+
+\end{equation}\]</span></p>
 </div>
 </div>
 </div>
-</section>
-<section id="diagnostische-fragestellungen-und-hypothesen-formulieren" class="level3">
-<h3 class="anchored" data-anchor-id="diagnostische-fragestellungen-und-hypothesen-formulieren">Diagnostische Fragestellungen und Hypothesen formulieren</h3>
-<p>Häufig muss eine globale diagnostische Fragestellung zunächst in eine spezifischere Fragestellung überführt werden, bevor (eine oder mehrere) Hypothesen abgeleitet werden können. Zum Beispiel:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Globale Fragestellung</strong></td>
-<td>Hat Erik die nötigen kognitiven Fähigkeiten für ein Kunststudium?</td>
-</tr>
-<tr class="even">
-<td><strong>Spezifische Fragestellung</strong></td>
-<td>Ist Erik mindestens durchschnittlich intelligent und überdurchschnittlich kreativ?</td>
-</tr>
-<tr class="odd">
-<td><strong>Hypothese(n)</strong></td>
-<td>H1: Ist Eriks Leistung in einem Intelligenztest im Vergleich zu Gleichaltrigen mindestens durchschnittlich (IQ ≥ 100)?<br><br>H2: Ist Eriks Leistung in einem Kreativitätstest im Vergleich zu Gleichaltrigen überdurchschnittlich (SW ≥ 110)?</td>
-</tr>
-</tbody>
-</table>
-<p>Spezifizieren Sie die folgende Fragestellung und leiten Sie eine oder mehr passende Hypothesen ab.</p>
 <div class="callout-aufgabe">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Globale Fragestellung</strong></td>
-<td>Verfügt Sonja über die notwendigen Persönlichkeitseigenschaften um an einer 3-monatigen, winterlichen Arktis-Expedition teilzunehmen?</td>
-</tr>
-<tr class="even">
-<td><strong>Spezifische Fragestellung</strong></td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td><strong>Hypothese(n)</strong></td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-</section>
-<section id="entscheidungsregeln" class="level2">
-<h2 class="anchored" data-anchor-id="entscheidungsregeln">Entscheidungsregeln</h2>
-<p>Wenn mehrere Hypothesen zur selben diagnostischen Fragestellung aufgestellt wurden, müssen die Ergebnisse anhand zuvor definierter Entscheidungsregeln integriert werden. Sie haben in der Vorlesung verschiedene Typen von Entscheidungsregeln kennengelernt.</p>
-<p>Bei Entscheidungen anhand von zwei Kriterien, lassen sich die Wertebereiche, in denen entweder eine positive oder eine negative Entscheidung getroffen wird, leicht in einem Plot darstellen:</p>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Die konkrete Entscheidungsregel im Beispiel könnte auch so beschrieben werden:</p>
-<blockquote class="blockquote">
-<p>Der Intelligenzwert muss mindestens 100 betragen und der Kreativitätswert muss mindestens 50 betragen.</p>
-</blockquote>
-<p>Formal kann man die Bedingung, die erfüllt sein muss, um gewählt zu werden, auch so beschreiben:</p>
-<blockquote class="blockquote">
-<p><span class="math inline">\(IQ_{Intelligenz} \ge 100 \wedge T_{Kreativität} \ge  50\)</span></p>
-</blockquote>
-<p>Da in der Regel zwei Bedingungen mit einem logischen Und verknüpft werden, handelt es sich um eine konjunktive Entscheidungsregel.</p>
-<div class="callout-aufgabe">
-<p>Benennen Sie für die folgenden Beispiele um welche Art Entscheidungsregel es sich handelt. Beschreiben Sie die konkrete Entscheidungsregel entweder verbal oder mathematisch.</p>
-</div>
-<ol type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
+<p>Die Notation der Vorlesung weicht bei diesem Modell von den vorherigen IRT-Modellen ab.</p>
+<p><em>1. Indices</em></p>
+<p>Was bedeuten hier die Indices <span class="math inline">\(l\)</span>, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(i\)</span>, und <span class="math inline">\(k\)</span>?</p>
+<p><em>2. Daten</em></p>
+<p>Wie steht <span class="math inline">\(y_l\)</span> mit der bereits etablierten Datenmatrix <span class="math inline">\(\mathbf{U}\)</span> im Zusammenhang?</p>
+<p><em>3. Parameter</em></p>
+<p>Was bedeuten <span class="math inline">\(\theta_a\)</span>, <span class="math inline">\(\theta_b\)</span>, <span class="math inline">\(\mu_i\)</span>, <span class="math inline">\(\mu_k\)</span>, <span class="math inline">\(\lambda_i\)</span>, <span class="math inline">\(\lambda_k\)</span>, <span class="math inline">\(\psi_i\)</span>, und <span class="math inline">\(\psi_k\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -430,24 +398,26 @@ Lösung
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge  50\)</span></p>
-<p>Oder-Regel</p>
+<p><span class="math inline">\(l\)</span>: Paarvergleich</p>
+<p><span class="math inline">\(a\)</span>: Erster Trait</p>
+<p><span class="math inline">\(b\)</span>: Zweiter Trait</p>
+<p><span class="math inline">\(i\)</span>: Erstes Item</p>
+<p><span class="math inline">\(k\)</span>: Zweites Item</p>
+<p>Das <span class="math inline">\(l\)</span> kodiert die Spalte der Datenmatrix. Es gibt keinen Personenparameter. Es geht also um eine beliebige Person.</p>
+<p><span class="math inline">\(\theta_a\)</span>: Traitwert auf dem ersten Trait (gemessen durch Item <span class="math inline">\(i\)</span>)</p>
+<p><span class="math inline">\(\theta_b\)</span>: Traitwert auf dem zweiten Trait (gemessen durch Item <span class="math inline">\(k\)</span>)</p>
+<p><span class="math inline">\(\mu_i\)</span>: Mittelwertsparameter von Item <span class="math inline">\(i\)</span></p>
+<p><span class="math inline">\(\mu_k\)</span>: Mittelwertsparameter von Item <span class="math inline">\(k\)</span></p>
+<p><span class="math inline">\(\lambda_i\)</span>: Faktorladung von Item <span class="math inline">\(i\)</span> auf Trait <span class="math inline">\(a\)</span></p>
+<p><span class="math inline">\(\lambda_k\)</span>: Faktorladung von Item <span class="math inline">\(k\)</span> auf Trait <span class="math inline">\(b\)</span></p>
+<p><span class="math inline">\(\psi_i\)</span>: Residual-Standardabweichung von Item <span class="math inline">\(i\)</span></p>
+<p><span class="math inline">\(\psi_k\)</span>: Residual-Standardabweichung von Item <span class="math inline">\(k\)</span></p>
 </div>
 </div>
 </div>
-<ol start="2" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="callout-aufgabe">
+<p>Was bedeutet die Wahrscheinlichkeit <span class="math inline">\(P(y_2 = 1 | \theta_a, \theta_b)\)</span> inhaltlich?</p>
 </div>
-</div>
-</div>
-<p>Der Punkt <span class="math inline">\((100, 51)\)</span> liegt auf der schwarz markierten Geraden. Da Kreativität und Intelligez in der Entscheidungsregel gleichgewichtet werden, ist die absolute Steigung der Geraden <span class="math inline">\(1\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -460,24 +430,13 @@ Lösung
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(IQ_{Intelligenz} + T_{Kreativität} &gt; 150\)</span></p>
-<p>Kompensatorisch</p>
+<p>Die Wahrscheinlichkeit, dass eine Person mit den Traitwerten <span class="math inline">\(\theta_a\)</span> und <span class="math inline">\(\theta_b\)</span> auf dem zweiten Paarvergleich das erste Item von beiden bevorzugt.</p>
 </div>
 </div>
 </div>
-<ol start="3" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="callout-aufgabe">
+<p>Eine Person mit <span class="math inline">\(\theta_a = 0.5\)</span> und <span class="math inline">\(\theta_b = 0\)</span> bearbeitet ein MFC Paar. Die Itemparameter des MFC Paars sind <span class="math inline">\(\mu_j = 0.5\)</span>, <span class="math inline">\(\mu_k = -1\)</span>, <span class="math inline">\(\lambda_j = 1\)</span>, <span class="math inline">\(\lambda_k = -0.9\)</span>, <span class="math inline">\(\psi_j = 1\)</span>, und <span class="math inline">\(\psi_k = 0.9\)</span>. Berechnen Sie die Wahrscheinlichkeit, dass die Person Item <span class="math inline">\(j\)</span> gegenüber Item <span class="math inline">\(k\)</span> bevorzugt.</p>
 </div>
-</div>
-</div>
-<p>Der Punkt <span class="math inline">\((99, 32)\)</span> liegt auf der Geraden, die eine Steigung von <span class="math inline">\(-1\)</span> hat.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -490,24 +449,87 @@ Lösung
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\((IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge 50) \vee (IQ_{Intelligenz} + T_{Kreativität} &gt; 130)\)</span></p>
-<p>Schwache Oder-Regel</p>
+<p><strong>Gegeben</strong>:</p>
+<p><span class="math inline">\(\theta_a = 0.5\)</span>, <span class="math inline">\(\theta_b = 0\)</span></p>
+<p><span class="math inline">\(\mu_j = 0.5\)</span>, <span class="math inline">\(\mu_k = -1\)</span></p>
+<p><span class="math inline">\(\lambda_j = 1\)</span>, <span class="math inline">\(\lambda_k = -0.9\)</span></p>
+<p><span class="math inline">\(\psi_j = 1\)</span>, <span class="math inline">\(\psi_k = 0.9\)</span></p>
+<p><strong>Gesucht</strong>:</p>
+<p>Die Wahrscheinlichkeit, dass die Person Item <span class="math inline">\(j\)</span> gegenüber Item <span class="math inline">\(k\)</span> bevorzugt.</p>
+<p><span class="math display">\[\begin{equation}
+    P(y_l = 1 | \theta_a, \theta_b)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+    = \Phi(
+        \frac{
+                \mu_j - \mu_k + \lambda_j \theta_a  - \lambda_k \theta_b
+            }{
+                \sqrt{\psi_j^2 + \psi_k^2}
+            }
+    )
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+    = \Phi(
+        \frac{
+                0.5 + 1 + 0.5
+            }{
+                \sqrt{1^2 + 0.9^2}
+            }
+    )
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+    = \Phi(\frac{2}{\sqrt{1.81}})
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+    \approx .93
+\end{equation}\]</span></p>
+<p><span class="math inline">\(\Phi\)</span> steht hier für die kumulative Dichteverteilung (CDF) der Standardnormalverteilung. Die Vorschrift von <span class="math inline">\(\Phi\)</span> ist</p>
+<p><span class="math display">\[\begin{equation}
+    \Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-t^2/2} dt
+\end{equation}\]</span></p>
+<p>Das Integral lässt sich nur näherungsweise berechnen. In R ist diese Berechnung mit der Funktion <code>pnorm</code> bereits implementiert.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">1.81</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9314382</code></pre>
+</div>
+</div>
+<p>Sie können das Ergebnis auch mit <code>teachIRT::p_tirt()</code> überprüfen. Bedenken Sie dabei aber, dass die Funktion Residualvarianzen erwartet. Sie müssen also <span class="math inline">\(\psi_j^2\)</span> und <span class="math inline">\(\psi_k^2\)</span> übergeben.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_tirt</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">theta =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>), </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">lambda =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.9</span>), </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">psi2 =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>, <span class="fl">0.9</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9314382</code></pre>
 </div>
 </div>
 </div>
-<ol start="4" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
+</div>
+</div>
+<p>In der letzten Aufgabe sind Sie der CDF der Standardnormalverteilung, <span class="math inline">\(\Phi\)</span>, begegnet. Die Funktion <span class="math inline">\(\Phi\)</span> erfüllt in IRT-Modellen i.d.R. den gleichen Zweck wie die logistische Funktion (siehe grundlegende Rechenkompetenzen). Das heißt <span class="math inline">\(\Phi\)</span> bildet eine reelle Zahl auf eine Wahrscheinlichkeit ab. Diesen Zusammenhang kann man formal auch als <span class="math inline">\(\Phi: \mathbb{R} \rightarrow [0, 1]\)</span> aufschreiben.</p>
+<p>Im folgenden Plot sehen Sie die Graphen beider Funktionen im Vergleich.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="thurstonian_irt_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Der Punkt <span class="math inline">\((100, 51)\)</span> liegt auf der Geraden, die eine Steigung von <span class="math inline">\(-1\)</span> hat.</p>
+<p>Modelle, die die logistische Funktion als sog. <em>Link-Funktion</em> verwenden, kann man auch als Logit-Modelle bezeichnen. Modelle, die die CDF der Standardnormalverteilung als Link-Funktion verwenden, kann man als Probit-Modelle bezeichnen.</p>
+<div class="callout-aufgabe">
+<p>Sie können die ICS des Thurstonian IRT Modells mit dem <code>teachIRT</code> Paket plotten. Stellen Sie zunächst theoretische Überlegungen darüber an, wie die ICSs des Thurstonian IRT Modells vermutlich aussehen. Überprüfen Sie dann Ihre Vermutung mit dem Befehl</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_tirt</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">lambda =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.9</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">psi =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.9</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">rotation =</span> <span class="dv">30</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Entspricht das Ergebnis Ihren Erwartungen?</p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -520,27 +542,57 @@ Lösung
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\((IQ_{Intelligenz} &gt; 85 \wedge T_{Kreativität} &gt; 40) \wedge (IQ_{Intelligenz} + T_{Kreativität} &gt; 150)\)</span></p>
-<p>Schwache Konjunktive-Regel</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_tirt</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">lambda =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.9</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">psi2 =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>, <span class="fl">0.9</span><span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">rotation =</span> <span class="dv">30</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="thurstonian_irt_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
-</section>
-<section id="untersuchungspläne" class="level2">
-<h2 class="anchored" data-anchor-id="untersuchungspläne">Untersuchungspläne</h2>
+<p>Da die Antwort auf einen Paarvergleich laut Thurstonian IRT Modell von zwei latenten Traits abhängig ist, erhalten wir beim Thurstonian IRT eine Item Characteristic <em>Surface</em> (ICS).</p>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
-<p>Finden Sie je ein Beispiel für die folgenden Untersuchungspläne:</p>
-<ul>
-<li><p>Single screen</p></li>
-<li><p>Nicht-sequenzielle Untersuchungsbatterie</p></li>
-<li><p>Vorauswahl Untersuchungsplan (pre-reject)</p></li>
-<li><p>Vorentscheidungs-Untersuchungsplan (pre-select)</p></li>
-<li><p>Vollständig sequenzieller Untersuchungsplan</p></li>
-</ul>
+<p>Lesen Sie von der geplotteten ICS ab, wie wahrscheinlich es ist, Item <span class="math inline">\(j\)</span> gegenüber Item <span class="math inline">\(k\)</span> zu bevorzugen, wenn eine Person die Traitwerte <span class="math inline">\(\theta_a = 4\)</span> und <span class="math inline">\(\theta_b = -4\)</span> aufweist.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Man kann ablesen, dass die Wahrscheinlichkeit fast <span class="math inline">\(1\)</span> ist. Das ist natürlich nicht sehr genau. Den exakten Wert können wir mit <code>teachIRT</code> berechnen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_tirt</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="sc">-</span><span class="dv">4</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lambda =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.9</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">psi2 =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>, <span class="fl">0.9</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9210631</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

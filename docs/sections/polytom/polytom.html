@@ -198,6 +198,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../sections/polytom/polytom.html">
  <span class="dropdown-text">8. IRT-Modelle für Polytome Daten</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../sections/thurstonian_irt/thurstonian_irt.html">
+ <span class="dropdown-text">9. Thurstonian IRT</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -324,7 +328,7 @@ Lösung
 <div class="callout-body-container callout-body">
 <p>Kategorie 1 über Kategorie 0 bevorzugen:</p>
 <p><span class="math display">\[\begin{equation}
-P(U_{ij} = 1 | u_{ij} \in \{0, 1\}, \theta_i, \delta_{jc}) =
+P(U_{ij} = 1 | u_{ij} \in \{0, 1\}, \theta_i, \delta_{j1}) =
     \frac{
         exp( 0.3 )
     }{
@@ -339,7 +343,7 @@ P(U_{ij} = 1 | u_{ij} \in \{0, 1\}, \theta_i, \delta_{jc}) =
 </div>
 <p>Kategorie 2 über Kategorie 1 bevorzugen:</p>
 <p><span class="math display">\[\begin{equation}
-P(U_{ij} = 2 | u_{ij} \in \{1, 2\}, \theta_i, \delta_{jc}) =
+P(U_{ij} = 2 | u_{ij} \in \{1, 2\}, \theta_i, \delta_{j2}) =
     \frac{
         exp( -1.2 )
     }{
@@ -354,7 +358,7 @@ P(U_{ij} = 2 | u_{ij} \in \{1, 2\}, \theta_i, \delta_{jc}) =
 </div>
 <p>Kategorie 3 über Kategorie 2 bevorzugen:</p>
 <p><span class="math display">\[\begin{equation}
-P(U_{ij} = 2 | u_{ij} \in \{1, 2\}, \theta_i, \delta_{jc}) =
+P(U_{ij} = 2 | u_{ij} \in \{2, 3\}, \theta_i, \delta_{j3}) =
     \frac{
         exp( -0.8 )
     }{

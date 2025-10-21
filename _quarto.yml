@@ -28,6 +28,8 @@ website:
           text: 7. 2PL- und 3PL-Modelle
         - href: sections/polytom/polytom.qmd
           text: 8. IRT-Modelle für Polytome Daten
+        - href: sections/thurstonian_irt/thurstonian_irt.qmd
+          text: 9. Thurstonian IRT
 
 format:
   html:

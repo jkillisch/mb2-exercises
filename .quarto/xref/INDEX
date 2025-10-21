@@ -40,5 +40,8 @@
   },
   "sections/polytom/polytom.qmd": {
     "polytom.html": "ed4ad161"
+  },
+  "sections/thurstonian_irt/thurstonian_irt.qmd": {
+    "thurstonian_irt.html": "efcecd20"
   }
 }
