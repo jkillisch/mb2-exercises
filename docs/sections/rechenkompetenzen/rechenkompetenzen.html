@@ -256,7 +256,6 @@ Lösung
 </div>
 <p>Vielleicht haben Sie die Wahrscheinlichkeit <span class="math inline">\(P(X=1)=0.835\)</span> zunächst in eine Prozentzahl umgerechnet und anschließend gerundet. In diesem Fall ergibt sich <span class="math inline">\(83.50\%\)</span>. Eine andere Möglichkeit besteht darin, die Wahrscheinlichkeit zuerst auf zwei Nachkommastellen zu runden und erst dann in Prozent umzurechnen – das führt zu <span class="math inline">\(84\%\)</span>.</p>
 <p>Beide Vorgehensweisen sind rechnerisch nicht per se falsch. In der Stochastik ist es jedoch üblich, Wahrscheinlichkeiten nicht neu zu skalieren, sondern als Zahl zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span> anzugeben. Darüber hinaus entspricht eine auf zwei Nachkommastellen gerundete Prozentzahl, z.B. <span class="math inline">\(13.56\%\)</span>, einer Angabe von Wahrscheinlichkeiten auf vier Nachkommastellen, hier <span class="math inline">\(.1356\)</span>. Eine so genaue Angabe ist in den meisten psychologischen Anwendungen nicht sinnvoll.</p>
-<p>Da die Korrektur der Prüfung größtenteils automatisch erfolgt, sollten Sie dort, wenn nicht explizit verlangt, bei Fragen nach Wahrscheinlichkeiten unbedingt von einer Umrechnung in Prozentwerte absehen.</p>
 </section>
 <section id="operatorrangfolge" class="level2">
 <h2 class="anchored" data-anchor-id="operatorrangfolge">Operatorrangfolge</h2>
@@ -361,7 +360,7 @@ Lösung
 </section>
 <section id="logistische-funktion" class="level3">
 <h3 class="anchored" data-anchor-id="logistische-funktion">Logistische Funktion</h3>
-<p>Die Funktion mit der Vorschrift <span class="math inline">\(f(x) = \frac{e^x}{1 + e^x}\)</span> für alle reellwertigen <span class="math inline">\(x\)</span> nennt man logistische Funktion. Die logistische Funktion transformiert reelle Zahlen (x-Achse im Plot) in Werte zwischen 0 und 1 (z.B. Wahrscheinlichkeiten; y-Achse im Plot). Formal drückt man das so aus: <span class="math inline">\(f: \mathbb{R} \rightarrow [0, 1]\)</span>. Die logistische Funktion wird Ihnen in der IRT noch oft begegnen.</p>
+<p>Die Funktion mit der Vorschrift <span class="math inline">\(f(x) = \frac{e^x}{1 + e^x}\)</span> für alle reellwertigen <span class="math inline">\(x\)</span> nennt man logistische Funktion. Die logistische Funktion transformiert reelle Zahlen (x-Achse im Plot) in Werte zwischen 0 und 1 (z.B. Wahrscheinlichkeiten; y-Achse im Plot). Formal drückt man das so aus: <span class="math inline">\(f: \mathbb{R} \rightarrow (0, 1)\)</span>. Die logistische Funktion wird Ihnen in der IRT noch oft begegnen.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -434,10 +433,10 @@ Lösung
 <ol type="a">
 <li><p><span class="math inline">\(\sum_{n = 1}^{3} n\)</span></p></li>
 <li><p><span class="math inline">\(\sum_{m = 2}^{4} m^2\)</span></p></li>
-<li><p><span class="math inline">\(\sum_{l = 3}^{6} 2 + l\)</span></p></li>
+<li><p><span class="math inline">\(\sum_{l = 3}^{6} (2 + l)\)</span></p></li>
 <li><p><span class="math inline">\(\sum_{i = 1}^{5} x_i\)</span>, mit <span class="math inline">\(\boldsymbol{x} = [1, 3, 4, 3, 0]\)</span></p></li>
 <li><p><span class="math inline">\(\sum_{l=0}^{2}\sum_{k=0}^{l}(2k)\)</span></p></li>
-<li><p><span class="math inline">\(\sum_{j = 1}^{2} \sum_{j' = 1}^{3} x_j + y_{j'}\)</span>, mit <span class="math inline">\(\boldsymbol{x} = [1, 4, 3, 8]\)</span>, <span class="math inline">\(\boldsymbol{y} = [3, 0, 1]\)</span></p></li>
+<li><p><span class="math inline">\(\sum_{j = 1}^{2} \sum_{j' = 1}^{3} (x_j + y_{j'})\)</span>, mit <span class="math inline">\(\boldsymbol{x} = [1, 4, 3, 8]\)</span>, <span class="math inline">\(\boldsymbol{y} = [3, 0, 1]\)</span></p></li>
 <li><p><span class="math inline">\(\sum_{i = 51}^{100}x_i + \sum_{i = 20}^{50}x_i\)</span></p></li>
 </ol>
 </div>
@@ -476,11 +475,11 @@ Lösung
 <p>Berechnen Sie</p>
 <ol type="a">
 <li><p><span class="math inline">\(\prod_{i = 1}^{2} i\)</span></p></li>
-<li><p><span class="math inline">\(\prod_{i = 1}^{3} i + 2\)</span></p></li>
+<li><p><span class="math inline">\(\prod_{i = 1}^{3} (i + 2)\)</span></p></li>
 <li><p><span class="math inline">\(\prod_{n = 2}^{5} x_n\)</span>, mit <span class="math inline">\(\boldsymbol{x} = [4, 2, 1, 3, 4]\)</span></p></li>
 <li><p><span class="math inline">\(\prod_{i = 1}^{100} log(i)\)</span></p></li>
-<li><p><span class="math inline">\(\prod_{j = 2}^{3} \prod_{k = 1}^{2} j + k\)</span></p></li>
-<li><p><span class="math inline">\(\prod_{i = 1}^{2}\prod_{n=2}^{3}i + n\)</span></p></li>
+<li><p><span class="math inline">\(\prod_{j = 2}^{3} \prod_{k = 1}^{2} (j + k)\)</span></p></li>
+<li><p><span class="math inline">\(\prod_{i = 1}^{2}\prod_{n=2}^{3}(i + n)\)</span></p></li>
 </ol>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
