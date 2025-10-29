@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>diagnostischer_prozess – Übungsheft</title>
+<title>adaptives_testen – Übungsheft</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -193,16 +228,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#der-diagnostische-prozess" id="toc-der-diagnostische-prozess" class="nav-link active" data-scroll-target="#der-diagnostische-prozess">Der Diagnostische Prozess</a>
+  <li><a href="#iteminformation-und-adaptives-testen" id="toc-iteminformation-und-adaptives-testen" class="nav-link active" data-scroll-target="#iteminformation-und-adaptives-testen">Iteminformation und adaptives Testen</a>
   <ul class="collapse">
-  <li><a href="#formulierung-diagnostischer-hypothesen" id="toc-formulierung-diagnostischer-hypothesen" class="nav-link" data-scroll-target="#formulierung-diagnostischer-hypothesen">Formulierung diagnostischer Hypothesen</a>
-  <ul class="collapse">
-  <li><a href="#kriterien-diagnostischer-hypothesen" id="toc-kriterien-diagnostischer-hypothesen" class="nav-link" data-scroll-target="#kriterien-diagnostischer-hypothesen">Kriterien diagnostischer Hypothesen</a></li>
-  <li><a href="#fehler-in-diagnostischen-hypothesen-erkennen" id="toc-fehler-in-diagnostischen-hypothesen-erkennen" class="nav-link" data-scroll-target="#fehler-in-diagnostischen-hypothesen-erkennen">Fehler in diagnostischen Hypothesen erkennen</a></li>
-  <li><a href="#diagnostische-fragestellungen-und-hypothesen-formulieren" id="toc-diagnostische-fragestellungen-und-hypothesen-formulieren" class="nav-link" data-scroll-target="#diagnostische-fragestellungen-und-hypothesen-formulieren">Diagnostische Fragestellungen und Hypothesen formulieren</a></li>
-  </ul></li>
-  <li><a href="#entscheidungsregeln" id="toc-entscheidungsregeln" class="nav-link" data-scroll-target="#entscheidungsregeln">Entscheidungsregeln</a></li>
-  <li><a href="#untersuchungspläne" id="toc-untersuchungspläne" class="nav-link" data-scroll-target="#untersuchungspläne">Untersuchungspläne</a></li>
+  <li><a href="#testinformation" id="toc-testinformation" class="nav-link" data-scroll-target="#testinformation">Testinformation</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -213,24 +241,11 @@ window.Quarto = {
 
 
 
-<section id="der-diagnostische-prozess" class="level1">
-<h1>Der Diagnostische Prozess</h1>
-<section id="formulierung-diagnostischer-hypothesen" class="level2">
-<h2 class="anchored" data-anchor-id="formulierung-diagnostischer-hypothesen">Formulierung diagnostischer Hypothesen</h2>
-<section id="kriterien-diagnostischer-hypothesen" class="level3">
-<h3 class="anchored" data-anchor-id="kriterien-diagnostischer-hypothesen">Kriterien diagnostischer Hypothesen</h3>
-<p>In der Vorlesung haben Sie sechs Kriterien kennengelernt, die bei der Formulierung diagnostischer Hypothesen beachtet werden sollten.</p>
+<section id="iteminformation-und-adaptives-testen" class="level1">
+<h1>Iteminformation und adaptives Testen</h1>
+<p>In der Vorlesung lernen Sie Informationsmaße für das Rasch-, 2PL-, und 3PL-Modell kennen. Je nachdem, welchem Ablauf die Vorlesung folgt, kann es sinnvoll sein, diesen Abschnitt zunächst zu überspringen und wiederzukehren, wenn die Vorlesung den Themenabschnitt behandelt hat.</p>
 <div class="callout-aufgabe">
-<p>Nennen Sie die sechs Kriterien zur Formulierung diagnostischer Hypothesen. Die Lösung finden Sie auf den Vorlesungsfolien.</p>
-</div>
-<p>Beachten Sie, dass diese Kriterien nicht vollständig analog für Forschungshypothesen gelten. Es wäre zum Beispiel ungewöhnlich, eine Forschungshypothese als Frage zu formulieren.</p>
-</section>
-<section id="fehler-in-diagnostischen-hypothesen-erkennen" class="level3">
-<h3 class="anchored" data-anchor-id="fehler-in-diagnostischen-hypothesen-erkennen">Fehler in diagnostischen Hypothesen erkennen</h3>
-<p>Welche Aspekte der folgenden Hypothesen zu gegebenen Fragestellungen sind problematisch? Wie könnten die Hypothesen besser formuliert werden?</p>
-<div class="callout-aufgabe">
-<p>Fragestellung: Ist Marijke hochbegabt?</p>
-<p>Hypothese: Löst Marijke mindestens 84% der Aufgaben eines Intelligenztests für Hochbegabtendiagnostik?</p>
+<p>Welchen Nutzen haben Informationsmaße für IRT-Modelle?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -244,13 +259,57 @@ Lösung
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Normbezug fehlt</p>
+<p>Informationsmaße quantifizieren, wie stark die Unsicherheit um eine Personenparameterschätzung durch Vorgabe eines Items reduziert würde.</p>
+<p>Das ist z.B. nützlich zur:</p>
+<ul>
+<li><p>Itemselektion</p></li>
+<li><p>adaptiven Vorgabe von Items</p></li>
+<li><p>Testkürzung</p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>In der Tabelle sind die Informationsmaße aus der Vorlesung noch einmal zusammengefasst.</p>
+<p><strong>Informationsmaße im Rasch- 2PL- und 3PL-Modell</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modell</th>
+<th>Item Information <span class="math inline">\(I_j(\theta)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rasch</td>
+<td><span class="math inline">\(P(U_{ij} = 1 | ...) P(U_{ij} = 0 | ...)\)</span></td>
+</tr>
+<tr class="even">
+<td>2PL</td>
+<td><span class="math inline">\(\alpha_j^2 P(U_{ij} = 1 | ...) P(U_{ij} = 0 | ...)\)</span></td>
+</tr>
+<tr class="odd">
+<td>3PL</td>
+<td><span class="math inline">\([\alpha_j^2 \frac{P(U_{ij} = 0 | ...)}{P(U_{ij} = 1 | ...)}][\frac{(P(U_{ij} = 1 | ...) - \gamma_j)^2}{(1-\gamma_j)^2}]\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Der folgende Plot zeigt die Informationsfunktion eines Rasch-skalierten Items mit einer Itemschwierigkeit von <span class="math inline">\(\beta = 1\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">inf_plot_rasch</span>(<span class="at">beta =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="adaptives_testen_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Ist Mona geeignet, um eine Ausbildung als Fluglotsin zu beginnen?</p>
-<p>Hypothese: Sind Monas Konzentrationsfähigkeit und Gewissenhaftigkeit überdurchschnittlich im Vergleich zur einer gleichaltrigen Referenzstichprobe?</p>
+<p>Wie hängt dieser Plot mit den Formeln für Informationsmaße zusammen?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -264,16 +323,14 @@ Lösung
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Nur ein Sachverhalt pro Hypothese</p></li>
-<li><p>Nicht trennscharf genug, da kein Cutoff genannt wird</p></li>
-</ul>
+<p>Es wurde die Informationsfunktion des Rasch-Modells verwendet.</p>
+<p>Auf der x-Achse sieht man Fähigkeitswerte.</p>
+<p>Auf der y-Achse sieht man die dazugehörige Iteminformation.</p>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Sind Verenas schlechte Klausurnoten auf Prüfungsangst zurückzuführen?</p>
-<p>Hypothese: Weißt Verena im Vergleich zu Gleichaltrigen extreme Werte (<span class="math inline">\(|z|&gt;1\)</span>) in der Ängstlichkeitsfacette des NEO-PI-R auf?</p>
+<p>Berechnen Sie <span class="math inline">\(I_j(-1)\)</span> für ein Rasch-Modell mit <span class="math inline">\(\beta_j = 1\)</span>. Finden Sie den Wert im Plot aus Aufgabe (a) wieder?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -287,16 +344,61 @@ Lösung
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Bezug zur Fragestellung: Ängstlichkeit ist nicht gleich Prüfungsangst</p></li>
-<li><p>Gerichtete Hypothese notwendig</p></li>
-</ul>
+<p>Gegeben:</p>
+<p><span class="math inline">\(\theta = -1\)</span></p>
+<p><span class="math inline">\(\beta_j = 1\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(I_j(-1) = P(U = 1 | \theta, \beta_j) \cdot P(U = 0 | \theta, \beta_j)\)</span></p>
+<p>Es ist</p>
+<p><span class="math inline">\(P(U = 1 | \theta, \beta_j) = \frac{1}{1 + e^{2}}\)</span></p>
+<p>Und</p>
+<p><span class="math inline">\(P(U = 0 | \theta, \beta_j) = 1 - P(U = 1 | \theta, \beta_j)\)</span></p>
+<p>Also ist die Information des Items bei einer Fähigkeit von <span class="math inline">\(\theta = -1\)</span>:</p>
+<p><span class="math inline">\(I_j(-1) = \frac{1}{1 + e^{2}} \cdot (1 - \frac{1}{1 + e^{2}}) \approx .10\)</span></p>
+<p>Überprüfung mit <code>teachIRT</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">inf_rasch</span>(<span class="at">theta =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">beta =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1049936</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Kopieren Sie den folgenden Code in Ihre R IDE:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">icc_3pl</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">alpha =</span> alpha,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">beta =</span> beta,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">gamma =</span> gamma</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">inf_plot_3pl</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="at">alpha =</span> alpha,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="at">beta =</span> beta,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="at">gamma =</span> gamma</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">/</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="adaptives_testen_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Sollte Emre auf Grund seiner depressiven Verstimmung eine Psychotherapie beginnen?</p>
-<p>Hypothese: Weißt Emre depressive Symptome im klinisch relevanten Ausmaß auf?</p>
+<p>Verändern Sie die Parameterwerte von <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> und <span class="math inline">\(\gamma\)</span> und führen Sie den Code erneut durch. Versuchen Sie durch systematisches Austauschen der Parameterwerte zu erkennen, wie die Parameter jeweils die ICC und die Informationsfunktion beeinflussen. Notieren Sie Ihre Beobachtung.</p>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie die Information eines Items mit Hilfe des 3PL-Modells bei <span class="math inline">\(\theta_i = -0.5\)</span>. Der Rateparameter hat einen Wert von <span class="math inline">\(0.2\)</span>. Der Itemdiskriminationsparameter hat einen Wert von <span class="math inline">\(-1.2\)</span>. Der Itemschwierigkeitsparameter hat einen Wert von <span class="math inline">\(0.5\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -310,17 +412,53 @@ Lösung
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Unscharfe Hypothese</p></li>
-<li><p>Normbezug fehlt</p></li>
-<li><p>Cutoff fehlt</p></li>
-</ul>
+<p>Gegeben:</p>
+<p><span class="math inline">\(\theta_i = -0.5\)</span></p>
+<p><span class="math inline">\(\alpha_j = -1\)</span></p>
+<p><span class="math inline">\(\beta_j = 0.5\)</span></p>
+<p><span class="math inline">\(\gamma_j = 0.2\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(I_j(\theta) = I_j(-0.5)\)</span></p>
+<p>Es ist</p>
+<p><span class="math inline">\(P(U_{ij} = 1 | \theta_i, \alpha_j, \beta_j, \gamma_j)\)</span></p>
+<p><span class="math inline">\(=\gamma_j + (1 - \gamma_j) \cdot \frac{e^{(\alpha_j (\theta_i - \beta_j))}}{1 + e^{\alpha_j (\theta_i - \beta_j)}}\)</span></p>
+<p><span class="math inline">\(=0.2 + 0.8 \cdot \frac{e}{1 + e}\)</span></p>
+<p><span class="math inline">\(\approx .78\)</span></p>
+<p>Zur Kontrolle:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">p_3pl</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> <span class="sc">-</span><span class="fl">0.5</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="fl">0.5</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7848469</code></pre>
+</div>
+</div>
+<p>Der Übersicht halber arbeiten wir mit dem gerundeten Zwischenergebnis weiter.</p>
+<p>Es ist</p>
+<p><span class="math inline">\(I_j(-0.5)\)</span></p>
+<p><span class="math inline">\(=[\alpha_j^2 \frac{P(U_{ij} = 0 | ...)}{P(U_{ij} = 1 | ...)}][\frac{(P(U_{ij} = 1 | ...) - \gamma_j)^2}{(1-\gamma_j)^2}]\)</span></p>
+<p><span class="math inline">\(=[(-1)^2 \frac{(1-0.78)}{0.78}][\frac{(0.78 - 0.2)^2}{0.8^2}]\)</span></p>
+<p><span class="math inline">\(\approx 0.15\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">inf_3pl</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> <span class="sc">-</span><span class="fl">0.5</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="fl">0.5</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1465099</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Fragestellung: Besteht bei Hubert Verdacht auf eine beginnende Demenz?</p>
-<p>Hypothese: Ist Huberts Leistung in einem Gedächtnistest Test &lt; 40 (T-Werte)?</p>
+<p>Versuchen Sie zu antizipieren, wie die ICC und Informationsfunktion des Items aus der vorherigen Aufgabe aussehen. Überprüfen Sie Ihre Vermutung mit <code>teachIRT::teachIRT::icc_3pl()</code> und <code>teachIRT::inf_plot_3pl()</code>.</p>
+<p>Sie können sich die Argumente der Funktionen anzeigen lassen, indem Sie ein Fragezeichen davor setzen, z.B. <code>?teachIRT::inf_plot_3pl()</code>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -334,97 +472,41 @@ Lösung
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Normbezug unvollständig, da keine Referenzgruppe genannt wird</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="diagnostische-fragestellungen-und-hypothesen-formulieren" class="level3">
-<h3 class="anchored" data-anchor-id="diagnostische-fragestellungen-und-hypothesen-formulieren">Diagnostische Fragestellungen und Hypothesen formulieren</h3>
-<p>Häufig muss eine globale diagnostische Fragestellung zunächst in eine spezifischere Fragestellung überführt werden, bevor (eine oder mehrere) Hypothesen abgeleitet werden können. Zum Beispiel:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Globale Fragestellung</strong></td>
-<td>Hat Erik die nötigen kognitiven Fähigkeiten für ein Kunststudium?</td>
-</tr>
-<tr class="even">
-<td><strong>Spezifische Fragestellung</strong></td>
-<td>Ist Erik mindestens durchschnittlich intelligent und überdurchschnittlich kreativ?</td>
-</tr>
-<tr class="odd">
-<td><strong>Hypothese(n)</strong></td>
-<td>H1: Ist Eriks Leistung in einem Intelligenztest im Vergleich zu Gleichaltrigen mindestens durchschnittlich (IQ ≥ 100)?<br><br>H2: Ist Eriks Leistung in einem Kreativitätstest im Vergleich zu Gleichaltrigen überdurchschnittlich (SW ≥ 110)?</td>
-</tr>
-</tbody>
-</table>
-<p>Spezifizieren Sie die folgende Fragestellung und leiten Sie eine oder mehr passende Hypothesen ab.</p>
-<div class="callout-aufgabe">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Globale Fragestellung</strong></td>
-<td>Verfügt Sonja über die notwendigen Persönlichkeitseigenschaften um an einer 3-monatigen, winterlichen Arktis-Expedition teilzunehmen?</td>
-</tr>
-<tr class="even">
-<td><strong>Spezifische Fragestellung</strong></td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td><strong>Hypothese(n)</strong></td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-</section>
-<section id="entscheidungsregeln" class="level2">
-<h2 class="anchored" data-anchor-id="entscheidungsregeln">Entscheidungsregeln</h2>
-<p>Wenn mehrere Hypothesen zur selben diagnostischen Fragestellung aufgestellt wurden, müssen die Ergebnisse anhand zuvor definierter Entscheidungsregeln integriert werden. Sie haben in der Vorlesung verschiedene Typen von Entscheidungsregeln kennengelernt.</p>
-<p>Bei Entscheidungen anhand von zwei Kriterien, lassen sich die Wertebereiche, in denen entweder eine positive oder eine negative Entscheidung getroffen wird, leicht in einem Plot darstellen:</p>
-<div class="cell" data-fig.widths="5">
+<p><strong>ICC</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">icc_3pl</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="fl">0.5</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="adaptives_testen_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Die konkrete Entscheidungsregel im Beispiel könnte auch so beschrieben werden:</p>
-<blockquote class="blockquote">
-<p>Der Intelligenzwert muss mindestens 100 betragen und der Kreativitätswert muss mindestens 50 betragen.</p>
-</blockquote>
-<p>Formal kann man die Bedingung, die erfüllt sein muss, um gewählt zu werden, auch so beschreiben:</p>
-<blockquote class="blockquote">
-<p><span class="math inline">\(IQ_{Intelligenz} \ge 100 \wedge T_{Kreativität} \ge  50\)</span></p>
-</blockquote>
-<p>Da in der Regel zwei Bedingungen mit einem logischen Und verknüpft werden, handelt es sich um eine konjunktive Entscheidungsregel.</p>
-<div class="callout-aufgabe">
-<p>Benennen Sie für die folgenden Beispiele um welche Art Entscheidungsregel es sich handelt. Beschreiben Sie die konkrete Entscheidungsregel entweder verbal oder mathematisch.</p>
-</div>
-<ol type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
+<p><strong>Information</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">inf_plot_3pl</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="fl">0.5</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> <span class="fl">0.2</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="adaptives_testen_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Welche Formel würden Sie nutzen, um die Iteminformation eines Items im 3PL-Modell zu berechnen, dessen Itemparameter <span class="math inline">\(\alpha = 1\)</span>, <span class="math inline">\(\beta = -0.5\)</span>, und <span class="math inline">\(\gamma = 0\)</span> sind?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -438,24 +520,15 @@ Lösung
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge  50\)</span></p>
-<p>Oder-Regel</p>
+<p>Die Informationsfunktion des Rasch-Modells, denn das 3PL-Modell wird für <span class="math inline">\(\alpha = 1\)</span> und <span class="math inline">\(\gamma = 0\)</span> zum Rasch-Modell.</p>
+<p>Erinnern Sie sich zurück, wie aufwendig es war, bei den vorherigen Aufgaben die Information eines Items im 3PL-Modell zu berechnen. Mit diesem Trick können Sie beim händischen Rechnen viel Zeit sparen.</p>
 </div>
 </div>
 </div>
-<ol start="2" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p>Wenn Sie ganz sicher gehen wollen (optional), können Sie noch selbst zeigen, dass Sie in diesem speziellen Fall die Rasch-Information nutzen können.</p>
+<div class="callout-aufgabe">
+<p>Zeigen Sie, dass die Information im 3PL Modell für <span class="math inline">\(\alpha = 1\)</span> und <span class="math inline">\(\gamma = 0\)</span> zur Information im Rasch-Modell wird.</p>
 </div>
-</div>
-</div>
-<p>Der Punkt <span class="math inline">\((100, 51)\)</span> liegt auf der schwarz markierten Geraden. Da Kreativität und Intelligez in der Entscheidungsregel gleichgewichtet werden, ist die absolute Steigung der Geraden <span class="math inline">\(1\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -468,24 +541,30 @@ Lösung
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(IQ_{Intelligenz} + T_{Kreativität} &gt; 150\)</span></p>
-<p>Kompensatorisch</p>
+<p>Der Übersicht halber nennen wir die Lösewahrscheinlichkeit <span class="math inline">\(p\)</span> und die Nichtlösewahrscheinlichkeit <span class="math inline">\(q\)</span>.</p>
+<p>Die Information im 3PL-Modell ist</p>
+<p><span class="math inline">\([\alpha_j^2 \frac{P(U_{ij} = 0 | ...)}{P(U_{ij} = 1 | ...)}][\frac{(P(U_{ij} = 1 | ...) - \gamma_j)^2}{(1-\gamma_j)^2}]\)</span></p>
+<p><span class="math inline">\(=[\alpha_j^2 \frac{q}{p}][\frac{(p - \gamma_j)^2}{(1-\gamma_j)^2}]\)</span> (Mit der Definition von <span class="math inline">\(p\)</span> und <span class="math inline">\(q\)</span>)</p>
+<p><span class="math inline">\(=[1^2 \frac{q}{p}][\frac{(p - 0)^2}{(1-0)^2}]\)</span> (<span class="math inline">\(\alpha = 1\)</span> und <span class="math inline">\(\gamma = 0\)</span> einsetzen)</p>
+<p><span class="math inline">\(=\frac{q}{p} \cdot \frac{p^2}{1}\)</span></p>
+<p><span class="math inline">\(=\frac{p^2q}{p}\)</span></p>
+<p><span class="math inline">\(=pq\)</span></p>
+<p><span class="math inline">\(=P(U_{ij} = 1 | ...) \cdot P(U_{ij} = 0 | ...)\)</span> (Wieder einsetzen)</p>
+<p>Die letzte Zeile entspricht der Information im Rasch-Modell.</p>
 </div>
 </div>
 </div>
-<ol start="3" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<section id="testinformation" class="level2">
+<h2 class="anchored" data-anchor-id="testinformation">Testinformation</h2>
+<p>Zwei nützliche Eigenschaften der Item- und Testinformation sind ihre Additivität und ihr direkter Bezug zum Standardfehler einer Personenparameterschätzung.</p>
+<p>In der Formel zur Testinformation wird die Eigenschaft der Additivität genutzt. Die Iteminformationen an einem Punkt der <span class="math inline">\(\theta\)</span>-Achse lässt sich für jedes Item einzeln berechnen, <span class="math inline">\(I_j(\theta)\)</span>. Summiert man alle Iteminformationen, so erhält man die Testinformation bei <span class="math inline">\(\theta\)</span>:</p>
+<p><span class="math display">\[\begin{equation}
+    I(\theta) = \sum_{j = 1}^{m} I_j(\theta)
+\end{equation}\]</span></p>
+<div class="callout-aufgabe">
+<p>Ein Test enthält drei Items. Eine Reihe von Informationsschätzern ist bekannt: <span class="math inline">\(I_1(-1) = 0.18\)</span>, <span class="math inline">\(I_1(0.8) = 0.1\)</span>, <span class="math inline">\(I_2(-1) = 0.2\)</span>, <span class="math inline">\(I_3(2) = 0.2\)</span>, und <span class="math inline">\(I_3(-1) = 0.25\)</span></p>
+<p>Berechnen Sie die Information des Tests bei <span class="math inline">\(\theta = -1\)</span>.</p>
 </div>
-</div>
-</div>
-<p>Der Punkt <span class="math inline">\((99, 32)\)</span> liegt auf der Geraden, die eine Steigung von <span class="math inline">\(-1\)</span> hat.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -498,24 +577,30 @@ Lösung
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\((IQ_{Intelligenz} \ge 100 \vee T_{Kreativität} \ge 50) \vee (IQ_{Intelligenz} + T_{Kreativität} &gt; 130)\)</span></p>
-<p>Schwache Oder-Regel</p>
+<p><span class="math inline">\(I(-1)\)</span></p>
+<p><span class="math inline">\(= I_1(-1) + I_2(-1) + I_3(-1)\)</span></p>
+<p><span class="math inline">\(=0.18 + 0.2 + 0.25\)</span></p>
+<p><span class="math inline">\(=0.63\)</span></p>
 </div>
 </div>
 </div>
-<ol start="4" type="a">
-<li></li>
-</ol>
-<div class="cell" data-fig.widths="5">
+<p>In der folgenden Formel können Sie sehen, dass der Standardfehler das inverse Konzept zur Iteminformation ist.</p>
+<p><span class="math display">\[\begin{equation}
+    SE(\hat{\theta}) = \frac{1}{\sqrt{I(\hat{\theta})}}
+\end{equation}\]</span></p>
+<p>Man kann die Umformung zwischen Information und Standardfehlern in R plotten:</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="diagnostischer_prozess_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="adaptives_testen_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Der Punkt <span class="math inline">\((100, 51)\)</span> liegt auf der Geraden, die eine Steigung von <span class="math inline">\(-1\)</span> hat.</p>
+<div class="callout-aufgabe">
+<p>Was passiert mit dem Standardfehler einer Personenparameterschätzung, wenn die Information gegen <span class="math inline">\(0\)</span> (vs.&nbsp;<span class="math inline">\(\infty\)</span>) geht? Welche Konsequenz hätte das für das Konfidenzintervall um eine Personenparameterschätzung?</p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -528,23 +613,128 @@ Lösung
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\((IQ_{Intelligenz} &gt; 85 \wedge T_{Kreativität} &gt; 40) \wedge (IQ_{Intelligenz} + T_{Kreativität} &gt; 150)\)</span></p>
-<p>Schwache Konjunktive-Regel</p>
+<p>Wenn die Information gegen <span class="math inline">\(0\)</span> geht, geht der Standardfehler gegen <span class="math inline">\(\infty\)</span>.</p>
+<p>Wenn die Information gegen <span class="math inline">\(\infty\)</span> geht, geht der Standardfehler gegen <span class="math inline">\(0\)</span>.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="untersuchungspläne" class="level2">
-<h2 class="anchored" data-anchor-id="untersuchungspläne">Untersuchungspläne</h2>
+<p>Der obere Plot der folgenden Abbildung zeigt die Informationsfunktion eines Items im 2PL-Modell mit <span class="math inline">\(\alpha = 1.2\)</span> und <span class="math inline">\(\beta = 0\)</span>. Im unteren Plot finden Sie die dazugehörigen Standardfehler. Die Standardfehler wurden mit der Umformungsfunktion berechnet.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="adaptives_testen_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout-aufgabe">
-<p>Finden Sie je ein Beispiel für die folgenden Untersuchungspläne:</p>
-<ul>
-<li><p>Single screen</p></li>
-<li><p>Nicht-sequenzielle Untersuchungsbatterie</p></li>
-<li><p>Vorauswahl Untersuchungsplan (pre-reject)</p></li>
-<li><p>Vorentscheidungs-Untersuchungsplan (pre-select)</p></li>
-<li><p>Vollständig sequenzieller Untersuchungsplan</p></li>
-</ul>
+<p>Finden Sie den Verlauf der Plots plausibel? Versuchen Sie intuitiv nachzuvollziehen, wie die beiden Plots miteinander in Verbindung stehen.</p>
+</div>
+<p>Der Standardfehler um einen Personenparameter kann genutzt werden, um Konfidenzintervalle zu berechnen:</p>
+<p><span class="math display">\[\begin{equation}
+    KI = \hat{\theta} \pm z_{\alpha/2} \cdot SE(\hat{\theta})
+\end{equation}\]</span></p>
+<div class="callout-aufgabe">
+<p>Die Testinformation bei <span class="math inline">\(\hat{\theta} = 1\)</span> beträgt <span class="math inline">\(I(1) = 3\)</span>. Berechnen Sie das zweiseitige <span class="math inline">\(95\%\)</span> Konfidenzintervall um den Personenparameter.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(\hat{\theta} = 1\)</span></p>
+<p><span class="math inline">\(I(\hat{\theta}) = I(1) = 3\)</span></p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(KI = \hat{\theta} \pm z_{\alpha/2} \cdot SE(\hat{\theta})\)</span></p>
+<p>Als erstes berechnen wir den Standardfehler:</p>
+<p><span class="math inline">\(SE(\hat{\theta}) = \frac{1}{\sqrt{I(\hat{\theta})}} = \frac{1}{\sqrt{3}}\)</span></p>
+<p>Bei einem zweiseitigen <span class="math inline">\(95%\)</span> Konfidenzintervall rechnen wir mit dem z-Wert <span class="math inline">\(1.96\)</span> bzw. <span class="math inline">\(-1.96\)</span> für die untere Grenze:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">::</span><span class="fu">get_z</span>(<span class="at">ci_alpha =</span> <span class="fl">0.05</span>, <span class="at">ci_direction =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    lower     upper 
+-1.959964  1.959964 </code></pre>
+</div>
+</div>
+<p>Eingesetzt erhalten wir für die obere Grenze</p>
+<p><span class="math inline">\(KI_o = 1 + 1.96 \cdot \frac{1}{\sqrt{3}} \approx 2.13\)</span></p>
+<p>und für die untere Grenze</p>
+<p><span class="math inline">\(KI_u = 1 - 1.96 \cdot \frac{1}{\sqrt{3}} \approx -0.13\)</span></p>
+<p>Zur Ergebniskontrolle können wir <code>teachIRT</code> verwenden:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>teachIRT<span class="sc">:::</span><span class="fu">ci_general</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">theta =</span> <span class="dv">1</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">inf =</span> <span class="dv">3</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_alpha =</span> <span class="fl">0.05</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_direction =</span> <span class="st">"both"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     lower      upper 
+-0.1315857  2.1315857 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In der Vorlesung haben Sie den Algorithmus zum adaptiven Testen kennengelernt. Die nächsten beiden Aufgaben beziehen sich auf den Algorithmus. Verwenden Sie zur Bearbeitung beider Aufgaben den folgenden Itempool:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(j\)</span></th>
+<th><span class="math inline">\(\alpha_j\)</span></th>
+<th><span class="math inline">\(\beta_j\)</span></th>
+<th><span class="math inline">\(\gamma_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(0.8\)</span></td>
+<td><span class="math inline">\(-1.2\)</span></td>
+<td><span class="math inline">\(0.4\)</span></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(1.2\)</span></td>
+<td><span class="math inline">\(0.5\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\(0.9\)</span></td>
+<td><span class="math inline">\(-0.8\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span class="math inline">\(1.0\)</span></td>
+<td><span class="math inline">\(0.3\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<!-- \begin{center}
+    \includegraphics[width=0.8\textwidth]{inf_plots/adaptiv_algo.png}
+\end{center} -->
+<!-- {\scriptsize (Abbildung aus den Vorlesungsfolien)} -->
+<div class="callout-aufgabe">
+<p>Sie befinden sich in Schritt 2. des Testalgorithmus. Welches Item sollte der adaptive Testalgorithmus als nächstes präsentieren?</p>
+<p>Aktueller Fähigkeitsschätzer: <span class="math inline">\(\hat{\theta}_i = 0.5\)</span></p>
+</div>
+<div class="callout-aufgabe">
+<p>Sie befinden sich in Schritt 5. des Algorithmus zum adaptiven Testen. Ist das Abbruchkriterium erfüllt?</p>
+<p>Aktueller Fähigkeitsschätzer: <span class="math inline">\(\hat{\theta} = 0.5\)</span></p>
+<p>Abbruchkriterium mit <span class="math inline">\(95\%\)</span> CI beidseitig: <span class="math inline">\(|CI_{\text{unten}} - CI_{\text{oben}}| &lt;= 2\)</span></p>
+<p>Bisher dargebotene Items: <span class="math inline">\([2, 3, 4]\)</span></p>
 </div>
 
 

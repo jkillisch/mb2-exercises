@@ -46,5 +46,8 @@
   },
   "sections/mitwirkende/mitwirkende.qmd": {
     "mitwirkende.html": "245dece2"
+  },
+  "sections/adaptives_testen/adaptives_testen.qmd": {
+    "adaptives_testen.html": "af7be54a"
   }
 }

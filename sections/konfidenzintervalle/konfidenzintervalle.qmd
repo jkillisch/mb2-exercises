@@ -74,6 +74,8 @@ KI <- X + z * SD_x * sqrt(1 - Rel_x)
 print(KI)
 ```
 
+In der Prüfung können Sie Ihr Ergebnis natürlich nicht mit `teachIRT` überprüfen. Sie sollten nach dem Rechnen dennoch mindestens noch einmal überprüfen, ob $KI_u < X < KI_o$ gilt.
+
 ## Beispiel einseitig mit unterer Grenze
 
 Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} = 110 + \infty \cdot 5.6 \cdot \sqrt{1-0.8} = \infty$ und $KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88$ die Grenzen des einseitigen Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist $KI = [105.88, \infty)$.
