@@ -235,6 +235,7 @@ window.Quarto = {
   <li><a href="#aufgaben-mit-der-bdi-ii-norm" id="toc-aufgaben-mit-der-bdi-ii-norm" class="nav-link" data-scroll-target="#aufgaben-mit-der-bdi-ii-norm">Aufgaben mit der BDI-II Norm</a></li>
   <li><a href="#prozentränge-in-r-berechnen" id="toc-prozentränge-in-r-berechnen" class="nav-link" data-scroll-target="#prozentränge-in-r-berechnen">Prozentränge in R berechnen</a></li>
   <li><a href="#normwerttransformation-in-einem-fallbeispiel" id="toc-normwerttransformation-in-einem-fallbeispiel" class="nav-link" data-scroll-target="#normwerttransformation-in-einem-fallbeispiel">Normwerttransformation in einem Fallbeispiel</a></li>
+  <li><a href="#erstellen-einer-normtabelle" id="toc-erstellen-einer-normtabelle" class="nav-link" data-scroll-target="#erstellen-einer-normtabelle">Erstellen einer Normtabelle</a></li>
   </ul></li>
   <li><a href="#sensitivität-spezifität-roc-kurven-youden-index" id="toc-sensitivität-spezifität-roc-kurven-youden-index" class="nav-link" data-scroll-target="#sensitivität-spezifität-roc-kurven-youden-index">Sensitivität, Spezifität, ROC-Kurven, Youden-Index</a>
   <ul class="collapse">
@@ -302,31 +303,31 @@ Lösung
 <tbody>
 <tr class="odd">
 <td>z-Skala</td>
-<td><span class="math inline">\(z_n = \frac{x_n - \overline{x}}{SD(x)}\)</span></td>
+<td><span class="math inline">\(z_i = \frac{x_i - \overline{x}}{SD(x)}\)</span></td>
 </tr>
 <tr class="even">
 <td>IQ-Abweichungsskala</td>
-<td><span class="math inline">\(IQ_n = 100 + 15 z_n\)</span></td>
+<td><span class="math inline">\(IQ_i = 100 + 15 z_i\)</span></td>
 </tr>
 <tr class="odd">
 <td>T-Werte</td>
-<td><span class="math inline">\(T_n = 50 + 10 z_n\)</span></td>
+<td><span class="math inline">\(T_i = 50 + 10 z_i\)</span></td>
 </tr>
 <tr class="even">
 <td>Standardwerte</td>
-<td><span class="math inline">\(SW_n = 100 + 10 z_n\)</span></td>
+<td><span class="math inline">\(SW_i = 100 + 10 z_i\)</span></td>
 </tr>
 <tr class="odd">
 <td>PISA-Skala</td>
-<td><span class="math inline">\(P_n = 500 + 100 z_n\)</span></td>
+<td><span class="math inline">\(P_i = 500 + 100 z_i\)</span></td>
 </tr>
 <tr class="even">
 <td>Stanine-Normwert</td>
-<td><span class="math inline">\(S_n \approx 5 + 2 z_n\)</span></td>
+<td><span class="math inline">\(S_i \approx 5 + 2 z_i\)</span></td>
 </tr>
 <tr class="odd">
 <td>Prozentrang</td>
-<td><span class="math inline">\(PR_n = 100 \frac{freq_{\text{cum}}(X_n)}{N}\)</span></td>
+<td><span class="math inline">\(PR_i = 100 \frac{freq_{\text{cum}}(X_i)}{N}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -524,6 +525,544 @@ Lösung (b)
 </div>
 </div>
 </section>
+<section id="erstellen-einer-normtabelle" class="level3">
+<h3 class="anchored" data-anchor-id="erstellen-einer-normtabelle">Erstellen einer Normtabelle</h3>
+<p>Die nächste Aufgabe ist etwas länger als die anderen. Sie werden in diesem Abschnitt Daten in R simulieren und selbst eine Normtabelle für einen Test erstellen.</p>
+<p>Stellen Sie sich vor, Sie hätten in einem Forschungsprojekt einen Test mit drei Items entwickelt - zum Beispiel ein Screening Instrument zur Detektion von Spinnenangst. <span class="math inline">\(N = 1000\)</span> Personen aus der Gesamtbevölkerung bewerteten die drei Items auf einer fünfstufigen Ratingskala (stimme nicht zu, stimme eher nicht zu, weder noch, stimme eher zu, stimme zu). Alle Items sind positiv gepolt.</p>
+<p>Ihre Aufgabe wird es sein, anhand dieser Daten eine Normtabelle zu generieren, die nach Geschlecht (Mann, Frau, Divers) und fünf Altersbändern ([18, 25), [25, 35), [35, 45), [45, 55), [55, 65)) differenziert. Anwender:innen sollten anhand der Tabelle Summenscores in Standardwerte umwandeln können. Die folgenden Aufgaben leiten Sie schrittweise zu diesem Ergebnis.</p>
+<p>Der erste Schritt ist es, die Antworten der <span class="math inline">\(N = 1000\)</span> Versuchspersonen in Ihrer R-Session zu generieren. Da es sich um ein fiktives Beispiel handelt, können wir selbst Übungsdaten simulieren. Genau das ist Ihre erste Aufgabe.</p>
+<div class="callout-aufgabe" title="Aufgabe: Runden auf zwei Nachkommastellen">
+<p>Kopieren Sie den folgenden Code-Abschnitt in Ihre IDE (z.B. RStudio) und führen sie den Code vollständig aus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seed setzen</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5546</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Anzahl der Personen</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Anzahl der Items</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Geschlecht der Personen festlegen</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>geschlecht <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"mann"</span>, <span class="st">"frau"</span>, <span class="st">"divers"</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> N, </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.46</span>, <span class="fl">0.46</span>, <span class="fl">0.08</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Altersgruppe der Personen festlegen</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>alter <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"[18, 25)"</span>, <span class="st">"[25, 35)"</span>, <span class="st">"[35, 45)"</span>, <span class="st">"[45, 55)"</span>, <span class="st">"[55, 65)"</span>),</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> N,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.20</span>, <span class="fl">0.15</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Fragebogenantworten simulieren</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">sim_pcm</span>(<span class="at">n =</span> N, <span class="at">m =</span> I, <span class="at">m_star =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Fragebogenantworten und Datensatz mergen</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_cols</span>(</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">person =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">geschlecht =</span> geschlecht,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">alter =</span> alter,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  U</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Oberste zehn Zeilen des Datensatzes anzeigen</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(dat)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 6
+   person geschlecht alter    item_1 item_2 item_3
+    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1      1 mann       [35, 45)      4      3      4
+ 2      2 mann       [45, 55)      4      5      5
+ 3      3 frau       [25, 35)      4      4      3
+ 4      4 frau       [45, 55)      2      1      1
+ 5      5 mann       [35, 45)      4      5      2
+ 6      6 mann       [25, 35)      3      2      2
+ 7      7 frau       [35, 45)      3      3      1
+ 8      8 mann       [55, 65)      3      5      4
+ 9      9 frau       [55, 65)      4      3      4
+10     10 mann       [18, 25)      4      4      3
+# ℹ 990 more rows</code></pre>
+</div>
+</div>
+</div>
+<p>Nun sollten Sie in Ihrer R-Session auf den Datensatz <code>dat</code> zugreifen können. Da Sie zu Beginn mit dem Befehl <code>set.seed()</code> einen bestimmten Startwert für die Zufallsziehungen im Code-Abschnitt festlegen, sollten Sie, wenn Sie den Code-Abschnitt wiederholt vollständig ausführen auch immer wieder die gleichen Daten generieren.</p>
+<p>Zuerst verschaffen wir uns einen Überblick über den Datensatz. Versuchen Sie Folgendes herauszufinden:</p>
+<div class="callout-aufgabe">
+<ol type="a">
+<li><p>Welche Variablen hat der Datensatz?</p></li>
+<li><p>Welche möglichen Werte haben die Variablen jeweils?</p></li>
+<li><p>Wie viele Zeilen hat der Datensatz?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Welche Variablen hat der Datensatz?</strong></p>
+<p>Um das herauszufinden, kann man den Befehl <code>colnames(dat)</code> verwenden.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "person"     "geschlecht" "alter"      "item_1"     "item_2"    
+[6] "item_3"    </code></pre>
+</div>
+</div>
+<p><strong>Welche möglichen Werte haben die Variablen jeweils?</strong></p>
+<p><code>dat$person</code> enthält natürliche Zahlen von <span class="math inline">\(1\)</span> bis <span class="math inline">\(1000\)</span> und kodiert, zu welcher Person eine Zeile jeweils gehört. Hier die ersten 10 Personen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>person[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<p>Die möglichen Werte (und Häufigkeiten) der Geschlechtsvariable, <code>dat$geschlecht</code>, und der Altersvariable, <code>dat$alter</code>, können Sie sich so anzeigen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>geschlecht)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+divers   frau   mann 
+    60    452    488 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>alter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[18, 25) [25, 35) [35, 45) [45, 55) [55, 65) 
+     153      235      251      191      170 </code></pre>
+</div>
+</div>
+<p>Die Variablen <code>dat$item_1</code> bis <code>dat$item_5</code> enthalten die Antworten auf die fünf Fragebogenitems:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>item_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5 
+ 58 225 391 256  70 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>item_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5 
+ 59 215 389 264  73 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>item_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5 
+ 74 237 340 258  91 </code></pre>
+</div>
+</div>
+<p><strong>Wie viele Zeilen hat der Datensatz?</strong></p>
+<p>Dafür können wir den Befehl <code>nrow()</code> verwenden.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1000</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wenn Sie der Struktur dieser Aufgabe folgen, werden Sie recht kleinschrittig zur fertigen Normtabelle geleitet. Überlegen Sie dennoch vorher selbst, welche Schritte Sie unternehmen müssten, um aus den simulierten Daten eine Tabelle zu erzeugen, die es Ihnen ermöglicht, jeden Rohwert in einen Standardwert zu transformieren.</p>
+</div>
+<p>Im nächsten Schritt Berechnen Sie aus den Antworten auf die drei Items für jede Person einen Summenscore. Später in der Vorlesung und Übung werden Sie Alternativen zum Summenscore kennenlernen. Für diese Aufgabe wird es aber ausreichen, Test-Scores durch einfache Summen zu erzeugen.</p>
+<div class="callout-aufgabe">
+<p>Erzeugen Sie eine neue Variable <code>dat$score</code> im Datensatz, indem Sie die Antworten auf die drei Items summieren.</p>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>score <span class="ot">&lt;-</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>score <span class="ot">&lt;-</span> dat<span class="sc">$</span>item_1 <span class="sc">+</span> dat<span class="sc">$</span>item_2 <span class="sc">+</span> dat<span class="sc">$</span>item_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Wenn wir nun den Datensatz anzeigen, ist die neue Variable <code>score</code> zu sehen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 7
+   person geschlecht alter    item_1 item_2 item_3 score
+    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1      1 mann       [35, 45)      4      3      4    11
+ 2      2 mann       [45, 55)      4      5      5    14
+ 3      3 frau       [25, 35)      4      4      3    11
+ 4      4 frau       [45, 55)      2      1      1     4
+ 5      5 mann       [35, 45)      4      5      2    11
+ 6      6 mann       [25, 35)      3      2      2     7
+ 7      7 frau       [35, 45)      3      3      1     7
+ 8      8 mann       [55, 65)      3      5      4    12
+ 9      9 frau       [55, 65)      4      3      4    11
+10     10 mann       [18, 25)      4      4      3    11
+# ℹ 990 more rows</code></pre>
+</div>
+</div>
+<p>In den vorherigen Rechenaufgaben haben Sie verwendet, dass man einen Score in einen beliebigen Normwert transformieren kann, wenn man den Mittelwert und die Standardabweichung der Scores in Normstichprobe kennt. In der nächsten Aufgabe werden Sie daher Mittelwert und Standardabweichung für jede Kombination von Geschlecht und Altersbändern berechnen.</p>
+<div class="callout-aufgabe">
+<p>Berechnen Sie für jede Kombination von Geschlecht und Altersband einen mittleren Score und eine Standardabweichung der Scores. Das Ergebnis sollte ein <code>data.frame</code> (oder <code>tibble</code>) mit den Spalten <code>geschlecht</code>, <code>alter</code>, <code>score_mean</code> (Mittelwert in der Zelle), <code>score_sd</code> (Standardabweichung in der Zelle) sein. Nennen Sie den data.frame <code>dstats</code>.</p>
+</div>
+<p>Für diesen Schritt können Sie auch die Lösung kopieren, falls Sie selten mit R arbeiten.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mittelwert</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(score <span class="sc">~</span> geschlecht <span class="sc">+</span> ???, dat, mean)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardabweichung</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(???, dat, ???)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Neu berechnete Spalten umbenennen</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(m)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"score_mean"</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(s)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"score_sd"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Zu dstats mergen</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>dstats <span class="ot">&lt;-</span> <span class="fu">merge</span>(???, s, <span class="at">by =</span> <span class="fu">c</span>(???, <span class="st">"alter"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mittelwert</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(score <span class="sc">~</span> geschlecht <span class="sc">+</span> alter, dat, mean)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardabweichung</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(score <span class="sc">~</span> geschlecht <span class="sc">+</span> alter, dat, sd)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Neu berechnete Spalten umbenennen</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(m)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"score_mean"</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(s)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"score_sd"</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Zu dstats mergen</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>dstats <span class="ot">&lt;-</span> <span class="fu">merge</span>(m, s, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"geschlecht"</span>, <span class="st">"alter"</span>))</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional für schöneres Printing in tibble umwandeln:</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>dstats <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(dstats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Exkurs">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exkurs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Wenn Sie planen noch lange mit R zu arbeiten, lohnt sich an dieser Stelle ein Blick in das <a href="tidyverse">https://tidyverse.org/</a>. Mit dem Paket <code>dplyr</code> gelangen Sie folgendermaßen an das gleiche Ziel:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>dstats <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Daten gruppieren</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(geschlecht, alter) <span class="sc">|&gt;</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mittelwert und Standardabweichung berechnen</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_mean =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_sd =</span> <span class="fu">sd</span>(score),</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Die Denkweise beliebig zu gruppieren und dann Zeilen in Gruppen zusammenzufassen finde ich persönlich etwas angenehmer.</p>
+</div>
+</div>
+</div>
+<p>Der resultierende <code>data.frame</code> sollte so aussehen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dstats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 4
+   geschlecht alter    score_mean score_sd
+   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;
+ 1 divers     [18, 25)       8.55     1.63
+ 2 divers     [25, 35)       8        2.36
+ 3 divers     [35, 45)       8.35     3.10
+ 4 divers     [45, 55)       8.82     2.32
+ 5 divers     [55, 65)      10.1      2.39
+ 6 frau       [18, 25)       9        2.58
+ 7 frau       [25, 35)       9.44     2.35
+ 8 frau       [35, 45)       9.51     2.43
+ 9 frau       [45, 55)       9.08     2.32
+10 frau       [55, 65)       9.13     2.04
+11 mann       [18, 25)       9.49     2.39
+12 mann       [25, 35)       8.97     2.31
+13 mann       [35, 45)       9.06     2.32
+14 mann       [45, 55)       9.39     2.32
+15 mann       [55, 65)       9.06     2.43</code></pre>
+</div>
+</div>
+<p>Für jede Kombination der Geschlechts- und Altersvariable können Sie nun den Score-Mittelwert und die Standardabweichung ablesen. Diese Information ist ausreichend, um Summenscores (/Rohwerte) in z-Werte und anschließend in Standardwerte umzuwandeln. Berechnen Sie vor der Erstellung der gesamten Tabelle ein einzelnes Wertebeispiel.</p>
+<div class="callout-aufgabe">
+<p>Berechnen Sie den Standardwert einer 32-jährigen Frau mit einem Summenscore von <span class="math inline">\(4\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Gegeben:</p>
+<p><span class="math inline">\(x_i = 4\)</span> Summenscore</p>
+<p><span class="math inline">\(\overline{x} = 9.44\)</span> Score-Mittelwert in der Normstichprobe</p>
+<p><span class="math inline">\(SD(x) = 2.35\)</span> Score-Standardabweichung in der Normstichprobe</p>
+<p>Gesucht:</p>
+<p><span class="math inline">\(SW_i = 100 + 10 \cdot z_i\)</span> Standardwert</p>
+<p>Berechnung:</p>
+<p><span class="math inline">\(z_i = \frac{x_i - \overline{x}}{SD(x)} = \frac{4 - 9.44}{2.35}\)</span></p>
+<p><span class="math inline">\(SW_i = 100 + 10 \cdot \frac{4 - 9.44}{2.35}\)</span></p>
+<p>Mit dem Taschenrechner:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>z_i <span class="ot">&lt;-</span> (<span class="dv">4</span> <span class="sc">-</span> <span class="fl">9.44</span>) <span class="sc">/</span> <span class="fl">2.35</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>SW_i <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> z_i</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(SW_i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 76.85106</code></pre>
+</div>
+</div>
+<p>Gerundet ergibt sich <span class="math inline">\(SW_i \approx 76.85\)</span>, ein weit unterdurchschnittlicher Wert.</p>
+</div>
+</div>
+</div>
+<p>Nun können wir uns an die gesamte Tabelle machen. Überlegen Sie dafür zuerst, welcher Wert der minimal erreichbare Summenscore und welcher der maximal erreichbare Summenscore wäre.</p>
+<div class="callout-aufgabe">
+<p>Was sind jeweils der minimal und maximal erreichbare Summenscore im Beispiel?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Den kleinstmöglichen Wert erhalten Sie, wenn Sie in allen drei Items Kategorie <span class="math inline">\(1\)</span> wählen, also <span class="math inline">\(1 + 1+ 1 = 3\)</span>.</p>
+<p>Den höchstmöglichen Wert erhalten Sie, wenn Sie in allen drei Items Kategorie <span class="math inline">\(5\)</span> wählen, also <span class="math inline">\(5 + 5 + 5 = 15\)</span>.</p>
+<p>Die Spanne/Range der simulierten Summenscores spiegelt diese Überlegung wider:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dat<span class="sc">$</span>score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  3 15</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Wir benötigen also für jede Kombination von Geschlecht und Alter sowie jeden Summenscore zwischen 3 und 15 einen Standardwert. Um die Aufgabe etwas zu reduzieren, können Sie sich auf die möglichen Scores <span class="math inline">\(8, 10, 12\)</span> beschränken.</p>
+<div class="callout-aufgabe">
+<p>Berechnen Sie für jede Kombination von Geschlecht und Altersband den Standardwert der Summenscores <span class="math inline">\(8\)</span>, <span class="math inline">\(10\)</span> und <span class="math inline">\(12\)</span>.</p>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Bei dieser Aufgabe müssen Sie für jeden möglichen Summenscore (<span class="math inline">\(8\)</span>, <span class="math inline">\(10\)</span>, <span class="math inline">\(12\)</span>) eine Spalte an <code>dstats</code> anfügen, die Standardwerte enthält.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: z-Werte für Rohwert 8">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp: z-Werte für Rohwert 8
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Als Zwischenschritt ist es sinnvoll, zunächst z-Werte für jede Kombination von Geschlecht und Altersband zu berechnen. Das geht für einen Summenscore von <span class="math inline">\(8\)</span> so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_8 <span class="ot">&lt;-</span> (<span class="dv">8</span> <span class="sc">-</span> dstats<span class="sc">$</span>score_mean)<span class="sc">/</span>dstats<span class="sc">$</span>score_sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Standardwerte für Rohwert 8">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp: Standardwerte für Rohwert 8
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Als nächstes muss man die z-Werte mit der Formel <span class="math inline">\(SW_i = 100 + 10 \cdot z_i\)</span> in Standardwerte transformieren. So geht das im Fall eines Summenscores von <span class="math inline">\(8\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>sw_8 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>dstats<span class="sc">$</span>z_8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># z-Werte berechnen</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_8 <span class="ot">&lt;-</span> (<span class="dv">8</span> <span class="sc">-</span> dstats<span class="sc">$</span>score_mean)<span class="sc">/</span>dstats<span class="sc">$</span>score_sd</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_10 <span class="ot">&lt;-</span> (<span class="dv">10</span> <span class="sc">-</span> dstats<span class="sc">$</span>score_mean)<span class="sc">/</span>dstats<span class="sc">$</span>score_sd</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_12 <span class="ot">&lt;-</span> (<span class="dv">12</span> <span class="sc">-</span> dstats<span class="sc">$</span>score_mean)<span class="sc">/</span>dstats<span class="sc">$</span>score_sd</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardwerte berechnen</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>sw_8 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>dstats<span class="sc">$</span>z_8</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>sw_10 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>dstats<span class="sc">$</span>z_10</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>sw_12 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>dstats<span class="sc">$</span>z_12</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># z-Wert wieder löschen</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_8 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_10 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>dstats<span class="sc">$</span>z_12 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Die fertige Normtabelle sollte etwa so aussehen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dstats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 7
+   geschlecht alter    score_mean score_sd  sw_8 sw_10 sw_12
+   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 divers     [18, 25)       8.55     1.63  96.7 109.   121.
+ 2 divers     [25, 35)       8        2.36 100   108.   117.
+ 3 divers     [35, 45)       8.35     3.10  98.9 105.   112.
+ 4 divers     [45, 55)       8.82     2.32  96.5 105.   114.
+ 5 divers     [55, 65)      10.1      2.39  91.2  99.6  108.
+ 6 frau       [18, 25)       9        2.58  96.1 104.   112.
+ 7 frau       [25, 35)       9.44     2.35  93.9 102.   111.
+ 8 frau       [35, 45)       9.51     2.43  93.8 102.   110.
+ 9 frau       [45, 55)       9.08     2.32  95.3 104.   113.
+10 frau       [55, 65)       9.13     2.04  94.4 104.   114.
+11 mann       [18, 25)       9.49     2.39  93.7 102.   111.
+12 mann       [25, 35)       8.97     2.31  95.8 104.   113.
+13 mann       [35, 45)       9.06     2.32  95.4 104.   113.
+14 mann       [45, 55)       9.39     2.32  94.0 103.   111.
+15 mann       [55, 65)       9.06     2.43  95.6 104.   112.</code></pre>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Lesen Sie zuletzt den Standardwert eines 45-jährigen Mannes mit einem Summenscore von 12 ab.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(111\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Zu Beginn diser Aufgabe sollten Sie selbst überlegen, welche Schritte Sie unternehmen müssten, um aus den Daten eine Normtabelle zu erzeugen. Vergleichen Sie nun Ihre Erwartung mit den durchgeführten Schritten.</p>
+</div>
+</section>
 </section>
 <section id="sensitivität-spezifität-roc-kurven-youden-index" class="level2">
 <h2 class="anchored" data-anchor-id="sensitivität-spezifität-roc-kurven-youden-index">Sensitivität, Spezifität, ROC-Kurven, Youden-Index</h2>
@@ -550,7 +1089,7 @@ Lösung (b)
 </ol>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Tabellengerüst">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -559,7 +1098,7 @@ Tipp: Tabellengerüst
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>So soll die Tabelle am Ende aussehen:</p>
 <table class="caption-top table">
@@ -615,7 +1154,7 @@ Tipp: Tabellengerüst
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Teile von a. vorgeben">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -624,7 +1163,7 @@ Tipp: Teile von a. vorgeben
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
@@ -678,7 +1217,7 @@ Tipp: Teile von a. vorgeben
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp: Teile von b. vorgeben">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -687,7 +1226,7 @@ Tipp: Teile von b. vorgeben
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
@@ -741,7 +1280,7 @@ Tipp: Teile von b. vorgeben
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -750,7 +1289,7 @@ Lösung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <caption>Tabelle aller Kreuzungen von wahren Zuständen und Diagnosen (dichotom)</caption>
@@ -813,7 +1352,7 @@ Lösung
 <p><span class="math inline">\(\text{Spezifität} = \frac{?}{? + RN}\)</span></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -822,7 +1361,7 @@ Lösung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(\text{Sensitivität} = \frac{RP}{RP + FN}\)</span></p>
 <p><span class="math inline">\(\text{Spezifität} = \frac{RN}{FP + RN}\)</span></p>
@@ -868,7 +1407,7 @@ Lösung
 <p>Berechnen Sie die Sensitivität und Spezifität des neuen Tests.</p>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -877,7 +1416,7 @@ Tipp
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gegeben:</p>
 <p><span class="math inline">\(RP = ?\)</span></p>
@@ -891,7 +1430,7 @@ Tipp
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -900,7 +1439,7 @@ Lösung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gegeben:</p>
 <p><span class="math inline">\(RP = 10\)</span></p>
@@ -921,7 +1460,7 @@ Lösung
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rechenkompetenzen_diagnostik_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rechenkompetenzen_diagnostik_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -931,7 +1470,7 @@ Lösung
 <p>Berechnen Sie den Youden-Index.</p>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 1">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -940,7 +1479,7 @@ Tipp 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gegeben:</p>
 <p><span class="math inline">\(RN = ?\)</span></p>
@@ -949,7 +1488,7 @@ Tipp 1
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 2">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -958,7 +1497,7 @@ Tipp 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gesucht:</p>
 <p>Sensitivität <span class="math inline">\(=?\)</span></p>
@@ -968,7 +1507,7 @@ Tipp 2
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 3">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -977,7 +1516,7 @@ Tipp 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gegeben:</p>
 <p><span class="math inline">\(RN = ?\)</span></p>
@@ -990,7 +1529,7 @@ Tipp 3
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled" title="Tipp 4: RN und RP vorgeben">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -999,7 +1538,7 @@ Tipp 4: RN und RP vorgeben
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gegeben:</p>
 <p><span class="math inline">\(RN = .93\)</span></p>
@@ -1012,7 +1551,7 @@ Tipp 4: RN und RP vorgeben
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1021,7 +1560,7 @@ Lösung
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Gegeben:</p>
 <p><span class="math inline">\(RN = .93\)</span></p>

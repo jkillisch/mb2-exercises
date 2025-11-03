@@ -32,13 +32,13 @@ Es gibt verschiedene Normwerteverteilungen (z, IQ, T, SW, etc.), die anhand von 
 
 | Normbezeichnung       | Transformation                                    |
 |-----------------------|--------------------------------------------------|
-| z-Skala               | $z_n = \frac{x_n - \overline{x}}{SD(x)}$         |
-| IQ-Abweichungsskala   | $IQ_n = 100 + 15 z_n$                            |
-| T-Werte               | $T_n = 50 + 10 z_n$                              |
-| Standardwerte         | $SW_n = 100 + 10 z_n$                            |
-| PISA-Skala            | $P_n = 500 + 100 z_n$                            |
-| Stanine-Normwert      | $S_n \approx 5 + 2 z_n$                          |
-| Prozentrang       | $PR_n = 100 \frac{freq_{\text{cum}}(X_n)}{N}$    |
+| z-Skala               | $z_i = \frac{x_i - \overline{x}}{SD(x)}$         |
+| IQ-Abweichungsskala   | $IQ_i = 100 + 15 z_i$                            |
+| T-Werte               | $T_i = 50 + 10 z_i$                              |
+| Standardwerte         | $SW_i = 100 + 10 z_i$                            |
+| PISA-Skala            | $P_i = 500 + 100 z_i$                            |
+| Stanine-Normwert      | $S_i \approx 5 + 2 z_i$                          |
+| Prozentrang           | $PR_i = 100 \frac{freq_{\text{cum}}(X_i)}{N}$    |
 
 ::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
 
@@ -209,6 +209,376 @@ $freq_{cum}(56) = 5$
 $N = 15$
 
 Also $PR = 100 \frac{5}{15} \approx 33.33$
+
+:::
+
+### Erstellen einer Normtabelle
+
+Die nächste Aufgabe ist etwas länger als die anderen. Sie werden in diesem Abschnitt Daten in R simulieren und selbst eine Normtabelle für einen Test erstellen.
+
+Stellen Sie sich vor, Sie hätten in einem Forschungsprojekt einen Test mit drei Items entwickelt - zum Beispiel ein Screening Instrument zur Detektion von Spinnenangst. $N = 1000$ Personen aus der Gesamtbevölkerung bewerteten die drei Items auf einer fünfstufigen Ratingskala (stimme nicht zu, stimme eher nicht zu, weder noch, stimme eher zu, stimme zu). Alle Items sind positiv gepolt.
+
+Ihre Aufgabe wird es sein, anhand dieser Daten eine Normtabelle zu generieren, die nach Geschlecht (Mann, Frau, Divers) und fünf Altersbändern ([18, 25), [25, 35), [35, 45), [45, 55), [55, 65)) differenziert. Anwender:innen sollten anhand der Tabelle Summenscores in Standardwerte umwandeln können. Die folgenden Aufgaben leiten Sie schrittweise zu diesem Ergebnis.
+
+Der erste Schritt ist es, die Antworten der $N = 1000$ Versuchspersonen in Ihrer R-Session zu generieren. Da es sich um ein fiktives Beispiel handelt, können wir selbst Übungsdaten simulieren. Genau das ist Ihre erste Aufgabe.
+
+::: {.callout-aufgabe title="Aufgabe: Runden auf zwei Nachkommastellen"}
+
+Kopieren Sie den folgenden Code-Abschnitt in Ihre IDE (z.B. RStudio) und führen sie den Code vollständig aus. 
+
+```{r}
+# Seed setzen
+set.seed(5546)
+
+# Anzahl der Personen
+N <- 1000
+
+# Anzahl der Items
+I <- 3
+
+# Geschlecht der Personen festlegen
+geschlecht <- sample(
+  x = c("mann", "frau", "divers"),
+  size = N, 
+  replace = TRUE,
+  prob = c(0.46, 0.46, 0.08)
+  )
+
+# Altersgruppe der Personen festlegen
+alter <- sample(
+  x = c("[18, 25)", "[25, 35)", "[35, 45)", "[45, 55)", "[55, 65)"),
+  size = N,
+  replace = TRUE,
+  prob = c(0.15, 0.25, 0.25, 0.20, 0.15)
+)
+
+# Fragebogenantworten simulieren
+U <- teachIRT::sim_pcm(n = N, m = I, m_star = 4) + 1
+
+# Fragebogenantworten und Datensatz mergen
+dat <- dplyr::bind_cols(
+  person = 1:N,
+  geschlecht = geschlecht,
+  alter = alter,
+  U
+  )
+
+# Oberste zehn Zeilen des Datensatzes anzeigen
+dat <- dplyr::as_tibble(dat)
+print(dat)
+```
+
+:::
+
+Nun sollten Sie in Ihrer R-Session auf den Datensatz `dat` zugreifen können. Da Sie zu Beginn mit dem Befehl `set.seed()` einen bestimmten Startwert für die Zufallsziehungen im Code-Abschnitt festlegen, sollten Sie, wenn Sie den Code-Abschnitt wiederholt vollständig ausführen auch immer wieder die gleichen Daten generieren.
+
+Zuerst verschaffen wir uns einen Überblick über den Datensatz. Versuchen Sie Folgendes herauszufinden:
+
+::: {.callout-aufgabe}
+
+a. Welche Variablen hat der Datensatz?
+
+b. Welche möglichen Werte haben die Variablen jeweils?
+
+c. Wie viele Zeilen hat der Datensatz?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+**Welche Variablen hat der Datensatz?**
+
+Um das herauszufinden, kann man den Befehl `colnames(dat)` verwenden.
+
+```{r}
+colnames(dat)
+```
+
+**Welche möglichen Werte haben die Variablen jeweils?**
+
+`dat$person` enthält natürliche Zahlen von $1$ bis $1000$ und kodiert, zu welcher Person eine Zeile jeweils gehört. Hier die ersten 10 Personen:
+
+```{r}
+dat$person[1:10]
+```
+
+Die möglichen Werte (und Häufigkeiten) der Geschlechtsvariable, `dat$geschlecht`, und der Altersvariable, `dat$alter`, können Sie sich so anzeigen:
+
+```{r}
+table(dat$geschlecht)
+table(dat$alter)
+```
+
+Die Variablen `dat$item_1` bis `dat$item_5` enthalten die Antworten auf die fünf Fragebogenitems:
+
+```{r}
+table(dat$item_1)
+table(dat$item_2)
+table(dat$item_3)
+```
+
+**Wie viele Zeilen hat der Datensatz?**
+
+Dafür können wir den Befehl `nrow()` verwenden.
+
+```{r}
+nrow(dat)
+```
+
+:::
+
+::: {.callout-aufgabe}
+
+Wenn Sie der Struktur dieser Aufgabe folgen, werden Sie recht kleinschrittig zur fertigen Normtabelle geleitet. Überlegen Sie dennoch vorher selbst, welche Schritte Sie unternehmen müssten, um aus den simulierten Daten eine Tabelle zu erzeugen, die es Ihnen ermöglicht, jeden Rohwert in einen Standardwert zu transformieren.
+
+:::
+
+
+Im nächsten Schritt Berechnen Sie aus den Antworten auf die drei Items für jede Person einen Summenscore. Später in der Vorlesung und Übung werden Sie Alternativen zum Summenscore kennenlernen. Für diese Aufgabe wird es aber ausreichen, Test-Scores durch einfache Summen zu erzeugen.
+
+::: {.callout-aufgabe}
+
+Erzeugen Sie eine neue Variable `dat$score` im Datensatz, indem Sie die Antworten auf die drei Items summieren.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+```{r, eval=FALSE}
+dat$score <- ...
+```
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+dat$score <- dat$item_1 + dat$item_2 + dat$item_3
+```
+
+:::
+
+Wenn wir nun den Datensatz anzeigen, ist die neue Variable `score` zu sehen:
+
+```{r}
+print(dat)
+```
+
+In den vorherigen Rechenaufgaben haben Sie verwendet, dass man einen Score in einen beliebigen Normwert transformieren kann, wenn man den Mittelwert und die Standardabweichung der Scores in Normstichprobe kennt. In der nächsten Aufgabe werden Sie daher Mittelwert und Standardabweichung für jede Kombination von Geschlecht und Altersbändern berechnen.
+
+::: {.callout-aufgabe}
+
+Berechnen Sie für jede Kombination von Geschlecht und Altersband einen mittleren Score und eine Standardabweichung der Scores. Das Ergebnis sollte ein `data.frame` (oder `tibble`) mit den Spalten `geschlecht`, `alter`, `score_mean` (Mittelwert in der Zelle), `score_sd` (Standardabweichung in der Zelle) sein. Nennen Sie den data.frame `dstats`.
+
+:::
+
+Für diesen Schritt können Sie auch die Lösung kopieren, falls Sie selten mit R arbeiten.
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+```{r, eval = FALSE}
+# Mittelwert
+m <- aggregate(score ~ geschlecht + ???, dat, mean)
+
+# Standardabweichung
+s <- aggregate(???, dat, ???)
+
+# Neu berechnete Spalten umbenennen
+names(m)[3] <- "score_mean"
+names(s)[3] <- "score_sd"
+
+# Zu dstats mergen
+dstats <- merge(???, s, by = c(???, "alter"))
+```
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+# Mittelwert
+m <- aggregate(score ~ geschlecht + alter, dat, mean)
+
+# Standardabweichung
+s <- aggregate(score ~ geschlecht + alter, dat, sd)
+
+# Neu berechnete Spalten umbenennen
+names(m)[3] <- "score_mean"
+names(s)[3] <- "score_sd"
+
+# Zu dstats mergen
+dstats <- merge(m, s, by = c("geschlecht", "alter"))
+
+# Optional für schöneres Printing in tibble umwandeln:
+dstats <- dplyr::as_tibble(dstats)
+```
+
+:::
+
+::: {.callout .callout-tipp title="Exkurs" collapse=true}
+
+Wenn Sie planen noch lange mit R zu arbeiten, lohnt sich an dieser Stelle ein Blick in das [https://tidyverse.org/](tidyverse). Mit dem Paket `dplyr` gelangen Sie folgendermaßen an das gleiche Ziel:
+
+```{r, eval = FALSE}
+library(dplyr)
+
+dstats <- dat |> 
+
+  # Daten gruppieren
+  group_by(geschlecht, alter) |> 
+
+  # Mittelwert und Standardabweichung berechnen
+  summarise(
+    score_mean = mean(score),
+    score_sd = sd(score),
+    .groups = "drop"
+    )
+```
+
+Die Denkweise beliebig zu gruppieren und dann Zeilen in Gruppen zusammenzufassen finde ich persönlich etwas angenehmer.
+
+:::
+
+Der resultierende `data.frame` sollte so aussehen:
+
+```{r}
+print(dstats)
+```
+
+Für jede Kombination der Geschlechts- und Altersvariable können Sie nun den Score-Mittelwert und die Standardabweichung ablesen. Diese Information ist ausreichend, um Summenscores (/Rohwerte) in z-Werte und anschließend in Standardwerte umzuwandeln. Berechnen Sie vor der Erstellung der gesamten Tabelle ein einzelnes Wertebeispiel.
+
+::: {.callout-aufgabe}
+
+Berechnen Sie den Standardwert einer 32-jährigen Frau mit einem Summenscore von $4$.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Gegeben:
+
+$x_i = 4$ Summenscore
+
+$\overline{x} = 9.44$ Score-Mittelwert in der Normstichprobe
+
+$SD(x) = 2.35$ Score-Standardabweichung in der Normstichprobe
+
+Gesucht:
+
+$SW_i = 100 + 10 \cdot z_i$ Standardwert
+
+Berechnung:
+
+$z_i = \frac{x_i - \overline{x}}{SD(x)} = \frac{4 - 9.44}{2.35}$
+
+$SW_i = 100 + 10 \cdot \frac{4 - 9.44}{2.35}$
+
+Mit dem Taschenrechner:
+
+```{r}
+z_i <- (4 - 9.44) / 2.35
+SW_i <- 100 + 10 * z_i
+print(SW_i)
+```
+
+Gerundet ergibt sich $SW_i \approx 76.85$, ein weit unterdurchschnittlicher Wert.
+
+:::
+
+Nun können wir uns an die gesamte Tabelle machen. Überlegen Sie dafür zuerst, welcher Wert der minimal erreichbare Summenscore und welcher der maximal erreichbare Summenscore wäre.
+
+::: {.callout-aufgabe}
+
+Was sind jeweils der minimal und maximal erreichbare Summenscore im Beispiel?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Den kleinstmöglichen Wert erhalten Sie, wenn Sie in allen drei Items Kategorie $1$ wählen, also $1 + 1+ 1 = 3$.
+
+Den höchstmöglichen Wert erhalten Sie, wenn Sie in allen drei Items Kategorie $5$ wählen, also $5 + 5 + 5 = 15$.
+
+Die Spanne/Range der simulierten Summenscores spiegelt diese Überlegung wider:
+
+```{r}
+range(dat$score)
+```
+
+:::
+
+Wir benötigen also für jede Kombination von Geschlecht und Alter sowie jeden Summenscore zwischen 3 und 15 einen Standardwert. Um die Aufgabe etwas zu reduzieren, können Sie sich auf die möglichen Scores $8, 10, 12$ beschränken.
+
+::: {.callout-aufgabe}
+
+Berechnen Sie für jede Kombination von Geschlecht und Altersband den Standardwert der Summenscores $8$, $10$ und $12$.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp" collapse=true}
+
+Bei dieser Aufgabe müssen Sie für jeden möglichen Summenscore ($8$, $10$, $12$) eine Spalte an `dstats` anfügen, die Standardwerte enthält.
+
+:::
+
+::: {.callout .callout-tipp title="Tipp: z-Werte für Rohwert 8" collapse=true}
+
+Als Zwischenschritt ist es sinnvoll, zunächst z-Werte für jede Kombination von Geschlecht und Altersband zu berechnen. Das geht für einen Summenscore von $8$ so:
+
+```{r}
+dstats$z_8 <- (8 - dstats$score_mean)/dstats$score_sd
+```
+:::
+
+::: {.callout .callout-tipp title="Tipp: Standardwerte für Rohwert 8" collapse=true}
+
+Als nächstes muss man die z-Werte mit der Formel $SW_i = 100 + 10 \cdot z_i$ in Standardwerte transformieren. So geht das im Fall eines Summenscores von $8$:
+
+```{r, eval = FALSE}
+dstats$sw_8 <- 100 + 10*dstats$z_8
+```
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+# z-Werte berechnen
+dstats$z_8 <- (8 - dstats$score_mean)/dstats$score_sd
+dstats$z_10 <- (10 - dstats$score_mean)/dstats$score_sd
+dstats$z_12 <- (12 - dstats$score_mean)/dstats$score_sd
+
+# Standardwerte berechnen
+dstats$sw_8 <- 100 + 10*dstats$z_8
+dstats$sw_10 <- 100 + 10*dstats$z_10
+dstats$sw_12 <- 100 + 10*dstats$z_12
+
+# z-Wert wieder löschen
+dstats$z_8 <- NULL
+dstats$z_10 <- NULL
+dstats$z_12 <- NULL
+```
+:::
+
+Die fertige Normtabelle sollte etwa so aussehen:
+
+```{r}
+print(dstats)
+```
+
+::: {.callout-aufgabe}
+
+Lesen Sie zuletzt den Standardwert eines 45-jährigen Mannes mit einem Summenscore von 12 ab.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$111$
+
+:::
+
+::: {.callout-aufgabe}
+
+Zu Beginn diser Aufgabe sollten Sie selbst überlegen, welche Schritte Sie unternehmen müssten, um aus den Daten eine Normtabelle zu erzeugen. Vergleichen Sie nun Ihre Erwartung mit den durchgeführten Schritten.
 
 :::
 
