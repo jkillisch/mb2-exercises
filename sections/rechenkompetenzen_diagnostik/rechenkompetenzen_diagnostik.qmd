@@ -22,7 +22,7 @@ In einer Studie wird der Zusammenhang zwischen Schlafgewohnheiten und depressive
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-Ab einem BDI-II Score von $7$.
+Personen mit einem BDI-II Score $>7$ sollten in die Analyse mit aufgenommen werden.
 
 :::
 
