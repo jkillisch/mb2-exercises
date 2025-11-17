@@ -50,7 +50,7 @@ $\alpha = .05$, obere Grenze
 teachIRT::get_z(ci_alpha = 0.05, ci_direction = "upper")
 ```
 
-3) Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.
+3) Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert in R dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist. Zur Illustration ist es sinnvoll, das einmal gesehen zu haben. Rein mathematisch ist es allerdings nicht ganz sauber, $\infty$ für $z$ einzusetzen. Das liegt daran, dass $z \in \mathbb{R}$ eine relle Zahl ist, aber es ist $\infty \notin \mathbb{R}$ keine Zahl, sondern ein Symbol. Stattdessen kann man mit einem Doppelpunkt und einem Gleichheitszeichen klarmachen, dass die jeweils infinite Grenze definitorisch ist, also entweder $K_o := \infty$ oder $K_u := -\infty$.
 
 4) Man kann die Grenzen des Konfidenzintervalls "konservativ" runden. Damit ist gemeint, dass man die Grenzen des Intervalls immer so rundet, dass durch das Runden immer ein größeres Intervall entsteht. Erhalten Sie etwa die Werte $KI_{u} = -4.5734$ und $KI_{o} = -1.4354$ für die jeweils untere und obere Grenze eines Konfidenzintervalls, könnten Sie auf das Intervall $[-4.58, -1.43]$ runden. Beachten Sie dass Sie in diesem Beispiel zweimal genau gegenteilig zum kaufmännischen Runden vorgehen. 
 Das Rational hinter dieser Überlegung ist es, keine Sicherheit durch das Runden zu suggerieren, die in den ungerundeten Werten garnicht vorhanden wäre. Wenn Sie auf zwei Nachkommastellen runden, wird der Unterschied zwischen den Rundungsverfahren in den meisten Metriken allerdings vernachlässigbar sein.
@@ -78,7 +78,7 @@ In der Prüfung können Sie Ihr Ergebnis natürlich nicht mit `teachIRT` überpr
 
 ## Beispiel einseitig mit unterer Grenze
 
-Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} = 110 + \infty \cdot 5.6 \cdot \sqrt{1-0.8} = \infty$ und $KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88$ die Grenzen des einseitigen Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist $KI = [105.88, \infty)$.
+Wenn $X=110$, $SD_x=5.6$, $Rel_x=0.8$ und $\alpha = 5\%$, so sind $KI_{o} := \infty$ und $KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88$ die Grenzen des einseitigen Intervalls, das erwartungsgemäß in $95\%$ der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist $KI = [105.88, \infty)$.
 
 ```{r}
 X <- 110
@@ -124,6 +124,8 @@ $KI_{u} = X - z_{1-\alpha} \cdot SD_x \cdot \sqrt{1-Rel_x}$
 Verwende $z_{1-\alpha} \approx 1.64$, da einseitig 5\% der Standardnormalverteilung abgeschnitten werden sollen.
 		
 $KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132.04$
+
+Die obere Intervallgrenze $KI_{o} := +\infty$ ist definiert.
 	
 Den Wert $139$ umgibt das einseitige $95\%$-Konfidenzintervall $[132.04, +\infty)$. Die untere Schwelle des Intervalls, das in $95\%$ der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von $130$ IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.
 
@@ -162,8 +164,6 @@ Zur Abklärung der Fahrtauglichkeit soll mit einem Konfidenzkoeffizienten von 95
 
 Herr M.s Rohwert beträgt $3.5$. Personen in der Vergleichsgruppe erzielten im Mittel einen Testwert von $3.75$ mit einer Standardabweichung von $0.5$. Für den BFI-II liegt eine Schätzung von $.84$ für McDonald's Omega vor. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen.
 
-Hinweis: Natürlich ist diese Aufgabe nur ein sog. *Toy Example* und kein Beispiel für eine sinvolle verkehrspsychologische Untersuchung.
-
 :::
 
 ::: {.callout-tip title="Lösung" collapse="true"}
@@ -195,6 +195,8 @@ $T = 50 + 10 \cdot z_x = 50 + 10 \cdot \frac{X - \mu}{\sigma} = \frac{3.5 - 3.75
 $z_{1-\alpha} \approx 1.64$, $SD_T = 10$
 
 $KI_{u} = T - z_{1-\alpha} \cdot SD_T \cdot \sqrt{1-Rel_x} \approx 45 - 1.64 \cdot 10 \cdot \sqrt{1-.84} \approx 38.44$
+
+Die obere Intervallgrenze $KI_{o} := +\infty$ ist definiert.
 
 Den T-Wert $45$ umgibt das einseitige $95\%$-Konfidenzintervall $[38.44, +\infty)$. Die untere Schwelle des Intervalls, das in $95\%$ der Fälle den wahren Wert umschließt, liegt nicht über dem Cutoff von $40$. Es lässt sich nicht mit ausreichender Sicherheit sagen, dass Herr M. ausreichend gewissenhaft ist.
 

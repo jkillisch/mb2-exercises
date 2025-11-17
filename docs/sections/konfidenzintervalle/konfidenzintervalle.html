@@ -303,7 +303,7 @@ KI = \textcolor{blue}{X} \;\pm\;
 </div>
 </div>
 <ol start="3" type="1">
-<li><p>Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist.</p></li>
+<li><p>Am R-Code von 2. sehen Sie, dass Sie bei einseitigen Intervallen einen finiten und einen infiniten z-Wert erhalten. Durch die Multiplikation mit diesen z-Werten resultiert in R dann auch ein Intervall, bei dem eine Grenze finit und eine infinit ist. Zur Illustration ist es sinnvoll, das einmal gesehen zu haben. Rein mathematisch ist es allerdings nicht ganz sauber, <span class="math inline">\(\infty\)</span> für <span class="math inline">\(z\)</span> einzusetzen. Das liegt daran, dass <span class="math inline">\(z \in \mathbb{R}\)</span> eine relle Zahl ist, aber es ist <span class="math inline">\(\infty \notin \mathbb{R}\)</span> keine Zahl, sondern ein Symbol. Stattdessen kann man mit einem Doppelpunkt und einem Gleichheitszeichen klarmachen, dass die jeweils infinite Grenze definitorisch ist, also entweder <span class="math inline">\(K_o := \infty\)</span> oder <span class="math inline">\(K_u := -\infty\)</span>.</p></li>
 <li><p>Man kann die Grenzen des Konfidenzintervalls “konservativ” runden. Damit ist gemeint, dass man die Grenzen des Intervalls immer so rundet, dass durch das Runden immer ein größeres Intervall entsteht. Erhalten Sie etwa die Werte <span class="math inline">\(KI_{u} = -4.5734\)</span> und <span class="math inline">\(KI_{o} = -1.4354\)</span> für die jeweils untere und obere Grenze eines Konfidenzintervalls, könnten Sie auf das Intervall <span class="math inline">\([-4.58, -1.43]\)</span> runden. Beachten Sie dass Sie in diesem Beispiel zweimal genau gegenteilig zum kaufmännischen Runden vorgehen. Das Rational hinter dieser Überlegung ist es, keine Sicherheit durch das Runden zu suggerieren, die in den ungerundeten Werten garnicht vorhanden wäre. Wenn Sie auf zwei Nachkommastellen runden, wird der Unterschied zwischen den Rundungsverfahren in den meisten Metriken allerdings vernachlässigbar sein.</p></li>
 </ol>
 </section>
@@ -334,7 +334,7 @@ KI = \textcolor{blue}{X} \;\pm\;
 </section>
 <section id="beispiel-einseitig-mit-unterer-grenze" class="level2">
 <h2 class="anchored" data-anchor-id="beispiel-einseitig-mit-unterer-grenze">Beispiel einseitig mit unterer Grenze</h2>
-<p>Wenn <span class="math inline">\(X=110\)</span>, <span class="math inline">\(SD_x=5.6\)</span>, <span class="math inline">\(Rel_x=0.8\)</span> und <span class="math inline">\(\alpha = 5\%\)</span>, so sind <span class="math inline">\(KI_{o} = 110 + \infty \cdot 5.6 \cdot \sqrt{1-0.8} = \infty\)</span> und <span class="math inline">\(KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88\)</span> die Grenzen des einseitigen Intervalls, das erwartungsgemäß in <span class="math inline">\(95\%\)</span> der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist <span class="math inline">\(KI = [105.88, \infty)\)</span>.</p>
+<p>Wenn <span class="math inline">\(X=110\)</span>, <span class="math inline">\(SD_x=5.6\)</span>, <span class="math inline">\(Rel_x=0.8\)</span> und <span class="math inline">\(\alpha = 5\%\)</span>, so sind <span class="math inline">\(KI_{o} := \infty\)</span> und <span class="math inline">\(KI_{u} = 110 - 1.64 \cdot 5.6 \cdot \sqrt{1-0.8} \approx 105.88\)</span> die Grenzen des einseitigen Intervalls, das erwartungsgemäß in <span class="math inline">\(95\%\)</span> der Fälle, in denen es berechnet wird, den wahren Wert umschließt. Also ist <span class="math inline">\(KI = [105.88, \infty)\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">110</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>SD_x <span class="ot">&lt;-</span> <span class="fl">5.6</span></span>
@@ -385,6 +385,7 @@ Lösung
 <p><span class="math inline">\(KI_{u} = X - z_{1-\alpha} \cdot SD_x \cdot \sqrt{1-Rel_x}\)</span></p>
 <p>Verwende <span class="math inline">\(z_{1-\alpha} \approx 1.64\)</span>, da einseitig 5% der Standardnormalverteilung abgeschnitten werden sollen.</p>
 <p><span class="math inline">\(KI_{u} = 139 - 1.64 \cdot 15 \cdot \sqrt{1-0.92} \approx 132.04\)</span></p>
+<p>Die obere Intervallgrenze <span class="math inline">\(KI_{o} := +\infty\)</span> ist definiert.</p>
 <p>Den Wert <span class="math inline">\(139\)</span> umgibt das einseitige <span class="math inline">\(95\%\)</span>-Konfidenzintervall <span class="math inline">\([132.04, +\infty)\)</span>. Die untere Schwelle des Intervalls, das in <span class="math inline">\(95\%\)</span> der Fälle den wahren Wert umschließt, liegt über dem üblichen Cutoff von <span class="math inline">\(130\)</span> IQ-Punkten. Das Testergebnis spricht dafür, dass Theo hochbegabt ist.</p>
 <p><strong>Überprüfung in R</strong>:</p>
 <div class="cell">
@@ -424,7 +425,6 @@ Lösung
 <p>Liegt Herr M.s Gewissenhaftigkeitswert im BFI-2, verglichen mit einer Normstichprobe von Personen, die einen gültigen Führerschein besitzen, mindestens im durchschnittlichen Bereich (<span class="math inline">\(T \ge 40\)</span>)?</p>
 </blockquote>
 <p>Herr M.s Rohwert beträgt <span class="math inline">\(3.5\)</span>. Personen in der Vergleichsgruppe erzielten im Mittel einen Testwert von <span class="math inline">\(3.75\)</span> mit einer Standardabweichung von <span class="math inline">\(0.5\)</span>. Für den BFI-II liegt eine Schätzung von <span class="math inline">\(.84\)</span> für McDonald’s Omega vor. Berechnen Sie den T-Wert und das passende Konfidenzintervall um die Hypothese zu prüfen.</p>
-<p>Hinweis: Natürlich ist diese Aufgabe nur ein sog. <em>Toy Example</em> und kein Beispiel für eine sinvolle verkehrspsychologische Untersuchung.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -458,6 +458,7 @@ Lösung
 </ol>
 <p><span class="math inline">\(z_{1-\alpha} \approx 1.64\)</span>, <span class="math inline">\(SD_T = 10\)</span></p>
 <p><span class="math inline">\(KI_{u} = T - z_{1-\alpha} \cdot SD_T \cdot \sqrt{1-Rel_x} \approx 45 - 1.64 \cdot 10 \cdot \sqrt{1-.84} \approx 38.44\)</span></p>
+<p>Die obere Intervallgrenze <span class="math inline">\(KI_{o} := +\infty\)</span> ist definiert.</p>
 <p>Den T-Wert <span class="math inline">\(45\)</span> umgibt das einseitige <span class="math inline">\(95\%\)</span>-Konfidenzintervall <span class="math inline">\([38.44, +\infty)\)</span>. Die untere Schwelle des Intervalls, das in <span class="math inline">\(95\%\)</span> der Fälle den wahren Wert umschließt, liegt nicht über dem Cutoff von <span class="math inline">\(40\)</span>. Es lässt sich nicht mit ausreichender Sicherheit sagen, dass Herr M. ausreichend gewissenhaft ist.</p>
 <p><strong>Überprüfung in R</strong></p>
 <div class="cell">
