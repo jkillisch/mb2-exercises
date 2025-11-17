@@ -106,9 +106,9 @@ Häufig muss eine globale diagnostische Fragestellung zunächst in eine spezifis
 | **Spezifische Fragestellung** | Ist Erik mindestens durchschnittlich intelligent und überdurchschnittlich kreativ? |
 | **Hypothese(n)** | H1: Ist Eriks Leistung in einem Intelligenztest im Vergleich zu Gleichaltrigen mindestens durchschnittlich (IQ ≥ 100)?<br><br>H2: Ist Eriks Leistung in einem Kreativitätstest im Vergleich zu Gleichaltrigen überdurchschnittlich (SW ≥ 110)? |
 
-Spezifizieren Sie die folgende Fragestellung und leiten Sie eine oder mehr passende Hypothesen ab.
-
 ::: {.callout-aufgabe}
+
+Spezifizieren Sie die folgende Fragestellung und leiten Sie eine oder mehr passende Hypothesen ab. Über die notwendigen Eigenschaften, um an der Arktisexpedition teilzunehmen können Sie selbst entscheiden.
 
 |                          |                                                                 |
 |--------------------------|-----------------------------------------------------------------|
