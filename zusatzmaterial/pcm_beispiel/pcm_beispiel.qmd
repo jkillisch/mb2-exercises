@@ -1,6 +1,6 @@
 # Beispielrechnung PCM
 
-In der Vorlesung begegnet Ihnen ein Beispielrechnung zu den Kategorienwahrscheinlichkeiten im Partial Credit Model. Es soll berechnet werden, wie wahrscheinlich es ist, dass eine Person mit einer Fähigkeit von $\theta_i = 0.5$ in der Antwortkategorie $c = 2$ einer 4-stufigen Ratingskala antwortet. Die Schwellenparameter $\delta_{j1} = -1$, $\delta_{j2} = 0$, und $\delta_{j3} = 1$ sind vorgegeben.
+In der Vorlesung begegnet Ihnen eine Beispielrechnung zu den Kategorienwahrscheinlichkeiten im Partial Credit Model. Es soll berechnet werden, wie wahrscheinlich es ist, dass eine Person mit einer Fähigkeit von $\theta_i = 0.5$ in der Antwortkategorie $c = 2$ einer 4-stufigen Ratingskala antwortet. Die Schwellenparameter $\delta_{j1} = -1$, $\delta_{j2} = 0$, und $\delta_{j3} = 1$ sind vorgegeben.
 
 ## Interpretation der Parameter
 
@@ -42,13 +42,17 @@ $\sum_{k = 0}^{3} (\theta_i - \delta_{jk})$
 
 Auflösen des Summenzeichens ergibt:
 
-$= (\theta_i - \delta_{j1}) + (\theta_i - \delta_{j2}) + (\theta_i - \delta_{j3})$
+$= (\theta_i - \delta_{j0}) + (\theta_i - \delta_{j1}) + (\theta_i - \delta_{j2}) + (\theta_i - \delta_{j3})$
+
+Die erste Differenz mit $\delta_{j0}$ können wir gleich wieder streichen, denn diese ist als $0$ definiert.
+
+$=(\theta_i - \delta_{j1}) + (\theta_i - \delta_{j2}) + (\theta_i - \delta_{j3})$
 
 Da das Assoziativ- und Kommutativgesetz gelten, dürfen wir die Klammern auflösen und neu sortieren:
 
 $= 3 \cdot \theta_i - \delta_{j1} - \delta_{j2} - \delta_{j3}$
 
-Statt das Summenzeichen aufwendig für jeden Wert von $k$ aufzulösen, können Sie also gleich $\theta_i$ mit $l$ multiplizieren und den ersten bis $l^{\text{ten}}$ Schwellenparameter abziehen. Das geht viel schneller.
+Statt das Summenzeichen aufwendig für jeden Wert von $k$ aufzulösen, können Sie also gleich $\theta_i$ mit $3$ multiplizieren und den ersten bis dritten Schwellenparameter abziehen. Das geht viel schneller und funktioniert *im PCM* bei Summen der Form $\sum_{k = 0}^{l} (\theta_i - \delta_{jk})$ immer dann, wenn als obere Grenze im Summenzeichen eine Zahl $\ge 1$ steht. 
 
 Aufpassen muss man nur im Sonderfall, der als $0$ definiert ist:
 
@@ -93,4 +97,4 @@ $= \frac{7.39}{
     4.48
 } \approx 0.43$
 
-Die modellimplizierte Wahrscheinlichkeit im PCM, dass eine Person mit $\theta_i$ bei einem Item mit $\delta_{j1} = -1$, $\delta_{j2} = 0$, und $\delta_{j3} = 1$ in Kategorie $c = 2$ antwortet ist also $0.43$.
+Die modellimplizierte Wahrscheinlichkeit im PCM, dass eine Person mit $\theta_i = 0.5$ bei einem Item mit $\delta_{j1} = -1$, $\delta_{j2} = 0$, und $\delta_{j3} = 1$ in Kategorie $c = 2$ antwortet ist also $0.43$.

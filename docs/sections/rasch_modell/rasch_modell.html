@@ -217,7 +217,6 @@ window.Quarto = {
     <a class="dropdown-item" href="../../zusatzmaterial/pcm_beispiel/pcm_beispiel.html">
  <span class="dropdown-text">Beispielrechnung PCM</span></a>
   </li>  
-        <li class="dropdown-header">Beispielrechnung PCM</li>
     </ul>
   </li>
   <li class="nav-item">
@@ -635,20 +634,20 @@ Lösung
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Personenparameter:"</span>, theta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Personenparameter: -1.06"</code></pre>
+<pre><code>[1] "Personenparameter: -0.13"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Itemparameter:"</span>, beta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Itemparameter: 0.13"</code></pre>
+<pre><code>[1] "Itemparameter: 1.36"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loesung <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta, beta)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Lösewahrscheinlichkeit:"</span>, loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Lösewahrscheinlichkeit: 0.233258935771457"</code></pre>
+<pre><code>[1] "Lösewahrscheinlichkeit: 0.183921727419504"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Nicht-Lösewahrscheinlichkeit:"</span>, <span class="dv">1</span><span class="sc">-</span>loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.766741064228543"</code></pre>
+<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.816078272580496"</code></pre>
 </div>
 </div>
 </section>
