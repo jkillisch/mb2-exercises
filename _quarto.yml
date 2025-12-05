@@ -32,6 +32,10 @@ website:
           text: 9. Thurstonian IRT
         - href: sections/adaptives_testen/adaptives_testen.qmd
           text: 10. Adaptives Testen
+      - text: Zusatzmaterial
+        menu:
+        - href: zusatzmaterial/pcm_beispiel/pcm_beispiel.qmd
+          text: Beispielrechnung PCM
       - href: sections/mitwirkende/mitwirkende.qmd
         text: Mitwirkende
 

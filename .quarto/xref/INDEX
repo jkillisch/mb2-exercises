@@ -49,5 +49,8 @@
   },
   "sections/adaptives_testen/adaptives_testen.qmd": {
     "adaptives_testen.html": "af7be54a"
+  },
+  "zusatzmaterial/pcm_beispiel/pcm_beispiel.qmd": {
+    "pcm_beispiel.html": "a0b1ac3f"
   }
 }
