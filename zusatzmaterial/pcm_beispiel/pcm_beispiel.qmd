@@ -52,7 +52,21 @@ Da das Assoziativ- und Kommutativgesetz gelten, dürfen wir die Klammern auflös
 
 $= 3 \cdot \theta_i - \delta_{j1} - \delta_{j2} - \delta_{j3}$
 
-Statt das Summenzeichen aufwendig für jeden Wert von $k$ aufzulösen, können Sie also gleich $\theta_i$ mit $3$ multiplizieren und den ersten bis dritten Schwellenparameter abziehen. Das geht viel schneller und funktioniert *im PCM* bei Summen der Form $\sum_{k = 0}^{l} (\theta_i - \delta_{jk})$ immer dann, wenn als obere Grenze im Summenzeichen eine Zahl $\ge 1$ steht. 
+Statt das Summenzeichen aufwendig für jeden Wert von $k$ aufzulösen, können Sie also gleich $\theta_i$ mit $3$ multiplizieren und den ersten bis dritten Schwellenparameter abziehen. Das geht viel schneller und funktioniert *im PCM* bei Summen der Form $\sum_{k = 0}^{l} (\theta_i - \delta_{jk})$ immer dann, wenn als obere Grenze im Summenzeichen eine Zahl $\ge 1$ steht.
+
+::: {.callout-aufgabe}
+
+Lösen Sie auf:
+
+$\sum_{k = 0}^{2} (\theta_i - \delta_{jk})$
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\sum_{k = 0}^{2} (\theta_i - \delta_{jk}) = 2 \cdot \theta_i - \delta_{j1} - \delta_{j2}$
+
+:::
 
 Aufpassen muss man nur im Sonderfall, der als $0$ definiert ist:
 
