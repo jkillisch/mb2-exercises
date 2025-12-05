@@ -4,7 +4,7 @@ In der Vorlesung begegnet Ihnen eine Beispielrechnung zu den Kategorienwahrschei
 
 ## Interpretation der Parameter
 
-Als erstes lohnt es sich zu verstehen, wie die Bezeichnungen der Antwortkategorien und Schwellenparameter gemeint sind. Dafür hilft es die Ratingskala zu skizzieren:
+Als erstes lohnt es sich zu verstehen, wie die Bezeichnungen der Antwortkategorien und Schwellenparameter gemeint sind. Dafür hilft es, die Ratingskala zu skizzieren:
 
 ![](images/scale.png){width=80%}
 
