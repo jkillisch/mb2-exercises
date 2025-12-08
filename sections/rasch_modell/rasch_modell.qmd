@@ -226,7 +226,7 @@ Verwenden Sie die alternative Schreibweise der logistischen Funktion aus den gru
 
 ::: {.callout-tip title="Lösung" collapse="true"}
 
-$P(U_{ij} = 0 | \theta_i, \beta_j) = 
+$P(U_{ij} = 1 | \theta_i, \beta_j) = 
 	\frac{
 		exp(\theta_i - \beta_j)
 	}{
@@ -260,7 +260,7 @@ Berechnen Sie die Wahrscheinlichkeit, dass eine Person $i$ mit $\theta_i = 2$ ei
 
 **Lösewahrscheinlichkeit**
 
-$P(U_{ij} = 0 | \theta_i, \beta_j) = 
+$P(U_{ij} = 1 | \theta_i = 2, \beta_1 = -2) = 
 	\frac{
 		1
 	}{
@@ -272,9 +272,13 @@ $P(U_{ij} = 0 | \theta_i, \beta_j) =
 		1 + exp(-2-2)
 	}\approx.98$
 
+```{r}
+teachIRT::p_rasch(theta = 2, beta = -2)
+```
+
 **Nicht-Lösewahrscheinlichkeit**
 
-$P(U_{ij} = 0 | \theta_i = 2, \beta_1 = -2) = 
+$P(U_{ij} = 0 | \theta_i = 2, \beta_2 = 0) = 
 \frac{
 		1
 	}{
@@ -283,19 +287,16 @@ $P(U_{ij} = 0 | \theta_i = 2, \beta_1 = -2) =
 	\frac{
 		1
 	}{
-		1 + exp(2 + 2)
+		1 + exp(2 - 0)
 	}=
 	\frac{
 		1
 	}{
-		1 + exp(4)
-	}\approx 0.02$
-
-Sie können Ihr Ergebnis auch ungefähr anhand der ICC (siehe nächster Aufgabenblock) überprüfen:
+		1 + exp(2)
+	}\approx 0.12$
 
 ```{r}
-teachIRT::icc_rasch(beta = -2) +
-	ggplot2::geom_vline(xintercept = 2, linetype = 2)
+1-teachIRT::p_rasch(theta = 2, beta = 0)
 ```
 
 :::
