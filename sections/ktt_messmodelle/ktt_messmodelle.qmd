@@ -125,6 +125,8 @@ $\alpha_3 = -1$, $\lambda_3 = 2$
 
 :::
 
+Kennt man die Item- und Personenparameter, lässt sich berechnen, welche Itemantwort ein Messmodell für eine Person vorhersagt.
+
 ::: {.callout-aufgabe}
 
 Welchen Wert sagt das skizzierte $\tau$-kongenerische Messmodell für eine Person mit einem Personenparameter von $\eta_m = 1.5$ auf Item $2$ vorher?
