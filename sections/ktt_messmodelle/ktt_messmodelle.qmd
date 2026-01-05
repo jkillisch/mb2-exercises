@@ -1,6 +1,6 @@
 # Messmodelle der Klassischen Testtheorie
 
-Neben den behandelten IRT-Modellen können Modelle, die auf Überlegungen der Klassischen Testtheorie (KTT) beruhen, verwendet werden, um Testdaten durch Personen- und Itemparameter zu erklären. Sie können sich also auch bei den KTT-Modellen eine Datenmatrix vorstellen, dessen Werte durch verschiedene Modelle erklärt werden soll. Bevor wir uns auf diese Weise den KTT-Modellen nähern, müssen wir festhalten, dass sich mit dem Wechsel zur KTT auch die Notation der Vorlesung ändert.
+Neben den behandelten IRT-Modellen können Modelle, die auf Überlegungen der Klassischen Testtheorie (KTT) beruhen, verwendet werden, um Testdaten durch Personen- und Itemparameter zu erklären. Sie können sich also auch bei den KTT-Modellen eine Datenmatrix vorstellen, dessen Werte durch verschiedene Modelle erklärt werden soll. Zu Beginn müssen wir aber festhalten, dass sich mit dem Wechsel zur KTT auch die Notation der Vorlesung ändert.
 
 Sie haben in den Abschnitten zur IRT die Datenmatrix $\mathbf{U}$ kennengelernt, die beobachtete Werte $u_{ij}$ enthielt. In diesem Abschnitt bezeichnet die Vorlesung diese Datenpunkte stattdessen als $y_{mi}$. Diese könnten in einer Matrix wie folgt angeordnet sein:
 
