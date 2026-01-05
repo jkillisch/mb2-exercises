@@ -133,6 +133,8 @@ Suchen die Formel für unbedingte Kategorienwahrscheinlichkeiten im PCM in der F
 
 :::
 
+Aufgrund der Doppelsumme im Nenner kann die Formel zunächst etwas erschlagend wirken. Im Zusatzmaterial finden Sie daher ein ausführliches Rechenbeispiel.
+
 ::: {.callout-aufgabe}
 
 Berechnen Sie $P(U_{ij} = 2 | \theta_i, \boldsymbol{\delta})$ für die Parameterwerte aus Aufgabe (c) bei $\theta = 1$.
@@ -182,7 +184,7 @@ print(p[3])
 
 :::
 
-Falls Sie bei der vorherigen Aufgabe in die Lösung schauen mussten, haben wir hier noch einige Parameterwerte mit Lösungen gesammelt. Diese können Sie zum Üben bearbeiten. Falls Sie sich mit der Formel für Kategorienwahrscheinlichkeiten im PCM bereits sicher fühlen, können Sie diese Aufgabe aber auch problemlos überspringen.
+Falls Sie bei der vorherigen Aufgabe in die Lösung schauen mussten, haben wir hier noch einige Parameterwerte mit Lösungen gesammelt. Diese können Sie zum Üben bearbeiten. Falls Sie sich mit der Formel für Kategorienwahrscheinlichkeiten im PCM bereits sicher fühlen, können Sie diese Aufgabe aber auch überspringen. Denken Sie aber daran, dass die Formel ohne etwas Routine zum echten Zeitfresser werden kann. Es lohnt sich daher, mehr als eine Aufgabe damit zu rechnen.
 
 ::: {.callout-aufgabe}
 

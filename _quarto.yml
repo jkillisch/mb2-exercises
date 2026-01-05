@@ -32,6 +32,8 @@ website:
           text: 9. Thurstonian IRT
         - href: sections/adaptives_testen/adaptives_testen.qmd
           text: 10. Adaptives Testen
+        - href: sections/ktt_messmodelle/ktt_messmodelle.qmd
+          text: 10. KTT Messmodelle
       - text: Zusatzmaterial
         menu:
         - href: zusatzmaterial/pcm_beispiel/pcm_beispiel.qmd
