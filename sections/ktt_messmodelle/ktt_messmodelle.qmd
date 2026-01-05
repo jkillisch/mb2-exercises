@@ -1,3 +1,258 @@
 # Messmodelle der Klassischen Testtheorie
 
-Upload am 05.01. Nachmittags/Abends
+Neben den behandelten IRT-Modellen können Modelle, die auf Überlegungen der Klassischen Testtheorie (KTT) beruhen, verwendet werden, um Testdaten durch Personen- und Itemparameter zu erklären. Sie können sich also auch bei den KTT-Modellen eine Datenmatrix vorstellen, dessen Werte durch verschiedene Modelle erklärt werden soll. Bevor wir uns auf diese Weise den KTT-Modellen nähern, müssen wir festhalten, dass sich mit dem Wechsel zur KTT auch die Notation der Vorlesung ändert.
+
+Sie haben in den Abschnitten zur IRT die Datenmatrix $\mathbf{U}$ kennengelernt, die beobachtete Werte $u_{ij}$ enthielt. In diesem Abschnitt bezeichnet die Vorlesung diese Datenpunkte stattdessen als $y_{mi}$. Diese könnten in einer Matrix wie folgt angeordnet sein:
+
+\begin{equation} 
+    \begin{bmatrix}
+        3.43 & 5.54 & 1.12 \\
+        -5.2 & 1.2 & -0.3 \\ 
+        0.03 & -0.04 & -1.5 \\
+    \end{bmatrix}
+\end{equation}
+
+In diesem Beispiel ist $y_{21} = -5.2$. Der Index $m$ bezeichnet eine bestimmte Person und der Index $i$ bezeichnet eine bestimmte Variable. Üblicherweise sind mit Variablen Items gemeint.
+
+## Grundgleichung der KTT
+
+Der Grundgedanke der behandelten KTT-Modelle ist es, einen beobachteten Wert $y_{mi}$ einer Person $m$ auf einer Variablen $i$ linear in einen wahren Wert $\tau_{mi}$ und einen Messfehler $\epsilon_{mi}$ zu zerlegen:
+
+$$y_{mi} = \tau_{mi} + \epsilon_{mi}$$
+
+Nimmt man an, dass die Messfehler und wahren Werte in der Population unkorreliert sind, folgt daraus die folgende Varianzzerlegung der beobachteten Variablen:
+
+$$Var(Y_i) = Var(\tau_i) + Var(\epsilon_i)$$
+
+::: {.callout-tip title="Exkurs: Warum ist das so?" collapse="true"}
+
+Addiert man zwei Zufallsvariablen $X$ und $Y$ miteinander, so ist 
+
+$$Var(X + Y) = Var(X) + Var(Y) + 2 Cov(X, Y)$$ 
+
+([siehe Wikipedia](https://de.wikipedia.org/wiki/Varianz_(Stochastik)#Summe_zweier_Zufallsvariablen))
+
+In diesem Fall ist
+
+$$Var(Y_i)$$
+
+$$= Var(\tau_i + \epsilon_i)$$
+
+$$= Var(\tau_i) + Var(\epsilon_i) + 2 \cdot Cov(\tau_i, \epsilon_i)$$
+
+Nach Annahme ist $Cov(\tau_i, \epsilon_i):= 0$. Es folgt
+
+$$Var(Y_i) = Var(\tau_i) + Var(\epsilon_i)$$
+
+:::
+
+## $\tau$-kongenerische Messmodelle
+
+Nimmt man an, dass sich der wahre Wert durch eine Kombination von Personen- und Itemparametern darstellen lässt, resultieren Messmodelle mit Personen- und Itemparametern. Im allgemeinsten Fall wird der wahre Wert als Funktion eines Item-Intercepts $\alpha_i$, einer Faktorladung $\lambda_i$ und eines latenten Traitwerts $\eta$ ausgedrückt:
+
+$$\tau_{mi} = \alpha_i + \lambda_i \cdot \eta_m$$
+
+Durch Einsetzen resultiert ein $\tau$-kongenerisches Messmodell:
+
+$$y_{mi} = \alpha_i + \lambda_i \cdot \eta_m + \epsilon_{mi}$$
+
+::: {.callout-aufgabe}
+
+Vergleichen Sie das $\tau$-kongenerisches Messmodell mit der einfachen Regression. Was sind Unterschiede und was sind Gemeinsamkeiten?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Auch in der linearen Regression sagt man Werte in einem Kriterium $y_{m}$ durch eine lineare Funktion vorher. Eine einfache lineare Regression für $y_{m}$ sähe so aus:
+
+$y_{m} = \beta_0 + \beta_1 x_{m} + \epsilon_{m}$
+
+Das sieht dem $\tau$-kongenerisches Messmodell sehr ähnlich. Das Intercept der Regression $\beta_0$ entspricht konzeptuell dem Item-Intercept $\alpha_i$, der Slope der Regression $\beta_1$ entspricht konzeptuell der Faktorladung $\lambda_i$, und der Prädiktor $x_m$ entspricht konzeptuell dem latenten Trait $\eta_m$.
+
+Es gibt aber zwei wichtige Unterschiede: (1) Während die Prädiktorvariable $x_m$ direkt im Datensatz vorliegt, muss der Personenparameter $\eta_m$ aus den Daten geschätzt werden. (2) Die einfache lineare Regression geht davon aus, dass es nur eine beobachtete Variable $y_m$ gibt. Um, wie im vorherigen Punkt gefordert, eine latente Variable schätzen zu können, sind in Messmodellen hingegen mehrere Items notwendig. Daher liegt bei den Messmodellen noch ein weiterer Index $i$ am $y_{mi}$ vor. Ein Messmodell ist daher ein System von Gleichungen, die die Form der linearen Regression haben.
+
+Zusammengefasst lässt sich sagen, dass die behandelten Messmodelle Systeme einfacher Regressionen sind, in denen die Werte der Prädiktorvariable (also der latenten Traits) aus den Daten geschätzt werden.
+
+:::
+
+Wie die lineare Regression auch, lassen sich durch Messmodelle vorhergesagte Werte anschaulich graphisch darstellen. Auf der y-Achse finden Sie die durch ein $\tau$-kongenerisches Modell vorhergesagten Itemantworten. Auf der x-Achse finden Sie Werte des latenten Traits.
+
+```{r, echo = FALSE, fig.height=5}
+library(ggplot2)
+library(latex2exp)
+
+data.frame(x = seq(-1, 1, 0.25)) |> 
+    ggplot(aes(x)) +
+    stat_function(
+        fun = function(x) 0 + 1 * x,
+        color = "red"
+        ) +
+    stat_function(
+        fun = function(x) 2 + 0.5 * x,
+        color = "blue"
+        ) +
+    stat_function(
+        fun = function(x) -1 + 2 * x,
+        color = "black"
+        ) +
+    ylab(TeX("$\\hat{y}_{mi} = \\tau_{mi}$")) +
+    xlab(TeX("$\\eta_{m}$")) +
+    scale_x_continuous(breaks = seq(-1.5, 1.5, 0.25)) +
+    scale_y_continuous(breaks = seq(-100, 100, 0.5)) +
+    theme_bw()
+```
+
+::: {.callout-aufgabe}
+
+Lesen Sie jeweils die Itemparameter des zur blauen, roten und schwarzen Gerade korrespondierenden Items ab.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Item $1$ (blau):
+
+$\alpha_1 = 2$, $\lambda_1 = 0.5$
+
+Item $2$ (rot):
+
+$\alpha_2 = 0$, $\lambda_2 = 1$
+
+Item $3$ (schwarz):
+
+$\alpha_3 = -1$, $\lambda_3 = 2$
+
+:::
+
+::: {.callout-aufgabe}
+
+Welchen Wert sagt das skizzierte $\tau$-kongenerische Messmodell für eine Person mit einem Personenparameter von $\eta_m = 1.5$ auf Item $2$ vorher?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\hat{y}_{m2} = 0 + 1 \cdot 1.5 = 1.5$
+
+Das Modell sagt einen Wert von $1.5$ vorher.
+
+:::
+
+Bei der letzten Aufgabe konnten Sie bereits feststellen, dass das $\tau$-kongenerische Messmodell in der Form, wie wir es in der Veranstaltung behandeln, kontinuierliche Werte vorhersagt - z.B. den Wert $1.5$ in der letzten Aufgabe. Nach der intensiven Behandlung von IRT-Modellen kommt Ihnen das vielleicht suspekt vor, denn bei testtheoretischen Anwendungen beobachten wir i.d.R. ordinale Daten. Daher möchte ich hier kurz anmerken, dass sich die KTT-Messmodelle durch einen sogenannten *threshold*-Prozess so erweitern lassen, dass sie, wie die IRT-Modelle auch, ordinale Vorhersagen treffen. Diese Erweiterung nehmen wir im Laufe der Veranstaltung der Einfachheit halber aber nicht vor. Stattdessen akzeptieren wir zur Heranführung an die Modelle, dass die KTT-Messmodelle kontinuierliche Werte vorhersagen, die Daten aber oft ordinal sind.
+
+In der nächsten Aufgabe geht es darum explizit zu machen, dass Messmodelle Systeme linearer Gleichungen sind.
+
+::: {.callout-aufgabe}
+
+Schreiben Sie das volle lineare Gleichungssystem auf, das aus dem Modell mit den abgelesenen Itemparametern resultiert.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$y_{m1} = 2 + 0.5 \cdot \eta_m + \epsilon_{m1}$
+
+$y_{m2} = 0 + 1 \cdot \eta_m + \epsilon_{m2}$
+
+$y_{m3} = -1 + 2 \cdot \eta_m + \epsilon_{m3}$
+
+:::
+
+::: {.callout-aufgabe}
+
+Welchen Antwortvektor sagt das $\tau$-kongenerische Messmodell für eine Person mit einem latenten Trait von $\eta_m = -2$ vorher?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$2 + 0.5 \cdot (-2) = 1$
+
+$0 + 1 \cdot (-2) = -2$
+
+$-1 + 2 \cdot (-2) = -5$
+
+Das Modell sagt den Antwortvektor $=[1, -2, -5]$ vorher.
+
+:::
+
+::: {.callout-aufgabe}
+
+Seien $\epsilon_{m1} = 0.2$, $\epsilon_{m2} = -1$, $\epsilon_{m3} = 1.2$, $\eta_m = -2$ und die Itemparameter wie in den vorherigen Aufgaben.
+
+Rekonstruieren Sie die beobachteten Itemantworten.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es wurden die Werte
+
+$y_{m1} = 2 + 0.5 \cdot (-2) + 0.2 = 1.2$
+
+$y_{m2} = 0 + 1 \cdot (-2) - 1 = -3$
+
+$y_{m3} = -1 + 2 \cdot (-2) + 1.2 = -3.8$
+
+beobachtet.
+
+:::
+
+## Restringierte Messmodelle
+
+Mit der Einführung von Restriktionen auf den Itemparametern resultieren strengere Messmodelle.
+
+::: {.callout-aufgabe}
+
+Die Restriktionen der Messmodelle beziehen sich auf Intercepts, Faktorladungen und Fehlervarianzen. Wie könnte man den oben gezeigten Plot (blaues, rotes, schwarzes Item) ergänzen, um die Fehlervarianzen sichtbar zu machen?
+
+:::
+
+Das eben behandelte $\tau$-kongenerische Messmodell ist unter den behandelten Modellen das flexibelste Modell. Das restriktivste Modell nennt sich $\tau$-paralleles Messmodell. Im $\tau$-parallelen Messmodell wird angenommen, dass die Item-Intercepts, Faktorladungen und Fehlervarianzen aller Items gleich sind. Durch das "Fallenlassen" von Indices in der Modellgleichung kann man diese Gleichsetzung deutlich machen:
+
+$$y_{mi} = \alpha + \lambda \cdot \eta_m + \epsilon_{mi}$$
+
+$$Var(\epsilon_i) = Var(\epsilon_j)$$ für alle $i \ne j$
+
+Das $\alpha$ und $\lambda$ haben hier keinen Index $i$ mehr. Das ist hier gleichbedeutend damit, dass es nur einen Parameterwert für alle Items gibt. Ausgehend von dem dadurch beschriebenen $\tau$-parallelen Messmodell lassen sich schrittweise Parametergruppen zwischen Items befreien, bis Sie wieder beim $\tau$-kongenerischen Modell ankommen. Die folgende Grafik stellt diese Schritte schematisch dar:
+
+![](images/restrictions.png){width=85%}
+
+::: {.callout-aufgabe}
+
+Ein beispielhaftes Messmodell impliziert das lineare Gleichungssystem
+ 
+<!-- $y_{m1} = \alpha_1 + \lambda_1 \cdot \eta_m + \epsilon_{m1}$
+
+$y_{m2} = \alpha_2 + \lambda_2 \cdot \eta_m + \epsilon_{m2}$
+
+$y_{m3} = \alpha_3 + \lambda_3 \cdot \eta_m + \epsilon_{m3}$
+
+$y_{m4} = \alpha_4 + \lambda_4 \cdot \eta_m + \epsilon_{m4}$ -->
+
+$y_{m1} = \alpha_1 + \lambda \cdot \eta_m + \epsilon_{m1}$
+
+$y_{m2} = \alpha_2 + \lambda \cdot \eta_m + \epsilon_{m2}$
+
+$y_{m3} = \alpha_3 + \lambda \cdot \eta_m + \epsilon_{m3}$
+
+$y_{m4} = \alpha_4 + \lambda \cdot \eta_m + \epsilon_{m4}$
+
+mit Fehlervarianzen $Var(\epsilon_1)$, $Var(\epsilon_2)$, $Var(\epsilon_3)$, $Var(\epsilon_4)$.
+
+Um welches Messmodell handelt es sich?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Alle Itemparameter bis auf die Faktorladungen sind itemspezifisch. Das lineare Gleichungssystem resultiert aus einem essentiell $\tau$-äquivalenten Messmodell.
+
+:::
+
+::: {.callout-aufgabe}
+
+Passen Sie den Plot zu den vorhergesagten Werten im $\tau$-kongenerischen Messmodell so an, dass er jeweils aus einem essentiell $\tau$-äquivalenten, $\tau$-äquivalenten, essentiell $\tau$-parallelen und $\tau$-parallelen Messmodell hätte resultieren können.
+
+:::

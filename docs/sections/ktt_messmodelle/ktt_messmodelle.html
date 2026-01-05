@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -179,7 +208,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#messmodelle-der-klassischen-testtheorie" id="toc-messmodelle-der-klassischen-testtheorie" class="nav-link active" data-scroll-target="#messmodelle-der-klassischen-testtheorie">Messmodelle der Klassischen Testtheorie</a></li>
+  <li><a href="#messmodelle-der-klassischen-testtheorie" id="toc-messmodelle-der-klassischen-testtheorie" class="nav-link active" data-scroll-target="#messmodelle-der-klassischen-testtheorie">Messmodelle der Klassischen Testtheorie</a>
+  <ul class="collapse">
+  <li><a href="#grundgleichung-der-ktt" id="toc-grundgleichung-der-ktt" class="nav-link" data-scroll-target="#grundgleichung-der-ktt">Grundgleichung der KTT</a></li>
+  <li><a href="#tau-kongenerische-messmodelle" id="toc-tau-kongenerische-messmodelle" class="nav-link" data-scroll-target="#tau-kongenerische-messmodelle"><span class="math inline">\(\tau\)</span>-kongenerische Messmodelle</a></li>
+  <li><a href="#restringierte-messmodelle" id="toc-restringierte-messmodelle" class="nav-link" data-scroll-target="#restringierte-messmodelle">Restringierte Messmodelle</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -191,9 +225,249 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="messmodelle-der-klassischen-testtheorie" class="level1">
 <h1>Messmodelle der Klassischen Testtheorie</h1>
-<p>Upload am 05.01. Nachmittags/Abends</p>
+<p>Neben den behandelten IRT-Modellen können Modelle, die auf Überlegungen der Klassischen Testtheorie (KTT) beruhen, verwendet werden, um Testdaten durch Personen- und Itemparameter zu erklären. Sie können sich also auch bei den KTT-Modellen eine Datenmatrix vorstellen, dessen Werte durch verschiedene Modelle erklärt werden soll. Bevor wir uns auf diese Weise den KTT-Modellen nähern, müssen wir festhalten, dass sich mit dem Wechsel zur KTT auch die Notation der Vorlesung ändert.</p>
+<p>Sie haben in den Abschnitten zur IRT die Datenmatrix <span class="math inline">\(\mathbf{U}\)</span> kennengelernt, die beobachtete Werte <span class="math inline">\(u_{ij}\)</span> enthielt. In diesem Abschnitt bezeichnet die Vorlesung diese Datenpunkte stattdessen als <span class="math inline">\(y_{mi}\)</span>. Diese könnten in einer Matrix wie folgt angeordnet sein:</p>
+<p><span class="math display">\[\begin{equation}
+    \begin{bmatrix}
+        3.43 &amp; 5.54 &amp; 1.12 \\
+        -5.2 &amp; 1.2 &amp; -0.3 \\
+        0.03 &amp; -0.04 &amp; -1.5 \\
+    \end{bmatrix}
+\end{equation}\]</span></p>
+<p>In diesem Beispiel ist <span class="math inline">\(y_{21} = -5.2\)</span>. Der Index <span class="math inline">\(m\)</span> bezeichnet eine bestimmte Person und der Index <span class="math inline">\(i\)</span> bezeichnet eine bestimmte Variable. Üblicherweise sind mit Variablen Items gemeint.</p>
+<section id="grundgleichung-der-ktt" class="level2">
+<h2 class="anchored" data-anchor-id="grundgleichung-der-ktt">Grundgleichung der KTT</h2>
+<p>Der Grundgedanke der behandelten KTT-Modelle ist es, einen beobachteten Wert <span class="math inline">\(y_{mi}\)</span> einer Person <span class="math inline">\(m\)</span> auf einer Variablen <span class="math inline">\(i\)</span> linear in einen wahren Wert <span class="math inline">\(\tau_{mi}\)</span> und einen Messfehler <span class="math inline">\(\epsilon_{mi}\)</span> zu zerlegen:</p>
+<p><span class="math display">\[y_{mi} = \tau_{mi} + \epsilon_{mi}\]</span></p>
+<p>Nimmt man an, dass die Messfehler und wahren Werte in der Population unkorreliert sind, folgt daraus die folgende Varianzzerlegung der beobachteten Variablen:</p>
+<p><span class="math display">\[Var(Y_i) = Var(\tau_i) + Var(\epsilon_i)\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Exkurs: Warum ist das so?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exkurs: Warum ist das so?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Addiert man zwei Zufallsvariablen <span class="math inline">\(X\)</span> und <span class="math inline">\(Y\)</span> miteinander, so ist</p>
+<p><span class="math display">\[Var(X + Y) = Var(X) + Var(Y) + 2 Cov(X, Y)\]</span></p>
+<p>(<a href="https://de.wikipedia.org/wiki/Varianz_(Stochastik)#Summe_zweier_Zufallsvariablen">siehe Wikipedia</a>)</p>
+<p>In diesem Fall ist</p>
+<p><span class="math display">\[Var(Y_i)\]</span></p>
+<p><span class="math display">\[= Var(\tau_i + \epsilon_i)\]</span></p>
+<p><span class="math display">\[= Var(\tau_i) + Var(\epsilon_i) + 2 \cdot Cov(\tau_i, \epsilon_i)\]</span></p>
+<p>Nach Annahme ist <span class="math inline">\(Cov(\tau_i, \epsilon_i):= 0\)</span>. Es folgt</p>
+<p><span class="math display">\[Var(Y_i) = Var(\tau_i) + Var(\epsilon_i)\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="tau-kongenerische-messmodelle" class="level2">
+<h2 class="anchored" data-anchor-id="tau-kongenerische-messmodelle"><span class="math inline">\(\tau\)</span>-kongenerische Messmodelle</h2>
+<p>Nimmt man an, dass sich der wahre Wert durch eine Kombination von Personen- und Itemparametern darstellen lässt, resultieren Messmodelle mit Personen- und Itemparametern. Im allgemeinsten Fall wird der wahre Wert als Funktion eines Item-Intercepts <span class="math inline">\(\alpha_i\)</span>, einer Faktorladung <span class="math inline">\(\lambda_i\)</span> und eines latenten Traitwerts <span class="math inline">\(\eta\)</span> ausgedrückt:</p>
+<p><span class="math display">\[\tau_{mi} = \alpha_i + \lambda_i \cdot \eta_m\]</span></p>
+<p>Durch Einsetzen resultiert ein <span class="math inline">\(\tau\)</span>-kongenerisches Messmodell:</p>
+<p><span class="math display">\[y_{mi} = \alpha_i + \lambda_i \cdot \eta_m + \epsilon_{mi}\]</span></p>
+<div class="callout-aufgabe">
+<p>Vergleichen Sie das <span class="math inline">\(\tau\)</span>-kongenerisches Messmodell mit der einfachen Regression. Was sind Unterschiede und was sind Gemeinsamkeiten?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Auch in der linearen Regression sagt man Werte in einem Kriterium <span class="math inline">\(y_{m}\)</span> durch eine lineare Funktion vorher. Eine einfache lineare Regression für <span class="math inline">\(y_{m}\)</span> sähe so aus:</p>
+<p><span class="math inline">\(y_{m} = \beta_0 + \beta_1 x_{m} + \epsilon_{m}\)</span></p>
+<p>Das sieht dem <span class="math inline">\(\tau\)</span>-kongenerisches Messmodell sehr ähnlich. Das Intercept der Regression <span class="math inline">\(\beta_0\)</span> entspricht konzeptuell dem Item-Intercept <span class="math inline">\(\alpha_i\)</span>, der Slope der Regression <span class="math inline">\(\beta_1\)</span> entspricht konzeptuell der Faktorladung <span class="math inline">\(\lambda_i\)</span>, und der Prädiktor <span class="math inline">\(x_m\)</span> entspricht konzeptuell dem latenten Trait <span class="math inline">\(\eta_m\)</span>.</p>
+<p>Es gibt aber zwei wichtige Unterschiede: (1) Während die Prädiktorvariable <span class="math inline">\(x_m\)</span> direkt im Datensatz vorliegt, muss der Personenparameter <span class="math inline">\(\eta_m\)</span> aus den Daten geschätzt werden. (2) Die einfache lineare Regression geht davon aus, dass es nur eine beobachtete Variable <span class="math inline">\(y_m\)</span> gibt. Um, wie im vorherigen Punkt gefordert, eine latente Variable schätzen zu können, sind in Messmodellen hingegen mehrere Items notwendig. Daher liegt bei den Messmodellen noch ein weiterer Index <span class="math inline">\(i\)</span> am <span class="math inline">\(y_{mi}\)</span> vor. Ein Messmodell ist daher ein System von Gleichungen, die die Form der linearen Regression haben.</p>
+<p>Zusammengefasst lässt sich sagen, dass die behandelten Messmodelle Systeme einfacher Regressionen sind, in denen die Werte der Prädiktorvariable (also der latenten Traits) aus den Daten geschätzt werden.</p>
+</div>
+</div>
+</div>
+<p>Wie die lineare Regression auch, lassen sich durch Messmodelle vorhergesagte Werte anschaulich graphisch darstellen. Auf der y-Achse finden Sie die durch ein <span class="math inline">\(\tau\)</span>-kongenerisches Modell vorhergesagten Itemantworten. Auf der x-Achse finden Sie Werte des latenten Traits.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ktt_messmodelle_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Lesen Sie jeweils die Itemparameter des zur blauen, roten und schwarzen Gerade korrespondierenden Items ab.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Item <span class="math inline">\(1\)</span> (blau):</p>
+<p><span class="math inline">\(\alpha_1 = 2\)</span>, <span class="math inline">\(\lambda_1 = 0.5\)</span></p>
+<p>Item <span class="math inline">\(2\)</span> (rot):</p>
+<p><span class="math inline">\(\alpha_2 = 0\)</span>, <span class="math inline">\(\lambda_2 = 1\)</span></p>
+<p>Item <span class="math inline">\(3\)</span> (schwarz):</p>
+<p><span class="math inline">\(\alpha_3 = -1\)</span>, <span class="math inline">\(\lambda_3 = 2\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Welchen Wert sagt das skizzierte <span class="math inline">\(\tau\)</span>-kongenerische Messmodell für eine Person mit einem Personenparameter von <span class="math inline">\(\eta_m = 1.5\)</span> auf Item <span class="math inline">\(2\)</span> vorher?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\hat{y}_{m2} = 0 + 1 \cdot 1.5 = 1.5\)</span></p>
+<p>Das Modell sagt einen Wert von <span class="math inline">\(1.5\)</span> vorher.</p>
+</div>
+</div>
+</div>
+<p>Bei der letzten Aufgabe konnten Sie bereits feststellen, dass das <span class="math inline">\(\tau\)</span>-kongenerische Messmodell in der Form, wie wir es in der Veranstaltung behandeln, kontinuierliche Werte vorhersagt - z.B. den Wert <span class="math inline">\(1.5\)</span> in der letzten Aufgabe. Nach der intensiven Behandlung von IRT-Modellen kommt Ihnen das vielleicht suspekt vor, denn bei testtheoretischen Anwendungen beobachten wir i.d.R. ordinale Daten. Daher möchte ich hier kurz anmerken, dass sich die KTT-Messmodelle durch einen sogenannten <em>threshold</em>-Prozess so erweitern lassen, dass sie, wie die IRT-Modelle auch, ordinale Vorhersagen treffen. Diese Erweiterung nehmen wir im Laufe der Veranstaltung der Einfachheit halber aber nicht vor. Stattdessen akzeptieren wir zur Heranführung an die Modelle, dass die KTT-Messmodelle kontinuierliche Werte vorhersagen, die Daten aber oft ordinal sind.</p>
+<p>In der nächsten Aufgabe geht es darum explizit zu machen, dass Messmodelle Systeme linearer Gleichungen sind.</p>
+<div class="callout-aufgabe">
+<p>Schreiben Sie das volle lineare Gleichungssystem auf, das aus dem Modell mit den abgelesenen Itemparametern resultiert.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(y_{m1} = 2 + 0.5 \cdot \eta_m + \epsilon_{m1}\)</span></p>
+<p><span class="math inline">\(y_{m2} = 0 + 1 \cdot \eta_m + \epsilon_{m2}\)</span></p>
+<p><span class="math inline">\(y_{m3} = -1 + 2 \cdot \eta_m + \epsilon_{m3}\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Welchen Antwortvektor sagt das <span class="math inline">\(\tau\)</span>-kongenerische Messmodell für eine Person mit einem latenten Trait von <span class="math inline">\(\eta_m = -2\)</span> vorher?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(2 + 0.5 \cdot (-2) = 1\)</span></p>
+<p><span class="math inline">\(0 + 1 \cdot (-2) = -2\)</span></p>
+<p><span class="math inline">\(-1 + 2 \cdot (-2) = -5\)</span></p>
+<p>Das Modell sagt den Antwortvektor <span class="math inline">\(=[1, -2, -5]\)</span> vorher.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Seien <span class="math inline">\(\epsilon_{m1} = 0.2\)</span>, <span class="math inline">\(\epsilon_{m2} = -1\)</span>, <span class="math inline">\(\epsilon_{m3} = 1.2\)</span>, <span class="math inline">\(\eta_m = -2\)</span> und die Itemparameter wie in den vorherigen Aufgaben.</p>
+<p>Rekonstruieren Sie die beobachteten Itemantworten.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es wurden die Werte</p>
+<p><span class="math inline">\(y_{m1} = 2 + 0.5 \cdot (-2) + 0.2 = 1.2\)</span></p>
+<p><span class="math inline">\(y_{m2} = 0 + 1 \cdot (-2) - 1 = -3\)</span></p>
+<p><span class="math inline">\(y_{m3} = -1 + 2 \cdot (-2) + 1.2 = -3.8\)</span></p>
+<p>beobachtet.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="restringierte-messmodelle" class="level2">
+<h2 class="anchored" data-anchor-id="restringierte-messmodelle">Restringierte Messmodelle</h2>
+<p>Mit der Einführung von Restriktionen auf den Itemparametern resultieren strengere Messmodelle.</p>
+<div class="callout-aufgabe">
+<p>Die Restriktionen der Messmodelle beziehen sich auf Intercepts, Faktorladungen und Fehlervarianzen. Wie könnte man den oben gezeigten Plot (blaues, rotes, schwarzes Item) ergänzen, um die Fehlervarianzen sichtbar zu machen?</p>
+</div>
+<p>Das eben behandelte <span class="math inline">\(\tau\)</span>-kongenerische Messmodell ist unter den behandelten Modellen das flexibelste Modell. Das restriktivste Modell nennt sich <span class="math inline">\(\tau\)</span>-paralleles Messmodell. Im <span class="math inline">\(\tau\)</span>-parallelen Messmodell wird angenommen, dass die Item-Intercepts, Faktorladungen und Fehlervarianzen aller Items gleich sind. Durch das “Fallenlassen” von Indices in der Modellgleichung kann man diese Gleichsetzung deutlich machen:</p>
+<p><span class="math display">\[y_{mi} = \alpha + \lambda \cdot \eta_m + \epsilon_{mi}\]</span></p>
+<p><span class="math display">\[Var(\epsilon_i) = Var(\epsilon_j)\]</span> für alle <span class="math inline">\(i \ne j\)</span></p>
+<p>Das <span class="math inline">\(\alpha\)</span> und <span class="math inline">\(\lambda\)</span> haben hier keinen Index <span class="math inline">\(i\)</span> mehr. Das ist hier gleichbedeutend damit, dass es nur einen Parameterwert für alle Items gibt. Ausgehend von dem dadurch beschriebenen <span class="math inline">\(\tau\)</span>-parallelen Messmodell lassen sich schrittweise Parametergruppen zwischen Items befreien, bis Sie wieder beim <span class="math inline">\(\tau\)</span>-kongenerischen Modell ankommen. Die folgende Grafik stellt diese Schritte schematisch dar:</p>
+<p><img src="images/restrictions.png" class="img-fluid" style="width:85.0%"></p>
+<div class="callout-aufgabe">
+<p>Ein beispielhaftes Messmodell impliziert das lineare Gleichungssystem</p>
+<!-- $y_{m1} = \alpha_1 + \lambda_1 \cdot \eta_m + \epsilon_{m1}$
+
+$y_{m2} = \alpha_2 + \lambda_2 \cdot \eta_m + \epsilon_{m2}$
+
+$y_{m3} = \alpha_3 + \lambda_3 \cdot \eta_m + \epsilon_{m3}$
+
+$y_{m4} = \alpha_4 + \lambda_4 \cdot \eta_m + \epsilon_{m4}$ -->
+<p><span class="math inline">\(y_{m1} = \alpha_1 + \lambda \cdot \eta_m + \epsilon_{m1}\)</span></p>
+<p><span class="math inline">\(y_{m2} = \alpha_2 + \lambda \cdot \eta_m + \epsilon_{m2}\)</span></p>
+<p><span class="math inline">\(y_{m3} = \alpha_3 + \lambda \cdot \eta_m + \epsilon_{m3}\)</span></p>
+<p><span class="math inline">\(y_{m4} = \alpha_4 + \lambda \cdot \eta_m + \epsilon_{m4}\)</span></p>
+<p>mit Fehlervarianzen <span class="math inline">\(Var(\epsilon_1)\)</span>, <span class="math inline">\(Var(\epsilon_2)\)</span>, <span class="math inline">\(Var(\epsilon_3)\)</span>, <span class="math inline">\(Var(\epsilon_4)\)</span>.</p>
+<p>Um welches Messmodell handelt es sich?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Alle Itemparameter bis auf die Faktorladungen sind itemspezifisch. Das lineare Gleichungssystem resultiert aus einem essentiell <span class="math inline">\(\tau\)</span>-äquivalenten Messmodell.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Passen Sie den Plot zu den vorhergesagten Werten im <span class="math inline">\(\tau\)</span>-kongenerischen Messmodell so an, dass er jeweils aus einem essentiell <span class="math inline">\(\tau\)</span>-äquivalenten, <span class="math inline">\(\tau\)</span>-äquivalenten, essentiell <span class="math inline">\(\tau\)</span>-parallelen und <span class="math inline">\(\tau\)</span>-parallelen Messmodell hätte resultieren können.</p>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
