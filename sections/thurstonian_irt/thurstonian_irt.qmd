@@ -2,6 +2,8 @@
 
 Sie haben in der Vorlesung das multidimensionale forced-choice (MFC) Format und das Thurstonian IRT Modell kennengelernt.
 
+## Forced-Choice Daten
+
 Im Folgenden sehen Sie die Datenmatrix eines forced-choice Tests mit zwei multidimensionalen Triplets.
 
 \begin{equation}
@@ -109,6 +111,8 @@ Die resultierenden Summenscores sind ipsativ.
 
 :::
 
+## Thurstonian IRT
+
 Eine der Klassichen Testtheorie überlegene Auswertungsmethode für MFC Testantworten ist die Auswertung mit Hilfe spezialisierter Item Response Modelle. In der Vorlesung haben Sie das Thurstonian IRT Modell kennengelernt.
 
 ::: {.callout-aufgabe}
@@ -131,7 +135,7 @@ P_l(y_l = 1 | \theta_a, \theta_b) = \Phi \Big( \frac{\mu_i - \mu_k + \lambda_i \
 
 ::: {.callout-aufgabe}
 
-Die Notation der Vorlesung weicht bei diesem Modell von den vorherigen IRT-Modellen ab. 
+Die Notation der Vorlesung weicht bei diesem Modell von den vorherigen IRT-Modellen ab. Es lohnt sich daher, die Bestandteile der Formel einzeln zu betrachten.
 
 *1. Indices*
 
@@ -267,6 +271,8 @@ teachIRT::p_tirt(
 
 :::
 
+## Die Link-Funktion $\Phi$
+
 In der letzten Aufgabe sind Sie der CDF der Standardnormalverteilung, $\Phi$, begegnet. Die Funktion $\Phi$ erfüllt in IRT-Modellen i.d.R. den gleichen Zweck wie die logistische Funktion (siehe grundlegende Rechenkompetenzen). Das heißt $\Phi$ bildet eine reelle Zahl auf eine Wahrscheinlichkeit ab. Diesen Zusammenhang kann man formal auch als $\Phi: \mathbb{R} \rightarrow [0, 1]$ aufschreiben.
 
 Im folgenden Plot sehen Sie die Graphen beider Funktionen im Vergleich.
@@ -292,6 +298,8 @@ dat |>
 ```
 
 Modelle, die die logistische Funktion als sog. *Link-Funktion* verwenden, kann man auch als Logit-Modelle bezeichnen. Modelle, die die CDF der Standardnormalverteilung als Link-Funktion verwenden, kann man als Probit-Modelle bezeichnen.
+
+## ICCs im Thurstonian IRT Modell
 
 ::: {.callout-aufgabe}
 

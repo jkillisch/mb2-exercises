@@ -239,7 +239,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#thurstonian-item-response-modell" id="toc-thurstonian-item-response-modell" class="nav-link active" data-scroll-target="#thurstonian-item-response-modell">Thurstonian Item Response Modell</a></li>
+  <li><a href="#thurstonian-item-response-modell" id="toc-thurstonian-item-response-modell" class="nav-link active" data-scroll-target="#thurstonian-item-response-modell">Thurstonian Item Response Modell</a>
+  <ul class="collapse">
+  <li><a href="#forced-choice-daten" id="toc-forced-choice-daten" class="nav-link" data-scroll-target="#forced-choice-daten">Forced-Choice Daten</a></li>
+  <li><a href="#thurstonian-irt" id="toc-thurstonian-irt" class="nav-link" data-scroll-target="#thurstonian-irt">Thurstonian IRT</a></li>
+  <li><a href="#die-link-funktion-phi" id="toc-die-link-funktion-phi" class="nav-link" data-scroll-target="#die-link-funktion-phi">Die Link-Funktion <span class="math inline">\(\Phi\)</span></a></li>
+  <li><a href="#iccs-im-thurstonian-irt-modell" id="toc-iccs-im-thurstonian-irt-modell" class="nav-link" data-scroll-target="#iccs-im-thurstonian-irt-modell">ICCs im Thurstonian IRT Modell</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -252,6 +258,8 @@ window.Quarto = {
 <section id="thurstonian-item-response-modell" class="level1">
 <h1>Thurstonian Item Response Modell</h1>
 <p>Sie haben in der Vorlesung das multidimensionale forced-choice (MFC) Format und das Thurstonian IRT Modell kennengelernt.</p>
+<section id="forced-choice-daten" class="level2">
+<h2 class="anchored" data-anchor-id="forced-choice-daten">Forced-Choice Daten</h2>
 <p>Im Folgenden sehen Sie die Datenmatrix eines forced-choice Tests mit zwei multidimensionalen Triplets.</p>
 <p><span class="math display">\[\begin{equation}
     \mathbf{U} =
@@ -371,6 +379,9 @@ Lösung
 </div>
 </div>
 </div>
+</section>
+<section id="thurstonian-irt" class="level2">
+<h2 class="anchored" data-anchor-id="thurstonian-irt">Thurstonian IRT</h2>
 <p>Eine der Klassichen Testtheorie überlegene Auswertungsmethode für MFC Testantworten ist die Auswertung mit Hilfe spezialisierter Item Response Modelle. In der Vorlesung haben Sie das Thurstonian IRT Modell kennengelernt.</p>
 <div class="callout-aufgabe">
 <p>Aus dem Thurstonian IRT Modell lassen sich blockweise abhängige Item Characteristic Surface Functions (ICSs) herleiten. Suchen Sie die Formel für die ICS des Thurstonian IRT Modells in der Formelsammlung.</p>
@@ -397,7 +408,7 @@ P_l(y_l = 1 | \theta_a, \theta_b) = \Phi \Big( \frac{\mu_i - \mu_k + \lambda_i \
 </div>
 </div>
 <div class="callout-aufgabe">
-<p>Die Notation der Vorlesung weicht bei diesem Modell von den vorherigen IRT-Modellen ab.</p>
+<p>Die Notation der Vorlesung weicht bei diesem Modell von den vorherigen IRT-Modellen ab. Es lohnt sich daher, die Bestandteile der Formel einzeln zu betrachten.</p>
 <p><em>1. Indices</em></p>
 <p>Was bedeuten hier die Indices <span class="math inline">\(l\)</span>, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(i\)</span>, und <span class="math inline">\(k\)</span>?</p>
 <p><em>2. Daten</em></p>
@@ -525,6 +536,9 @@ Lösung
 </div>
 </div>
 </div>
+</section>
+<section id="die-link-funktion-phi" class="level2">
+<h2 class="anchored" data-anchor-id="die-link-funktion-phi">Die Link-Funktion <span class="math inline">\(\Phi\)</span></h2>
 <p>In der letzten Aufgabe sind Sie der CDF der Standardnormalverteilung, <span class="math inline">\(\Phi\)</span>, begegnet. Die Funktion <span class="math inline">\(\Phi\)</span> erfüllt in IRT-Modellen i.d.R. den gleichen Zweck wie die logistische Funktion (siehe grundlegende Rechenkompetenzen). Das heißt <span class="math inline">\(\Phi\)</span> bildet eine reelle Zahl auf eine Wahrscheinlichkeit ab. Diesen Zusammenhang kann man formal auch als <span class="math inline">\(\Phi: \mathbb{R} \rightarrow [0, 1]\)</span> aufschreiben.</p>
 <p>Im folgenden Plot sehen Sie die Graphen beider Funktionen im Vergleich.</p>
 <div class="cell">
@@ -537,6 +551,9 @@ Lösung
 </div>
 </div>
 <p>Modelle, die die logistische Funktion als sog. <em>Link-Funktion</em> verwenden, kann man auch als Logit-Modelle bezeichnen. Modelle, die die CDF der Standardnormalverteilung als Link-Funktion verwenden, kann man als Probit-Modelle bezeichnen.</p>
+</section>
+<section id="iccs-im-thurstonian-irt-modell" class="level2">
+<h2 class="anchored" data-anchor-id="iccs-im-thurstonian-irt-modell">ICCs im Thurstonian IRT Modell</h2>
 <div class="callout-aufgabe">
 <p>Sie können die ICS des Thurstonian IRT Modells mit dem <code>teachIRT</code> Paket plotten. Stellen Sie zunächst theoretische Überlegungen darüber an, wie die ICSs des Thurstonian IRT Modells vermutlich aussehen. Überprüfen Sie dann Ihre Vermutung mit dem Befehl</p>
 <div class="cell">
@@ -612,6 +629,7 @@ Lösung
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
