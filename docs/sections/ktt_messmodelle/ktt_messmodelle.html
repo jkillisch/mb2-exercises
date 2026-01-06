@@ -942,6 +942,189 @@ Lösung
 </div>
 </div>
 </div>
+<p>Auf den gleichen Daten wurde ein Alternativmodell geschätzt:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="st">f =~ 1*item_1 + item_2 + item_3 + item_4 + item_5</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">item_1 ~ int1*1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="st">item_2 ~ int2*1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">item_3 ~ int3*1</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">item_4 ~ int4*1</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">item_5 ~ int5*1</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="st">item_1 ~~ eps1*item_1</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="st">item_2 ~~ eps2*item_2</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="st">item_3 ~~ eps3*item_3</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="st">item_4 ~~ eps4*item_4</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="st">item_5 ~~ eps5*item_5</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="st"># Make latent variance explicit (would also be added automatically)</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="st">f ~~ lvar*f</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>model_2_fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model_2, <span class="at">data =</span> dat, <span class="at">std.lv =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-aufgabe">
+<p>Um welches Messmodell handelt es sich?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Die Faktorladungen wurden zusätzlich befreit. Es handelt sich nun um ein <span class="math inline">\(\tau\)</span>-kongenerisches Modell.</p>
+</div>
+</div>
+</div>
+<p>Die Modellparameter sind im folgenden hinter einem Dropdown Menü versteckt.</p>
+<div class="callout-aufgabe">
+<p>Überlegen Sie bevor Sie sich den Output anschauen:</p>
+<ul>
+<li><p>Wie viele zusätzliche Parameter sollte das Modell nun haben?</p></li>
+<li><p>Wie viele Parameter hat das Modell also insgesamt?</p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es kommen 4 Parameter hinzu. Warum nicht 5 für 5 Items? Weil die erste Faktorladung zur Identifikation auf Null fixiert wurde.</p>
+<p>Aus einer vorherigen Aufgabe wissen Sie, dass das essentiell <span class="math inline">\(\tau\)</span>-äquivalente Modell 11 Parameter hatte. Wenn 4 hinzukommen, muss das <span class="math inline">\(\tau\)</span>-kongenerische Modell 15 Parameter haben. Das finden Sie so auch im Output.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Modellparameter">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Modellparameter
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Die Parameter des <span class="math inline">\(\tau\)</span>-kongenerischen Modells kann man so anzeigen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_fit, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6-19 ended normally after 25 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        15
+
+  Number of observations                           253
+
+Model Test User Model:
+                                                      
+  Test statistic                                 6.579
+  Degrees of freedom                                 5
+  P-value (Chi-square)                           0.254
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  f =~                                                                  
+    item_1            1.000                               0.718    0.618
+    item_2            1.030    0.153    6.745    0.000    0.740    0.543
+    item_3            0.988    0.141    7.008    0.000    0.709    0.572
+    item_4            1.109    0.137    8.119    0.000    0.796    0.725
+    item_5            1.098    0.138    7.971    0.000    0.788    0.697
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .item_1  (int1)    2.466    0.073   33.793    0.000    2.466    2.125
+   .item_2  (int2)    2.553    0.086   29.844    0.000    2.553    1.876
+   .item_3  (int3)    2.451    0.078   31.450    0.000    2.451    1.977
+   .item_4  (int4)    2.443    0.069   35.420    0.000    2.443    2.227
+   .item_5  (int5)    2.494    0.071   35.097    0.000    2.494    2.207
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .item_1  (eps1)    0.833    0.090    9.241    0.000    0.833    0.618
+   .item_2  (eps2)    1.305    0.132    9.902    0.000    1.305    0.705
+   .item_3  (eps3)    1.034    0.107    9.681    0.000    1.034    0.673
+   .item_4  (eps4)    0.570    0.075    7.607    0.000    0.570    0.474
+   .item_5  (eps5)    0.657    0.081    8.140    0.000    0.657    0.514
+    f       (lvar)    0.515    0.107    4.800    0.000    1.000    1.000</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Nun stellt sich die Frage, welches der Modelle besser auf die Daten passt. Schauen Sie sich den Modelloutput an und stellen Sie ein Vermutung an, ob sich die zusätzliche Flexibilität im Alternativmodell lohnen könnte.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Die Faktorladungen im <span class="math inline">\(\tau\)</span>-kongenerischen Modell sind alle nahe <span class="math inline">\(1\)</span>. Das spricht dafür, dass sich die Befreiung der Faktorladungen nicht lohnen könnte.</p>
+</div>
+</div>
+</div>
+<p>Die Modelle lassen sich auch mit Hilfe eines Tests miteinander vergleichen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_2_fit, model_1_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Chi-Squared Difference Test
+
+            Df    AIC    BIC  Chisq Chisq diff RMSEA Df diff Pr(&gt;Chisq)
+model_2_fit  5 3785.7 3838.7 6.5789                                    
+model_1_fit  9 3779.0 3817.9 7.9082     1.3293     0       4     0.8564</code></pre>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Welches Modell sollte entsprechend des Tests verwendet werden?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>H0: Die Restriktionen verschlechtern den Fit nicht</p>
+<p>H1: Die Restriktionen verschlechtern den Fit</p>
+<p>Der p-Wert ist nicht kleiner als <span class="math inline">\(0.05\)</span>. Die H0 kann nicht verworfen werden. Der Test spricht dafür, das restriktivere essentiell <span class="math inline">\(\tau\)</span>-äquivalente Modell zu behalten.</p>
+</div>
+</div>
+</div>
 
 
 </section>

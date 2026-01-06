@@ -553,3 +553,100 @@ Siehe `raw_alpha`
 $0.76$
 
 :::
+
+Auf den gleichen Daten wurde ein Alternativmodell geschätzt:
+
+```{r}
+model_2 <- '
+f =~ 1*item_1 + item_2 + item_3 + item_4 + item_5
+
+item_1 ~ int1*1
+item_2 ~ int2*1
+item_3 ~ int3*1
+item_4 ~ int4*1
+item_5 ~ int5*1
+
+item_1 ~~ eps1*item_1
+item_2 ~~ eps2*item_2
+item_3 ~~ eps3*item_3
+item_4 ~~ eps4*item_4
+item_5 ~~ eps5*item_5
+
+# Make latent variance explicit (would also be added automatically)
+f ~~ lvar*f
+'
+
+model_2_fit <- sem(model_2, data = dat, std.lv = FALSE)
+```
+
+::: {.callout-aufgabe}
+
+Um welches Messmodell handelt es sich?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Faktorladungen wurden zusätzlich befreit. Es handelt sich nun um ein $\tau$-kongenerisches Modell.
+
+:::
+
+Die Modellparameter sind im folgenden hinter einem Dropdown Menü versteckt. 
+
+::: {.callout-aufgabe}
+
+Überlegen Sie bevor Sie sich den Output anschauen:
+
+- Wie viele zusätzliche Parameter sollte das Modell nun haben?
+
+- Wie viele Parameter hat das Modell also insgesamt?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es kommen 4 Parameter hinzu. Warum nicht 5 für 5 Items? Weil die erste Faktorladung zur Identifikation auf Null fixiert wurde.
+
+Aus einer vorherigen Aufgabe wissen Sie, dass das essentiell $\tau$-äquivalente Modell 11 Parameter hatte. Wenn 4 hinzukommen, muss das $\tau$-kongenerische Modell 15 Parameter haben. Das finden Sie so auch im Output.
+
+:::
+
+::: {.callout .callout-tipp title="Modellparameter" collapse=true}
+
+Die Parameter des $\tau$-kongenerischen Modells kann man so anzeigen:
+
+```{r}
+summary(model_2_fit, standardized = TRUE)
+```
+
+:::
+
+Nun stellt sich die Frage, welches der Modelle besser auf die Daten passt. Schauen Sie sich den Modelloutput an und stellen Sie ein Vermutung an, ob sich die zusätzliche Flexibilität im Alternativmodell lohnen könnte.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Faktorladungen im $\tau$-kongenerischen Modell sind alle nahe $1$. Das spricht dafür, dass sich die Befreiung der Faktorladungen nicht lohnen könnte.
+
+:::
+
+Die Modelle lassen sich auch mit Hilfe eines Tests miteinander vergleichen:
+
+```{r}
+anova(model_2_fit, model_1_fit)
+```
+
+::: {.callout-aufgabe}
+
+Welches Modell sollte entsprechend des Tests verwendet werden?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+H0: Die Restriktionen verschlechtern den Fit nicht
+
+H1: Die Restriktionen verschlechtern den Fit
+
+Der p-Wert ist nicht kleiner als $0.05$. Die H0 kann nicht verworfen werden. Der Test spricht dafür, das restriktivere essentiell $\tau$-äquivalente Modell zu behalten.
+
+:::
