@@ -215,7 +215,9 @@ Das eben behandelte $\tau$-kongenerische Messmodell ist unter den behandelten Mo
 
 $$y_{mi} = \alpha + \lambda \cdot \eta_m + \epsilon_{mi}$$
 
-$$Var(\epsilon_i) = Var(\epsilon_j)$$ für alle $i \ne j$$
+$$Var(\epsilon_i) = Var(\epsilon_j)$$ 
+
+für alle $i \ne j$
 
 Das $\alpha$ und $\lambda$ haben hier keinen Index $i$ mehr. Das ist hier gleichbedeutend damit, dass es nur einen Parameterwert für alle Items gibt. Ausgehend von dem dadurch beschriebenen $\tau$-parallelen Messmodell lassen sich schrittweise Parametergruppen zwischen Items befreien, bis Sie wieder beim $\tau$-kongenerischen Modell ankommen. Die folgende Grafik stellt diese Schritte schematisch dar:
 
