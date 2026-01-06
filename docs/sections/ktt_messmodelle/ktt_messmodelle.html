@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -213,6 +248,7 @@ window.Quarto = {
   <li><a href="#grundgleichung-der-ktt" id="toc-grundgleichung-der-ktt" class="nav-link" data-scroll-target="#grundgleichung-der-ktt">Grundgleichung der KTT</a></li>
   <li><a href="#tau-kongenerische-messmodelle" id="toc-tau-kongenerische-messmodelle" class="nav-link" data-scroll-target="#tau-kongenerische-messmodelle"><span class="math inline">\(\tau\)</span>-kongenerische Messmodelle</a></li>
   <li><a href="#restringierte-messmodelle" id="toc-restringierte-messmodelle" class="nav-link" data-scroll-target="#restringierte-messmodelle">Restringierte Messmodelle</a></li>
+  <li><a href="#messmodelle-in-r" id="toc-messmodelle-in-r" class="nav-link" data-scroll-target="#messmodelle-in-r">Messmodelle in R</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -353,7 +389,7 @@ Lösung
 <p>Bei der letzten Aufgabe konnten Sie bereits feststellen, dass das <span class="math inline">\(\tau\)</span>-kongenerische Messmodell in der Form, wie wir es in der Veranstaltung behandeln, kontinuierliche Werte vorhersagt - z.B. den Wert <span class="math inline">\(1.5\)</span> in der letzten Aufgabe. Nach der intensiven Behandlung von IRT-Modellen kommt Ihnen das vielleicht suspekt vor, denn bei testtheoretischen Anwendungen beobachten wir i.d.R. ordinale Daten. Daher möchte ich hier kurz anmerken, dass sich die KTT-Messmodelle durch einen sogenannten <em>threshold</em>-Prozess so erweitern lassen, dass sie, wie die IRT-Modelle auch, ordinale Vorhersagen treffen. Diese Erweiterung nehmen wir im Laufe der Veranstaltung der Einfachheit halber aber nicht vor. Stattdessen akzeptieren wir zur Heranführung an die Modelle, dass die KTT-Messmodelle kontinuierliche Werte vorhersagen, die Daten aber oft ordinal sind.</p>
 <p>In der nächsten Aufgabe geht es darum explizit zu machen, dass Messmodelle Systeme linearer Gleichungen sind.</p>
 <div class="callout-aufgabe">
-<p>Schreiben Sie das volle lineare Gleichungssystem auf, das aus dem Modell mit den abgelesenen Itemparametern resultiert.</p>
+<p>Schreiben Sie das lineare Gleichungssystem auf, das aus dem Modell mit den abgelesenen Itemparametern resultiert. Ignorieren Sie dabei latente und Fehlervarianzen.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -428,7 +464,7 @@ Lösung
 </div>
 <p>Das eben behandelte <span class="math inline">\(\tau\)</span>-kongenerische Messmodell ist unter den behandelten Modellen das flexibelste Modell. Das restriktivste Modell nennt sich <span class="math inline">\(\tau\)</span>-paralleles Messmodell. Im <span class="math inline">\(\tau\)</span>-parallelen Messmodell wird angenommen, dass die Item-Intercepts, Faktorladungen und Fehlervarianzen aller Items gleich sind. Durch das “Fallenlassen” von Indices in der Modellgleichung kann man diese Gleichsetzung deutlich machen:</p>
 <p><span class="math display">\[y_{mi} = \alpha + \lambda \cdot \eta_m + \epsilon_{mi}\]</span></p>
-<p><span class="math display">\[Var(\epsilon_i) = Var(\epsilon_j)\]</span> für alle <span class="math inline">\(i \ne j\)</span></p>
+<p><span class="math display">\[Var(\epsilon_i) = Var(\epsilon_j)\]</span> für alle <span class="math inline">\(i \ne j\)</span>$</p>
 <p>Das <span class="math inline">\(\alpha\)</span> und <span class="math inline">\(\lambda\)</span> haben hier keinen Index <span class="math inline">\(i\)</span> mehr. Das ist hier gleichbedeutend damit, dass es nur einen Parameterwert für alle Items gibt. Ausgehend von dem dadurch beschriebenen <span class="math inline">\(\tau\)</span>-parallelen Messmodell lassen sich schrittweise Parametergruppen zwischen Items befreien, bis Sie wieder beim <span class="math inline">\(\tau\)</span>-kongenerischen Modell ankommen. Die folgende Grafik stellt diese Schritte schematisch dar:</p>
 <p><img src="images/restrictions.png" class="img-fluid" style="width:85.0%"></p>
 <div class="callout-aufgabe">
@@ -465,6 +501,446 @@ Lösung
 </div>
 <div class="callout-aufgabe">
 <p>Passen Sie den Plot zu den vorhergesagten Werten im <span class="math inline">\(\tau\)</span>-kongenerischen Messmodell so an, dass er jeweils aus einem essentiell <span class="math inline">\(\tau\)</span>-äquivalenten, <span class="math inline">\(\tau\)</span>-äquivalenten, essentiell <span class="math inline">\(\tau\)</span>-parallelen und <span class="math inline">\(\tau\)</span>-parallelen Messmodell hätte resultieren können.</p>
+</div>
+</section>
+<section id="messmodelle-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="messmodelle-in-r">Messmodelle in R</h2>
+<p>Sie haben in der Vorlesung gelernt, wie man Messmodelle in R schätzt. In den folgenden Aufgaben geht es darum, anhand eines Datenbeispiels mit dem R-Output eines Messmodells aus der Software <code>lavaan</code> zu arbeiten.</p>
+<p>Es wurden <span class="math inline">\(253\)</span> Antworten auf einen Test mit fünf Items im 6-Punkt Ratingskalenformat erhoben. Die ersten Zeilen des Datensatzes sehen so aus:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        item_1 item_2 item_3 item_4 item_5
+person1      3      1      2      2      1
+person2      3      2      4      2      1
+person3      2      1      3      2      2
+person4      2      4      3      2      4
+person5      3      2      2      2      2
+person6      2      2      3      3      1</code></pre>
+</div>
+</div>
+<p>Mit Hilfe des folgenden Codes wurde ein Messmodell geschätzt:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This is lavaan 0.6-19
+lavaan is FREE software! Please report any bugs.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_1 <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">f =~ 1*item_1 + 1*item_2 + 1*item_3 + 1*item_4 + 1*item_5</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">item_1 ~ int1*1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">item_2 ~ int2*1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">item_3 ~ int3*1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">item_4 ~ int4*1</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">item_5 ~ int5*1</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">item_1 ~~ eps1*item_1</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">item_2 ~~ eps2*item_2</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">item_3 ~~ eps3*item_3</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">item_4 ~~ eps4*item_4</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">item_5 ~~ eps5*item_5</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st"># Make latent variance explicit (would also be added automatically)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">f ~~ lvar*f</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>model_1_fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model_1, <span class="at">data =</span> dat, <span class="at">std.lv =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-aufgabe">
+<p>Erstellen Sie ein Pfaddiagramm des Modells.</p>
+</div>
+<div class="callout-aufgabe">
+<p>Schreiben Sie das lineare Gleichungssystem auf, das durch das Modell impliziert wird. Schreiben Sie auch alle latenten und Fehlervarianzen mit auf.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[y_{m1} = \alpha_1 + 1 \cdot \eta_m + \epsilon_{m1}\]</span></p>
+<p><span class="math display">\[y_{m2} = \alpha_2 + 1 \cdot \eta_m + \epsilon_{m2}\]</span></p>
+<p><span class="math display">\[y_{m3} = \alpha_3 + 1 \cdot \eta_m + \epsilon_{m3}\]</span></p>
+<p><span class="math display">\[y_{m4} = \alpha_4 + 1 \cdot \eta_m + \epsilon_{m4}\]</span></p>
+<p><span class="math display">\[y_{m5} = \alpha_5 + 1 \cdot \eta_m + \epsilon_{m5}\]</span></p>
+<p>mit freien Fehlervarianzen <span class="math inline">\(Var(\epsilon_1), ..., Var(\epsilon_5)\)</span> und freier latenter Varianz <span class="math inline">\(Var(\eta)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Um welche Art von Messmodell handelt es sich?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Die Intercepts und Residualvarianzen werden frei geschätzt. Die Faktorladungen sind zwischen Items fixiert. Es handelt sich um ein essentiell <span class="math inline">\(\tau\)</span>-äquivalentes Modell.</p>
+</div>
+</div>
+</div>
+<p>Man kann die geschätzten Parameter folgendermaßen anzeigen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_1_fit, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6-19 ended normally after 18 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        11
+
+  Number of observations                           253
+
+Model Test User Model:
+                                                      
+  Test statistic                                 7.908
+  Degrees of freedom                                 9
+  P-value (Chi-square)                           0.543
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  f =~                                                                  
+    item_1            1.000                               0.756    0.643
+    item_2            1.000                               0.756    0.554
+    item_3            1.000                               0.756    0.600
+    item_4            1.000                               0.756    0.700
+    item_5            1.000                               0.756    0.677
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .item_1  (int1)    2.466    0.074   33.354    0.000    2.466    2.097
+   .item_2  (int2)    2.553    0.086   29.761    0.000    2.553    1.871
+   .item_3  (int3)    2.451    0.079   30.941    0.000    2.451    1.945
+   .item_4  (int4)    2.443    0.068   35.956    0.000    2.443    2.261
+   .item_5  (int5)    2.494    0.070   35.500    0.000    2.494    2.232
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .item_1  (eps1)    0.811    0.086    9.459    0.000    0.811    0.587
+   .item_2  (eps2)    1.290    0.127   10.130    0.000    1.290    0.693
+   .item_3  (eps3)    1.015    0.103    9.823    0.000    1.015    0.640
+   .item_4  (eps4)    0.596    0.068    8.800    0.000    0.596    0.510
+   .item_5  (eps5)    0.677    0.074    9.097    0.000    0.677    0.542
+    f       (lvar)    0.572    0.066    8.697    0.000    1.000    1.000</code></pre>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Ist das Modell konvergiert?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ja, das erkennt man an <code>ended normally after 18 iterations</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wofür steht vermutlich <code>ESTIMATOR ML</code>? Hier dürfen Sie raten.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>ML: Maximum Likelihood</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wie viele freie Parameter hat das Modell?</p>
+<p>Listen Sie die Parameter in formaler Notation auf.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es lässt sich ablesen: <code>Number of model parameters 11</code></p>
+<p>Diese sind 5 Intercepts <span class="math inline">\(\alpha_{1}, ..., \alpha_{5}\)</span>, 5 Residualvarianzen <span class="math inline">\(Var(\epsilon_1), ..., Var(\epsilon_5)\)</span> und eine latente Varianze <span class="math inline">\(Var(\eta)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wofür steht <code>Number of observations</code>?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Die Stichprobengröße</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wofür stehen jeweils die Spalten <code>Estimate</code>, <code>Std.Err</code>, <code>z-value</code>, <code>P(&gt;|z|)</code>, <code>Std.lv</code>, <code>Std.all</code> im Output?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>Estimate</code>: Unstandardisierte Parameterwerte</p>
+<p><code>Std.Err</code>: Standardfehler</p>
+<p><code>z-value</code>: Der Bruch <code>Estimate</code> / <code>Std.Err</code>. Das entspricht der Prüfstatistik des Wald Tests gegen die H0, dass der Parameter gleich Null ist.</p>
+<p><code>P(&gt;|z|)</code>: Zweiseitiger p-Wert des Wald Tests gegen die H0, dass der Parameter gleich Null ist.</p>
+<p><code>Std.lv</code>: Standardisierte Lösung, in der die latente Varianz auf 1 gesetzt wurde</p>
+<p><code>Std.all</code>: Standardisierte Lösung, in der die latente Varianz und die Gesamtvarianz aller Items auf 1 gesetzt wurden</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Warum ist die Spalte <code>Std.Err</code> bei manchen Parameter leer?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Wenn Parameter fixiert werden, lässt sich für diese kein Standardfehler und folglich auch keine Wald-Statistik berechnen. Das betrifft im gezeigten Output die Faktorladungen.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Sie haben in der Vorlesung gelernt, wie man <span class="math inline">\(Var(\tau_i)\)</span> und <span class="math inline">\(Var(Y_i)\)</span> berechnet. Berechnen Sie <span class="math inline">\(Var(\tau_3)\)</span> und <span class="math inline">\(Var(Y_3)\)</span> für die unstandardisierte und beide standardisierten Lösungen. Stellen Sie zuvor eine Vermutung an, welche Werte zwangsweise gleich <span class="math inline">\(1\)</span> sein müssen.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es sind</p>
+<p><span class="math display">\[Var(\tau_i) = Var(\alpha_i + \lambda_i \cdot \eta) = \lambda_i^2 \cdot Var(\eta)\]</span></p>
+<p>und</p>
+<p><span class="math display">\[Var(Y_i) = Var(\tau_i) + Var(\epsilon_i)\]</span></p>
+<p><em>Unstandardisiert</em></p>
+<p><span class="math inline">\(Var(\tau_3) = 1^2 \cdot 0.572 = 0.572\)</span></p>
+<p><span class="math inline">\(Var(Y_3) = 0.572 + 1.015 = 1.587\)</span></p>
+<p><em>Standardisierte latente Variable</em></p>
+<p><span class="math inline">\(Var(\tau_3) = 0.756^2 \cdot 1 \approx 0.572\)</span></p>
+<p><span class="math inline">\(Var(Y_3) = 0.572 + 1.015 = 1.587\)</span></p>
+<p><em>Latente Variable und Itemvariablen standardisiert</em></p>
+<p><span class="math inline">\(Var(\tau_3) = 0.600^2 \cdot 1 = 0.36\)</span></p>
+<p><span class="math inline">\(Var(Y_3) = 0.360 + 0.640 = 1\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Berechnen Sie den Anteil systematischer Varianz an der Gesamtvarianz für Item <span class="math inline">\(2\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Var(\tau_2) = \lambda_2^2 \cdot Var(\eta) = 1^2 \cdot 0.572 = 0.572\)</span></p>
+<p><span class="math inline">\(Var(Y_2) = Var(\tau_2) + Var(\epsilon_2) = 0.572 + 1.290 = 1.862\)</span></p>
+<p><span class="math inline">\(Rel(Y_2) = \frac{Var(\tau_2)}{Var(Y_2)} = \frac{0.572}{1.862} \approx 0.31\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Stellen Sie eine Vermutung an: Kann sich <span class="math inline">\(Rel(Y_i)\)</span> zwischen Items unterscheiden, obwohl die Faktorladungen fixiert sind? Warum (nicht)?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ja. In die Berechnung gehen die Werte <span class="math inline">\(\lambda_i\)</span>, <span class="math inline">\(Var(\eta)\)</span> und <span class="math inline">\(Var(\epsilon_i)\)</span> ein. Es sind zwar <span class="math inline">\(\lambda_i\)</span> und <span class="math inline">\(Var(\eta)\)</span> zwischen Items fixiert, aber durch unterschiedliche Werte von <span class="math inline">\(Var(\epsilon_i)\)</span> können auch unterschiedliche Anteile systematischer Varianz an der Gesamtvarianz des Items entstehen.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Wie könnte man das Messmodell verändern, damit alle Items die gleiche <span class="math inline">\(Rel(Y_i)\)</span> haben?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Man könnte die Fehlervarianzen zwischen Items fixieren. Dann gölte ein essentiell <span class="math inline">\(\tau\)</span>-paralleles Messmodell.</p>
+<p>Würde man zusätzlich die Intercepts zwischen Items fixieren gölte ein <span class="math inline">\(\tau\)</span>-paralleles Messmodell. Auch hier wären die Werte von <span class="math inline">\(Rel(Y_i)\)</span> zwischen Items gleich. Das wäre aber ein Schritt mehr als notwendig.</p>
+<p>In einem <span class="math inline">\(\tau\)</span>-äquivalenten Messmodell wären Unterschiede zwischen den <span class="math inline">\(Rel(Y_i)\)</span> weiterhin möglich.</p>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<ol type="a">
+<li><p>Welchen Reliabilitätsschätzer für den Gesamttest sollte man verwenden, wenn das spezifierte Messmodell das beste wäre?</p></li>
+<li><p>Welcher Reliabilitätsschätzer für den Gesamttest sollte verwendet werden, wenn man die Faktorladungen befreien würde?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Cronbach’s Alpha</p></li>
+<li><p>McDonald’s Omega</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout-aufgabe">
+<p>Extrahieren Sie Cronbach’s alpha.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Reliability analysis   
+Call: psych::alpha(x = dat)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+      0.76      0.77    0.73       0.4 3.3 0.024  2.5 0.86      0.4
+
+    95% confidence boundaries 
+         lower alpha upper
+Feldt     0.71  0.76  0.81
+Duhachek  0.72  0.76  0.81
+
+ Reliability if an item is dropped:
+       raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+item_1      0.72      0.72    0.67      0.40 2.6    0.029 0.0059  0.39
+item_2      0.74      0.75    0.69      0.42 2.9    0.026 0.0037  0.41
+item_3      0.74      0.74    0.69      0.42 2.9    0.027 0.0039  0.40
+item_4      0.70      0.70    0.64      0.37 2.4    0.031 0.0019  0.38
+item_5      0.70      0.71    0.65      0.38 2.4    0.030 0.0030  0.38
+
+ Item statistics 
+         n raw.r std.r r.cor r.drop mean  sd
+item_1 253  0.72  0.72  0.62   0.54  2.5 1.2
+item_2 253  0.70  0.68  0.55   0.48  2.6 1.4
+item_3 253  0.69  0.69  0.56   0.49  2.5 1.2
+item_4 253  0.75  0.76  0.69   0.59  2.4 1.1
+item_5 253  0.74  0.75  0.67   0.58  2.5 1.1
+
+Non missing response frequency for each item
+          0    1    2    3    4    5 miss
+item_1 0.04 0.18 0.29 0.32 0.13 0.04    0
+item_2 0.06 0.19 0.23 0.26 0.18 0.08    0
+item_3 0.05 0.17 0.32 0.27 0.12 0.07    0
+item_4 0.05 0.12 0.37 0.28 0.17 0.02    0
+item_5 0.05 0.13 0.30 0.34 0.14 0.03    0</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Siehe <code>raw_alpha</code></p>
+<p><span class="math inline">\(0.76\)</span></p>
+</div>
+</div>
 </div>
 
 

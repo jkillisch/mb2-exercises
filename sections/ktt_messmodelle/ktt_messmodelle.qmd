@@ -147,7 +147,7 @@ In der nächsten Aufgabe geht es darum explizit zu machen, dass Messmodelle Syst
 
 ::: {.callout-aufgabe}
 
-Schreiben Sie das volle lineare Gleichungssystem auf, das aus dem Modell mit den abgelesenen Itemparametern resultiert.
+Schreiben Sie das lineare Gleichungssystem auf, das aus dem Modell mit den abgelesenen Itemparametern resultiert. Ignorieren Sie dabei latente und Fehlervarianzen.
 
 :::
 
@@ -215,7 +215,7 @@ Das eben behandelte $\tau$-kongenerische Messmodell ist unter den behandelten Mo
 
 $$y_{mi} = \alpha + \lambda \cdot \eta_m + \epsilon_{mi}$$
 
-$$Var(\epsilon_i) = Var(\epsilon_j)$$ für alle $i \ne j$
+$$Var(\epsilon_i) = Var(\epsilon_j)$$ für alle $i \ne j$$
 
 Das $\alpha$ und $\lambda$ haben hier keinen Index $i$ mehr. Das ist hier gleichbedeutend damit, dass es nur einen Parameterwert für alle Items gibt. Ausgehend von dem dadurch beschriebenen $\tau$-parallelen Messmodell lassen sich schrittweise Parametergruppen zwischen Items befreien, bis Sie wieder beim $\tau$-kongenerischen Modell ankommen. Die folgende Grafik stellt diese Schritte schematisch dar:
 
@@ -256,5 +256,300 @@ Alle Itemparameter bis auf die Faktorladungen sind itemspezifisch. Das lineare G
 ::: {.callout-aufgabe}
 
 Passen Sie den Plot zu den vorhergesagten Werten im $\tau$-kongenerischen Messmodell so an, dass er jeweils aus einem essentiell $\tau$-äquivalenten, $\tau$-äquivalenten, essentiell $\tau$-parallelen und $\tau$-parallelen Messmodell hätte resultieren können.
+
+:::
+
+## Messmodelle in R
+
+Sie haben in der Vorlesung gelernt, wie man Messmodelle in R schätzt. In den folgenden Aufgaben geht es darum, anhand eines Datenbeispiels mit dem R-Output eines Messmodells aus der Software `lavaan` zu arbeiten.
+
+Es wurden $253$ Antworten auf einen Test mit fünf Items im 6-Punkt Ratingskalenformat erhoben. Die ersten Zeilen des Datensatzes sehen so aus:
+
+```{r, echo = FALSE, fig.height=5}
+# Sim data
+set.seed(5765)
+N <- 253
+I <- 5
+dat <- teachIRT::sim_gpcm(
+    n = N,
+    m = I,
+    m_star = 5
+    )
+```
+
+```{r, echo = TRUE}
+head(dat)
+```
+
+Mit Hilfe des folgenden Codes wurde ein Messmodell geschätzt:
+
+```{r}
+library(lavaan)
+
+model_1 <- '
+f =~ 1*item_1 + 1*item_2 + 1*item_3 + 1*item_4 + 1*item_5
+
+item_1 ~ int1*1
+item_2 ~ int2*1
+item_3 ~ int3*1
+item_4 ~ int4*1
+item_5 ~ int5*1
+
+item_1 ~~ eps1*item_1
+item_2 ~~ eps2*item_2
+item_3 ~~ eps3*item_3
+item_4 ~~ eps4*item_4
+item_5 ~~ eps5*item_5
+
+# Make latent variance explicit (would also be added automatically)
+f ~~ lvar*f
+'
+
+model_1_fit <- sem(model_1, data = dat, std.lv = FALSE)
+```
+
+::: {.callout-aufgabe}
+
+Erstellen Sie ein Pfaddiagramm des Modells.
+
+:::
+
+::: {.callout-aufgabe}
+
+Schreiben Sie das lineare Gleichungssystem auf, das durch das Modell impliziert wird. Schreiben Sie auch alle latenten und Fehlervarianzen mit auf.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$$y_{m1} = \alpha_1 + 1 \cdot \eta_m + \epsilon_{m1}$$
+
+$$y_{m2} = \alpha_2 + 1 \cdot \eta_m + \epsilon_{m2}$$
+
+$$y_{m3} = \alpha_3 + 1 \cdot \eta_m + \epsilon_{m3}$$
+
+$$y_{m4} = \alpha_4 + 1 \cdot \eta_m + \epsilon_{m4}$$
+
+$$y_{m5} = \alpha_5 + 1 \cdot \eta_m + \epsilon_{m5}$$
+
+mit freien Fehlervarianzen $Var(\epsilon_1), ..., Var(\epsilon_5)$ und freier latenter Varianz $Var(\eta)$.
+
+:::
+
+::: {.callout-aufgabe}
+
+Um welche Art von Messmodell handelt es sich?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Intercepts und Residualvarianzen werden frei geschätzt. Die Faktorladungen sind zwischen Items fixiert. Es handelt sich um ein essentiell $\tau$-äquivalentes Modell.
+
+:::
+
+Man kann die geschätzten Parameter folgendermaßen anzeigen:
+
+```{r}
+summary(model_1_fit, standardized = TRUE)
+```
+
+::: {.callout-aufgabe}
+
+Ist das Modell konvergiert?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Ja, das erkennt man an `ended normally after 18 iterations`.
+
+:::
+
+::: {.callout-aufgabe}
+
+Wofür steht vermutlich `ESTIMATOR ML`? Hier dürfen Sie raten.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+ML: Maximum Likelihood
+
+:::
+
+::: {.callout-aufgabe}
+
+Wie viele freie Parameter hat das Modell?
+
+Listen Sie die Parameter in formaler Notation auf.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es lässt sich ablesen: `Number of model parameters 11`
+
+Diese sind 5 Intercepts $\alpha_{1}, ..., \alpha_{5}$, 5 Residualvarianzen $Var(\epsilon_1), ..., Var(\epsilon_5)$ und eine latente Varianze $Var(\eta)$.
+
+:::
+
+::: {.callout-aufgabe}
+
+Wofür steht `Number of observations`?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Stichprobengröße
+
+:::
+
+::: {.callout-aufgabe}
+
+Wofür stehen jeweils die Spalten `Estimate`, `Std.Err`, `z-value`, `P(>|z|)`, `Std.lv`, `Std.all` im Output?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+`Estimate`: Unstandardisierte Parameterwerte
+
+`Std.Err`: Standardfehler
+
+`z-value`: Der Bruch `Estimate` / `Std.Err`. Das entspricht der Prüfstatistik des Wald Tests gegen die H0, dass der Parameter gleich Null ist.
+
+`P(>|z|)`: Zweiseitiger p-Wert des Wald Tests gegen die H0, dass der Parameter gleich Null ist.
+
+`Std.lv`: Standardisierte Lösung, in der die latente Varianz auf 1 gesetzt wurde
+
+`Std.all`: Standardisierte Lösung, in der die latente Varianz und die Gesamtvarianz aller Items auf 1 gesetzt wurden
+
+:::
+
+::: {.callout-aufgabe}
+
+Warum ist die Spalte `Std.Err` bei manchen Parameter leer?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Wenn Parameter fixiert werden, lässt sich für diese kein Standardfehler und folglich auch keine Wald-Statistik berechnen. Das betrifft im gezeigten Output die Faktorladungen.
+
+:::
+
+::: {.callout-aufgabe}
+
+Sie haben in der Vorlesung gelernt, wie man $Var(\tau_i)$ und $Var(Y_i)$ berechnet. Berechnen Sie $Var(\tau_3)$ und $Var(Y_3)$ für die unstandardisierte und beide standardisierten Lösungen. Stellen Sie zuvor eine Vermutung an, welche Werte zwangsweise gleich $1$ sein müssen.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es sind 
+
+$$Var(\tau_i) = Var(\alpha_i + \lambda_i \cdot \eta) = \lambda_i^2 \cdot Var(\eta)$$
+
+und
+
+$$Var(Y_i) = Var(\tau_i) + Var(\epsilon_i)$$
+
+*Unstandardisiert*
+
+$Var(\tau_3) = 1^2 \cdot 0.572 = 0.572$
+
+$Var(Y_3) = 0.572 + 1.015 = 1.587$
+
+*Standardisierte latente Variable*
+
+$Var(\tau_3) = 0.756^2 \cdot 1 \approx 0.572$
+
+$Var(Y_3) = 0.572 + 1.015 = 1.587$
+
+*Latente Variable und Itemvariablen standardisiert*
+
+$Var(\tau_3) = 0.600^2 \cdot 1 = 0.36$
+
+$Var(Y_3) = 0.360 + 0.640 = 1$
+
+:::
+
+::: {.callout-aufgabe}
+
+Berechnen Sie den Anteil systematischer Varianz an der Gesamtvarianz für Item $2$.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$Var(\tau_2) = \lambda_2^2 \cdot Var(\eta) = 1^2 \cdot 0.572 = 0.572$
+
+$Var(Y_2) = Var(\tau_2) + Var(\epsilon_2) = 0.572 + 1.290 = 1.862$
+
+$Rel(Y_2) = \frac{Var(\tau_2)}{Var(Y_2)} = \frac{0.572}{1.862} \approx 0.31$
+
+:::
+
+::: {.callout-aufgabe}
+
+Stellen Sie eine Vermutung an: Kann sich $Rel(Y_i)$ zwischen Items unterscheiden, obwohl die Faktorladungen fixiert sind? Warum (nicht)?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Ja. In die Berechnung gehen die Werte $\lambda_i$, $Var(\eta)$ und $Var(\epsilon_i)$ ein. Es sind zwar $\lambda_i$ und $Var(\eta)$ zwischen Items fixiert, aber durch unterschiedliche Werte von $Var(\epsilon_i)$ können auch unterschiedliche Anteile systematischer Varianz an der Gesamtvarianz des Items entstehen.
+
+:::
+
+::: {.callout-aufgabe}
+
+Wie könnte man das Messmodell verändern, damit alle Items die gleiche $Rel(Y_i)$ haben?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Man könnte die Fehlervarianzen zwischen Items fixieren. Dann gölte ein essentiell $\tau$-paralleles Messmodell.
+
+Würde man zusätzlich die Intercepts zwischen Items fixieren gölte ein $\tau$-paralleles Messmodell. Auch hier wären die Werte von $Rel(Y_i)$ zwischen Items gleich. Das wäre aber ein Schritt mehr als notwendig.
+
+In einem $\tau$-äquivalenten Messmodell wären Unterschiede zwischen den $Rel(Y_i)$ weiterhin möglich.
+
+:::
+
+::: {.callout-aufgabe}
+
+a) Welchen Reliabilitätsschätzer für den Gesamttest sollte man verwenden, wenn das spezifierte Messmodell das beste wäre?
+
+b) Welcher Reliabilitätsschätzer für den Gesamttest sollte verwendet werden, wenn man die Faktorladungen befreien würde?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+a) Cronbach's Alpha
+
+b) McDonald's Omega
+
+:::
+
+::: {.callout-aufgabe}
+
+Extrahieren Sie Cronbach's alpha.
+
+```{r}
+psych::alpha(dat)
+```
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Siehe `raw_alpha`
+
+$0.76$
 
 :::
