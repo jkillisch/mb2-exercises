@@ -263,6 +263,8 @@ Passen Sie den Plot zu den vorhergesagten Werten im $\tau$-kongenerischen Messmo
 
 Sie haben in der Vorlesung gelernt, wie man Messmodelle in R schätzt. In den folgenden Aufgaben geht es darum, anhand eines Datenbeispiels mit dem R-Output eines Messmodells aus der Software `lavaan` zu arbeiten.
 
+### Datenbeispiel
+
 Es wurden $253$ Antworten auf einen Test mit fünf Items im 6-Punkt Ratingskalenformat erhoben. Die ersten Zeilen des Datensatzes sehen so aus:
 
 ```{r, echo = FALSE, fig.height=5}
@@ -280,6 +282,8 @@ dat <- teachIRT::sim_gpcm(
 ```{r, echo = TRUE}
 head(dat)
 ```
+
+### Modellspezifikation
 
 Mit Hilfe des folgenden Codes wurde ein Messmodell geschätzt:
 
@@ -347,6 +351,8 @@ Um welche Art von Messmodell handelt es sich?
 Die Intercepts und Residualvarianzen werden frei geschätzt. Die Faktorladungen sind zwischen Items fixiert. Es handelt sich um ein essentiell $\tau$-äquivalentes Modell.
 
 :::
+
+### Interpretation des Modelloutputs
 
 Man kann die geschätzten Parameter folgendermaßen anzeigen:
 
@@ -439,6 +445,8 @@ Warum ist die Spalte `Std.Err` bei manchen Parameter leer?
 Wenn Parameter fixiert werden, lässt sich für diese kein Standardfehler und folglich auch keine Wald-Statistik berechnen. Das betrifft im gezeigten Output die Faktorladungen.
 
 :::
+
+### Rechnen mit Varianzen
 
 ::: {.callout-aufgabe}
 
@@ -554,6 +562,8 @@ $0.76$
 
 :::
 
+### Modellvergleiche
+
 Auf den gleichen Daten wurde ein Alternativmodell geschätzt:
 
 ```{r}
@@ -647,6 +657,6 @@ H0: Die Restriktionen verschlechtern den Fit nicht
 
 H1: Die Restriktionen verschlechtern den Fit
 
-Der p-Wert ist nicht kleiner als $0.05$. Die H0 kann nicht verworfen werden. Der Test spricht dafür, das restriktivere essentiell $\tau$-äquivalente Modell zu behalten.
+Der p-Wert ist nicht kleiner als $0.05$. Die H0 kann nicht verworfen werden. Dem Modellvergleich folgend sollte man das restriktivere essentiell $\tau$-äquivalente Modell beibehalten.
 
 :::

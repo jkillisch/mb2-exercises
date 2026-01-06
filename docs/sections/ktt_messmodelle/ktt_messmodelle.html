@@ -248,7 +248,14 @@ window.Quarto = {
   <li><a href="#grundgleichung-der-ktt" id="toc-grundgleichung-der-ktt" class="nav-link" data-scroll-target="#grundgleichung-der-ktt">Grundgleichung der KTT</a></li>
   <li><a href="#tau-kongenerische-messmodelle" id="toc-tau-kongenerische-messmodelle" class="nav-link" data-scroll-target="#tau-kongenerische-messmodelle"><span class="math inline">\(\tau\)</span>-kongenerische Messmodelle</a></li>
   <li><a href="#restringierte-messmodelle" id="toc-restringierte-messmodelle" class="nav-link" data-scroll-target="#restringierte-messmodelle">Restringierte Messmodelle</a></li>
-  <li><a href="#messmodelle-in-r" id="toc-messmodelle-in-r" class="nav-link" data-scroll-target="#messmodelle-in-r">Messmodelle in R</a></li>
+  <li><a href="#messmodelle-in-r" id="toc-messmodelle-in-r" class="nav-link" data-scroll-target="#messmodelle-in-r">Messmodelle in R</a>
+  <ul class="collapse">
+  <li><a href="#datenbeispiel" id="toc-datenbeispiel" class="nav-link" data-scroll-target="#datenbeispiel">Datenbeispiel</a></li>
+  <li><a href="#modellspezifikation" id="toc-modellspezifikation" class="nav-link" data-scroll-target="#modellspezifikation">Modellspezifikation</a></li>
+  <li><a href="#interpretation-des-modelloutputs" id="toc-interpretation-des-modelloutputs" class="nav-link" data-scroll-target="#interpretation-des-modelloutputs">Interpretation des Modelloutputs</a></li>
+  <li><a href="#rechnen-mit-varianzen" id="toc-rechnen-mit-varianzen" class="nav-link" data-scroll-target="#rechnen-mit-varianzen">Rechnen mit Varianzen</a></li>
+  <li><a href="#modellvergleiche" id="toc-modellvergleiche" class="nav-link" data-scroll-target="#modellvergleiche">Modellvergleiche</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -506,6 +513,8 @@ Lösung
 <section id="messmodelle-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="messmodelle-in-r">Messmodelle in R</h2>
 <p>Sie haben in der Vorlesung gelernt, wie man Messmodelle in R schätzt. In den folgenden Aufgaben geht es darum, anhand eines Datenbeispiels mit dem R-Output eines Messmodells aus der Software <code>lavaan</code> zu arbeiten.</p>
+<section id="datenbeispiel" class="level3">
+<h3 class="anchored" data-anchor-id="datenbeispiel">Datenbeispiel</h3>
 <p>Es wurden <span class="math inline">\(253\)</span> Antworten auf einen Test mit fünf Items im 6-Punkt Ratingskalenformat erhoben. Die ersten Zeilen des Datensatzes sehen so aus:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -519,6 +528,9 @@ person5      3      2      2      2      2
 person6      2      2      3      3      1</code></pre>
 </div>
 </div>
+</section>
+<section id="modellspezifikation" class="level3">
+<h3 class="anchored" data-anchor-id="modellspezifikation">Modellspezifikation</h3>
 <p>Mit Hilfe des folgenden Codes wurde ein Messmodell geschätzt:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -593,6 +605,9 @@ Lösung
 </div>
 </div>
 </div>
+</section>
+<section id="interpretation-des-modelloutputs" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-des-modelloutputs">Interpretation des Modelloutputs</h3>
 <p>Man kann die geschätzten Parameter folgendermaßen anzeigen:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_1_fit, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -765,6 +780,9 @@ Lösung
 </div>
 </div>
 </div>
+</section>
+<section id="rechnen-mit-varianzen" class="level3">
+<h3 class="anchored" data-anchor-id="rechnen-mit-varianzen">Rechnen mit Varianzen</h3>
 <div class="callout-aufgabe">
 <p>Sie haben in der Vorlesung gelernt, wie man <span class="math inline">\(Var(\tau_i)\)</span> und <span class="math inline">\(Var(Y_i)\)</span> berechnet. Berechnen Sie <span class="math inline">\(Var(\tau_3)\)</span> und <span class="math inline">\(Var(Y_3)\)</span> für die unstandardisierte und beide standardisierten Lösungen. Stellen Sie zuvor eine Vermutung an, welche Werte zwangsweise gleich <span class="math inline">\(1\)</span> sein müssen.</p>
 </div>
@@ -942,6 +960,9 @@ Lösung
 </div>
 </div>
 </div>
+</section>
+<section id="modellvergleiche" class="level3">
+<h3 class="anchored" data-anchor-id="modellvergleiche">Modellvergleiche</h3>
 <p>Auf den gleichen Daten wurde ein Alternativmodell geschätzt:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">&lt;-</span> <span class="st">'</span></span>
@@ -1121,12 +1142,13 @@ Lösung
 <div class="callout-body-container callout-body">
 <p>H0: Die Restriktionen verschlechtern den Fit nicht</p>
 <p>H1: Die Restriktionen verschlechtern den Fit</p>
-<p>Der p-Wert ist nicht kleiner als <span class="math inline">\(0.05\)</span>. Die H0 kann nicht verworfen werden. Der Test spricht dafür, das restriktivere essentiell <span class="math inline">\(\tau\)</span>-äquivalente Modell zu behalten.</p>
+<p>Der p-Wert ist nicht kleiner als <span class="math inline">\(0.05\)</span>. Die H0 kann nicht verworfen werden. Dem Modellvergleich folgend sollte man das restriktivere essentiell <span class="math inline">\(\tau\)</span>-äquivalente Modell beibehalten.</p>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 </section>
 
