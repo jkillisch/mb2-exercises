@@ -326,7 +326,7 @@ $$\lambda_{it}^2 \cdot Var(\zeta_t)$$
 
 $$Var(\epsilon_{it})$$
 
-Die Anteile 1., 2. und 3. kann man jeweils durch die Gesamtvarianz der Variable Teilen und erhält so eine Statistik darüber, welcher Anteil der Varianz eines Items auf den stabilen Trait, das State-Residuum oder den Messfehler zurückzuführen ist.
+Die Anteile 1., 2. und 3. kann man jeweils durch die Gesamtvarianz der Variable teilen und erhält so eine Statistik darüber, welcher Anteil der Varianz eines Items auf den stabilen Trait, das State-Residuum oder den Messfehler zurückzuführen ist.
 
 ::: {.callout-aufgabe}
 
