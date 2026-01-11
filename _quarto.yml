@@ -34,6 +34,8 @@ website:
           text: 10. Adaptives Testen
         - href: sections/ktt_messmodelle/ktt_messmodelle.qmd
           text: 10. KTT Messmodelle
+        - href: sections/lst/lst.qmd
+          text: 11. Latent-State-Trait Modelle
       - text: Zusatzmaterial
         menu:
         - href: zusatzmaterial/pcm_beispiel/pcm_beispiel.qmd
