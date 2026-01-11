@@ -216,7 +216,7 @@ $$y_{mit} = \lambda_{it} \cdot (\gamma_{t} \cdot \xi_m + \zeta_{mt}) + \epsilon_
 
 :::
 
-Im Folgenden geht es aber weiter ohne den Index $m$ weiter.
+Im Folgenden geht es aber ohne den Index $m$ weiter.
 
 ## Varianzzerlegung
 
