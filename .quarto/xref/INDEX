@@ -55,5 +55,8 @@
   },
   "sections/ktt_messmodelle/ktt_messmodelle.qmd": {
     "ktt_messmodelle.html": "eafa035d"
+  },
+  "sections/lst/lst.qmd": {
+    "lst.html": "902d0c50"
   }
 }

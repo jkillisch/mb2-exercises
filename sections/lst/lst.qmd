@@ -1,0 +1,716 @@
+# Latent State-Trait Modelle
+
+Latent State-Trait (LST) Modelle erweitern die Grundgleichung der KTT für Situationen, in denen mehrere Messzeitpunkte vorliegen. 
+
+## Pfaddarstellung von LST-Modellen
+
+Sie haben in der Vorlesung Pfaddarstellungen von LST Modellen, wie die folgende kennengelernt:
+
+![](images/lst_colour.png)
+
+::: {.callout-aufgabe}
+
+Beschreiben Sie die Datensituation, auf die das gezeigte LST Modell passen würde, genauer:
+
+- Wie viele Messzeitpunkte liegen vor?
+
+- Wie viele Items gibt es zu jedem Messzeitpunkt?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Das Modell passt zu einer Situation, in der drei Items zu jeweils drei Messzeitpunkten erhoben wurden.
+
+:::
+
+::: {.callout-aufgabe}
+
+Welche der $y$-Variablen beziehen sich jeweils auf das gleiche Item?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Item 1: $y_{11}$, $y_{12}$, $y_{13}$
+
+Item 2: $y_{21}$, $y_{22}$, $y_{23}$
+
+Item 3: $y_{31}$, $y_{32}$, $y_{33}$
+
+:::
+
+::: {.callout-aufgabe}
+
+Welche der $y$-Variablen beziehen sich jeweils auf den gleichen Messzeitpunkt?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Messzeitpunkt 1: $y_{11}$, $y_{21}$, $y_{31}$
+
+Messzeitpunkt 2: $y_{12}$, $y_{22}$, $y_{32}$
+
+Messzeitpunkt 3: $y_{13}$, $y_{23}$, $y_{33}$
+
+:::
+
+::: {.callout-aufgabe}
+
+Welche Bedeutung haben die folgenden Parameter jeweils?
+
+- $\epsilon_{21}$ ("epsilon")
+
+- $\lambda_{32}$ ("lambda")
+
+- $\tau_3$ ("tau")
+
+- $\zeta_2$ ("zeta")
+
+- $\gamma_1$ ("gamma")
+
+- $\xi$ ("xi")
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$\epsilon_{21}$: Residuum auf Item $2$ zu Zeitpunkt $1$. Dieser Term nimmt wie ein Residuum in der Regression alles auf, was das Modell in Variable $y_{21}$ nicht vorhersagen kann.
+
+$\lambda_{32}$: Faktorladung von Item $3$ zu Zeitpunkt $2$ auf dem latenten State $\tau_2$. Der latente State beeinflusst das Item $y_{32}$ gewichtet um $\lambda_{32}$.
+
+$\tau_3$: Die latente State-Variable für Zeitpunkt $3$. Diese Variable erfasst Varianzanteile, die den Items zum Zeitpunkt $3$ gemeinsam sind.
+
+$\zeta_2$: State-spezifisches Residuum zu Zeitpunkt $2$. Dieser Term enthält die Anteile am latenten State, die durch die den stabilen Trait nicht erklärt werden können.
+
+$\gamma_1$: Faktorladung von State $1$ auf der stabilen Trait-Variable $\xi$. Der stabile Trait beeinflusst den latenten State zu Zeitpunkt $1$ gewichtet um $\gamma_1$.
+
+$\xi$: Stabile Trait-Variable. Diese Variable erfasst Varianzanteile, die den drei latenten States gemeinsam sind.
+
+:::
+
+Der Übersicht halber wurde der Personenindex $m$ in der Übersicht ignoriert. Das kommt manchmal vor, wenn aus dem Kontext ersichtlich ist, welche Variablen und Parameter personenspezifisch geschätzt werden.
+
+::: {.callout-aufgabe}
+
+Welche Variablen und Parameter sind personenspezifisch?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Alle $\epsilon$-Parameter
+
+Alle $y$-Variablen
+
+Die $\lambda$-Parameter nicht
+
+Alle $\tau$-Parameter
+
+Alle $\zeta$-Parameter
+
+Die $\gamma$-Parameter nicht
+
+Der $\xi$-Parameter
+
+:::
+
+## Von der Pfaddarstellung zu Modellgleichungen
+
+Die Pfaddarstellung des Modells sehr nützlich, um schnell einen Überblick über das Modell zu bekommen. Hinter der Pfaddarstellung steckt aber, wie bei den Messmodellen auch, ein System linearer Modellgleichungen. In der folgenden Aufgabe werden Sie gebeten, die Modellgleichung für ein Item zu einem Zeitpunkt aufzuschreiben. Das wird vielen sicher nicht leicht fallen. Das ist nicht schlimm. Versuchen Sie es trotzdem einmal. Auch wenn Sie falsch liegen, haben Sie danach noch Gelegenheit zu üben.
+
+::: {.callout-aufgabe}
+
+Was ist die Modellgleichung für Item $2$ zu Zeitpunkt $3$?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Auf Basis der KTT setzt sich die Antwort aus den Komponenten $\tau_{3}$ und $\epsilon_{23}$ zusammen. $\tau_3$ ist für jedes Item zu Zeitpunkt $3$ identisch, wird aber für jedes Item anders gewichtet, hier mit $\lambda_{23}$:
+
+$y_{23} = \lambda_{23} \cdot \tau_{3} + \epsilon_{23}$
+
+Der latente State zu Zeitpunkt $3$ setzt sich zusammen aus dem stabilen Trait $\xi$ und einem messgelegenheitsspezifischen Residuum $\zeta_3$. Der stabile Trait ist für jeden Messzeitpunkt identisch, wird aber für jeden Zeitpunkt anders gewichtet, hier mit $\gamma_3$:
+
+$\tau_{3} = \gamma_3 \cdot \xi + \zeta_3$
+
+Nun muss man nurnoch $\tau_3$ in die erste Gleichung einsetzen:
+
+$y_{23} = \lambda_{23} \cdot (\gamma_3 \cdot \xi + \zeta_3) + \epsilon_{23}$
+
+Wenn man das lieber mag, kann man natürlich auch noch ausmultiplizieren:
+
+$y_{23} = \lambda_{23} \cdot \gamma_3 \cdot \xi + \lambda_{23} \cdot \zeta_3 + \epsilon_{23}$
+
+:::
+
+Wie versprochen der zweite Versuch:
+
+::: {.callout-aufgabe}
+
+Was ist die Modellgleichung für Item $1$ zu Zeitpunkt $2$?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$y_{12} = \lambda_{12} \cdot \tau_{2} + \epsilon_{12}$
+
+$\tau_{2} = \gamma_2 \cdot \xi + \zeta_2$
+
+$y_{12} = \lambda_{12} \cdot (\gamma_2 \cdot \xi + \zeta_2) + \epsilon_{12}$
+
+:::
+
+Und noch einmal
+
+::: {.callout-aufgabe}
+
+Was ist die Modellgleichung für Item $3$ zu Zeitpunkt $3$?
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$y_{33} = \lambda_{33} \cdot \tau_{3} + \epsilon_{33}$
+
+$\tau_{3} = \gamma_3 \cdot \xi + \zeta_3$
+
+$y_{33} = \lambda_{33} \cdot (\gamma_3 \cdot \xi + \zeta_3) + \epsilon_{33}$
+
+:::
+
+Die letzten drei Aufgaben sind meiner Meinung nach zentral für das tiefere Verständnis, denn die Pfaddarstellung *ist* nicht das Modell, sondern eine nützliche Darstellungsweise. Um tiefer mit einem Modell arbeiten zu können, sollte man auch mit der Gleichungsebene umgehen können. Diesen Umgang vertiefen wir nun noch einmal.
+
+Ich nehme noch einmal ein Item zu einem Zeitpunkt heraus. Zum Beispiel Item $3$ zum Zeitpunkt $1$. Aufgrund der vorherigen Aufgaben wissen Sie, dass die Grafik die folgende Modellgleichung für dieses Item impliziert:
+
+$$y_{31} = \lambda_{31} \cdot (\gamma_3 \cdot \xi + \zeta_3) + \epsilon_{31}$$
+
+Diese Darstellungsform ist schon sehr nützlich. Noch besser wäre es aber, eine allgemeine Modellgleichung für ein Item $i$ zu einem Zeitpunkt $t$ zu erhalten.
+
+::: {.callout-aufgabe}
+
+Bezeichnen Sie Items mit $i$ und Zeitpunkte mit $t$. Verallgemeinern Sie die Modellgleichung des LST Modells.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$$y_{it} = \lambda_{it} \cdot (\gamma_t \cdot \xi + \zeta_t) + \epsilon_{it}$$
+
+:::
+
+Wie Sie aus einer vorherigen Aufgabe bereits wissen, sind einige der Gleichungskomponenten personenspezifisch. Da drei Indices schnell unübersichtlich würden, wurde das $m$ für Personen hier fallengelassen. Im Prinzip könnte man es aber noch hinzufügen.
+
+::: {.callout-aufgabe}
+
+Fügen Sie überall wo es sinnvoll ist einen Personenindex $m$ zur LST-Gleichung hinzu.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+$$y_{mit} = \lambda_{it} \cdot (\gamma_{t} \cdot \xi_m + \zeta_{mt}) + \epsilon_{mit}$$
+
+:::
+
+Im Folgenden geht es aber weider ohne den Index $m$ weiter.
+
+## Varianzzerlegung
+
+Nimmt man die Modellgleichung 
+
+$$y_{it} = \lambda_{it} \cdot (\gamma_t \cdot \xi + \zeta_t) + \epsilon_{it}$$
+
+an, folgt daraus eine spezifische Varianzzerlegung für jeden Messwert. Man kann diese Varianzzerlegung herleiten. Das ist aber schon etwas fortgeschritten. Wenn Sie kein Interesse daran haben, können Sie die folgende Aufgabe getrost überspringen. Ich finde aber, es lohnt sich. :)
+
+::: {.callout-aufgabe}
+
+Sei 
+
+$$y_{it} = \lambda_{it} \cdot (\gamma_t \cdot \xi + \zeta_t) + \epsilon_{it}$$
+
+$$= \lambda_{it} \cdot \gamma_t \cdot \xi + \lambda_{it} \cdot \zeta_t + \epsilon_{it}$$
+
+$$= \textcolor{red}{(\lambda_{it} \cdot \gamma_t \cdot \xi)} + \textcolor{blue}{(\lambda_{it} \cdot \zeta_t)} + \textcolor{green}{\epsilon_{it}}$$
+
+eine Zufallsvariable. Berechnen Sie $Var(y_{it})$.
+
+Nutzen Sie dafür die folgenden allgemeinen Zusammenhänge der Stochastik:
+
+**Varianz der Summe von drei Zufallsvariablen**
+
+$$Var(\textcolor{red}{X} + \textcolor{blue}{Y} + \textcolor{green}{Z})$$
+
+$$= Var(X) + Var(Y) + Var(Z)$$
+
+$$+ 2 \cdot Cov(X, Y) + 2 \cdot Cov(X, Z) + 2 \cdot Cov(Y, Z)$$
+
+**Konstanten in Varianzen**
+
+$$Var(a \cdot X) = a^2 \cdot Var(X)$$
+
+Hier verstehen wir alles als "konstant", was nicht personenspezifisch ist, also die $\lambda$- und $\gamma$-Parameter.
+
+**Konstanten in Kovarianzen**
+
+$$Cov(a \cdot X, b \cdot Y) = a \cdot b \cdot Cov(X, Y)$$
+
+Nehmen Sie außerdem an, dass alle Kovarianzen nach Annahme Null sind.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es ist 
+
+$$y_{it} = (\lambda_{it} \cdot \gamma_t \cdot \xi) + (\lambda_{it} \cdot \zeta_t) + \epsilon_{it}$$
+
+Mit der angegebenen Formel für die Varianz der Summe von drei Zufallsvariablen gilt
+
+$$Var(y_{it})$$
+
+$$= Var(\lambda_{it} \cdot \gamma_t \cdot \xi) + Var(\lambda_{it} \cdot \zeta_t) + Var(\epsilon_{it})$$
+
+$$+ 2 \cdot Cov(\lambda_{it} \cdot \gamma_t \cdot \xi, \lambda_{it} \cdot \zeta_t)$$
+
+$$+ 2 \cdot Cov(\lambda_{it} \cdot \gamma_t \cdot \xi, \epsilon_{it})$$
+
+$$+ 2 \cdot Cov(\lambda_{it} \cdot \zeta_t, \epsilon_{it})$$
+
+Parameter, die sich nicht zwischen Personen unterscheiden (für die Formeln "Konstanten"), kann man quadrieren und als Faktor vor die Varianzen schreiben. Bei Kovarianzen muss man nicht quadrieren:
+
+$$Var(y_{it})$$
+
+$$= \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})$$
+
+$$+ 2 \cdot \lambda_{it}^2 \cdot \gamma_t \cdot Cov(\xi, \zeta_t)$$
+
+$$+ 2 \cdot \lambda_{it} \cdot \gamma_t \cdot Cov(\xi, \epsilon_{it})$$
+
+$$+ 2 \cdot \lambda_{it} \cdot Cov(\zeta_t, \epsilon_{it})$$
+
+Nun folgen allehand Annahmen. 
+
+1. Der stabile Trait und das State-spezifische Residuum sind unabhängig voneinander und daher ist $Cov(\xi, \zeta_t) = 0$.
+
+2. Der stabile Trait und das Item- und Zeitpunkt-spezifische Residuum sind unabhängig voneinander und daher ist $Cov(\xi, \epsilon_{it}) = 0$.
+
+3. Das State-spezifische Residuum und das Item- und Zeitpunkt-spezifische Residuum sind unabhängig voneinander und daher ist $Cov(\zeta_t, \epsilon_{it}) = 0$.
+
+Unter diesen Annahmen würde man für alle Kovarianzen Nullen einsetzen, sodass folgt:
+
+$$Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})$$
+
+Nun sind wir schon am Ziel. Diese Varianzzerlegung finden Sie auf den Vorlesungsfolien wieder.
+
+:::
+
+Das Ergebnis der letzten Aufgabe ist, dass sich die Varianz einer Variablen im LST Modell wie folgt zerlegen lässt:
+
+$$Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})$$
+
+Das heißt, die Varianz der Antworten auf ein Item zu einem Zeitpunkt setzt sich additiv aus drei Komponenten zusammen.
+
+1. Einen Varianzanteil, der auf den stabilen Trait zurückzuführen ist:
+
+$$\lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi)$$
+
+2. Einen Varianzanteil, der auf das State-Residuum zurückzuführen ist:
+
+$$\lambda_{it}^2 \cdot Var(\zeta_t)$$
+
+3. Einen Varianzanteil, der auf den Messfehler zurückzuführen ist:
+
+$$Var(\epsilon_{it})$$
+
+Die Anteile 1., 2. und 3. kann man jeweils durch die Gesamtvarianz der Variable Teilen und erhält so eine Statistik darüber, welcher Anteil der Varianz eines Items auf den stabilen Trait, das State-Residuum oder den Messfehler zurückzuführen ist.
+
+::: {.callout-aufgabe}
+
+Setzen Sie die Formeln für diese Varianzanteile selbst zusammen, ohne auf den Folien nachzusehen.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Ich setze voraus, dass 
+
+$$
+Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})
+$$
+
+Man könnte $Var(y_{it})$ natürlich in jeder der Formeln noch einmal einsetzen.
+
+**1. Varianzanteil aufgrund des stabilen Traits**
+
+Diesen Anteil nennt man auch Konsistenz. Daher wird er hier mit $Con(y_{it})$ bezeichnet.
+
+$$
+Con(y_{it}) = \frac{
+    \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi)
+}{
+    Var(y_{it})
+}
+$$
+
+**2. Varianzanteil aufgrund des State-Residuums**
+
+Diesen Anteil nennt man auch Messgelegenheitsspezifität oder abgekürzt $OSpe(y_{it})$:
+
+$$
+OSpe(y_{it}) = \frac{
+    \lambda_{it}^2 \cdot Var(\zeta_t)
+}{
+    Var(y_{it})
+}
+$$
+
+**3. Varianzanteil aufgrund des Messfehlers**
+
+Man kann entsprechend auch einen Varianzanteil berechnen, der auf den Messfehler zurückzuführen ist:
+
+$$
+\frac{
+    Var(\epsilon_{it})
+}{
+    Var(y_{it})
+}
+$$
+
+Üblicherweise arbeitet man aber eher mit dem komplementären Varianzanteil. Diesen nennt man im LST-Kontext Reliabilität des Items $i$ zur Messgelegenheit $t$:
+
+$$
+Rel(y_{it}) = 1 - \frac{
+    Var(\epsilon_{it})
+}{
+    Var(y_{it})
+}
+$$
+
+:::
+
+## Datenbeispiel
+
+Ein Test mit fünf Items wurde zu vier Messzeitpunkten an jeweils $784$ Personen erhoben. Im Folgenden wird ein LST Modell auf die resultierenden Daten geschätzt.
+
+```{r, echo = FALSE}
+# Simulate data
+set.seed(96402)
+
+# Number of items
+I <- 5
+
+# Number of occasions
+T <- 4
+
+# Number of persons
+N <- 784
+
+# Factor loadings lvl. 1
+Lambda <- rnorm(T*I, 0.7, 0.15)
+Lambda <- matrix(Lambda, I, T)
+rownames(Lambda) <- paste0("item_", 1:I)
+colnames(Lambda) <- paste0("occasion_", 1:T)
+
+# Factor loadings lvl. 2
+Gamma <- rnorm(T, 0.4, 0.2)
+names(Gamma) <- paste0("occasion_", 1:T)
+
+# Latent trait
+Xi <- rnorm(N, 0, 1)
+
+# State residual
+Zeta <- rnorm(N*T, 0, 0.15)
+Zeta <- matrix(Zeta, N, T)
+rownames(Zeta) <- paste0("person_", 1:N)
+colnames(Zeta) <- paste0("occasion_", 1:T)
+
+# Item-occasion residual
+Epsilon <- rnorm(N*I*T, 0, 0.2)
+Epsilon <- array(Epsilon, dim = c(N, I, T))
+
+# Observed variables
+Y <- array(NA, dim = c(N, I, T))
+
+for (n in 1:N) {
+    for (i in 1:I) {
+        for (t in 1:T) {
+            Y[n, i, t] <- 
+                Lambda[i, t] * (Gamma[t]*Xi[n] + Zeta[n, t]) + Epsilon[n, i, t]
+        }
+    }
+}
+
+# Hard-code because time is limited :(
+Y_t1 <- Y[,,1]
+Y_t2 <- Y[,,2]
+Y_t3 <- Y[,,3]
+Y_t4 <- Y[,,4]
+
+rownames(Y_t1) <- 
+    rownames(Y_t2) <- 
+    rownames(Y_t3) <- 
+    rownames(Y_t4) <- 
+    paste0("person_", 1:N)
+
+colnames(Y_t1) <- c("y_11", "y_21", "y_31", "y_41", "y_51")
+colnames(Y_t2) <- c("y_12", "y_22", "y_32", "y_42", "y_52")
+colnames(Y_t3) <- c("y_13", "y_23", "y_33", "y_43", "y_53")
+colnames(Y_t4) <- c("y_14", "y_24", "y_34", "y_44", "y_54")
+
+dat <- cbind(Y_t1, Y_t2, Y_t3, Y_t4)
+dat <- dplyr::as_tibble(dat)
+```
+
+
+```{r, echo = TRUE}
+library(lavaan)
+
+lst <- '
+state1 =~ y_11 + y_21 + y_31 + y_41 + y_51
+state2 =~ y_12 + y_22 + y_32 + y_42 + y_52
+state3 =~ y_13 + y_23 + y_33 + y_43 + y_53
+state4 =~ y_14 + y_24 + y_34 + y_44 + y_54
+
+trait =~ state1 + state2 + state3 + state4
+'
+
+lst_fit <- cfa(lst, data = dat, estimator = "MLR")
+
+summary(lst_fit, standardize = TRUE, rsquare = TRUE, fit.measures = TRUE)
+
+# Modellimplizierte Varianz-Kovarianz-Matrix
+fitted(lst_fit)
+```
+
+::: {.callout-aufgabe}
+
+Beurteilen Sie den Modellfit anhand des CFI, SRMR, RMSEA und $\chi^2$-Tests.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Man kann CFI, SRMR und RMSEA anhand gängiger, aber arbiträrer Cutoffs beurteilen:
+
+$CFI = .999 > .95$ 
+
+$SRMR = .023 < 0.08$ 
+
+$RMSEA = .009 < 0.08$ 
+
+Diese sprechen alle für einen sehr guten fit. Falls Ihnen in der Vorlesung andere Cutoffs mitgeteilt wurden, sollten Sie natürlich diese verwenden.
+
+Der p-Wert des $\chi^2$-Tests ist $.262$ und damit bei $\alpha = 0.05$ nicht signifikant. Die H0, dass die modellbasierte und beobachtete Varianz-Kovarianz-Matrix identisch sind, kann also nicht verworfen werden. Das spricht für einen sehr guten Modellfit.
+
+Insbesondere ein nicht signifikanter $\chi^2$-Test ist bei $N = 784$ Personen ungewöhnlich gut. In diesem Fall liegt das daran, dass die Daten nicht empirisch, sondern simuliert sind.
+
+:::
+
+::: {.callout-aufgabe}
+
+Zeichnen Sie eine Pfaddarstellung des Modells. Zeichnen Sie dort auch alle Parameter ein.
+
+:::
+
+::: {.callout-aufgabe}
+
+Suchen Sie im Output die
+
+- unstandardisierten State-Ladungen $\lambda_{it}$
+
+- unstandardisierten Trait-Ladungen $\gamma_t$
+
+- unstandardisierte Trait-Varianz $Var(\xi)$
+
+- unstandardisierte State-Varianz $Var(\tau_t)$
+
+- unstandardisierten State-Residuen $Var(\zeta_t)$
+
+- unstandardisierten Item-Residuen $\epsilon_{it}$
+
+- Item Varianzen $y_{it}$
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+- unstandardisierten State-Ladungen $\lambda_{it}$
+
+z.B. bei `state1 =~ y_11` in der Spalte Estimate
+
+- unstandardisierten Trait-Ladungen $\gamma_t$
+
+z.B. bei `trait =~ state1` in der Spalte Estimate
+
+- unstandardisierte Trait-Varianz $Var(\xi)$
+
+Unter Variances in der Zeile `trait` und der Spalte Estimate
+
+- unstandardisierte State-Varianz $Var(\tau_t)$
+
+Diesen Wert findet man nicht im Output, da $\tau_t$ im Modell in einen stabilen Trait und ein State-spezifisches Residuum dekomponiert wird. Man könnte ihn aber berechnen.
+
+- unstandardisierten State-Residuen $Var(\zeta_t)$
+
+Unter Variances, z.B. in der Zeile `state1` in der Spalte Estimate
+
+- unstandardisierten Item-Residuen $\epsilon_{it}$
+
+Die unstandardisierten Item-Residuen findet man nicht im Output. Sie sind personenspezifisch und würden $N$ Zeilen Output erfordern. Man findet aber die Residualvarianzen, nämlich unter Variances bei den Itemnamen.
+
+- Item Varianzen $Var(y_{it})$
+
+Die Itemvarianzen finden Sie auf der Hauptdiagonale der modellimplizierten Varianz-Kovarianz-Matrix. Man könnte sie aber auch aus den Parametern ausrechnen, wenn die Matrix nicht gegeben ist (siehe Formel oben).
+
+:::
+
+::: {.callout-aufgabe}
+
+Berechnen Sie anhand des Outputs die Konsistenz, Messgelegenheitspezifität und Reliabilität von Item $4$ zu Zeitpunkt $3$.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+**Gesucht**
+
+$$
+Con(y_{43}) = \frac{
+    \lambda_{43}^2 \cdot \gamma_3^2 \cdot Var(\xi)
+}{
+    Var(y_{43})
+}
+$$
+
+$$
+OSpe(y_{43}) = \frac{
+    \lambda_{43}^2 \cdot Var(\zeta_3)
+}{
+    Var(y_{43})
+}
+$$
+
+$$
+Rel(y_{43}) = 1 - \frac{
+    Var(\epsilon_{43})
+}{
+    Var(y_{43})
+}
+$$
+
+**Gegeben**
+
+Aus dem Output und der modellimplizierten Varianz-Kovarianz-Matrix:
+
+$\lambda_{43} = 0.706$
+
+$\gamma_3 = 1.816$
+
+$Var(\xi) = 0.018$
+
+$Var(\zeta_3) = 0.017$
+
+$Var(\epsilon_{43}) = 0.040$
+
+$Var(y_{43}) = 0.078$
+
+**Einsetzen**
+
+$$
+Con(y_{43})
+=\frac{0.706^2\cdot 1.816^2\cdot 0.018}{0.078}
+\approx 0.38
+$$
+
+$$
+OSpe(y_{43})
+=\frac{0.706^2\cdot 0.017}{0.078}
+\approx 0.11
+$$
+
+$$
+Rel(y_{43})
+=1-\frac{0.040}{0.078}
+\approx 0.49
+$$
+
+Zur Überprüfung kann man noch einmal schauen, ob der berechnete Wert von $Rel(y_{43})$ dem Wert bei R-Square im Output entspricht. Das ist hier der Fall.
+
+:::
+
+::: {.callout-aufgabe}
+
+Zum Weiterüben finden Sie hier die Konsistenzen und Messgelegenheitsspezifitäten aller Items zu allen Zeitpunkten. Die Reliabilitäten können Sie unter R-Square im Output ablesen. 
+
+Beachten Sie, dass es zu Rundungsabweichungen kommen kann, da die Lösungen mit ungerundeten Parameterschätzungen berechnet wurden.
+
+:::
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r, echo = FALSE}
+Sigma <- fitted(lst_fit)$cov
+pars <- lavaan::parameterEstimates(lst_fit)
+for (i in 1:I) {
+    for (t in 1:T) {
+
+        lambda <- dplyr::filter(
+            pars, 
+            lhs == paste0("state", t),
+            op == "=~",
+            rhs == paste0("y_", i, t)
+            )$est
+
+        gamma <- dplyr::filter(
+            pars, 
+            lhs == "trait",
+            op == "=~",
+            rhs == paste0("state", t)
+            )$est
+
+        var_xi <- dplyr::filter(
+            pars, 
+            lhs == "trait",
+            op == "~~",
+            rhs == "trait"
+            )$est
+
+        var_zeta <- dplyr::filter(
+            pars, 
+            lhs == paste0("state", t),
+            op == "~~",
+            rhs == paste0("state", t)
+            )$est
+
+        var_epsilon <- dplyr::filter(
+            pars, 
+            lhs == paste0("y_", i, t),
+            op == "~~",
+            rhs == paste0("y_", i, t)
+            )$est
+
+        var_y <- Sigma[paste0("y_", i, t), paste0("y_", i, t)]
+        
+        con <- (lambda^2 * gamma^2 * var_xi) / var_y
+        ospe <- (lambda^2 * var_zeta) / var_y
+
+        print(
+            paste0(
+                "Item: ", 
+                i, 
+                " Zeitpunkt: ", 
+                t,
+                " Konsistenz: ", round(con, 2),
+                " M.Spezifität: ", round(ospe, 2)
+                )
+            )
+
+    }
+}
+```
+
+:::
