@@ -695,7 +695,7 @@ Den höchsten Informationsgewinn kann man also erwarten, wenn man der Person als
 
 ::: {.callout-aufgabe}
 
-Sie befinden sich in Schritt 5. des Algorithmus zum adaptiven Testen. Ist das Abbruchkriterium erfüllt?
+Sie befinden sich in Schritt 5. des Algorithmus zum adaptiven Testen. Ist das Abbruchkriterium erfüllt? Verwenden Sie die berechneten Iteminformationen aus der vorherigen Aufgabe.
 
 Aktueller Fähigkeitsschätzer: $\hat{\theta} = 0.5$
 
