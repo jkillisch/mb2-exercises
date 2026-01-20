@@ -302,7 +302,7 @@ Nun folgen allehand Annahmen.
 
 Unter diesen Annahmen würde man für alle Kovarianzen Nullen einsetzen, sodass folgt:
 
-$$Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})$$
+$$Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})$$
 
 Nun sind wir schon am Ziel. Diese Varianzzerlegung finden Sie auf den Vorlesungsfolien wieder.
 
@@ -314,15 +314,15 @@ $$Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\xi) + \lambda_{it}^2 
 
 Das heißt, die Varianz der Antworten auf ein Item zu einem Zeitpunkt setzt sich additiv aus drei Komponenten zusammen.
 
-1. Einen Varianzanteil, der auf den stabilen Trait zurückzuführen ist:
+1. aus einem Varianzanteil, der auf den stabilen Trait zurückzuführen ist:
 
 $$\lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi)$$
 
-2. Einen Varianzanteil, der auf das State-Residuum zurückzuführen ist:
+2. aus einem Varianzanteil, der auf das State-Residuum zurückzuführen ist:
 
 $$\lambda_{it}^2 \cdot Var(\zeta_t)$$
 
-3. Einen Varianzanteil, der auf den Messfehler zurückzuführen ist:
+3. aus einem Varianzanteil, der auf den Messfehler zurückzuführen ist:
 
 $$Var(\epsilon_{it})$$
 
@@ -342,7 +342,7 @@ $$
 Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})
 $$
 
-Man könnte $Var(y_{it})$ natürlich in jeder der Formeln noch einmal einsetzen.
+Man könnte $Var(y_{it})$ im Nenner aller Formeln auch in aufgelöster Form einsetzen. Das macht die Formeln aber schnell unübersichtlich.
 
 **1. Varianzanteil aufgrund des stabilen Traits**
 

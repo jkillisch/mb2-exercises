@@ -568,7 +568,7 @@ Lösung
 <li><p>Das State-spezifische Residuum und das Item- und Zeitpunkt-spezifische Residuum sind unabhängig voneinander und daher ist <span class="math inline">\(Cov(\zeta_t, \epsilon_{it}) = 0\)</span>.</p></li>
 </ol>
 <p>Unter diesen Annahmen würde man für alle Kovarianzen Nullen einsetzen, sodass folgt:</p>
-<p><span class="math display">\[Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})\]</span></p>
+<p><span class="math display">\[Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})\]</span></p>
 <p>Nun sind wir schon am Ziel. Diese Varianzzerlegung finden Sie auf den Vorlesungsfolien wieder.</p>
 </div>
 </div>
@@ -577,15 +577,15 @@ Lösung
 <p><span class="math display">\[Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})\]</span></p>
 <p>Das heißt, die Varianz der Antworten auf ein Item zu einem Zeitpunkt setzt sich additiv aus drei Komponenten zusammen.</p>
 <ol type="1">
-<li>Einen Varianzanteil, der auf den stabilen Trait zurückzuführen ist:</li>
+<li>aus einem Varianzanteil, der auf den stabilen Trait zurückzuführen ist:</li>
 </ol>
 <p><span class="math display">\[\lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi)\]</span></p>
 <ol start="2" type="1">
-<li>Einen Varianzanteil, der auf das State-Residuum zurückzuführen ist:</li>
+<li>aus einem Varianzanteil, der auf das State-Residuum zurückzuführen ist:</li>
 </ol>
 <p><span class="math display">\[\lambda_{it}^2 \cdot Var(\zeta_t)\]</span></p>
 <ol start="3" type="1">
-<li>Einen Varianzanteil, der auf den Messfehler zurückzuführen ist:</li>
+<li>aus einem Varianzanteil, der auf den Messfehler zurückzuführen ist:</li>
 </ol>
 <p><span class="math display">\[Var(\epsilon_{it})\]</span></p>
 <p>Die Anteile 1., 2. und 3. kann man jeweils durch die Gesamtvarianz der Variable teilen und erhält so eine Statistik darüber, welcher Anteil der Varianz eines Items auf den stabilen Trait, das State-Residuum oder den Messfehler zurückzuführen ist.</p>
@@ -608,7 +608,7 @@ Lösung
 <p><span class="math display">\[
 Var(y_{it}) = \lambda_{it}^2 \cdot \gamma_t^2 \cdot Var(\cdot \xi) + \lambda_{it}^2 \cdot Var(\zeta_t) + Var(\epsilon_{it})
 \]</span></p>
-<p>Man könnte <span class="math inline">\(Var(y_{it})\)</span> natürlich in jeder der Formeln noch einmal einsetzen.</p>
+<p>Man könnte <span class="math inline">\(Var(y_{it})\)</span> im Nenner aller Formeln auch in aufgelöster Form einsetzen. Das macht die Formeln aber schnell unübersichtlich.</p>
 <p><strong>1. Varianzanteil aufgrund des stabilen Traits</strong></p>
 <p>Diesen Anteil nennt man auch Konsistenz. Daher wird er hier mit <span class="math inline">\(Con(y_{it})\)</span> bezeichnet.</p>
 <p><span class="math display">\[
