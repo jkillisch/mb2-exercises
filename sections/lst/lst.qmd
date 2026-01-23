@@ -118,7 +118,7 @@ Der $\xi$-Parameter
 
 ## Von der Pfaddarstellung zu Modellgleichungen
 
-Die Pfaddarstellung des Modells sehr nützlich, um schnell einen Überblick über das Modell zu bekommen. Hinter der Pfaddarstellung steckt aber, wie bei den Messmodellen auch, ein System linearer Modellgleichungen. In der folgenden Aufgabe werden Sie gebeten, die Modellgleichung für ein Item zu einem Zeitpunkt aufzuschreiben. Das wird vielen sicher nicht leicht fallen. Das ist nicht schlimm. Versuchen Sie es trotzdem einmal. Auch wenn Sie falsch liegen, haben Sie danach noch Gelegenheit zu üben.
+Die Pfaddarstellung des Modells sehr nützlich, um schnell einen Überblick über das Modell zu bekommen. Hinter der Pfaddarstellung steckt aber, wie bei den Messmodellen auch, ein System linearer Modellgleichungen. In der folgenden Aufgabe werden Sie gebeten, die Modellgleichung für ein Item zu einem Zeitpunkt aufzuschreiben. Das wird vielen vermutlich nicht leicht fallen. Das ist nicht schlimm. Versuchen Sie es trotzdem einmal. Auch wenn Sie falsch liegen, haben Sie danach noch Gelegenheit zu üben.
 
 ::: {.callout-aufgabe}
 
