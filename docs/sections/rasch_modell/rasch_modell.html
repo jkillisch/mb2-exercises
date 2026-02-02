@@ -642,20 +642,20 @@ Lösung
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Personenparameter:"</span>, theta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Personenparameter: -0.33"</code></pre>
+<pre><code>[1] "Personenparameter: 0.94"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Itemparameter:"</span>, beta) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Itemparameter: 1.66"</code></pre>
+<pre><code>[1] "Itemparameter: -0.68"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>loesung <span class="ot">&lt;-</span> teachIRT<span class="sc">::</span><span class="fu">p_rasch</span>(theta, beta)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Lösewahrscheinlichkeit:"</span>, loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Lösewahrscheinlichkeit: 0.120256862467751"</code></pre>
+<pre><code>[1] "Lösewahrscheinlichkeit: 0.834795129809385"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Nicht-Lösewahrscheinlichkeit:"</span>, <span class="dv">1</span><span class="sc">-</span>loesung) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.879743137532249"</code></pre>
+<pre><code>[1] "Nicht-Lösewahrscheinlichkeit: 0.165204870190615"</code></pre>
 </div>
 </div>
 </section>

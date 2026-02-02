@@ -124,7 +124,7 @@ Verändern Sie die Parameterwerte von $\alpha$, $\beta$ und $\gamma$ und führen
 
 ::: {.callout-aufgabe}
 
-Berechnen Sie die Information eines Items mit Hilfe des 3PL-Modells bei $\theta_i = -0.5$. Der Rateparameter hat einen Wert von $0.2$. Der Itemdiskriminationsparameter hat einen Wert von $-1.2$. Der Itemschwierigkeitsparameter hat einen Wert von $0.5$.
+Berechnen Sie die Information eines Items mit Hilfe des 3PL-Modells bei $\theta_i = -0.5$. Der Rateparameter hat einen Wert von $0.2$. Der Itemdiskriminationsparameter hat einen Wert von $-1$. Der Itemschwierigkeitsparameter hat einen Wert von $0.5$.
 
 :::
 
